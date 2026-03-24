@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthew Abate — Experience Strategy & Service Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #061D26;
+      --navy-mid:  #0C2D3C;
+      --white:     #FFFFFF;
+      --off-white: #F0F8FA;
+      --text:      #061D26;
+      --muted:     #4E7A84;
+      --accent:    #CC1FA8;
+      --accent-2:  #007A94;
+      --rule:      #C8E2EA;
+      --serif:     'Outfit', system-ui, sans-serif;
+      --sans:      'Outfit', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 200;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .btn {
+      display: inline-block;
+      padding: 9px 22px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--navy-mid); }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 96px 0 88px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 740px;
+      margin-bottom: 32px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .hero-sub { display: none; }
+    .hero-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-hero {
+      display: inline-block;
+      padding: 13px 28px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .btn-hero:hover { opacity: 0.9; }
+    .btn-hero-ghost {
+      display: inline-block;
+      padding: 13px 28px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 88px 0; }
+    section.alt { background: var(--off-white); }
+
+    /* ── WHAT I DO ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .what-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .what-left p {
+      color: var(--text);
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .what-right {}
+    .career-box {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .career-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 24px;
+    }
+    .career-step {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .career-step:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .career-phase {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-2);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .career-industries {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.8;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 24px;
+      padding-top: 20px;
+    }
+
+    /* ── HOW I WORK ── */
+    .how-intro {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+    .how-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .how-intro p { color: var(--text); font-size: 16px; }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    .pillar {
+      border-top: 3px solid var(--accent);
+      padding-top: 24px;
+    }
+    .pillar h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .pillar p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+    .ai-box {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 40px 44px;
+    }
+    .ai-box-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ai-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(204,31,168,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ai-icon svg { width: 22px; height: 22px; }
+    .ai-box-header h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .ai-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+    .ai-col h4 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .ai-col p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+    /* ── WORK ── */
+    .work-intro {
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+    .work-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .work-intro p { font-size: 16px; color: var(--muted); }
+    .project {
+      border-top: 1px solid var(--rule);
+      padding: 56px 0;
+    }
+    .project:last-child { border-bottom: 1px solid var(--rule); }
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .project-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .project h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      max-width: 680px;
+    }
+    .project-number {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--rule);
+      line-height: 1;
+    }
+    .project-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 28px;
+    }
+    .project-col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .project-col p { font-size: 15px; color: var(--text); line-height: 1.65; }
+    .project-outcome {
+      background: var(--off-white);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 24px;
+    }
+    .project-outcome p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .methods {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 2;
+    }
+    .methods strong { color: var(--muted); font-weight: 500; }
+    .method-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 3px 2px;
+    }
+
+    /* ── ENGAGEMENT ── */
+    .engagement-intro {
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+    .engagement-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .engagement-intro p { font-size: 16px; color: var(--muted); }
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .phases::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent-2), var(--accent));
+      z-index: 0;
+    }
+    .phase {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 12px;
+    }
+    .phase-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--navy);
+    }
+    .phase:last-child .phase-dot { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+    .phase h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .phase p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .about-left p {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+    .about-right {}
+    .stat-stack { display: flex; flex-direction: column; gap: 24px; }
+    .stat {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .stat:first-child { border-top: 1px solid var(--rule); }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--navy);
+      padding: 88px 0;
+    }
+    .contact-inner {
+      max-width: 600px;
+    }
+    .contact-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .contact-inner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-email {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .contact-email:hover { opacity: 0.9; }
+    .contact-linkedin {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .contact-linkedin:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+    .contact-resume {
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .contact-resume:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.3); }
+    .contact-location {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 12px; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .what-grid { grid-template-columns: 1fr; gap: 48px; }
+      .pillars { grid-template-columns: 1fr; }
+      .ai-cols { grid-template-columns: 1fr; gap: 28px; }
+      .project-body { grid-template-columns: 1fr; gap: 24px; }
+      .phases { grid-template-columns: 1fr; }
+      .phases::before { display: none; }
+      .phase { text-align: left; display: flex; gap: 20px; align-items: flex-start; padding: 0 0 24px 0; }
+      .phase-dot { flex-shrink: 0; margin: 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ai-box { grid-template-columns: 1fr; }
+      .project-header { grid-template-columns: 1fr; }
+      .project-number { display: none; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      section { padding: 64px 0; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Matthew Abate</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#how">How I Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero-eyebrow">Experience Strategy &amp; Service Design</p>
+    <h1>The hard part isn't making a product.<em>It's making the right one.</em></h1>
+    <p class="hero-body">90% of startups fail. 70% of corporate change initiatives are abandoned. 88% of AI projects are scrapped. It's not because of bad execution. It's because they didn't understand what the people using it really need.<br/><br/>I work at that level. Before we can decide what to make, we need to know what will work. I've done this in hospitals, stadiums, car dealerships, call centers, and anywhere there is a gap between how an experience was designed and how people actually live it.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-hero-ghost">See selected work ↓</a>
+      <a href="#contact" class="btn-hero">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section id="what">
+  <div class="container">
+    <div class="what-grid">
+      <div class="what-left">
+        <span class="label">What I Do</span>
+        <h2>Identifying the effort worth making.</h2>
+        <p>Before any organization starts designing or developing anything, someone needs to do the harder work of understanding the problem. That means getting out into the world, seeing how people really behave, sifting through the existing mess, and asking better questions than "what do you want?"</p>
+        <p>In order to find our way out of the fog of ambiguity we need to choose a direction.</p>
+        <p>My career started in digital. I've been doing this since before websites could have images. But the work that's meant the most to me, and where I've done my best work, has almost always been useful in the real world. Stadiums. Hospitals. Automotive showrooms. Financial service centers. Environments where a screen or someone's data might be part of the answer, but the interactions between people and how a product or service affects our physical space matter much more. Misjudging what people need from what we make will sink whatever the digital piece does right.</p>
+        <p>Those are the kinds of problems I'm looking for: not pure digital, not technology trying to find a problem, but the whole physical-digital experience and how it either comes together for the people moving through it.</p>
+        <p>The output isn't a design. It's a clear, evidence-backed strategy with the research to defend it and a roadmap someone can act on.</p>
+      </div>
+      <div class="what-right">
+        <div class="career-box">
+          <p class="career-label">How I got here</p>
+          <p class="career-step">I started building things — websites, human-machine interfaces, apps. It taught me how to make complex ideas legible and how to defend aesthetic decisions with logic.</p>
+          <p class="career-step">I moved into digital products and learned what it meant to design for behavioral outcomes, not just appearance. Research, iteration, systems thinking became the infrastructure behind my decisions.</p>
+          <p class="career-step">Now I work upstream — before the wireframes, before the brief, before anyone has agreed on what the problem actually is. That's where I've done my best work.</p>
+          <div class="career-industries">
+            My experience spans Healthcare, Sports &amp; Entertainment, Automotive, Financial Services, Retail, Media, Technology, Non-Profits, and Education.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- HOW I WORK -->
+<section id="how" class="alt">
+  <div class="container">
+    <div class="how-intro">
+      <span class="label">How I Work</span>
+      <h2>A few frameworks I keep coming back to.</h2>
+      <p>Good work isn't one method. It's knowing which tools to reach for and when. These three show up in almost every engagement — not as rigid processes, but as lenses that help cut through ambiguity and find something worth acting on.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Desirability · Feasibility · Viability</h3>
+        <p>Most initiatives fail because they optimize for one dimension and ignore the others. Desirability asks whether people actually want this — and why. Feasibility asks whether the organization can build and sustain it. Viability asks whether it's worth doing at all. Applying all three at once, early, is how you avoid expensive mistakes downstream.</p>
+      </div>
+      <div class="pillar">
+        <h3>Jobs to Be Done</h3>
+        <p>People don't want products. They want to make progress on something that matters to them. JTBD is a framework for understanding that underlying motivation — not what people say they want, but what they're actually trying to accomplish. It cuts through feature requests and stakeholder opinions to find the real problem, which is usually the one worth solving.</p>
+      </div>
+      <div class="pillar">
+        <h3>Design Thinking &amp; Service Design</h3>
+        <p>Design Thinking gives us a human-centered process for moving from ambiguous problem to testable direction. Service Design extends that thinking beyond any single touchpoint — mapping the full experience across channels, staff, physical environments, and back-office systems. Together they're how I help organizations see what's actually happening and what a better version of it could look like.</p>
+      </div>
+    </div>
+
+    <div class="ai-box">
+      <div class="ai-box-header">
+        <div class="ai-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(204,31,168,0.9)" stroke-width="1.5">
+            <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3>AI in my practice</h3>
+      </div>
+      <div class="ai-cols">
+        <div class="ai-col">
+          <h4>UX for AI</h4>
+          <p>Designing AI experiences requires a different kind of research. What do people expect from an AI system? Where does trust break down, and why? I study the mental models people bring to AI interactions and design around how they actually think — not how the engineers assume they do.</p>
+        </div>
+        <div class="ai-col">
+          <h4>Rapid Value Realization</h4>
+          <p>The fastest path to clarity is usually something you can put in front of a real person. I use rapid prototyping to create testable artifacts early — before anyone is committed to a direction — and use what I learn to course-correct. This isn't about process ceremonies. It's about shortening the distance between an idea and evidence.</p>
+        </div>
+        <div class="ai-col">
+          <h4>AI-Augmented Work</h4>
+          <p>I use AI throughout my practice — finding patterns in large datasets, accelerating synthesis, filling gaps in secondary research. I've also built a complete working product using AI as my engineering team, without writing a line of code. When I help organizations think about AI integration, I'm drawing on that experience directly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="work-intro">
+      <span class="label">Selected Work</span>
+      <h2>Three projects from my portfolio.</h2>
+      <p>A stadium commerce experience, a cognitive therapy coach, and a video game guide. Every problem is complex, so I use a toolkit to understand what people are trying to get out of an experience, what's worth doing about it, and give the business something it can actually make.</p>
+    </div>
+
+    <!-- PROJECT 1: MLB -->
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <p class="project-tag">Major League Baseball &middot; Sports &amp; Entertainment &middot; 2024–2025</p>
+          <h3>Reframing how a major league thinks about the fan experience.</h3>
+        </div>
+        <span class="project-number">01</span>
+      </div>
+
+      <div class="project-body">
+        <div class="project-col">
+          <p class="project-col-label">The Challenge</p>
+          <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem. My job was to find out whether that was actually true — and what, if anything, the speed framing was missing.</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">What I Did</p>
+          <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, talking to people mid-purchase. Combined that with fan surveys and in-depth interviews. Turns out fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish, and the concourse environment was working for some of those modes and actively against others.</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">The Reframe</p>
+          <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a different design brief — and it changes what you invest in, how you lay out a space, how you train staff, what information you surface and when. The findings shifted what the league decided to prioritize next.</p>
+        </div>
+      </div>
+
+      <div class="project-outcome">
+        <p><strong>Outcomes:</strong> 22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 teams. 11 recommendations developed, five adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
+      </div>
+
+      <div>
+        <span class="method-tag">Ethnographic field research</span>
+        <span class="method-tag">Concourse observation</span>
+        <span class="method-tag">Fan surveys</span>
+        <span class="method-tag">In-depth interviews</span>
+        <span class="method-tag">Jobs to be Done</span>
+        <span class="method-tag">Journey mapping</span>
+        <span class="method-tag">Behavioral segmentation</span>
+        <span class="method-tag">Multi-year roadmapping</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: J&J -->
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <p class="project-tag">Johnson &amp; Johnson &middot; Healthcare &middot; 2015–2019</p>
+          <h3>From patient behavior to clinical trial.</h3>
+        </div>
+        <span class="project-number">02</span>
+      </div>
+
+      <div class="project-body">
+        <div class="project-col">
+          <p class="project-col-label">The Challenge</p>
+          <p>How do people with chronic conditions — diabetes, allergies — actually manage their disease day to day? Not in theory. Not in a clinical setting. In their homes, with their schedules, when they're tired or distracted or just worn out by it. The question was whether intervention could genuinely change that behavior, or whether it would just add one more thing to manage.</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">What I Did</p>
+          <p>Led the research and design of AI-assisted coaching tools built around behavioral science and clinical inputs — working alongside J&J's clinical and R&D teams to turn what we learned about patients into service blueprints and experience strategies. In parallel, redesigned the instructions for self-administered biologics for children. The printed materials weren't working. The question was what format would actually reduce errors under the real conditions people were using them.</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">The Insight</p>
+          <p>Most health interventions are designed around what clinicians want patients to do. That's not the same thing as what patients are capable of doing — consistently, in real conditions, over time. When you design for the second thing, outcomes improve. The numbers here bear that out pretty clearly.</p>
+        </div>
+      </div>
+
+      <div class="project-outcome">
+        <p><strong>Outcomes:</strong> Two products advanced to clinical trial. Self-injection instruction redesign reduced user errors by 80% compared to printed materials. Average waste cost reduction of $4,000 per patient annually. Service blueprints integrated into hospital workflow design and connected medical device planning.</p>
+      </div>
+
+      <div>
+        <span class="method-tag">Behavioral research</span>
+        <span class="method-tag">Jobs to be Done</span>
+        <span class="method-tag">Service blueprinting</span>
+        <span class="method-tag">Hospital workflow design</span>
+        <span class="method-tag">Physical-digital service design</span>
+        <span class="method-tag">Clinical collaboration</span>
+        <span class="method-tag">Usability testing</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: IRMINSUL -->
+    <div class="project">
+      <div class="project-header">
+        <div>
+          <p class="project-tag">Irminsul &middot; Personal Project &middot; 2024–Ongoing</p>
+          <h3>Building a product with AI, without writing a line of code.</h3>
+        </div>
+        <span class="project-number">03</span>
+      </div>
+
+      <div class="project-body">
+        <div class="project-col">
+          <p class="project-col-label">The Challenge</p>
+          <p>Genshin Impact has 60 million players managing genuinely complicated rosters — dozens of characters, thousands of equipment combinations, team-based play that rewards optimization. Existing tools are either spreadsheets that require real expertise to interpret, or generic tier lists that don't know anything about what a specific player actually owns. Neither one answers the actual question: given what you have, what should you do?</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">What I Did</p>
+          <p>I designed Irminsul — a companion tool that connects to a player's account, reads their actual roster, and generates conflict-free team recommendations with plain-language explanations. The whole thing was built without me writing a single line of code. I directed an AI through every decision: architecture, data sourcing, interface, testing. The AI wrote the code. I made every call about what the product should do and why.</p>
+        </div>
+        <div class="project-col">
+          <p class="project-col-label">Why It's Here</p>
+          <p>I'm not a developer and I didn't pretend to become one. What I did was use AI as a capable partner — the same way I'd work with an engineer — to take a clearly defined problem from concept to working product. If you want to understand how I think AI fits into design and strategy work, this is the clearest demonstration I can offer.</p>
+        </div>
+      </div>
+
+      <div class="project-outcome">
+        <p><strong>Status:</strong> Live and in closed testing. Early feedback validates the core concept — users connect their accounts, generate recommendations, and navigate the interface without any guidance. Active development continues toward a broader launch.</p>
+      </div>
+
+      <div>
+        <span class="method-tag">Product strategy</span>
+        <span class="method-tag">AI-directed development</span>
+        <span class="method-tag">Concept-to-launch</span>
+        <span class="method-tag">Usability testing</span>
+        <span class="method-tag">Iterative prototyping</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ENGAGEMENT -->
+<section class="alt">
+  <div class="container">
+    <div class="engagement-intro">
+      <span class="label">Working Together</span>
+      <h2>What it looks like to work with me.</h2>
+      <p>Every project is a little different, but they follow a similar arc. Here's the general shape of it.</p>
+    </div>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-dot">1</div>
+        <div>
+          <h4>Discovery</h4>
+          <p>Figure out what we're actually trying to solve. Stakeholder interviews, a competitive review, and a look at what's already known — so we're aligned on the real question before any research starts.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">2</div>
+        <div>
+          <h4>Research</h4>
+          <p>Get out into the world. Surveys, behavioral observation, in-depth interviews — whatever the problem requires. I structure it around what people are genuinely trying to accomplish, not what the organization assumes they're trying to accomplish.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">3</div>
+        <div>
+          <h4>Synthesis</h4>
+          <p>Turn what we found into something the team can actually use. Journey maps, behavioral models, insight reports. The goal isn't a deck that gets presented once and filed — it's something that earns its place in ongoing decisions.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">4</div>
+        <div>
+          <h4>Strategy</h4>
+          <p>Take the insights and figure out what they mean for the business. Which opportunities are real? Which are worth pursuing given the constraints? What should we not do? This is where desirability, feasibility, and viability all have to answer for themselves.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">5</div>
+        <div>
+          <h4>Roadmap</h4>
+          <p>Work with leadership to sequence priorities, define what needs to be validated before committing, and make sure the plan coming out of this is something the organization can actually execute — not just something that sounds good in a presentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <span class="label">About</span>
+        <h2>28 years of making the right problems clearer.</h2>
+        <p>I've done this work across healthcare, sports and entertainment, automotive, financial services, retail, and media — at companies from early-stage startups to global enterprises, at agencies, and on my own. Ford, J&J, MLB, NewRez, Comcast, Emirates, Target, NBCU. Places where the complexity is real and the margin for getting it wrong is high.</p>
+        <p>I came up through design. I used to make things — actual things, interfaces, objects, experiences. At some point I realized I was more useful figuring out what should be made than making it. My work now lives upstream of that: understanding the problem, defining the opportunity, helping organizations make confident decisions about where to put their effort.</p>
+        <p>I'm drawn to problems with physical dimension. The way a service unfolds across a space. How an organization delivers an experience that isn't purely a screen. The friction that lives at the intersection of how something was designed to work and how people actually move through it. That's the interesting stuff, and I've spent a long time getting good at it.</p>
+        <p>Based in Maplewood, NJ. Currently available — full-time roles at the director to VP level, New York metro or remote, with the right consulting engagement as an alternative.</p>
+      </div>
+      <div class="about-right">
+        <div class="stat-stack">
+          <div class="stat">
+            <div class="stat-num">28</div>
+            <div class="stat-label">Years of practice</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Industries: healthcare, sports, automotive, financial services, retail, media</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">30</div>
+            <div class="stat-label">MLB teams whose 2026+ planning reflects my research</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">80%</div>
+            <div class="stat-label">Reduction in patient errors on redesigned self-injection instructions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="label" style="color:rgba(0,122,148,0.9)">Let's Talk</span>
+      <h2>If you're working on something hard, I'd like to hear about it.</h2>
+      <p>I'm currently available for the right full-time role — director to VP level — at an organization where understanding people is treated as a real input to strategy, not an afterthought. I'm also open to the right consulting engagement.</p>
+      <div class="contact-links">
+        <a href="mailto:matthewabate@me.com" class="contact-email">
+          matthewabate@me.com
+        </a>
+        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="contact-linkedin">
+          LinkedIn →
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1zSdmHHciVBCys6JWqRI0haGd_1mf67rY" target="_blank" class="contact-resume">
+          Download Resume
+        </a>
+      </div>
+      <p class="contact-location">Maplewood, NJ &middot; Open to New York metro or remote</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p>© 2026 Matthew Abate</p>
+      <p>Experience Strategy &amp; Service Design</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
