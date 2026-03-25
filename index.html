@@ -332,10 +332,10 @@
     .project:last-child { border-bottom: 1px solid var(--rule); }
     .project-header {
       display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
       gap: 24px;
-      margin-bottom: 32px;
+      margin-bottom: 0;
     }
     .project-tag {
       font-size: 12px;
@@ -597,6 +597,59 @@
       section { padding: 64px 0; }
       .nav-links { display: none; }
     }
+
+    /* ── ACCORDION ── */
+    .project-header {
+      margin-bottom: 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .project-toggle-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .project-chevron {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .project.open .project-chevron {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+    .project-header:hover .project-chevron {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+    }
+    .project.open .project-header:hover .project-chevron {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--white);
+    }
+    .project-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease, margin-top 0.3s ease;
+      margin-top: 0;
+    }
+    .project.open .project-content {
+      max-height: 3000px;
+      margin-top: 32px;
+    }
   </style>
 </head>
 <body>
@@ -720,121 +773,130 @@
     </div>
 
     <!-- PROJECT 1: MLB -->
-    <div class="project">
-      <div class="project-header">
+    <div class="project" id="project-1">
+      <div class="project-header" onclick="toggleProject('project-1')">
+        <span class="project-number">01</span>
         <div>
           <p class="project-tag">Major League Baseball &middot; Sports &amp; Entertainment &middot; 2024–2025</p>
           <h3>Reframing how a major league thinks about the fan experience.</h3>
         </div>
-        <span class="project-number">01</span>
+        <span class="project-chevron">+</span>
       </div>
 
-      <div class="project-body">
-        <div class="project-col">
-          <p class="project-col-label">The Challenge</p>
-          <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem. My job was to find out whether that was actually true — and what, if anything, the speed framing was missing.</p>
+      <div class="project-content">
+        <div class="project-body">
+          <div class="project-col">
+            <p class="project-col-label">The Challenge</p>
+            <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem. My job was to find out whether that was actually true — and what, if anything, the speed framing was missing.</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">What I Did</p>
+            <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, talking to people mid-purchase. Combined that with fan surveys and in-depth interviews. Turns out fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish, and the concourse environment was working for some of those modes and actively against others.</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">The Reframe</p>
+            <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a different design brief — and it changes what you invest in, how you lay out a space, how you train staff, what information you surface and when. The findings shifted what the league decided to prioritize next.</p>
+          </div>
         </div>
-        <div class="project-col">
-          <p class="project-col-label">What I Did</p>
-          <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, talking to people mid-purchase. Combined that with fan surveys and in-depth interviews. Turns out fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish, and the concourse environment was working for some of those modes and actively against others.</p>
-        </div>
-        <div class="project-col">
-          <p class="project-col-label">The Reframe</p>
-          <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a different design brief — and it changes what you invest in, how you lay out a space, how you train staff, what information you surface and when. The findings shifted what the league decided to prioritize next.</p>
-        </div>
-      </div>
 
-      <div class="project-outcome">
-        <p><strong>Outcomes:</strong> 22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 teams. 11 recommendations developed, five adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
-      </div>
+        <div class="project-outcome">
+          <p><strong>Outcomes:</strong> 22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 teams. 11 recommendations developed, five adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
+        </div>
 
-      <div>
-        <span class="method-tag">Ethnographic field research</span>
-        <span class="method-tag">Concourse observation</span>
-        <span class="method-tag">Fan surveys</span>
-        <span class="method-tag">In-depth interviews</span>
-        <span class="method-tag">Jobs to be Done</span>
-        <span class="method-tag">Journey mapping</span>
-        <span class="method-tag">Behavioral segmentation</span>
-        <span class="method-tag">Multi-year roadmapping</span>
+        <div>
+          <span class="method-tag">Ethnographic field research</span>
+          <span class="method-tag">Concourse observation</span>
+          <span class="method-tag">Fan surveys</span>
+          <span class="method-tag">In-depth interviews</span>
+          <span class="method-tag">Jobs to be Done</span>
+          <span class="method-tag">Journey mapping</span>
+          <span class="method-tag">Behavioral segmentation</span>
+          <span class="method-tag">Multi-year roadmapping</span>
+        </div>
       </div>
     </div>
 
     <!-- PROJECT 2: J&J -->
-    <div class="project">
-      <div class="project-header">
+    <div class="project" id="project-2">
+      <div class="project-header" onclick="toggleProject('project-2')">
+        <span class="project-number">02</span>
         <div>
           <p class="project-tag">Johnson &amp; Johnson &middot; Healthcare &middot; 2015–2019</p>
           <h3>From patient behavior to clinical trial.</h3>
         </div>
-        <span class="project-number">02</span>
+        <span class="project-chevron">+</span>
       </div>
 
-      <div class="project-body">
-        <div class="project-col">
-          <p class="project-col-label">The Challenge</p>
-          <p>How do people with chronic conditions — diabetes, allergies — actually manage their disease day to day? Not in theory. Not in a clinical setting. In their homes, with their schedules, when they're tired or distracted or just worn out by it. The question was whether intervention could genuinely change that behavior, or whether it would just add one more thing to manage.</p>
+      <div class="project-content">
+        <div class="project-body">
+          <div class="project-col">
+            <p class="project-col-label">The Challenge</p>
+            <p>How do people with chronic conditions — diabetes, allergies — actually manage their disease day to day? Not in theory. Not in a clinical setting. In their homes, with their schedules, when they're tired or distracted or just worn out by it. The question was whether intervention could genuinely change that behavior, or whether it would just add one more thing to manage.</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">What I Did</p>
+            <p>Led the research and design of AI-assisted coaching tools built around behavioral science and clinical inputs — working alongside J&J's clinical and R&D teams to turn what we learned about patients into service blueprints and experience strategies. In parallel, redesigned the instructions for self-administered biologics for children. The printed materials weren't working. The question was what format would actually reduce errors under the real conditions people were using them.</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">The Insight</p>
+            <p>Most health interventions are designed around what clinicians want patients to do. That's not the same thing as what patients are capable of doing — consistently, in real conditions, over time. When you design for the second thing, outcomes improve. The numbers here bear that out pretty clearly.</p>
+          </div>
         </div>
-        <div class="project-col">
-          <p class="project-col-label">What I Did</p>
-          <p>Led the research and design of AI-assisted coaching tools built around behavioral science and clinical inputs — working alongside J&J's clinical and R&D teams to turn what we learned about patients into service blueprints and experience strategies. In parallel, redesigned the instructions for self-administered biologics for children. The printed materials weren't working. The question was what format would actually reduce errors under the real conditions people were using them.</p>
-        </div>
-        <div class="project-col">
-          <p class="project-col-label">The Insight</p>
-          <p>Most health interventions are designed around what clinicians want patients to do. That's not the same thing as what patients are capable of doing — consistently, in real conditions, over time. When you design for the second thing, outcomes improve. The numbers here bear that out pretty clearly.</p>
-        </div>
-      </div>
 
-      <div class="project-outcome">
-        <p><strong>Outcomes:</strong> Two products advanced to clinical trial. Self-injection instruction redesign reduced user errors by 80% compared to printed materials. Average waste cost reduction of $4,000 per patient annually. Service blueprints integrated into hospital workflow design and connected medical device planning.</p>
-      </div>
+        <div class="project-outcome">
+          <p><strong>Outcomes:</strong> Two products advanced to clinical trial. Self-injection instruction redesign reduced user errors by 80% compared to printed materials. Average waste cost reduction of $4,000 per patient annually. Service blueprints integrated into hospital workflow design and connected medical device planning.</p>
+        </div>
 
-      <div>
-        <span class="method-tag">Behavioral research</span>
-        <span class="method-tag">Jobs to be Done</span>
-        <span class="method-tag">Service blueprinting</span>
-        <span class="method-tag">Hospital workflow design</span>
-        <span class="method-tag">Physical-digital service design</span>
-        <span class="method-tag">Clinical collaboration</span>
-        <span class="method-tag">Usability testing</span>
+        <div>
+          <span class="method-tag">Behavioral research</span>
+          <span class="method-tag">Jobs to be Done</span>
+          <span class="method-tag">Service blueprinting</span>
+          <span class="method-tag">Hospital workflow design</span>
+          <span class="method-tag">Physical-digital service design</span>
+          <span class="method-tag">Clinical collaboration</span>
+          <span class="method-tag">Usability testing</span>
+        </div>
       </div>
     </div>
 
     <!-- PROJECT 3: IRMINSUL -->
-    <div class="project">
-      <div class="project-header">
+    <div class="project" id="project-3">
+      <div class="project-header" onclick="toggleProject('project-3')">
+        <span class="project-number">03</span>
         <div>
           <p class="project-tag">Irminsul &middot; Personal Project &middot; 2024–Ongoing</p>
           <h3>Building a product with AI, without writing a line of code.</h3>
         </div>
-        <span class="project-number">03</span>
+        <span class="project-chevron">+</span>
       </div>
 
-      <div class="project-body">
-        <div class="project-col">
-          <p class="project-col-label">The Challenge</p>
-          <p>Genshin Impact has 60 million players managing genuinely complicated rosters — dozens of characters, thousands of equipment combinations, team-based play that rewards optimization. Existing tools are either spreadsheets that require real expertise to interpret, or generic tier lists that don't know anything about what a specific player actually owns. Neither one answers the actual question: given what you have, what should you do?</p>
+      <div class="project-content">
+        <div class="project-body">
+          <div class="project-col">
+            <p class="project-col-label">The Challenge</p>
+            <p>Genshin Impact has 60 million players managing genuinely complicated rosters — dozens of characters, thousands of equipment combinations, team-based play that rewards optimization. Existing tools are either spreadsheets that require real expertise to interpret, or generic tier lists that don't know anything about what a specific player actually owns. Neither one answers the actual question: given what you have, what should you do?</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">What I Did</p>
+            <p>I designed Irminsul — a companion tool that connects to a player's account, reads their actual roster, and generates conflict-free team recommendations with plain-language explanations. The whole thing was built without me writing a single line of code. I directed an AI through every decision: architecture, data sourcing, interface, testing. The AI wrote the code. I made every call about what the product should do and why.</p>
+          </div>
+          <div class="project-col">
+            <p class="project-col-label">Why It's Here</p>
+            <p>I'm not a developer and I didn't pretend to become one. What I did was use AI as a capable partner — the same way I'd work with an engineer — to take a clearly defined problem from concept to working product. If you want to understand how I think AI fits into design and strategy work, this is the clearest demonstration I can offer.</p>
+          </div>
         </div>
-        <div class="project-col">
-          <p class="project-col-label">What I Did</p>
-          <p>I designed Irminsul — a companion tool that connects to a player's account, reads their actual roster, and generates conflict-free team recommendations with plain-language explanations. The whole thing was built without me writing a single line of code. I directed an AI through every decision: architecture, data sourcing, interface, testing. The AI wrote the code. I made every call about what the product should do and why.</p>
-        </div>
-        <div class="project-col">
-          <p class="project-col-label">Why It's Here</p>
-          <p>I'm not a developer and I didn't pretend to become one. What I did was use AI as a capable partner — the same way I'd work with an engineer — to take a clearly defined problem from concept to working product. If you want to understand how I think AI fits into design and strategy work, this is the clearest demonstration I can offer.</p>
-        </div>
-      </div>
 
-      <div class="project-outcome">
-        <p><strong>Status:</strong> Live and in closed testing. Early feedback validates the core concept — users connect their accounts, generate recommendations, and navigate the interface without any guidance. Active development continues toward a broader launch.</p>
-      </div>
+        <div class="project-outcome">
+          <p><strong>Status:</strong> Live and in closed testing. Early feedback validates the core concept — users connect their accounts, generate recommendations, and navigate the interface without any guidance. Active development continues toward a broader launch.</p>
+        </div>
 
-      <div>
-        <span class="method-tag">Product strategy</span>
-        <span class="method-tag">AI-directed development</span>
-        <span class="method-tag">Concept-to-launch</span>
-        <span class="method-tag">Usability testing</span>
-        <span class="method-tag">Iterative prototyping</span>
+        <div>
+          <span class="method-tag">Product strategy</span>
+          <span class="method-tag">AI-directed development</span>
+          <span class="method-tag">Concept-to-launch</span>
+          <span class="method-tag">Usability testing</span>
+          <span class="method-tag">Iterative prototyping</span>
+        </div>
       </div>
     </div>
 
@@ -962,6 +1024,13 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function toggleProject(id) {
+    const project = document.getElementById(id);
+    project.classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>
