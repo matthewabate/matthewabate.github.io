@@ -18,7 +18,7 @@
       --text:      #061D26;
       --muted:     #4E7A84;
       --accent:    #CC1FA8;
-      --accent-2:  #007A94;
+      --accent-2:  #00C8EE;
       --rule:      #C8E2EA;
       --serif:     'Outfit', system-ui, sans-serif;
       --sans:      'Outfit', system-ui, sans-serif;
@@ -177,7 +177,6 @@
     .what-right {}
     .career-box {
       background: var(--navy);
-      border-radius: 8px;
       padding: 32px;
     }
     .career-label {
@@ -254,7 +253,6 @@
     .pillar p { font-size: 15px; color: var(--muted); line-height: 1.65; }
     .ai-box {
       background: var(--navy);
-      border-radius: 8px;
       padding: 40px 44px;
     }
     .ai-box-header {
@@ -269,7 +267,6 @@
       width: 40px;
       height: 40px;
       background: rgba(204,31,168,0.15);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -364,7 +361,6 @@
       background: var(--off-white);
       border-left: 3px solid var(--accent);
       padding: 20px 24px;
-      border-radius: 0 6px 6px 0;
       margin-bottom: 24px;
     }
     .project-outcome p {
@@ -383,7 +379,6 @@
       padding: 3px 10px;
       background: var(--off-white);
       border: 1px solid var(--rule);
-      border-radius: 20px;
       font-size: 12px;
       color: var(--muted);
       margin: 3px 2px;
@@ -474,21 +469,28 @@
       line-height: 1.75;
     }
     .about-right {}
-    .stat-stack { display: flex; flex-direction: column; gap: 24px; }
+    .stat-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     .stat {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--rule);
+      padding: 16px 20px 16px 0;
+      border-top: 1px solid var(--rule);
     }
-    .stat:first-child { border-top: 1px solid var(--rule); }
+    .stat:nth-child(odd) {
+      border-right: 1px solid var(--rule);
+      padding-right: 20px;
+    }
+    .stat:nth-child(even) {
+      padding-left: 20px;
+    }
     .stat-num {
       font-family: var(--serif);
-      font-size: 40px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--navy);
       line-height: 1;
       margin-bottom: 4px;
     }
     .stat-label { font-size: 13px; color: var(--muted); }
+    .fact-text { font-size: 15px; color: var(--text); line-height: 1.65; }
 
     /* ── CONTACT ── */
     .contact-section {
@@ -819,20 +821,36 @@
       <div class="about-right">
         <div class="stat-stack">
           <div class="stat">
-            <div class="stat-num">28</div>
-            <div class="stat-label">Years of practice</div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">cats</div>
           </div>
           <div class="stat">
-            <div class="stat-num">6+</div>
-            <div class="stat-label">Industries: healthcare, sports, automotive, financial services, retail, media</div>
+            <div class="stat-num">1</div>
+            <div class="stat-label">dog (Scotch Collie)</div>
           </div>
           <div class="stat">
-            <div class="stat-num">30</div>
-            <div class="stat-label">MLB teams whose 2026+ planning reflects my research</div>
+            <div class="stat-num">6 yrs</div>
+            <div class="stat-label">practicing archery</div>
           </div>
           <div class="stat">
-            <div class="stat-num">80%</div>
-            <div class="stat-label">Reduction in patient errors on redesigned self-injection instructions</div>
+            <div class="stat-num">4 yrs</div>
+            <div class="stat-label">running South Mountain Drivers Club</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10 yrs</div>
+            <div class="stat-label">restoring a 1973 240Z</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">vintage guitars</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">500</div>
+            <div class="stat-label">records</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">14 yrs</div>
+            <div class="stat-label">in Maplewood, NJ</div>
           </div>
         </div>
       </div>
