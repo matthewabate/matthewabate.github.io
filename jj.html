@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J&J Patient Behavior — Matthew Abate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #061D26;
+      --navy-mid:  #0C2D3C;
+      --white:     #FFFFFF;
+      --off-white: #F0F8FA;
+      --text:      #061D26;
+      --muted:     #4E7A84;
+      --accent:    #CC1FA8;
+      --accent-2:  #007A94;
+      --rule:      #C8E2EA;
+      --serif:     'Outfit', system-ui, sans-serif;
+      --sans:      'Outfit', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 200;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 24px;
+      background: var(--accent-2);
+      color: var(--white) !important;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .cs-header {
+      background: var(--navy);
+      padding: 80px 0 72px;
+    }
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+    .cs-back:hover { color: rgba(255,255,255,0.8); }
+    .cs-num {
+      font-family: var(--serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .cs-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .cs-meta {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.03em;
+    }
+
+    .cs-body { padding: 80px 0; }
+    .cs-section {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      padding: 48px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .cs-section:first-child { border-top: none; padding-top: 0; }
+    .cs-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 4px;
+    }
+    .cs-section-content p {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .cs-section-content p:last-child { margin-bottom: 0; }
+
+    .cs-outcomes {
+      background: var(--off-white);
+      border-left: 3px solid var(--accent);
+      padding: 28px 32px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 8px;
+    }
+    .cs-outcomes p {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .cs-methods {
+      padding: 40px 0 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 48px;
+    }
+    .cs-methods-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .method-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 3px 3px;
+    }
+
+    .cs-nav { padding: 48px 0; border-top: 1px solid var(--rule); }
+    .cs-nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+    .cs-nav a:hover { text-decoration: underline; }
+
+    .contact-section { background: var(--navy); padding: 88px 0; }
+    .contact-inner { max-width: 600px; }
+    .contact-inner .label { color: var(--accent); }
+    .contact-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .contact-inner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 24px;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
+    .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+    footer { padding: 24px 0; border-top: 1px solid var(--rule); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 760px) {
+      .cs-section { grid-template-columns: 1fr; gap: 16px; }
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Matthew Abate: Experience Strategy &amp; Service Design</a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#how">How I Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact" class="btn-primary">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CASE STUDY HEADER -->
+<div class="cs-header">
+  <div class="container">
+    <a href="index.html#work" class="cs-back">← Back to portfolio</a>
+    <span class="cs-num">Case Study 02</span>
+    <h1>From patient behavior to clinical trial.</h1>
+    <p class="cs-meta">Johnson &amp; Johnson &nbsp;&middot;&nbsp; Healthcare &nbsp;&middot;&nbsp; 2015–2019</p>
+  </div>
+</div>
+
+<!-- CASE STUDY BODY -->
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section">
+      <div class="cs-section-label">The Challenge</div>
+      <div class="cs-section-content">
+        <p>How do people with chronic conditions — diabetes, allergies — actually manage their disease day to day? Not in theory. Not in a clinical setting. In their homes, with their schedules, when they're tired, distracted, or just worn out by it all.</p>
+        <p>The question J&amp;J was asking was whether intervention could genuinely change that behavior, or whether it would just add one more thing to manage. And a parallel question: why were patients making errors when self-administering biologics, and what would actually reduce those errors?</p>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">What I Did</div>
+      <div class="cs-section-content">
+        <p>I led the research and design of AI-assisted coaching tools built around behavioral science and clinical inputs, working alongside J&amp;J's clinical and R&amp;D teams to turn what we learned about patients into service blueprints and experience strategies.</p>
+        <p>The tools weren't designed to replace clinical guidance — they were designed to meet patients in the moments between appointments, where most of the real disease management happens. That meant understanding what patients were actually doing, not what the care plan assumed they were doing.</p>
+        <p>In parallel, I redesigned the instructions for self-administered biologics for children. The printed materials weren't working — errors were frequent and the consequences were significant. The question was what format would actually reduce those errors under the real conditions people were using them: at home, often alone, sometimes under stress.</p>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">The Insight</div>
+      <div class="cs-section-content">
+        <p>Most health interventions are designed around what clinicians want patients to do. That's not the same thing as what patients are capable of doing — consistently, in real conditions, over time.</p>
+        <p>Adherence isn't a willpower problem. It's a design problem. The environment, the format, the moment, the cognitive load — all of it shapes behavior more than intention does. When you design for that reality instead of the ideal version, outcomes change.</p>
+        <p>The numbers here bear that out clearly.</p>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">Outcomes</div>
+      <div class="cs-section-content">
+        <div class="cs-outcomes">
+          <p>Two products advanced to clinical trial. Self-injection instruction redesign reduced user errors by 80% compared to printed materials. Average waste cost reduction of $4,000 per patient annually. Service blueprints integrated into hospital workflow design and connected medical device planning.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-methods">
+      <div class="cs-methods-label">Methods &amp; Approaches</div>
+      <span class="method-tag">Behavioral research</span>
+      <span class="method-tag">Jobs to be Done</span>
+      <span class="method-tag">Service blueprinting</span>
+      <span class="method-tag">Hospital workflow design</span>
+      <span class="method-tag">Physical-digital service design</span>
+      <span class="method-tag">Clinical collaboration</span>
+      <span class="method-tag">Usability testing</span>
+    </div>
+
+    <div class="cs-nav">
+      <a href="index.html#work">← Back to all work</a>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="label">Let's Talk</span>
+      <h2>If you're working on something hard, I'd like to hear about it.</h2>
+      <p>If you are at an organization where understanding people is treated as a real input to strategy, and not an afterthought, I would love to talk to you.</p>
+      <div class="contact-links">
+        <a href="mailto:matthewabate@me.com" class="btn-primary">Get in touch</a>
+        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn →</a>
+      </div>
+      <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p>© 2026 Matthew Abate</p>
+      <p>Experience Strategy &amp; Service Design</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
