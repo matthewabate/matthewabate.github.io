@@ -43,7 +43,7 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--accent-2);
+      color: var(--accent);
       margin-bottom: 16px;
       display: block;
     }
@@ -82,24 +82,35 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--navy); }
-    .btn {
-      display: inline-block;
-      padding: 9px 22px;
-      background: var(--navy);
-      color: var(--white);
-      font-size: 13px;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 24px;
+      background: var(--accent-2);
+      color: var(--white) !important;
+      font-size: 18px;
       font-weight: 500;
       text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.2s;
+      border-radius: 999px;
+      transition: opacity 0.2s;
     }
-    .btn:hover { background: var(--navy-mid); }
-    .btn-outline {
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 24px;
       background: transparent;
-      color: var(--navy);
-      border: 1px solid var(--navy);
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .btn-outline:hover { background: var(--navy); color: var(--white); }
+    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
 
     /* ── HERO ── */
     .hero {
@@ -138,31 +149,6 @@
       margin-bottom: 44px;
     }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-hero {
-      display: inline-block;
-      padding: 13px 28px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: opacity 0.2s;
-    }
-    .btn-hero:hover { opacity: 0.9; }
-    .btn-hero-ghost {
-      display: inline-block;
-      padding: 13px 28px;
-      background: transparent;
-      color: rgba(255,255,255,0.7);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 4px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
 
     /* ── SECTION BASE ── */
     section { padding: 88px 0; }
@@ -199,7 +185,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: var(--accent);
       margin-bottom: 24px;
     }
     .career-step {
@@ -344,7 +330,7 @@
       letter-spacing: 0.04em;
       margin-bottom: 10px;
     }
-    .project h3 {
+    .project-card h3 {
       font-family: var(--serif);
       font-size: clamp(22px, 3vw, 34px);
       font-weight: 700;
@@ -532,34 +518,6 @@
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .contact-email {
-      background: var(--accent);
-      color: var(--white);
-    }
-    .contact-email:hover { opacity: 0.9; }
-    .contact-linkedin {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.8);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .contact-linkedin:hover { background: rgba(255,255,255,0.14); color: var(--white); }
-    .contact-resume {
-      background: transparent;
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-    .contact-resume:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.3); }
     .contact-location {
       font-size: 13px;
       color: rgba(255,255,255,0.35);
@@ -582,15 +540,14 @@
       .what-grid { grid-template-columns: 1fr; gap: 48px; }
       .pillars { grid-template-columns: 1fr; }
       .ai-cols { grid-template-columns: 1fr; gap: 28px; }
-      .project-body { grid-template-columns: 1fr; gap: 24px; }
+      .project-card { grid-template-columns: 1fr; gap: 16px; }
       .phases { grid-template-columns: 1fr; }
       .phases::before { display: none; }
       .phase { text-align: left; display: flex; gap: 20px; align-items: flex-start; padding: 0 0 24px 0; }
       .phase-dot { flex-shrink: 0; margin: 0; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .ai-box { grid-template-columns: 1fr; }
-      .project-header { grid-template-columns: 1fr; }
-      .project-number { display: none; }
+      .project-card .project-number { display: none; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
@@ -598,58 +555,30 @@
       .nav-links { display: none; }
     }
 
-    /* ── ACCORDION ── */
-    .project-header {
-      margin-bottom: 0;
-      cursor: pointer;
-      user-select: none;
+    /* ── PROJECT CARDS ── */
+    .project-card {
+      border-top: 1px solid var(--rule);
+      padding: 56px 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: start;
     }
-    .project-toggle-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-shrink: 0;
-    }
-    .project-chevron {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1.5px solid var(--rule);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+    .project-card:last-child { border-bottom: 1px solid var(--rule); }
+    .project-teaser {
+      font-size: 16px;
       color: var(--muted);
-      font-size: 20px;
-      font-weight: 300;
-      line-height: 1;
+      margin: 16px 0 28px;
+      max-width: 560px;
+      line-height: 1.7;
     }
-    .project.open .project-chevron {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--white);
-      transform: rotate(45deg);
-    }
-    .project-header:hover .project-chevron {
-      border-color: var(--accent-2);
+    .project-link {
+      font-size: 15px;
+      font-weight: 600;
       color: var(--accent-2);
+      text-decoration: none;
     }
-    .project.open .project-header:hover .project-chevron {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--white);
-    }
-    .project-content {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.5s ease, margin-top 0.3s ease;
-      margin-top: 0;
-    }
-    .project.open .project-content {
-      max-height: 3000px;
-      margin-top: 32px;
-    }
+    .project-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -662,7 +591,7 @@
       <a href="#work">Work</a>
       <a href="#how">How I Work</a>
       <a href="#about">About</a>
-      <a href="#contact" class="btn">Get in touch</a>
+      <a href="#contact" class="btn-primary">Get in touch</a>
     </div>
   </div>
 </nav>
@@ -671,10 +600,10 @@
 <section class="hero" id="top">
   <div class="container">
     <h1>The hard part isn't making something.<em>It's making the right something.</em></h1>
-    <p class="hero-body">90% of startups fail. 70% of corporate change initiatives are abandoned. 88% of AI projects are scrapped. It's not because of bad execution. It's because they didn't provide what people really need.<br/><br/>I work at that level, uncovering what help people need, so we know what to make before we decide how to make it. My teams and I have defined these strategies from hospitals to stadiums, in car dealerships and call centers, and from your living room to wherever a gap exists between how an experience was designed and how people actually live it.</p>
+    <p class="hero-body">90% of startups fail. 70% of corporate change initiatives are abandoned. 88% of AI projects are scrapped. It's not because of bad execution. It's because they didn't provide what people really need.<br/><br/>I work at that level, uncovering what people really need, so we know what to make before we decide how to make it. My teams and I have defined these strategies from hospitals to stadiums, in car dealerships and call centers, and from your living room to wherever a gap exists between how an experience was designed and how people actually live it.</p>
     <div class="hero-ctas">
-      <a href="#work" class="btn-hero-ghost">See selected work ↓</a>
-      <a href="#contact" class="btn-hero">Get in touch</a>
+      <a href="#work" class="btn-secondary">See selected work ↓</a>
+      <a href="#contact" class="btn-primary">Get in touch</a>
     </div>
   </div>
 </section>
@@ -687,7 +616,7 @@
         <span class="label">What I Do</span>
         <h2>Identifying the effort worth making.</h2>
         <p>Before any organization starts designing or developing anything, someone needs to do the harder work of understanding the problem. That means getting out into the world, seeing how people really behave, sifting through the existing mess, and asking better questions than "what do you want?"</p>
-        <p>In order to find our way out of the fog of ambiguity we need to choose a direction.</p>
+        <p>In order to find our way out of the fog of ambiguity, we need to choose a direction.</p>
         <p>My career started in digital. I've been doing this since before websites could have images. But the work that's meant the most to me, and where I've done my best work, has almost always been useful in the real world. Stadiums. Hospitals. Automotive showrooms. Financial service centers. Environments where a screen or someone's data might be part of the answer, but the interactions between people and how a product or service affects our physical space matter much more. Misjudging what people need from what we make will sink whatever the digital piece does right.</p>
         <p>Those are the kinds of problems I'm looking for: not pure digital, not technology trying to find a problem, but the whole physical-digital experience and how it either comes together for the people moving through it.</p>
         <p>The output isn't a design. It's a clear, evidence-backed strategy with the research to defend it and a roadmap someone can act on.</p>
@@ -695,7 +624,7 @@
       <div class="what-right">
         <div class="career-box">
           <p class="career-label">How I got here</p>
-          <p class="career-step">I started out designing things; websites, human-machine interfaces, apps. It taught me how to make complex ideas legible and how to defend aesthetic decisions with logic.</p>
+          <p class="career-step">I started out designing things: websites, human-machine interfaces, apps. It taught me how to make complex ideas legible and how to defend aesthetic decisions with logic.</p>
           <p class="career-step">I moved into digital products and learned what it meant to design for life-changing behavioral outcomes, not just appearance. Research, iteration, and systems thinking became the infrastructure behind my decisions.</p>
           <p class="career-step">Now I work upstream, before the wireframes, before the brief, before anyone has agreed on what the problem actually is. That's where I've done my most rewarding work.</p>
           <div class="career-industries">
@@ -715,7 +644,7 @@
     <div class="how-intro">
       <span class="label">How I Work</span>
       <h2>A few frameworks I keep in my quiver.</h2>
-      <p>I belive strategy needs a variety of methods if it's going to have an impact. I reach for these three tools in almost every engagement to help cut through ambiguity and find something that will provide real value for the people we are designing for.</p>
+      <p>I believe strategy needs a variety of methods if it's going to have an impact. I reach for these three tools in almost every engagement to help cut through ambiguity and find something that will provide real value for the people we are designing for.</p>
     </div>
 
     <div class="pillars">
@@ -725,11 +654,11 @@
       </div>
       <div class="pillar">
         <h3>Jobs to Be Done &amp;<br/>Journey Mapping</h3>
-        <p>People don't want products. They want to experience something that matters to them. JTBD is a framework for understanding underlying motivations (as opposed to what people say they want) and what they're actually trying to accomplish. They enhance Journey Maps by layering insights over each touchpoint in the journey. It cuts through feature requests and stakeholder opinions to find real and addressable problems, which are the only ones worth solving.</p>
+        <p>People don't want products. They want to experience something that matters to them. JTBD is a framework for understanding underlying motivations (as opposed to what people say they want) and what they're actually trying to accomplish. JTBD enhances Journey Maps by layering insights over each touchpoint in the journey. It cuts through feature requests and stakeholder opinions to find real and addressable problems, which are the only ones worth solving.</p>
       </div>
       <div class="pillar">
         <h3>Design Thinking &amp;<br/>Service Design</h3>
-        <p>Design Thinking gives us a human-centered process for moving from ambiguous problem to testable direction. Service Design expands that thinking beyond single touchpoints to map the full experience across channels, staff, physical environments, and opperational systems. Together they help uncover what's actually happening and what a better version of it could look like.</p>
+        <p>Design Thinking gives us a human-centered process for moving from ambiguous problem to testable direction. Service Design expands that thinking beyond single touchpoints to map the full experience across channels, staff, physical environments, and operational systems. Together they help uncover what's actually happening and what a better version of it could look like.</p>
       </div>
     </div>
 
@@ -740,20 +669,20 @@
             <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h3>AI in my practice</h3>
+        <h3>What's my AI experience?</h3>
       </div>
       <div class="ai-cols">
         <div class="ai-col">
-          <h4>UX for AI</h4>
-          <p>Designing AI experiences requires understanding more than how people interact with screens. What do people expect from an AI system? Where does trust build or break down, and why? I study the mental models people bring to AI interactions and design around how we actually think.</p>
+          <h4>AI as the Engine</h4>
+          <p>In 2016 I got my first mandate to use AI to replace people. Because we were making digital therapeutics, I flipped this to apply AI where it genuinely improved the experience, and kept humans in the loop where it didn't. That meant automating clear-cut decisions and routing nuanced issues to experts. Today I continue to ask where AI makes things genuinely better and helps the person who used to do everything.</p>
         </div>
         <div class="ai-col">
-          <h4>Rapid Value Realization</h4>
-          <p>The fastest path to clarity is usually something you can put in front of a real person. I use rapid prototyping to create testable artifacts before anyone is committed to a direction, in case we need to course-correct. This isn't about process, points, or ceremonies. It's about shortening the distance between an idea and evidence of viability.</p>
+          <h4>Rapid Prototyping</h4>
+          <p>I build working prototypes with AI as my engineering team. Mockups are critical at certain phases of thinking, but functional prototypes are my favorite way to get people to talk about what they need from the experience. This changes how decisions get made and how much confidence organizations have before they invest.</p>
         </div>
         <div class="ai-col">
-          <h4>Making through AI</h4>
-          <p>I use AI throughout my practice to find patterns in large datasets, accelerat synthesis, fill gaps in secondary research, and prototype. I've also built complete working products using AI as my engineering team, acting as a creative director and polishing code when necessary. I'm drawing on that experience directly when I help organizations think about integrating AI into products, services, and team.</p>
+          <h4>Research &amp; Synthesis</h4>
+          <p>Finding patterns across interview transcripts, scaffolding secondary research, synthesizing large datasets requires tons of human hours. I use AI to move faster through the parts that don't require judgment, and collaborate with my team to find insights and make decisions. The output is better synthesis, not fewer people.</p>
         </div>
       </div>
     </div>
@@ -767,135 +696,42 @@
   <div class="container">
     <div class="work-intro">
       <span class="label">Selected Work</span>
-      <h2>Three projects from my portfolio.</h2>
-      <p>A stadium commerce experience, a cognitive therapy coach, and a video game guide. Every problem is complex, so I use a toolkit to understand what people are trying to get out of an experience, what's worth doing about it, and give the business something it can actually make.</p>
+      <h2>Three of my favorite case studies.</h2>
+      <p>These projects will give you an idea of how I approach distilling a problem down to something solvable. Each one used different techniques from my toolkit, but what they have in common is my use of systems thinking and understanding human behavior to identify what should be made.</p>
     </div>
 
     <!-- PROJECT 1: MLB -->
-    <div class="project" id="project-1">
-      <div class="project-header" onclick="toggleProject('project-1')">
-        <span class="project-number">01</span>
-        <div>
-          <p class="project-tag">Major League Baseball &middot; Sports &amp; Entertainment &middot; 2024–2025</p>
-          <h3>Reframing how a major league thinks about the fan experience.</h3>
-        </div>
-        <span class="project-chevron">+</span>
+    <div class="project-card">
+      <span class="project-number">01</span>
+      <div>
+        <p class="project-tag">Major League Baseball &middot; Sports &amp; Entertainment &middot; 2024&ndash;2025</p>
+        <h3>Reframing how a major league thinks about the fan experience.</h3>
+        <p class="project-teaser">The concourse experience at a baseball game looks like a logistics problem. Four ballparks, hundreds of fan conversations, and one significant reframe later, the league is investing in something different.</p>
+        <a href="mlb.html" class="project-link">Read the case study &rarr;</a>
       </div>
-
-      <div class="project-content">
-        <div class="project-body">
-          <div class="project-col">
-            <p class="project-col-label">The Challenge</p>
-            <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem. My job was to find out whether that was actually true — and what, if anything, the speed framing was missing.</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">What I Did</p>
-            <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, talking to people mid-purchase. Combined that with fan surveys and in-depth interviews. Turns out fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish, and the concourse environment was working for some of those modes and actively against others.</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">The Reframe</p>
-            <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a different design brief — and it changes what you invest in, how you lay out a space, how you train staff, what information you surface and when. The findings shifted what the league decided to prioritize next.</p>
-          </div>
-        </div>
-
-        <div class="project-outcome">
-          <p><strong>Outcomes:</strong> 22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 teams. 11 recommendations developed, five adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
-        </div>
-
-        <div>
-          <span class="method-tag">Ethnographic field research</span>
-          <span class="method-tag">Concourse observation</span>
-          <span class="method-tag">Fan surveys</span>
-          <span class="method-tag">In-depth interviews</span>
-          <span class="method-tag">Jobs to be Done</span>
-          <span class="method-tag">Journey mapping</span>
-          <span class="method-tag">Behavioral segmentation</span>
-          <span class="method-tag">Multi-year roadmapping</span>
-        </div>
-      </div>
+    </div>
     </div>
 
     <!-- PROJECT 2: J&J -->
-    <div class="project" id="project-2">
-      <div class="project-header" onclick="toggleProject('project-2')">
-        <span class="project-number">02</span>
-        <div>
-          <p class="project-tag">Johnson &amp; Johnson &middot; Healthcare &middot; 2015–2019</p>
-          <h3>From patient behavior to clinical trial.</h3>
-        </div>
-        <span class="project-chevron">+</span>
+    <div class="project-card">
+      <span class="project-number">02</span>
+      <div>
+        <p class="project-tag">Johnson &amp; Johnson &middot; Healthcare &middot; 2015&ndash;2019</p>
+        <h3>From patient behavior to clinical trial.</h3>
+        <p class="project-teaser">Two products advanced to clinical trial. The finding that drove both: most health interventions are designed around what clinicians want patients to do &mdash; not what patients can actually sustain.</p>
+        <a href="jj.html" class="project-link">Read the case study &rarr;</a>
       </div>
-
-      <div class="project-content">
-        <div class="project-body">
-          <div class="project-col">
-            <p class="project-col-label">The Challenge</p>
-            <p>How do people with chronic conditions — diabetes, allergies — actually manage their disease day to day? Not in theory. Not in a clinical setting. In their homes, with their schedules, when they're tired or distracted or just worn out by it. The question was whether intervention could genuinely change that behavior, or whether it would just add one more thing to manage.</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">What I Did</p>
-            <p>Led the research and design of AI-assisted coaching tools built around behavioral science and clinical inputs — working alongside J&J's clinical and R&D teams to turn what we learned about patients into service blueprints and experience strategies. In parallel, redesigned the instructions for self-administered biologics for children. The printed materials weren't working. The question was what format would actually reduce errors under the real conditions people were using them.</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">The Insight</p>
-            <p>Most health interventions are designed around what clinicians want patients to do. That's not the same thing as what patients are capable of doing — consistently, in real conditions, over time. When you design for the second thing, outcomes improve. The numbers here bear that out pretty clearly.</p>
-          </div>
-        </div>
-
-        <div class="project-outcome">
-          <p><strong>Outcomes:</strong> Two products advanced to clinical trial. Self-injection instruction redesign reduced user errors by 80% compared to printed materials. Average waste cost reduction of $4,000 per patient annually. Service blueprints integrated into hospital workflow design and connected medical device planning.</p>
-        </div>
-
-        <div>
-          <span class="method-tag">Behavioral research</span>
-          <span class="method-tag">Jobs to be Done</span>
-          <span class="method-tag">Service blueprinting</span>
-          <span class="method-tag">Hospital workflow design</span>
-          <span class="method-tag">Physical-digital service design</span>
-          <span class="method-tag">Clinical collaboration</span>
-          <span class="method-tag">Usability testing</span>
-        </div>
-      </div>
+    </div>
     </div>
 
     <!-- PROJECT 3: IRMINSUL -->
-    <div class="project" id="project-3">
-      <div class="project-header" onclick="toggleProject('project-3')">
-        <span class="project-number">03</span>
-        <div>
-          <p class="project-tag">Irminsul &middot; Personal Project &middot; 2024–Ongoing</p>
-          <h3>Building a product with AI, without writing a line of code.</h3>
-        </div>
-        <span class="project-chevron">+</span>
-      </div>
-
-      <div class="project-content">
-        <div class="project-body">
-          <div class="project-col">
-            <p class="project-col-label">The Challenge</p>
-            <p>Genshin Impact has 60 million players managing genuinely complicated rosters — dozens of characters, thousands of equipment combinations, team-based play that rewards optimization. Existing tools are either spreadsheets that require real expertise to interpret, or generic tier lists that don't know anything about what a specific player actually owns. Neither one answers the actual question: given what you have, what should you do?</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">What I Did</p>
-            <p>I designed Irminsul — a companion tool that connects to a player's account, reads their actual roster, and generates conflict-free team recommendations with plain-language explanations. The whole thing was built without me writing a single line of code. I directed an AI through every decision: architecture, data sourcing, interface, testing. The AI wrote the code. I made every call about what the product should do and why.</p>
-          </div>
-          <div class="project-col">
-            <p class="project-col-label">Why It's Here</p>
-            <p>I'm not a developer and I didn't pretend to become one. What I did was use AI as a capable partner — the same way I'd work with an engineer — to take a clearly defined problem from concept to working product. If you want to understand how I think AI fits into design and strategy work, this is the clearest demonstration I can offer.</p>
-          </div>
-        </div>
-
-        <div class="project-outcome">
-          <p><strong>Status:</strong> Live and in closed testing. Early feedback validates the core concept — users connect their accounts, generate recommendations, and navigate the interface without any guidance. Active development continues toward a broader launch.</p>
-        </div>
-
-        <div>
-          <span class="method-tag">Product strategy</span>
-          <span class="method-tag">AI-directed development</span>
-          <span class="method-tag">Concept-to-launch</span>
-          <span class="method-tag">Usability testing</span>
-          <span class="method-tag">Iterative prototyping</span>
-        </div>
+    <div class="project-card">
+      <span class="project-number">03</span>
+      <div>
+        <p class="project-tag">Irminsul &middot; Personal Project &middot; 2024&ndash;Ongoing</p>
+        <h3>Building a product with AI, without writing a line of code.</h3>
+        <p class="project-teaser">Sixty million players, none of the right tools. I designed a working product without writing a single line of code &mdash; using AI as my engineering team and acting as creative director throughout.</p>
+        <a href="irminsul.html" class="project-link">Read the case study &rarr;</a>
       </div>
     </div>
 
@@ -908,9 +744,9 @@
 <section class="alt">
   <div class="container">
     <div class="engagement-intro">
-      <span class="label">Working Together</span>
+      <span class="label">Leading through collaboration</span>
       <h2>What it looks like to work with me.</h2>
-      <p>Every engagement is different. What stays constant is how I work: collaborative enough that every relevant voice gets heard, decisive enough that the project actually moves.</p>
+      <p>Every problem seems unique, and often feels overwhelming. I approach every engagement with an attitude that anything can be solved, and I strive to make everyone on the team valuable.</p>
     </div>
 
     <div class="phases">
@@ -918,35 +754,35 @@
         <div class="phase-dot">1</div>
         <div>
           <h4>Discovery</h4>
-          <p>Most projects arrive with a working hypothesis already baked in — a direction someone has committed to, or an assumption nobody has thought to question. My first job is to challenge that constructively. Stakeholder interviews, a competitive review, a hard look at what's already known. Not to be difficult — to make sure we're solving the right problem before anyone invests in solving it.</p>
+          <p>My first job is to examine the decisions, assumptions, and hypotheses already baked into the project when it kicks off. We need to understand what we know, but what we don't know can be even more important to make sure we're solving the right problems.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-dot">2</div>
         <div>
           <h4>Research</h4>
-          <p>Get out into the world. Surveys, behavioral observation, in-depth interviews — whatever the problem requires. Every voice matters: the people living with the problem, the staff delivering the service, the stakeholders who'll have to act on what we find. I structure it around what people are genuinely trying to accomplish, not what the organization assumes they are.</p>
+          <p>Get out into the world. Survey a lot of people, observe them in the wild, interview people living with the problem. Organizations are often surprised what people are really trying to accomplish.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-dot">3</div>
         <div>
           <h4>Synthesis</h4>
-          <p>Turn what we found into something the team can use — and defend. Journey maps, behavioral models, insight reports built clearly enough to answer questions on the fly and hold up under scrutiny. The goal isn't a deck that gets filed after the readout. It's a shared understanding of what's true that earns its place in ongoing decisions.</p>
+          <p>Turn over everything we learned to notice patterns and find opportunities to create value for people. Be clear enough to answer questions on the fly and hold up under scrutiny. The goal is a shared understanding of what's true that earns its place in ongoing decisions and permeates everything the organization does.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-dot">4</div>
         <div>
           <h4>Strategy</h4>
-          <p>Figure out what the insights mean for the business. I come into this phase looking for the right answer, not attached to a particular one — which makes it easier to find. Which opportunities are real? Which are worth pursuing given real constraints? What should we not do? This is where desirability, feasibility, and viability all have to answer for themselves.</p>
+          <p>To figure out what insights mean for the business, I come looking for the right answer, not attached to one I brought with me. Which opportunities are real? Which are worth pursuing? What should we not do? This is where desirability, feasibility, and viability all have to answer for themselves independently.</p>
         </div>
       </div>
       <div class="phase">
         <div class="phase-dot">5</div>
         <div>
           <h4>Roadmap</h4>
-          <p>Work with leadership to sequence priorities and define what needs validation before committing. The goal is a plan the organization can actually execute — broken into pieces that feel achievable rather than overwhelming. When the engagement is over, you should know exactly where you're going and feel confident about the path to get there.</p>
+          <p>At this point leadership should be excited by what we've put together, and some of it may feel obvious. I work with them to sequence priorities and define what needs validation before committing. The goal is a plan the organization can actually execute and feels achievable rather than overwhelming. When the work is done, you should know exactly where you're going and feel confident you will get there.</p>
         </div>
       </div>
     </div>
@@ -960,12 +796,11 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-left">
-        <span class="label">About</span>
-        <h2>28 years of making the right problems clearer.</h2>
-        <p>I've done this work across healthcare, sports and entertainment, automotive, financial services, retail, and media — at companies from early-stage startups to global enterprises, at agencies, and on my own. Ford, J&J, MLB, NewRez, Comcast, Emirates, Target, NBCU. Places where the complexity is real and the margin for getting it wrong is high.</p>
-        <p>I came up through design. I used to make things — actual things, interfaces, objects, experiences. At some point I realized I was more useful figuring out what should be made than making it. My work now lives upstream of that: understanding the problem, defining the opportunity, helping organizations make confident decisions about where to put their effort.</p>
-        <p>I'm drawn to problems with physical dimension. The way a service unfolds across a space. How an organization delivers an experience that isn't purely a screen. The friction that lives at the intersection of how something was designed to work and how people actually move through it. That's the interesting stuff, and I've spent a long time getting good at it.</p>
-        <p>Based in Maplewood, NJ. Currently available — full-time roles at the director to VP level, New York metro or remote, with the right consulting engagement as an alternative.</p>
+        <span class="label">My experience</span>
+        <h2>Solving problems since 1998.</h2>
+        <p>I've worked in a broad range of industries: Healthcare, Sports &amp; Entertainment, Automotive, Financial Services, Retail, Media, Technology, Non-Profits, and Education. I've worked at agencies, as a consultant, and in-house at early-stage startups and global enterprises. All of them involved real complexity and a narrow margin for getting things wrong.</p>
+        <p>I went to school for magazine design but quickly switched to digital. I enjoyed making interfaces and user experiences, but at some point I realized figuring out what should be made was more fulfilling than deciding what it should look like. My work now lives upstream of crafting the final product. I am more energized when I am understanding the problem, defining the opportunity, helping organizations make confident decisions about where to put their effort.</p>
+        <p>I'm drawn to problems with physical or environmental dimension. The way a service unfolds across a space. How an organization delivers an experience that isn't purely screen based. The friction between how something was designed to work and how people actually experience it. That's the interesting stuff, and I've spent a long time getting good at it.</p>
       </div>
       <div class="about-right">
         <div class="stat-stack">
@@ -995,21 +830,18 @@
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <span class="label" style="color:rgba(0,122,148,0.9)">Let's Talk</span>
+      <span class="label">Let's Talk</span>
       <h2>If you're working on something hard, I'd like to hear about it.</h2>
-      <p>I'm currently available for the right full-time role — director to VP level — at an organization where understanding people is treated as a real input to strategy, not an afterthought. I'm also open to the right consulting engagement.</p>
+      <p>If you are at an organization where understanding people is treated as a real input to strategy, and not an afterthought, I would love to talk to you.</p>
       <div class="contact-links">
-        <a href="mailto:matthewabate@me.com" class="contact-email">
-          matthewabate@me.com
+        <a href="mailto:matthewabate@me.com" class="btn-primary">
+          Get in touch
         </a>
-        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="contact-linkedin">
+        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">
           LinkedIn →
         </a>
-        <a href="https://drive.google.com/uc?export=download&id=1zSdmHHciVBCys6JWqRI0haGd_1mf67rY" target="_blank" class="contact-resume">
-          Download Resume
-        </a>
       </div>
-      <p class="contact-location">Maplewood, NJ &middot; Open to New York metro or remote</p>
+      <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
     </div>
   </div>
 </section>
@@ -1024,12 +856,6 @@
   </div>
 </footer>
 
-<script>
-  function toggleProject(id) {
-    const project = document.getElementById(id);
-    project.classList.toggle('open');
-  }
-</script>
 
 </body>
 </html>
