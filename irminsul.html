@@ -11,32 +11,30 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:      #061D26;
-      --navy-mid:  #0C2D3C;
-      --white:     #FFFFFF;
-      --off-white: #F0F8FA;
-      --text:      #061D26;
-      --muted:     #4E7A84;
-      --accent:    #CC1FA8;
-      --accent-2:  #007A94;
-      --rule:      #C8E2EA;
-      --serif:     'Outfit', system-ui, sans-serif;
-      --sans:      'Outfit', system-ui, sans-serif;
+      --black:    #000000;
+      --white:    #FFFFFF;
+      --muted:    rgba(255,255,255,0.6);
+      --accent:   #f52093;
+      --accent-2: #00e1e6;
+      --lime:     #c4fa17;
+      --rule:     rgba(196,250,250,0.15);
+      --serif:    'Outfit', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--sans);
+      font-family: var(--serif);
       font-size: 17px;
       font-weight: 200;
       line-height: 1.65;
-      color: var(--text);
-      background: var(--white);
+      color: var(--white);
+      background: var(--black);
       -webkit-font-smoothing: antialiased;
     }
 
     .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
     .label {
       font-size: 11px;
       font-weight: 600;
@@ -46,13 +44,15 @@
       margin-bottom: 16px;
       display: block;
     }
+
     .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
 
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--white);
+      background: var(--black);
       border-bottom: 1px solid var(--rule);
     }
     .nav-inner {
@@ -64,40 +64,35 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-name {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--navy);
-      text-decoration: none;
-    }
+    .nav-name { font-size: 18px; font-weight: 600; color: var(--white); text-decoration: none; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--navy); }
-    .btn-primary {
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--accent-2); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── BUTTONS ── */
+    .btn-primary, .btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 24px;
-      background: var(--accent-2);
-      color: var(--white) !important;
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 500;
       text-decoration: none;
       border-radius: 999px;
-      transition: opacity 0.2s;
+      white-space: nowrap;
     }
-    .btn-primary:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent-2); color: var(--black); transition: background 0.2s; }
+    .btn-primary:hover { background: var(--white); }
+    .nav-links .btn-primary { color: var(--black); }
+    .nav-links .btn-primary:hover { color: var(--black); }
+    .btn-secondary { background: transparent; color: var(--accent-2); border: 2px solid var(--accent-2); transition: color 0.2s, border-color 0.2s; }
+    .btn-secondary:hover { color: var(--white); border-color: var(--white); }
 
+    /* ── CASE STUDY HEADER ── */
     .cs-header {
-      background: var(--navy);
+      background: var(--black);
       padding: 80px 0 72px;
+      border-bottom: 1px solid var(--rule);
     }
     .cs-back {
       display: inline-flex;
@@ -110,9 +105,8 @@
       margin-bottom: 40px;
       transition: color 0.2s;
     }
-    .cs-back:hover { color: rgba(255,255,255,0.8); }
+    .cs-back:hover { color: var(--accent-2); }
     .cs-num {
-      font-family: var(--serif);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -122,7 +116,6 @@
       display: block;
     }
     .cs-header h1 {
-      font-family: var(--serif);
       font-size: clamp(32px, 5vw, 56px);
       font-weight: 700;
       line-height: 1.1;
@@ -137,13 +130,17 @@
       letter-spacing: 0.03em;
     }
 
-    .cs-body { padding: 80px 0; }
+    /* ── CASE STUDY BODY ── */
+    .cs-body {
+      padding: 80px 0;
+      background: var(--white);
+    }
     .cs-section {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 48px;
       padding: 48px 0;
-      border-top: 1px solid var(--rule);
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
     .cs-section:first-child { border-top: none; padding-top: 0; }
     .cs-section-label {
@@ -156,63 +153,85 @@
     }
     .cs-section-content p {
       font-size: 17px;
-      color: var(--text);
+      color: #111111;
       line-height: 1.75;
       margin-bottom: 18px;
     }
     .cs-section-content p:last-child { margin-bottom: 0; }
+    .cs-section-content h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 16px;
+    }
+    .cs-section-content ul {
+      margin: 12px 0 18px 24px;
+    }
+    .cs-section-content li {
+      font-size: 17px;
+      color: #111111;
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
 
+    /* ── OUTCOMES ── */
     .cs-outcomes {
-      background: var(--off-white);
+      background: rgba(0,0,0,0.04);
       border-left: 3px solid var(--accent);
       padding: 28px 32px;
-      border-radius: 0 8px 8px 0;
       margin-top: 8px;
     }
     .cs-outcomes p {
       font-size: 16px;
-      color: var(--text);
+      color: #111111;
       line-height: 1.7;
+      margin-bottom: 12px;
     }
+    .cs-outcomes p:last-child { margin-bottom: 0; }
 
+    /* ── METHODS ── */
     .cs-methods {
       padding: 40px 0 0;
-      border-top: 1px solid var(--rule);
+      border-top: 1px solid rgba(0,0,0,0.1);
       margin-top: 48px;
+      background: var(--white);
     }
     .cs-methods-label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(0,0,0,0.5);
       margin-bottom: 16px;
     }
     .method-tag {
       display: inline-block;
       padding: 4px 12px;
-      background: var(--off-white);
-      border: 1px solid var(--rule);
-      border-radius: 20px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.2);
       font-size: 12px;
-      color: var(--muted);
+      color: rgba(0,0,0,0.6);
       margin: 3px 3px;
     }
 
-    .cs-nav { padding: 48px 0; border-top: 1px solid var(--rule); }
+    /* ── BACK NAV ── */
+    .cs-nav {
+      padding: 48px 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      background: var(--white);
+    }
     .cs-nav a {
       font-size: 15px;
       font-weight: 600;
-      color: var(--accent-2);
+      color: var(--accent);
       text-decoration: none;
     }
     .cs-nav a:hover { text-decoration: underline; }
 
-    .contact-section { background: var(--navy); padding: 88px 0; }
+    /* ── CONTACT ── */
+    .contact-section { background: var(--black); padding: 88px 0; }
     .contact-inner { max-width: 600px; }
-    .contact-inner .label { color: var(--accent); }
     .contact-inner h2 {
-      font-family: var(--serif);
       font-size: clamp(32px, 5vw, 56px);
       font-weight: 800;
       line-height: 1.1;
@@ -221,32 +240,19 @@
     }
     .contact-inner p {
       font-size: 16px;
-      color: rgba(255,255,255,0.6);
+      color: var(--muted);
       margin-bottom: 36px;
       max-width: 440px;
     }
     .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 24px;
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 999px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
     .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
 
+    /* ── FOOTER ── */
     footer { padding: 24px 0; border-top: 1px solid var(--rule); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; }
     footer p { font-size: 12px; color: var(--muted); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
       .cs-section { grid-template-columns: 1fr; gap: 16px; }
       .container { padding: 0 20px; }
@@ -259,11 +265,13 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-name">Matthew Abate: Experience Strategy &amp; Service Design</a>
+    <a href="index.html" class="nav-name">Matthew Abate • Experience Strategy &amp; Service Design</a>
     <div class="nav-links">
+      <a href="index.html#what">Expertise</a>
+      <a href="index.html#how">Approach</a>
       <a href="index.html#work">Work</a>
-      <a href="index.html#how">How I Work</a>
-      <a href="index.html#about">About</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#about">Experience</a>
       <a href="index.html#contact" class="btn-primary">Get in touch</a>
     </div>
   </div>
@@ -273,7 +281,7 @@
 <div class="cs-header">
   <div class="container">
     <a href="index.html#work" class="cs-back">← Back to portfolio</a>
-    <span class="cs-num">Case Study 03</span>
+    <span class="cs-num">Irminsul</span>
     <h1>Building a product with AI, without writing a line of code.</h1>
     <p class="cs-meta">Irminsul &nbsp;&middot;&nbsp; Personal Project &nbsp;&middot;&nbsp; 2024–Ongoing</p>
   </div>
@@ -321,11 +329,11 @@
 
     <div class="cs-methods">
       <div class="cs-methods-label">Methods &amp; Approaches</div>
-      <span class="method-tag">Product strategy</span>
-      <span class="method-tag">AI-directed development</span>
-      <span class="method-tag">Concept-to-launch</span>
-      <span class="method-tag">Usability testing</span>
-      <span class="method-tag">Iterative prototyping</span>
+      <span class="method-tag">Product Strategy</span>
+      <span class="method-tag">AI-Directed Development</span>
+      <span class="method-tag">Concept-to-Launch</span>
+      <span class="method-tag">Usability Testing</span>
+      <span class="method-tag">Iterative Prototyping</span>
     </div>
 
     <div class="cs-nav">
@@ -341,12 +349,13 @@
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <span class="label">Let's Talk</span>
-      <h2>If you're working on something hard, I'd like to hear about it.</h2>
-      <p>If you are at an organization where understanding people is treated as a real input to strategy, and not an afterthought, I would love to talk to you.</p>
+      <span class="label">Contact</span>
+      <h2>If you're working on something hard, it's worth a conversation.</h2>
+      <p>If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
       <div class="contact-links">
         <a href="mailto:matthewabate@me.com" class="btn-primary">Get in touch</a>
-        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn →</a>
+        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">Calendly</a>
+        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn</a>
       </div>
       <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
     </div>
