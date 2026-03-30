@@ -11,32 +11,30 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:      #061D26;
-      --navy-mid:  #0C2D3C;
-      --white:     #FFFFFF;
-      --off-white: #F0F8FA;
-      --text:      #061D26;
-      --muted:     #4E7A84;
-      --accent:    #CC1FA8;
-      --accent-2:  #007A94;
-      --rule:      #C8E2EA;
-      --serif:     'Outfit', system-ui, sans-serif;
-      --sans:      'Outfit', system-ui, sans-serif;
+      --black:    #000000;
+      --white:    #FFFFFF;
+      --muted:    rgba(255,255,255,0.6);
+      --accent:   #f52093;
+      --accent-2: #00e1e6;
+      --lime:     #c4fa17;
+      --rule:     rgba(196,250,250,0.15);
+      --serif:    'Outfit', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--sans);
+      font-family: var(--serif);
       font-size: 17px;
       font-weight: 200;
       line-height: 1.65;
-      color: var(--text);
-      background: var(--white);
+      color: var(--white);
+      background: var(--black);
       -webkit-font-smoothing: antialiased;
     }
 
     .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
     .label {
       font-size: 11px;
       font-weight: 600;
@@ -46,14 +44,15 @@
       margin-bottom: 16px;
       display: block;
     }
+
     .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--white);
+      background: var(--black);
       border-bottom: 1px solid var(--rule);
     }
     .nav-inner {
@@ -65,41 +64,35 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-name {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--navy);
-      text-decoration: none;
-    }
+    .nav-name { font-size: 18px; font-weight: 600; color: var(--white); text-decoration: none; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--navy); }
-    .btn-primary {
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--accent-2); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── BUTTONS ── */
+    .btn-primary, .btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 24px;
-      background: var(--accent-2);
-      color: var(--white) !important;
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 500;
       text-decoration: none;
       border-radius: 999px;
-      transition: opacity 0.2s;
+      white-space: nowrap;
     }
-    .btn-primary:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent-2); color: var(--black); transition: background 0.2s; }
+    .btn-primary:hover { background: var(--white); }
+    .nav-links .btn-primary { color: var(--black); }
+    .nav-links .btn-primary:hover { color: var(--black); }
+    .btn-secondary { background: transparent; color: var(--accent-2); border: 2px solid var(--accent-2); transition: color 0.2s, border-color 0.2s; }
+    .btn-secondary:hover { color: var(--white); border-color: var(--white); }
 
-    /* CASE STUDY HEADER */
+    /* ── CASE STUDY HEADER ── */
     .cs-header {
-      background: var(--navy);
+      background: var(--black);
       padding: 80px 0 72px;
+      border-bottom: 1px solid var(--rule);
     }
     .cs-back {
       display: inline-flex;
@@ -112,9 +105,8 @@
       margin-bottom: 40px;
       transition: color 0.2s;
     }
-    .cs-back:hover { color: rgba(255,255,255,0.8); }
+    .cs-back:hover { color: var(--accent-2); }
     .cs-num {
-      font-family: var(--serif);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -124,7 +116,6 @@
       display: block;
     }
     .cs-header h1 {
-      font-family: var(--serif);
       font-size: clamp(32px, 5vw, 56px);
       font-weight: 700;
       line-height: 1.1;
@@ -139,16 +130,17 @@
       letter-spacing: 0.03em;
     }
 
-    /* CASE STUDY BODY */
+    /* ── CASE STUDY BODY ── */
     .cs-body {
       padding: 80px 0;
+      background: var(--white);
     }
     .cs-section {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 48px;
       padding: 48px 0;
-      border-top: 1px solid var(--rule);
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
     .cs-section:first-child { border-top: none; padding-top: 0; }
     .cs-section-label {
@@ -161,81 +153,85 @@
     }
     .cs-section-content p {
       font-size: 17px;
-      color: var(--text);
+      color: #111111;
       line-height: 1.75;
       margin-bottom: 18px;
     }
     .cs-section-content p:last-child { margin-bottom: 0; }
     .cs-section-content h4 {
-      font-family: var(--serif);
       font-size: 20px;
       font-weight: 700;
-      color: var(--navy);
+      color: #111111;
       margin-bottom: 16px;
     }
+    .cs-section-content ul {
+      margin: 12px 0 18px 24px;
+    }
+    .cs-section-content li {
+      font-size: 17px;
+      color: #111111;
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
 
-    /* OUTCOMES */
+    /* ── OUTCOMES ── */
     .cs-outcomes {
-      background: var(--off-white);
+      background: rgba(0,0,0,0.04);
       border-left: 3px solid var(--accent);
       padding: 28px 32px;
-      border-radius: 0 8px 8px 0;
       margin-top: 8px;
     }
     .cs-outcomes p {
       font-size: 16px;
-      color: var(--text);
+      color: #111111;
       line-height: 1.7;
+      margin-bottom: 12px;
     }
+    .cs-outcomes p:last-child { margin-bottom: 0; }
 
-    /* METHOD TAGS */
+    /* ── METHODS ── */
     .cs-methods {
       padding: 40px 0 0;
-      border-top: 1px solid var(--rule);
+      border-top: 1px solid rgba(0,0,0,0.1);
       margin-top: 48px;
+      background: var(--white);
     }
     .cs-methods-label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(0,0,0,0.5);
       margin-bottom: 16px;
     }
     .method-tag {
       display: inline-block;
       padding: 4px 12px;
-      background: var(--off-white);
-      border: 1px solid var(--rule);
-      border-radius: 20px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.2);
       font-size: 12px;
-      color: var(--muted);
+      color: rgba(0,0,0,0.6);
       margin: 3px 3px;
     }
 
-    /* BACK NAV */
+    /* ── BACK NAV ── */
     .cs-nav {
       padding: 48px 0;
-      border-top: 1px solid var(--rule);
-      margin-top: 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      background: var(--white);
     }
     .cs-nav a {
       font-size: 15px;
       font-weight: 600;
-      color: var(--accent-2);
+      color: var(--accent);
       text-decoration: none;
     }
     .cs-nav a:hover { text-decoration: underline; }
 
-    /* CONTACT */
-    .contact-section {
-      background: var(--navy);
-      padding: 88px 0;
-    }
+    /* ── CONTACT ── */
+    .contact-section { background: var(--black); padding: 88px 0; }
     .contact-inner { max-width: 600px; }
-    .contact-inner .label { color: var(--accent); }
     .contact-inner h2 {
-      font-family: var(--serif);
       font-size: clamp(32px, 5vw, 56px);
       font-weight: 800;
       line-height: 1.1;
@@ -244,34 +240,19 @@
     }
     .contact-inner p {
       font-size: 16px;
-      color: rgba(255,255,255,0.6);
+      color: var(--muted);
       margin-bottom: 36px;
       max-width: 440px;
     }
     .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 24px;
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 999px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
     .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer { padding: 24px 0; border-top: 1px solid var(--rule); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; }
     footer p { font-size: 12px; color: var(--muted); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
       .cs-section { grid-template-columns: 1fr; gap: 16px; }
       .container { padding: 0 20px; }
@@ -284,11 +265,13 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-name">Matthew Abate: Experience Strategy &amp; Service Design</a>
+    <a href="index.html" class="nav-name">Matthew Abate • Experience Strategy &amp; Service Design</a>
     <div class="nav-links">
+      <a href="index.html#what">Expertise</a>
+      <a href="index.html#how">Approach</a>
       <a href="index.html#work">Work</a>
-      <a href="index.html#how">How I Work</a>
-      <a href="index.html#about">About</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#about">Experience</a>
       <a href="index.html#contact" class="btn-primary">Get in touch</a>
     </div>
   </div>
@@ -298,9 +281,9 @@
 <div class="cs-header">
   <div class="container">
     <a href="index.html#work" class="cs-back">← Back to portfolio</a>
-    <span class="cs-num">Case Study 01</span>
-    <h1>Reframing how a major league thinks about the fan experience.</h1>
-    <p class="cs-meta">Major League Baseball &nbsp;&middot;&nbsp; Sports &amp; Entertainment &nbsp;&middot;&nbsp; 2024–2025</p>
+    <span class="cs-num">Major League Baseball</span>
+    <h1>Changing how a sport thinks about the fan experience.</h1>
+    <p class="cs-meta">Sports &amp; Entertainment / Venue Experience &nbsp;&middot;&nbsp; 2025 / 9 Months</p>
   </div>
 </div>
 
@@ -311,26 +294,48 @@
     <div class="cs-section">
       <div class="cs-section-label">The Challenge</div>
       <div class="cs-section-content">
-        <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem — fans were waiting too long, and faster service would fix it. My job was to find out whether that was actually true, and what, if anything, the speed framing was missing.</p>
-        <p>The challenge wasn't just research. It was helping a major league organization loosen its grip on an assumption that felt obvious — and replace it with something more useful.</p>
+        <p>MLB's In-Venue Product team wanted to better understand why people at baseball games spend money the way they do. The working assumption was that changes to the food and beverage experience would have the biggest impact, but they weren&apos;t certain and didn&apos;t know what to do if the hunch was right.</p>
+        <p>My job was to find out where to invest time and effort, then figure out what needed to change and how.</p>
+        <p>This wasn&apos;t just a research problem. It required helping an organization with a long history move past assumptions that "felt right" and replace them with real knowledge grounded in how fans actually behave.</p>
       </div>
     </div>
 
     <div class="cs-section">
       <div class="cs-section-label">What I Did</div>
       <div class="cs-section-content">
-        <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, and Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, and talking to people mid-purchase. Not in a focus group. In the actual environment, during actual games.</p>
-        <p>That fieldwork was combined with large-scale fan surveys and in-depth one-on-one interviews. The goal was to get past what people say they want and understand what they're actually trying to accomplish at different moments in the ballpark experience.</p>
-        <p>The picture that emerged was more complicated than "fans want faster food." Fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish — and the concourse environment was actively working against some of those modes while supporting others.</p>
+        <p>First I validated the assumption that F&B was the place to play through surveys that asked what (other than the game and what happens on the field) makes going to the ballpark feel like "Baseball" and without it would ruin the experience. Of every aspect fans mentioned, The Food what the answer that felt most critical and, importantly, was something the clubs would control.</p>
+        <p>Next I travelled to ballparks around the country to conduct field research in the actual environment, during actual games. I watched fans move through concourses, stood in lines and experienced everything fans experience first hand, and talked to people in every phase of the purchasing and dining processes. I watched for patterns in the behaviors of fans and staff, the environment, the design of the products and services involved, and kept track of the context for each.</p>
+        <p>This was not focus groups or survey-driven segmentation. The goal was to understand what people were actually trying to do in context.</p>
+        <p>I conducted workshops with the venue product teams, interviewed ballpark staff about business strategies and goals, and ran in-depth one-on-one interviews to understand what they're actually trying to accomplish at different moments in the ballpark experience as opposed to asking what they wanted to be different.</p>
+        <p>Finally, I synthesized the research to understand what was driving those patterns and where there were real opportunities to act.</p>
       </div>
     </div>
 
     <div class="cs-section">
       <div class="cs-section-label">The Insights</div>
       <div class="cs-section-content">
-        <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a fundamentally different design brief — and it changes what you invest in, how you lay out a space, how you train staff, and what information you surface and when.</p>
-        <p>A fan who doesn't know what's available, or doesn't know how long a line will take, doesn't just feel frustrated — they make a different decision. They go back to their seat. They miss their moment. Speed wasn't the problem. Information architecture was.</p>
-        <p>The findings shifted what the league decided to prioritize going into the next planning cycle — and they did it across all 30 teams.</p>
+        <p>Going into the work, most people at MLB and at the Ball Clubs (and also at the Concessionaires operating the food stands) assumed speed was the problem and faster flow rates through each stand would fix it. In other words, "fans want to get food faster, so we should automate and switch to self checkout as much as possible."</p>
+        <p>That turned out to be incomplete and overlooked key behavioral determinants.</p>
+        <p>We found that every fan is both "Researching" and "Ritualizing" at any given moment, starting long before purchasing tickets and extending well beyond leaving the park after the game. In the concourse they are either "Focused" (I know what I want and/or where it is) and "Exploring" (I am open minded and could be persuaded).</p>
+        <p>Their behaviors shift substantially depending on what they're trying to accomplish and the context they&apos;re in at the moment, culminating in five priority insights to address:
+          <ul>
+            <li>The cognitive load + information access impacting purchasing decisions (including not purchasing at all).</li>
+            <li>The engagement + the fan experience while in a concessions line (whether short or long).</li>
+            <li>Whether optimizing for speed has reduced a desired human interaction (and leaves fans guessing).</li>
+            <li>Getting food usually means missing the moment (which leads to second guessing).</li>
+            <li>Being a parent or leading a group changes everything (amplifying every pain point).</li>
+          </ul>
+        </p>
+        <p>These insights show that the concourse environment, and the operational decisions the clubs and Concessionaires have made are actively working against those mindsets and modes. A fan who doesn't know what's available, or doesn't know how long a line will take, doesn't just feel frustrated. They feel FOMO and go back to their seat or compromise their choices. They are constantly in fear of missing a special moment.</p>
+        <p>Baseball and their partners had been organizing their thinking around making food runs fast. The bigger opportunities were giving fans confidence, autonomy, access, and hospitality. That's a fundamentally different design brief and changes what you invest in, what you solve through technology, how you lay out space, your operational decisions, and what information you surface when.</p>
+        <p>This opened up three big opportunities for the League:
+          <ul>
+            <li>Reimagine phygital touchpoints to minimize F&B's intrusion on the fans&apos; engagement with the game and their party (e.g., Simplified and Refactored Stands &amp; POS, Focused vs Exploring Service Experiences, Traffic Management, Smart Nudging)</li>
+            <li>Personalize food discovery by making it easy to find F&B options that will make the day feel special (e.g., Context- &amp; Intent-Aware Products, Humanized &amp; Timely Information, Intelligent Guidance)</li>
+            <li>Simplify group dining by making managing F&B so simple that group organizers can enjoy the game instead of playing 'butler' (e.g., Synced Fan Accounts, Group Purchase Features, Services Specifically for Kids, Meaningful Preferences Beyond Loyalty)</li>
+          </ul>
+        </p>
+        <p>The findings shifted what the league decided to prioritize going into the next planning cycle and was enthusiastically received by all 30 teams. Notably, the NY Yankees, a notably self-sufficient and independent club, were first to volunteer to partner on solution development.</p>
       </div>
     </div>
 
@@ -338,21 +343,26 @@
       <div class="cs-section-label">Outcomes</div>
       <div class="cs-section-content">
         <div class="cs-outcomes">
-          <p>22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 MLB teams. Of 11 strategic recommendations developed, five were adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
+          <p>22 actionable insights incorporated into the long-range vision for fan experience now driving 2026+ planning across the league</p>
+          <p>Of 13 strategic recommendations developed, three were adopted as foundational initiatives to launch on opening day</p>
+          <p>Ethnographic Research standardized as governance-level input to the league's planning process as a result of these findings being presented to league executives and at industry conferences</p>
         </div>
       </div>
     </div>
 
     <div class="cs-methods">
       <div class="cs-methods-label">Methods &amp; Approaches</div>
-      <span class="method-tag">Ethnographic field research</span>
-      <span class="method-tag">Concourse observation</span>
-      <span class="method-tag">Fan surveys</span>
-      <span class="method-tag">In-depth interviews</span>
-      <span class="method-tag">Jobs to be Done</span>
-      <span class="method-tag">Journey mapping</span>
-      <span class="method-tag">Behavioral segmentation</span>
-      <span class="method-tag">Multi-year roadmapping</span>
+      <span class="method-tag">Design Thinking</span>
+      <span class="method-tag">Ethnographic Field Research</span>
+      <span class="method-tag">Direct &amp; Indirect Observation</span>
+      <span class="method-tag">Fan Surveys</span>
+      <span class="method-tag">In-depth Interviews</span>
+      <span class="method-tag">Jobs to Be Done</span>
+      <span class="method-tag">Journey Mapping</span>
+      <span class="method-tag">Behavioral Segmentation</span>
+      <span class="method-tag">Co-Creation Workshops</span>
+      <span class="method-tag">Multi-year Roadmapping</span>
+      <span class="method-tag">Experiment Design</span>
     </div>
 
     <div class="cs-nav">
@@ -368,326 +378,13 @@
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <span class="label">Let's Talk</span>
-      <h2>If you're working on something hard, I'd like to hear about it.</h2>
-      <p>If you are at an organization where understanding people is treated as a real input to strategy, and not an afterthought, I would love to talk to you.</p>
+      <span class="label">Contact</span>
+      <h2>If you're working on something hard, it's worth a conversation.</h2>
+      <p>If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
       <div class="contact-links">
         <a href="mailto:matthewabate@me.com" class="btn-primary">Get in touch</a>
-        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn →</a>
-      </div>
-      <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <p>© 2026 Matthew Abate</p>
-      <p>Experience Strategy &amp; Service Design</p>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--navy); }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 24px;
-      background: var(--accent-2);
-      color: var(--white) !important;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 999px;
-      transition: opacity 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.85; }
-
-    /* CASE STUDY HEADER */
-    .cs-header {
-      background: var(--navy);
-      padding: 80px 0 72px;
-    }
-    .cs-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      margin-bottom: 40px;
-      transition: color 0.2s;
-    }
-    .cs-back:hover { color: rgba(255,255,255,0.8); }
-    .cs-num {
-      font-family: var(--serif);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: block;
-    }
-    .cs-header h1 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--white);
-      max-width: 720px;
-      margin-bottom: 28px;
-    }
-    .cs-meta {
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.03em;
-    }
-
-    /* CASE STUDY BODY */
-    .cs-body {
-      padding: 80px 0;
-    }
-    .cs-section {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 48px 0;
-      border-top: 1px solid var(--rule);
-    }
-    .cs-section:first-child { border-top: none; padding-top: 0; }
-    .cs-section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      padding-top: 4px;
-    }
-    .cs-section-content p {
-      font-size: 17px;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 18px;
-    }
-    .cs-section-content p:last-child { margin-bottom: 0; }
-    .cs-section-content h4 {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-
-    /* OUTCOMES */
-    .cs-outcomes {
-      background: var(--off-white);
-      border-left: 3px solid var(--accent);
-      padding: 28px 32px;
-      border-radius: 0 8px 8px 0;
-      margin-top: 8px;
-    }
-    .cs-outcomes p {
-      font-size: 16px;
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    /* METHOD TAGS */
-    .cs-methods {
-      padding: 40px 0 0;
-      border-top: 1px solid var(--rule);
-      margin-top: 48px;
-    }
-    .cs-methods-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    .method-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      background: var(--off-white);
-      border: 1px solid var(--rule);
-      border-radius: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      margin: 3px 3px;
-    }
-
-    /* BACK NAV */
-    .cs-nav {
-      padding: 48px 0;
-      border-top: 1px solid var(--rule);
-      margin-top: 0;
-    }
-    .cs-nav a {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--accent-2);
-      text-decoration: none;
-    }
-    .cs-nav a:hover { text-decoration: underline; }
-
-    /* CONTACT */
-    .contact-section {
-      background: var(--navy);
-      padding: 88px 0;
-    }
-    .contact-inner { max-width: 600px; }
-    .contact-inner .label { color: var(--accent); }
-    .contact-inner h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-    .contact-inner p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 36px;
-      max-width: 440px;
-    }
-    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 24px;
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 999px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.7); }
-    .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
-
-    /* FOOTER */
-    footer { padding: 24px 0; border-top: 1px solid var(--rule); }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
-    footer p { font-size: 12px; color: var(--muted); }
-
-    /* RESPONSIVE */
-    @media (max-width: 760px) {
-      .cs-section { grid-template-columns: 1fr; gap: 16px; }
-      .container { padding: 0 20px; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-name">Matthew Abate: Experience Strategy &amp; Service Design</a>
-    <div class="nav-links">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#how">How I Work</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact" class="btn-primary">Get in touch</a>
-    </div>
-  </div>
-</nav>
-
-<!-- CASE STUDY HEADER -->
-<div class="cs-header">
-  <div class="container">
-    <a href="index.html#work" class="cs-back">← Back to portfolio</a>
-    <span class="cs-num">Case Study 01</span>
-    <h1>Reframing how a major league thinks about the fan experience.</h1>
-    <p class="cs-meta">Major League Baseball &nbsp;&middot;&nbsp; Sports &amp; Entertainment &nbsp;&middot;&nbsp; 2024–2025</p>
-  </div>
-</div>
-
-<!-- CASE STUDY BODY -->
-<div class="cs-body">
-  <div class="container">
-
-    <div class="cs-section">
-      <div class="cs-section-label">The Challenge</div>
-      <div class="cs-section-content">
-        <p>MLB's product and strategy teams wanted to improve the food and beverage experience at ballparks. The working assumption was that speed was the problem — fans were waiting too long, and faster service would fix it. My job was to find out whether that was actually true, and what, if anything, the speed framing was missing.</p>
-        <p>The challenge wasn't just research. It was helping a major league organization loosen its grip on an assumption that felt obvious — and replace it with something more useful.</p>
-      </div>
-    </div>
-
-    <div class="cs-section">
-      <div class="cs-section-label">What I Did</div>
-      <div class="cs-section-content">
-        <p>I spent time at four ballparks — Yankees Stadium, Citi Field, Daikin Park in Houston, and Citizens Bank Park in Philadelphia — watching fans move through concourses, standing in lines, and talking to people mid-purchase. Not in a focus group. In the actual environment, during actual games.</p>
-        <p>That fieldwork was combined with large-scale fan surveys and in-depth one-on-one interviews. The goal was to get past what people say they want and understand what they're actually trying to accomplish at different moments in the ballpark experience.</p>
-        <p>The picture that emerged was more complicated than "fans want faster food." Fans aren't a single type of person making a single type of decision. Their behavior shifts depending on what they're trying to accomplish — and the concourse environment was actively working against some of those modes while supporting others.</p>
-      </div>
-    </div>
-
-    <div class="cs-section">
-      <div class="cs-section-label">The Reframe</div>
-      <div class="cs-section-content">
-        <p>The league had been organizing its thinking around speed. The research showed the bigger opportunity was confidence, autonomy, access, and hospitality. That's a fundamentally different design brief — and it changes what you invest in, how you lay out a space, how you train staff, and what information you surface and when.</p>
-        <p>A fan who doesn't know what's available, or doesn't know how long a line will take, doesn't just feel frustrated — they make a different decision. They go back to their seat. They miss their moment. Speed wasn't the problem. Information architecture was.</p>
-        <p>The findings shifted what the league decided to prioritize going into the next planning cycle — and they did it across all 30 teams.</p>
-      </div>
-    </div>
-
-    <div class="cs-section">
-      <div class="cs-section-label">Outcomes</div>
-      <div class="cs-section-content">
-        <div class="cs-outcomes">
-          <p>22 actionable insights and a long-range fan experience vision now driving 2026+ planning across all 30 MLB teams. Of 11 strategic recommendations developed, five were adopted as foundational initiatives. Research established as governance-level input to the league's planning process. Findings presented by league executives at industry conferences.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cs-methods">
-      <div class="cs-methods-label">Methods &amp; Approaches</div>
-      <span class="method-tag">Ethnographic field research</span>
-      <span class="method-tag">Concourse observation</span>
-      <span class="method-tag">Fan surveys</span>
-      <span class="method-tag">In-depth interviews</span>
-      <span class="method-tag">Jobs to be Done</span>
-      <span class="method-tag">Journey mapping</span>
-      <span class="method-tag">Behavioral segmentation</span>
-      <span class="method-tag">Multi-year roadmapping</span>
-    </div>
-
-    <div class="cs-nav">
-      <a href="index.html#work">← Back to all work</a>
-    </div>
-
-  </div>
-</div>
-
-<hr class="rule" />
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <span class="label">Let's Talk</span>
-      <h2>If you're working on something hard, I'd like to hear about it.</h2>
-      <p>If you are at an organization where understanding people is treated as a real input to strategy, and not an afterthought, I would love to talk to you.</p>
-      <div class="contact-links">
-        <a href="mailto:matthewabate@me.com" class="btn-primary">Get in touch</a>
-        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn →</a>
+        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">Calendly</a>
+        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn</a>
       </div>
       <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
     </div>
