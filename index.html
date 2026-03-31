@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -51,8 +52,9 @@
 
     /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      left: 0;
+      right: 0;
       z-index: 100;
       background: var(--black);
       border-top: 1px solid rgba(4, 37, 4, 0.12);
@@ -115,12 +117,18 @@
     .body-copy { font-size: clamp(16px, 1.4vw, 19px); font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.65); }
     .body-copy + .body-copy { margin-top: 16px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .scroll-hint { position: absolute; bottom: 36px; left: 32px; z-index: 10; display: flex; align-items: center; gap: 12px; }
-    .scroll-hint span { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #525555; }
-    .scroll-arrow { width: 32px; height: 1px; background: linear-gradient(to right, #525555, transparent); animation: scrollPulse 1.8s ease-in-out infinite; }
+    .scroll-hint { position: absolute; bottom: 84px; left: 32px; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .scroll-hint span { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .scroll-arrow {
+      width: 10px; height: 10px;
+      border-right: 1.5px solid rgba(255,255,255,0.4);
+      border-bottom: 1.5px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: scrollPulse 1.8s ease-in-out infinite;
+    }
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleX(1); }
-      50%       { opacity: 0.8; transform: scaleX(1.2); }
+      0%, 100% { opacity: 0.3; transform: rotate(45deg) translateY(0); }
+      50%       { opacity: 0.8; transform: rotate(45deg) translateY(3px); }
     }
 
     /* ── SECTION BASE ── */
@@ -331,7 +339,7 @@
           <p class="body-copy">Thorny problems are solved through understanding what will actually make a difference. Let's spend less time guessing and iterating, and more time building something that works.</p>
           <p class="body-copy">I design services that create real value for the people using them. I write strategies that strengthen the business.</p>
           <div class="hero-ctas">
-            <a href="#how" class="btn-secondary">How I Work</a>
+            <a href="#what" class="btn-secondary">How I Work</a>
             <a href="#contact" class="btn-primary">Get in touch</a>
           </div>
         </div>
@@ -645,7 +653,21 @@
 
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  // Smooth scroll for hero CTA anchor links
+  document.querySelectorAll('.hero-ctas a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      gsap.to(window, {
+        scrollTo: { y: link.getAttribute('href'), offsetY: 60 },
+        duration: 1.5,
+        ease: 'power2.inOut',
+      });
+    });
+  });
+
+  const navEl = document.querySelector('nav');
 
   document.fonts.ready.then(() => {
     const mask      = document.querySelector('.headline-mask');
@@ -662,11 +684,14 @@
     mask.style.marginBottom = `-${DESCENT}px`;
 
     const bodyH = bodyBlock.offsetHeight;
+    const navH  = navEl.offsetHeight;
+    const vh    = window.innerHeight;
 
     gsap.set('.line-a',        { y: 0 });
     gsap.set('.line-b',        { y: maskH, opacity: 0 });
     gsap.set('.body-block',    { autoAlpha: 0, y: bodyH + 40 });
     gsap.set('.content-block', { y: 0 });
+    gsap.set(navEl,            { top: vh - navH }); // start at viewport bottom
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -679,10 +704,24 @@
       }
     });
 
-    tl.to('.hero-bg',  { y: '-8%', ease: 'none', duration: 4 }, 0);
-    tl.to('.line-a',   { y: -maskH, opacity: 0, ease: 'none', duration: 1 }, 0);
-    tl.to('.line-b',   { y: 0, opacity: 1, ease: 'none', duration: 1 }, 1);
-    tl.to('.body-block',    { autoAlpha: 1, y: 0, ease: 'none', duration: 1 }, 2);
+    tl.to('.hero-bg',    { y: '-8%', ease: 'none', duration: 4 }, 0);
+    tl.to('.line-a',     { y: -maskH, opacity: 0, ease: 'none', duration: 1 }, 0);
+    tl.to('.line-b',     { y: 0, opacity: 1, ease: 'none', duration: 1 }, 1);
+    tl.to('.body-block', { autoAlpha: 1, y: 0, ease: 'none', duration: 1 }, 2);
+
+    // Nav rises in perfect sync with Expertise section scrolling in from below.
+    // start: Expertise top hits viewport bottom (exact moment hero unpins)
+    // end:   Expertise top reaches nav height from viewport top (nav arrives at top: 0)
+    gsap.to(navEl, {
+      top: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#what',
+        start: 'top bottom',
+        end: `top ${navH}px`,
+        scrub: true,
+      }
+    });
   });
 </script>
 
