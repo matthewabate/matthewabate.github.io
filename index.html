@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthew Abate — Experience Strategy & Service Design</title>
+  <title>Matthew Abate — Experience Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_downward_alt,automation,mail&display=block" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
@@ -91,6 +92,22 @@
     .nav-links .btn-primary:hover { color: var(--black); }
     .btn-secondary { background: transparent; color: var(--accent-2); border: 2px solid var(--accent-2); transition: color 0.2s, border-color 0.2s; }
     .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+    .btn-icon { padding: 9px 12px; }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20;
+    }
 
     /* ── ANIMATED HERO ── */
     .hero { height: 100vh; width: 100%; position: relative; overflow: hidden; padding: 0; }
@@ -111,25 +128,12 @@
       will-change: transform;
     }
     .line-a { color: var(--accent); }
-    .line-b { color: var(--accent-2); }
+    .line-b { color: var(--lime); }
     .body-block { margin-top: 40px; max-width: 800px; will-change: transform, opacity; }
     .body-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .body-copy { font-size: clamp(16px, 1.4vw, 19px); font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.65); }
     .body-copy + .body-copy { margin-top: 16px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .scroll-hint { position: absolute; bottom: 84px; left: 32px; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .scroll-hint span { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-    .scroll-arrow {
-      width: 10px; height: 10px;
-      border-right: 1.5px solid rgba(255,255,255,0.4);
-      border-bottom: 1.5px solid rgba(255,255,255,0.4);
-      transform: rotate(45deg);
-      animation: scrollPulse 1.8s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: rotate(45deg) translateY(0); }
-      50%       { opacity: 0.8; transform: rotate(45deg) translateY(3px); }
-    }
 
     /* ── SECTION BASE ── */
     section { padding: 88px 0; }
@@ -138,8 +142,6 @@
     section.alt h4, section.alt h5, section.alt h6 { color: var(--black); }
     section.alt .methods strong { color: rgba(4, 37, 4, 0.65); }
     section.alt .rule,
-    section.alt .stat { border-top-color: rgba(4, 37, 4, 0.12); }
-    section.alt .stat:nth-child(odd) { border-right-color: rgba(4, 37, 4, 0.12); }
     section.alt .method-tag { background: transparent; border-color: rgba(0,0,0,0.25); color: rgba(0,0,0,0.7); }
     section.alt .ai-box,
     section.alt .ai-box h3, section.alt .ai-box p,
@@ -150,12 +152,10 @@
     section.alt .project-outcome { background: var(--black); border-left-color: var(--accent); }
     section.alt .project-outcome p { color: rgba(255,255,255,0.75); }
     section.alt .methods { color: var(--black); }
-    section.alt .stat-num,
-    section.alt .stat-label { color: var(--black); }
 
     /* ── SHARED SECTION HEADINGS ── */
     .what-left h2, .how-intro h2, .work-intro h2,
-    .engagement-intro h2, .about-left h2 {
+    .about-left h2 {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
       line-height: 1.15;
@@ -163,37 +163,9 @@
     }
 
     /* ── WHAT I DO ── */
-    .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .what-grid { max-width: 720px; }
     .what-left h2 { margin-bottom: 24px; }
     .what-left p { color: inherit; margin-bottom: 16px; font-size: 16px; }
-    .career-box { background: var(--black); padding: 32px; }
-    .career-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-    }
-    .career-step {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.6;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #333333;
-    }
-    .career-step:last-of-type { border-bottom: none; }
-    .career-industries {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--lime);
-      line-height: 1.8;
-      border-top: 1px solid #555555;
-      margin-top: 24px;
-      padding-top: 20px;
-    }
 
     /* ── HOW I WORK ── */
     .how-intro { max-width: 640px; margin-bottom: 64px; }
@@ -213,7 +185,7 @@
       border-bottom: 1px solid #333333;
     }
     .ai-icon { width: 40px; height: 40px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ai-icon svg { width: 22px; height: 22px; }
+    .ai-icon .material-symbols-outlined { font-size: 22px; color: var(--accent); font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20; }
     .ai-box-header h3 { font-size: 20px; font-weight: 700; color: var(--white); }
     .ai-cols { display: grid; color: rgba(255,255,255,0.65); grid-template-columns: repeat(3, 1fr); gap: 36px; }
     .ai-col h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
@@ -229,52 +201,17 @@
     .project-outcome { background: rgba(255,255,255,0.06); border-left: 3px solid var(--accent); padding: 20px 24px; margin-bottom: 24px; }
     .methods strong { color: var(--muted); font-weight: 500; }
 
-    /* ── ENGAGEMENT ── */
-    .engagement-intro { max-width: 560px; margin-bottom: 56px; }
-    .engagement-intro h2 { margin-bottom: 12px; }
-    .engagement-intro p { font-size: 16px; color: inherit; }
-    .phases { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
-    .phases::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 10%; right: 10%;
-      height: 2px;
-      background: linear-gradient(to right, var(--black), var(--lime));
-      z-index: 0;
-    }
-    .phase { text-align: center; position: relative; z-index: 1; padding: 0 12px; }
-    .phase-dot {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--white);
-      border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--black);
-    }
-    .phase:last-child .phase-dot { background: var(--lime); box-shadow: 0 0 0 2px var(--lime); color: var(--black); }
-    .phase h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: inherit; margin-bottom: 8px; }
-    .phase p { font-size: 13px; color: inherit; line-height: 1.55; }
 
     /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; align-items: start; }
+    .about-grid { display: grid; grid-template-columns: 1fr 200px; gap: 80px; align-items: start; }
     .about-left h2 { margin-bottom: 28px; }
     .about-left p { font-size: 16px; color: inherit; margin-bottom: 18px; line-height: 1.75; }
-    .stat-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    .stat { padding: 16px 20px 16px 0; border-top: 1px solid var(--rule); }
-    .stat:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 20px; }
-    .stat:nth-child(even) { padding-left: 20px; }
-    .stat:nth-child(-n+2) { border-top: none; }
-    .stat-num { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-size: 13px; color: var(--muted); }
-    .fact-text { font-size: 15px; color: var(--white); line-height: 1.65; }
+    .about-left a { color: var(--accent-2); text-decoration: none; }
+    .about-left a:hover { color: var(--white); }
+    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: center; }
+    .logo-item { display: flex; align-items: center; justify-content: center; height: 32px; }
+    .logo-item img { max-height: 22px; max-width: 100%; filter: brightness(0); opacity: 0.35; transition: opacity 0.2s; }
+    .logo-item img:hover { opacity: 0.85; }
 
     /* ── CONTACT ── */
     .contact-section { background: var(--black); }
@@ -291,15 +228,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .what-grid { grid-template-columns: 1fr; gap: 48px; }
       .pillars { grid-template-columns: 1fr; }
       .ai-cols { grid-template-columns: 1fr; gap: 28px; }
       .project-grid { grid-template-columns: repeat(2, 1fr); }
-      .phases { grid-template-columns: 1fr; }
-      .phases::before { display: none; }
-      .phase { text-align: left; display: flex; gap: 20px; align-items: flex-start; padding: 0 0 24px 0; }
-      .phase-dot { flex-shrink: 0; margin: 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .ai-box { grid-template-columns: 1fr; }
       .project-card .project-number { font-size: 32px; }
     }
@@ -335,34 +266,30 @@
           </div>
         </div>
         <div class="body-block">
-          <p class="body-label">Experience Strategy + Human-Centered Design</p>
-          <p class="body-copy">Thorny problems are solved through understanding what will actually make a difference. Let's spend less time guessing and iterating, and more time building something that works.</p>
-          <p class="body-copy">I design services that create real value for the people using them. I write strategies that strengthen the business.</p>
+          <p class="body-copy">That's the problem I solve. Less guessing, dart throwing, and iterating. More listening, learning, and nailing it.</p>
+          <p class="body-copy">I lead teams that create value for the people who use them.</p>
           <div class="hero-ctas">
-            <a href="#what" class="btn-secondary">How I Work</a>
+            <a href="#what" class="btn-secondary btn-icon" aria-label="Scroll to Expertise"><span class="material-symbols-outlined">arrow_downward_alt</span></a>
             <a href="#contact" class="btn-primary">Get in touch</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-arrow"></div>
-  </div>
+
 </section>
 
 <!-- NAV — sits below hero, sticks to top of viewport on scroll -->
 <nav id="top">
   <div class="nav-inner">
-    <a href="#hero" class="nav-name">Matthew Abate • Experience Strategy & Service Design</a>
+    <a href="#hero" class="nav-name">Matthew Abate • Experience Design</a>
     <div class="nav-links">
       <a href="#what">Expertise</a>
       <a href="#how">Approach</a>
       <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">Experience</a>
-      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:matthewabate@me.com" class="btn-primary btn-icon" aria-label="Send email"><span class="material-symbols-outlined">mail</span></a>
     </div>
   </div>
 </nav>
@@ -374,21 +301,8 @@
       <div class="what-left">
         <span class="label">Expertise</span>
         <h2>Identifying the effort worth making.</h2>
-        <p>I focus on understanding the forces that drive behavior, how those behaviors play out across a product or service, and what it means for the business.</p>
-        <p>From there, ideas are tested in the real world so we learn what actually works before committing time, money, and effort. The result is a clear, evidence-backed strategy that’s built to launch, hold up, and perform.</p>
-        <p>The work that matters most happens in real environments: stadiums, hospitals, service centers, hotel lobbies, airport gates, and on the side of the road. In these contexts, a screen might be part of the answer, but the interaction between people and the environment matters just as much.</p>
-        <p>When what people actually need is misjudged, the experience breaks down. The difference I make is ensuring it works for the people moving through it. The result isn’t decoration. It’s a tangible solution supported by a clear, evidence-backed strategy and a roadmap teams can act on.</p>
-      </div>
-      <div class="what-right">
-        <div class="career-box">
-          <p class="career-label">How I got here</p>
-          <p class="career-step">My early work focused on websites, human-machine interfaces, and apps. It built a foundation in making complex ideas clear and defensible.</p>
-          <p class="career-step">Over time, the focus shifted to digital products and behavioral outcomes, where research, iteration, and systems thinking became central to the work.</p>
-          <p class="career-step">Now I specialize in helping teams understand what’s actually happening and what’s worth doing, usually before things are fully defined.</p>
-          <div class="career-industries">
-            My experience spans Healthcare, Sports & Entertainment, Automotive, Financial Services, Retail, Media, Technology, Non-Profits, and Education.
-          </div>
-        </div>
+        <p>What matters most is making life easier for people in their real lives. In stadiums, hospitals, at home, or on the side of the road, the interaction between people and their environment matters just as much as what a screen can do.</p>
+        <p>I specialize in understanding what drives behaviors and decisions when people experience a service or product. The interdisciplinary teams I lead use that context to create evidence-backed strategies built to hold up in the real world, before roadmaps are in place, and design experiences that are built not just to launch, but to generate the best outcomes for the customer and the business.</p>
       </div>
     </div>
   </div>
@@ -401,8 +315,8 @@
   <div class="container">
     <div class="how-intro">
       <span class="label">Approach</span>
-      <h2>3 frameworks I keep in my quiver.</h2>
-      <p>Different problems call for different tools. These are the ones I rely on to cut through ambiguity and find something that creates value.</p>
+      <h2>Frameworks and methods I rely on.</h2>
+      <p>When I'm brought in, I start by understanding what's known and what's missing, because the real problem usually lives in the gap. These are the tools I rely on to cut through ambiguity and find something that creates value.</p>
     </div>
 
     <div class="pillars">
@@ -431,9 +345,7 @@
     <div class="ai-box">
       <div class="ai-box-header">
         <div class="ai-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(204,31,168,0.9)" stroke-width="1.5">
-            <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-          </svg>
+          <span class="material-symbols-outlined">automation</span>
         </div>
         <h3>My AI experience</h3>
       </div>
@@ -507,110 +419,31 @@
 
 <hr class="rule" />
 
-<!-- ENGAGEMENT -->
-<section id="process" class="alt">
-  <div class="container">
-    <div class="engagement-intro">
-      <span class="label">Process</span>
-      <h2>What happens when I’m brought in.</h2>
-      <p>Most problems feel bigger than they are. I guide teams to focus on making them understandable and solvable, making us stronger in the process.</p>
-    </div>
-
-    <div class="phases">
-      <div class="phase">
-        <div class="phase-dot">1</div>
-        <div>
-          <h4>Discovery</h4>
-          <p>Start by examining the decisions, assumptions, and hypotheses already in play. Understanding what’s known is important, but what’s missing is usually where the real problem sits.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-dot">2</div>
-        <div>
-          <h4>Research</h4>
-          <p>Get out into the real world. Observe, listen, and talk to people living with the problem. What people are actually trying to do is often different from what we expect.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-dot">3</div>
-        <div>
-          <h4>Synthesis</h4>
-          <p>Turn what we’ve learned over until patterns emerge. The goal is a clear, shared understanding that holds up under scrutiny and can guide decisions.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-dot">4</div>
-        <div>
-          <h4>Strategy</h4>
-          <p>Define what the insights mean. Which opportunities are real? What’s worth doing? What’s not? This is where tradeoffs become clear.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-dot">5</div>
-        <div>
-          <h4>Roadmap</h4>
-          <p>Sequence the work and define what needs to be validated before committing. The result is a plan that feels achievable and grounded in what’s been learned.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-dot">6</div>
-        <div>
-          <h4>Execution</h4>
-          <p>What comes next depends on what’s been learned. Sometimes it’s product design and launch. Sometimes it’s a structured experiment. Sometimes it’s a coordinated suite of initiatives built from the roadmap. The form changes. The intent doesn’t.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule" />
-
 <!-- ABOUT -->
 <section id="about" class="alt">
   <div class="container">
     <div class="about-grid">
       <div class="about-left">
-        <span class="label">Experience</span>
+        <span class="label">About</span>
         <h2>Solving problems since 1998.</h2>
-        <p>Across industries, the same pattern shows up. What’s designed and what people actually experience doesn’t line up.</p>
-        <p>That’s the problem I solve, before anything gets designed.</p>
-        <p>The work is understanding what people actually need, what drives their behavior, and what needs to change for something to work.</p>
-        <p>I’m drawn to problems with a physical dimension. How a service unfolds across space, and where intended design breaks down in real life, is where the most meaningful work tends to be.</p>
+        <p>My career started with websites and human-machine interfaces, moved into digital products and behavioral research, and now centers on helping organizations understand what’s actually happening and what’s worth doing, before committing to a direction.</p>
+        <p>I’m drawn to problems with a physical dimension. How a service unfolds across space, and where design intention breaks down in real life, is where the most meaningful work tends to be. I’ve led interdisciplinary teams across Healthcare, Sports &amp; Entertainment, Automotive, Financial Services, Retail, Media, Technology, Non-Profits, and Education; both in-house and at agencies.</p>
+        <p>I am the kind of person who may have too many hobbies. I train at a local archery academy with my daughters, I’ve been restoring a 1973 Datsun 240Z for several years (<a href="https://www.instagram.com/matthew.abate/" target="_blank">see it here</a> and <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank">get more detail here</a>). I run a club for car enthusiasts called <a href="https://linktr.ee/geargrinders" target="_blank">South Mountain Drivers Club</a>. I have <a href="https://www.discogs.com/user/matthewabate/collection?header=1" target="_blank">nearly five hundred vinyl records</a>, five vintage guitars, three cats, one <a href="https://www.scotchcollie.org/breed/history/" target="_blank">Scotch Collie</a>, and have lived in Maplewood, NJ, for fourteen years.</p>
       </div>
       <div class="about-right">
-        <div class="stat-stack">
-          <div class="stat">
-            <div class="stat-num">3</div>
-            <div class="stat-label">cats</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">1</div>
-            <div class="stat-label">dog (Scotch Collie)</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">6 yrs</div>
-            <div class="stat-label">practicing archery</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4 yrs</div>
-            <div class="stat-label">running South Mountain Drivers Club</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">10 yrs</div>
-            <div class="stat-label">restoring a 1973 240Z</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">5</div>
-            <div class="stat-label">vintage guitars</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">500</div>
-            <div class="stat-label">records</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">14 yrs</div>
-            <div class="stat-label">in Maplewood, NJ</div>
-          </div>
+        <div class="logo-grid">
+          <div class="logo-item"><img src="logos/MLB_logo.svg" alt="MLB"></div>
+          <div class="logo-item"><img src="logos/jj-logo.svg" alt="Johnson &amp; Johnson"></div>
+          <div class="logo-item"><img src="logos/Ford_logo.svg" alt="Ford"></div>
+          <div class="logo-item"><img src="logos/toyota-logo.svg" alt="Toyota"></div>
+          <div class="logo-item"><img src="logos/emirates-logo.svg" alt="Emirates"></div>
+          <div class="logo-item"><img src="logos/target-logo.svg" alt="Target"></div>
+          <div class="logo-item"><img src="logos/general-electric.svg" alt="General Electric"></div>
+          <div class="logo-item"><img src="logos/hbo-logo.svg" alt="HBO"></div>
+          <div class="logo-item"><img src="logos/nbcu-logo.svg" alt="NBCU"></div>
+          <div class="logo-item"><img src="logos/usma-logo.svg" alt="USMA West Point"></div>
+          <div class="logo-item"><img src="logos/citi-logo.svg" alt="Citi"></div>
+          <div class="logo-item"><img src="logos/new-york-state-logo.svg" alt="New York State"></div>
         </div>
       </div>
     </div>
@@ -626,7 +459,7 @@
       <p>If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
       <div class="contact-links">
         <a href="mailto:matthewabate@me.com" class="btn-primary">
-          Get in touch
+          <span class="material-symbols-outlined">mail</span>Email me
         </a>
         <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">
           Calendly
