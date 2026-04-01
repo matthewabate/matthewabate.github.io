@@ -154,8 +154,7 @@
     section.alt .methods { color: var(--black); }
 
     /* ── SHARED SECTION HEADINGS ── */
-    .what-left h2, .how-intro h2, .work-intro h2,
-    .about-left h2 {
+    .what-left h2, .how-intro h2, .work-intro h2 {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
       line-height: 1.15;
@@ -203,15 +202,15 @@
 
 
     /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 1fr 200px; gap: 80px; align-items: start; }
-    .about-left h2 { margin-bottom: 28px; }
+    .about-heading { font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.15; color: inherit; margin-bottom: 28px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 304px; gap: 64px; align-items: start; }
     .about-left p { font-size: 16px; color: inherit; margin-bottom: 18px; line-height: 1.75; }
     .about-left a { color: var(--accent-2); text-decoration: none; }
     .about-left a:hover { color: var(--white); }
-    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: center; }
-    .logo-item { display: flex; align-items: center; justify-content: center; height: 32px; }
-    .logo-item img { max-height: 22px; max-width: 100%; filter: brightness(0); opacity: 0.35; transition: opacity 0.2s; }
-    .logo-item img:hover { opacity: 0.85; }
+    .logo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: center; margin-top: 4px; }
+    .logo-item { display: flex; align-items: center; justify-content: center; height: 36px; }
+    .logo-item img { max-height: 26px; max-width: 100%; opacity: 1; transition: opacity 0.2s; }
+    .logo-item img:hover { opacity: 0.6; }
 
     /* ── CONTACT ── */
     .contact-section { background: var(--black); }
@@ -422,10 +421,10 @@
 <!-- ABOUT -->
 <section id="about" class="alt">
   <div class="container">
+    <span class="label">About</span>
+    <h2 class="about-heading">Solving problems since 1998.</h2>
     <div class="about-grid">
       <div class="about-left">
-        <span class="label">About</span>
-        <h2>Solving problems since 1998.</h2>
         <p>My career started with websites and human-machine interfaces, moved into digital products and behavioral research, and now centers on helping organizations understand what’s actually happening and what’s worth doing, before committing to a direction.</p>
         <p>I’m drawn to problems with a physical dimension. How a service unfolds across space, and where design intention breaks down in real life, is where the most meaningful work tends to be. I’ve led interdisciplinary teams across Healthcare, Sports &amp; Entertainment, Automotive, Financial Services, Retail, Media, Technology, Non-Profits, and Education; both in-house and at agencies.</p>
         <p>I am the kind of person who may have too many hobbies. I train at a local archery academy with my daughters, I’ve been restoring a 1973 Datsun 240Z for several years (<a href="https://www.instagram.com/matthew.abate/" target="_blank">see it here</a> and <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank">get more detail here</a>). I run a club for car enthusiasts called <a href="https://linktr.ee/geargrinders" target="_blank">South Mountain Drivers Club</a>. I have <a href="https://www.discogs.com/user/matthewabate/collection?header=1" target="_blank">nearly five hundred vinyl records</a>, five vintage guitars, three cats, one <a href="https://www.scotchcollie.org/breed/history/" target="_blank">Scotch Collie</a>, and have lived in Maplewood, NJ, for fourteen years.</p>
