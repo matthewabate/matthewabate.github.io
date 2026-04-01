@@ -7,18 +7,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=mail&display=block" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:    #000000;
-      --white:    #FFFFFF;
-      --muted:    rgba(255,255,255,0.6);
-      --accent:   #f52093;
-      --accent-2: #00e1e6;
-      --lime:     #c4fa17;
-      --rule:     rgba(196,250,250,0.15);
-      --serif:    'Outfit', system-ui, sans-serif;
+      --black:      #000000;
+      --white:      #FFFFFF;
+      --muted:      rgba(255,255,255,0.6);
+      --accent:     #f52093;
+      --accent-2:   #00e1e6;
+      --lime:       #c4fa17;
+      --rule:       rgba(196,250,250,0.15);
+      --rule-light: rgba(0,0,0,0.09);
+      --body-fg:    #111111;
+      --serif:      'Outfit', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -26,7 +29,7 @@
     body {
       font-family: var(--serif);
       font-size: 17px;
-      font-weight: 200;
+      font-weight: 300;
       line-height: 1.65;
       color: var(--white);
       background: var(--black);
@@ -35,34 +38,15 @@
 
     .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
 
-    .label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
-
     /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: var(--black);
       border-bottom: 1px solid var(--rule);
     }
     .nav-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1040px; margin: 0 auto; padding: 0 32px;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
     }
     .nav-name { font-size: 18px; font-weight: 600; color: var(--white); text-decoration: none; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
@@ -71,179 +55,167 @@
 
     /* ── BUTTONS ── */
     .btn-primary, .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 24px;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 999px;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 24px; font-size: 18px; font-weight: 500;
+      text-decoration: none; border-radius: 999px; white-space: nowrap;
     }
     .btn-primary { background: var(--accent-2); color: var(--black); transition: background 0.2s; }
     .btn-primary:hover { background: var(--white); }
     .nav-links .btn-primary { color: var(--black); }
-    .nav-links .btn-primary:hover { color: var(--black); }
     .btn-secondary { background: transparent; color: var(--accent-2); border: 2px solid var(--accent-2); transition: color 0.2s, border-color 0.2s; }
     .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+    .btn-icon { padding: 9px 12px; }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+      font-size: 20px; line-height: 1; display: inline-block; text-transform: none;
+      letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20;
+    }
 
     /* ── CASE STUDY HEADER ── */
-    .cs-header {
-      background: var(--black);
-      padding: 80px 0 72px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .cs-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      margin-bottom: 40px;
-      transition: color 0.2s;
-    }
-    .cs-back:hover { color: var(--accent-2); }
-    .cs-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: block;
+    .cs-header { background: var(--black); padding: 56px 0 64px; }
+    .cs-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 16px;
     }
     .cs-header h1 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--white);
-      max-width: 720px;
-      margin-bottom: 28px;
+      font-size: clamp(38px, 5.5vw, 68px); font-weight: 800;
+      line-height: 1.04; color: var(--white); max-width: 820px;
+      margin-bottom: 48px; letter-spacing: -0.02em;
     }
-    .cs-meta {
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.03em;
+    .cs-meta-strip { display: flex; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; }
+    .cs-meta-item {
+      display: flex; flex-direction: column; gap: 7px;
+      padding-right: 40px; margin-right: 40px;
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
+    .cs-meta-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .cs-meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.32); }
+    .cs-meta-value { font-size: 15px; font-weight: 500; color: var(--white); }
+    .cs-meta-link { font-size: 14px; font-weight: 600; color: var(--accent-2); text-decoration: none; transition: color 0.2s; }
+    .cs-meta-link:hover { color: var(--white); }
 
-    /* ── CASE STUDY BODY ── */
-    .cs-body {
-      padding: 80px 0;
-      background: var(--white);
-    }
+    /* ── BODY SHELL ── */
+    .cs-body { background: var(--white); }
+
+    /* ── SECTION GRID ── */
+    /* Text (label + paragraphs) is in the left/main column.
+       Images are in the right/aside column, aligned to top. */
     .cs-section {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 48px 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
+      grid-template-areas: "main aside";
+      grid-template-columns: 1fr 280px;
+      gap: 56px;
+      align-items: start;
+      padding: 56px 0;
+      border-top: 1px solid var(--rule-light);
     }
-    .cs-section:first-child { border-top: none; padding-top: 0; }
+    .cs-section:first-child { border-top: none; padding-top: 48px; }
+    .cs-section--cont { border-top: none; padding-top: 0; }
+    .cs-section--no-aside { grid-template-columns: 1fr; grid-template-areas: "main"; }
+
+    .cs-main  { grid-area: main; }
+    .cs-aside { grid-area: aside; }
+
+    /* ── SECTION LABEL (pink eyebrow above text) ── */
     .cs-section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      padding-top: 4px;
-    }
-    .cs-section-content p {
-      font-size: 17px;
-      color: #111111;
-      line-height: 1.75;
-      margin-bottom: 18px;
-    }
-    .cs-section-content p:last-child { margin-bottom: 0; }
-    .cs-section-content h4 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 16px;
-    }
-    .cs-section-content ul {
-      margin: 12px 0 18px 24px;
-    }
-    .cs-section-content li {
-      font-size: 17px;
-      color: #111111;
-      line-height: 1.75;
-      margin-bottom: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 24px;
     }
 
-    /* ── OUTCOMES ── */
-    .cs-outcomes {
-      background: rgba(0,0,0,0.04);
-      border-left: 3px solid var(--accent);
-      padding: 28px 32px;
-      margin-top: 8px;
+    /* ── TEXT STYLES ── */
+    .cs-main p {
+      font-size: 17px; color: var(--body-fg);
+      line-height: 1.8; margin-bottom: 22px; font-weight: 300;
     }
-    .cs-outcomes p {
-      font-size: 16px;
-      color: #111111;
-      line-height: 1.7;
-      margin-bottom: 12px;
+    .cs-main p:last-child { margin-bottom: 0; }
+    .cs-main h4 { font-size: 19px; font-weight: 700; color: var(--body-fg); margin-bottom: 14px; }
+
+    /* ── RIGHT-COLUMN IMAGES ── */
+    .cs-logo { display: block; max-width: 50%; margin: 0 auto; }
+    .cs-methods-aside { margin-top: 24px; }
+    .cs-aside .method-tag { display: block; margin: 3px 0; }
+    .cs-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 600px) { .cs-two-col { grid-template-columns: 1fr; } }
+    .cs-figure { margin-top: 0; }
+    .cs-figure + .cs-figure { margin-top: 20px; }
+    .cs-figure img { width: 100%; display: block; }
+    .cs-figure figcaption {
+      font-size: 11px; color: rgba(0,0,0,0.4); font-style: italic;
+      margin-top: 8px; line-height: 1.5; font-weight: 400;
     }
-    .cs-outcomes p:last-child { margin-bottom: 0; }
+
+    /* ── FULL-WIDTH CHART BREAK ── */
+    .cs-full-width {
+      padding: 48px 0;
+      border-top: 1px solid var(--rule-light);
+    }
+    .cs-full-img { width: 100%; display: block; border: none; }
+    .cs-caption {
+      font-size: 12px; color: rgba(0,0,0,0.4); font-style: italic;
+      margin-top: 10px; line-height: 1.5;
+    }
+
+    /* ── PRIORITY BLOCK ── */
+    .priority-block { border-left: 3px solid var(--accent); padding-left: 20px; margin: 28px 0; }
+    .priority-intro { font-size: 16px; font-weight: 500; color: var(--body-fg); margin-bottom: 14px; line-height: 1.65; }
+    .priority-list { list-style: none; padding: 0; }
+    .priority-list li {
+      font-size: 15px; color: #333; line-height: 1.65;
+      padding: 8px 0 8px 16px; border-top: 1px solid rgba(0,0,0,0.07);
+      position: relative; font-weight: 300;
+    }
+    .priority-list li:last-child { border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .priority-list li::before { content: '·'; position: absolute; left: 2px; color: var(--accent); font-weight: 800; font-size: 18px; line-height: 1.4; }
+
+    /* ── INLINE QUOTE IMAGES ── */
+    .cs-quote { width: 100%; display: block; margin: 28px 0; }
+
+    /* ── OPPORTUNITIES LIST ── */
+    .opp-list { list-style: none; padding: 0; margin: 16px 0 28px; }
+    .opp-list li {
+      padding: 16px 0 16px 24px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      font-size: 16px; color: #222; line-height: 1.7; font-weight: 300; position: relative;
+    }
+    .opp-list li:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .opp-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    /* ── DESIGN PRINCIPLES (right of opportunities) ── */
+    .cs-sub-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); display: block; margin: 32px 0 12px;
+    }
+    .cs-principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .cs-principles img { width: 100%; display: block; }
+
+    /* ── OUTCOMES — pillar columns ── */
+    .cs-outcomes-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .cs-outcome-col { border-top: 3px solid var(--accent); padding-top: 20px; }
+    .cs-outcome-col p { font-size: 16px; color: var(--body-fg); line-height: 1.7; font-weight: 300; }
 
     /* ── METHODS ── */
-    .cs-methods {
-      padding: 40px 0 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      margin-top: 48px;
-      background: var(--white);
-    }
-    .cs-methods-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.5);
-      margin-bottom: 16px;
-    }
+    .cs-methods { padding: 40px 0; border-top: 1px solid var(--rule-light); }
+    .cs-methods-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.4); margin-bottom: 16px; }
     .method-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      background: transparent;
-      border: 1px solid rgba(0,0,0,0.2);
-      font-size: 12px;
-      color: rgba(0,0,0,0.6);
-      margin: 3px 3px;
+      display: inline-block; padding: 4px 12px;
+      background: transparent; border: 1px solid rgba(0,0,0,0.2);
+      font-size: 12px; color: rgba(0,0,0,0.55); margin: 3px 3px; font-weight: 400;
     }
 
     /* ── BACK NAV ── */
-    .cs-nav {
-      padding: 48px 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      background: var(--white);
-    }
-    .cs-nav a {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-    }
+    .cs-nav { padding: 40px 0 56px; border-top: 1px solid var(--rule-light); margin-top: 44px; }
+    .cs-nav a { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
     .cs-nav a:hover { text-decoration: underline; }
 
     /* ── CONTACT ── */
     .contact-section { background: var(--black); padding: 88px 0; }
     .contact-inner { max-width: 600px; }
-    .contact-inner h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-    .contact-inner p {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 36px;
-      max-width: 440px;
-    }
+    .contact-inner .label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block; }
+    .contact-inner h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
+    .contact-inner p { font-size: 16px; color: var(--muted); margin-bottom: 36px; max-width: 440px; }
     .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
     .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
 
@@ -254,7 +226,16 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
-      .cs-section { grid-template-columns: 1fr; gap: 16px; }
+      .cs-section {
+        grid-template-areas: "main" "aside";
+        grid-template-columns: 1fr;
+        gap: 24px; padding: 40px 0;
+      }
+      .cs-outcomes-cols { grid-template-columns: 1fr; gap: 24px; }
+      .cs-principles { grid-template-columns: repeat(2, 1fr); }
+      .cs-meta-strip { flex-direction: column; gap: 20px; }
+      .cs-meta-item { border-right: none; margin-right: 0; padding-right: 0; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .cs-meta-item:last-child { border-bottom: none; padding-bottom: 0; }
       .container { padding: 0 20px; }
       .nav-links { display: none; }
     }
@@ -265,14 +246,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-name">Matthew Abate • Experience Strategy &amp; Service Design</a>
+    <a href="index.html" class="nav-name">Matthew Abate • Experience Design</a>
     <div class="nav-links">
       <a href="index.html#what">Expertise</a>
       <a href="index.html#how">Approach</a>
       <a href="index.html#work">Work</a>
-      <a href="index.html#process">Process</a>
-      <a href="index.html#about">Experience</a>
-      <a href="index.html#contact" class="btn-primary">Get in touch</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="mailto:matthewabate@me.com" class="btn-primary btn-icon" aria-label="Send email"><span class="material-symbols-outlined">mail</span></a>
     </div>
   </div>
 </nav>
@@ -280,10 +261,26 @@
 <!-- CASE STUDY HEADER -->
 <div class="cs-header">
   <div class="container">
-    <a href="index.html#work" class="cs-back">← Back to portfolio</a>
-    <span class="cs-num">Major League Baseball</span>
+    <span class="cs-eyebrow">Case Study 01 &nbsp;/&nbsp; Major League Baseball</span>
     <h1>Changing how a sport thinks about the fan experience.</h1>
-    <p class="cs-meta">Sports &amp; Entertainment / Venue Experience &nbsp;&middot;&nbsp; 2025 / 9 Months</p>
+    <div class="cs-meta-strip">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Sector</span>
+        <span class="cs-meta-value">Sports &amp; Entertainment</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Focus</span>
+        <span class="cs-meta-value">Venue Experience</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Duration</span>
+        <span class="cs-meta-value">9 Months &middot; 2025</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">&nbsp;</span>
+        <a href="index.html#work" class="cs-meta-link">← See all case studies</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -291,78 +288,183 @@
 <div class="cs-body">
   <div class="container">
 
+    <!-- THE CHALLENGE -->
+    <!-- Aside: MLB logo, max 50% of aside width, top-aligned -->
     <div class="cs-section">
-      <div class="cs-section-label">The Challenge</div>
-      <div class="cs-section-content">
+      <div class="cs-main">
+        <span class="cs-section-label">The Challenge</span>
         <p>MLB's In-Venue Product team wanted to better understand why people at baseball games spend money the way they do. The working assumption was that changes to the food and beverage experience would have the biggest impact, but they weren&apos;t certain and didn&apos;t know what to do if the hunch was right.</p>
         <p>My job was to find out where to invest time and effort, then figure out what needed to change and how.</p>
         <p>This wasn&apos;t just a research problem. It required helping an organization with a long history move past assumptions that "felt right" and replace them with real knowledge grounded in how fans actually behave.</p>
       </div>
+      <div class="cs-aside">
+        <img src="logos/MLB_logo.svg" class="cs-logo" alt="Major League Baseball">
+        <!-- METHODS STRIP -->
+        <div class="cs-methods">
+          <div class="cs-methods-label">Methods &amp; Approaches</div>
+          <span class="method-tag">Design Thinking</span>
+          <span class="method-tag">Ethnographic Field Research</span>
+          <span class="method-tag">Intercept Interviews</span>
+          <span class="method-tag">Direct &amp; Indirect Observation</span>
+          <span class="method-tag">Opportunity Gap Surveys</span>
+          <span class="method-tag">Anchored Max-Dif Surveys</span>
+          <span class="method-tag">In-Depth Interviews</span>
+          <span class="method-tag">Jobs to Be Done</span>
+          <span class="method-tag">Journey Mapping</span>
+          <span class="method-tag">Behavioral Segmentation</span>
+          <span class="method-tag">Co-Creation Workshops</span>
+          <span class="method-tag">Experiment Design</span>
+          <span class="method-tag">Multi-year Roadmapping</span>
+       </div>
+      </div>
     </div>
 
+    <!-- WHAT I DID -->
+    <!-- Aside: Participants + Sacrificial Concepts stacked, top-aligned -->
     <div class="cs-section">
-      <div class="cs-section-label">What I Did</div>
-      <div class="cs-section-content">
-        <p>First I validated the assumption that F&B was the place to play through surveys that asked what (other than the game and what happens on the field) makes going to the ballpark feel like "Baseball" and without it would ruin the experience. Of every aspect fans mentioned, The Food what the answer that felt most critical and, importantly, was something the clubs would control.</p>
+      <div class="cs-main">
+        <span class="cs-section-label">What I Did</span>
+        <p>First I validated the assumption that F&amp;B was the place to play through surveys that asked what (other than the game and what happens on the field) makes going to the ballpark feel like "Baseball" and without it would ruin the experience. Of every aspect fans mentioned, The Food what the answer that felt most critical and, importantly, was something the clubs would control.</p>
         <p>Next I travelled to ballparks around the country to conduct field research in the actual environment, during actual games. I watched fans move through concourses, stood in lines and experienced everything fans experience first hand, and talked to people in every phase of the purchasing and dining processes. I watched for patterns in the behaviors of fans and staff, the environment, the design of the products and services involved, and kept track of the context for each.</p>
         <p>This was not focus groups or survey-driven segmentation. The goal was to understand what people were actually trying to do in context.</p>
         <p>I conducted workshops with the venue product teams, interviewed ballpark staff about business strategies and goals, and ran in-depth one-on-one interviews to understand what they're actually trying to accomplish at different moments in the ballpark experience as opposed to asking what they wanted to be different.</p>
         <p>Finally, I synthesized the research to understand what was driving those patterns and where there were real opportunities to act.</p>
       </div>
-    </div>
-
-    <div class="cs-section">
-      <div class="cs-section-label">The Insights</div>
-      <div class="cs-section-content">
-        <p>Going into the work, most people at MLB and at the Ball Clubs (and also at the Concessionaires operating the food stands) assumed speed was the problem and faster flow rates through each stand would fix it. In other words, "fans want to get food faster, so we should automate and switch to self checkout as much as possible."</p>
-        <p>That turned out to be incomplete and overlooked key behavioral determinants.</p>
-        <p>We found that every fan is both "Researching" and "Ritualizing" at any given moment, starting long before purchasing tickets and extending well beyond leaving the park after the game. In the concourse they are either "Focused" (I know what I want and/or where it is) and "Exploring" (I am open minded and could be persuaded).</p>
-        <p>Their behaviors shift substantially depending on what they're trying to accomplish and the context they&apos;re in at the moment, culminating in five priority insights to address:
-          <ul>
-            <li>The cognitive load + information access impacting purchasing decisions (including not purchasing at all).</li>
-            <li>The engagement + the fan experience while in a concessions line (whether short or long).</li>
-            <li>Whether optimizing for speed has reduced a desired human interaction (and leaves fans guessing).</li>
-            <li>Getting food usually means missing the moment (which leads to second guessing).</li>
-            <li>Being a parent or leading a group changes everything (amplifying every pain point).</li>
-          </ul>
-        </p>
-        <p>These insights show that the concourse environment, and the operational decisions the clubs and Concessionaires have made are actively working against those mindsets and modes. A fan who doesn't know what's available, or doesn't know how long a line will take, doesn't just feel frustrated. They feel FOMO and go back to their seat or compromise their choices. They are constantly in fear of missing a special moment.</p>
-        <p>Baseball and their partners had been organizing their thinking around making food runs fast. The bigger opportunities were giving fans confidence, autonomy, access, and hospitality. That's a fundamentally different design brief and changes what you invest in, what you solve through technology, how you lay out space, your operational decisions, and what information you surface when.</p>
-        <p>This opened up three big opportunities for the League:
-          <ul>
-            <li>Reimagine phygital touchpoints to minimize F&B's intrusion on the fans&apos; engagement with the game and their party (e.g., Simplified and Refactored Stands &amp; POS, Focused vs Exploring Service Experiences, Traffic Management, Smart Nudging)</li>
-            <li>Personalize food discovery by making it easy to find F&B options that will make the day feel special (e.g., Context- &amp; Intent-Aware Products, Humanized &amp; Timely Information, Intelligent Guidance)</li>
-            <li>Simplify group dining by making managing F&B so simple that group organizers can enjoy the game instead of playing 'butler' (e.g., Synced Fan Accounts, Group Purchase Features, Services Specifically for Kids, Meaningful Preferences Beyond Loyalty)</li>
-          </ul>
-        </p>
-        <p>The findings shifted what the league decided to prioritize going into the next planning cycle and was enthusiastically received by all 30 teams. Notably, the NY Yankees, a notably self-sufficient and independent club, were first to volunteer to partner on solution development.</p>
+      <div class="cs-aside">
+        <figure class="cs-figure">
+          <img src="images/MLB-Participants.png" alt="Research participants — eleven fans from different markets, ages, and fan types">
+          <figcaption>Caption TBD</figcaption>
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/MLB-Sacrificial-Concepts.png" alt="Sacrificial concepts used in co-creation workshops to surface latent needs and reactions">
+          <figcaption>Caption TBD</figcaption>
+        </figure>
       </div>
     </div>
 
+    <!-- THE INSIGHTS — pt. 1 -->
+    <!-- Aside: Focussed + Exploring mindset sketches, top-aligned -->
     <div class="cs-section">
-      <div class="cs-section-label">Outcomes</div>
-      <div class="cs-section-content">
-        <div class="cs-outcomes">
-          <p>22 actionable insights incorporated into the long-range vision for fan experience now driving 2026+ planning across the league</p>
-          <p>Of 13 strategic recommendations developed, three were adopted as foundational initiatives to launch on opening day</p>
-          <p>Ethnographic Research standardized as governance-level input to the league's planning process as a result of these findings being presented to league executives and at industry conferences</p>
+      <div class="cs-main">
+        <span class="cs-section-label">The Insights</span>
+        <p>We found that every fan is both "Researching" and "Ritualizing" at any given moment, starting long before purchasing tickets and extending well beyond leaving the park after the game. In the concourse they are either "Focused" (I know what I want and/or where it is) and "Exploring" (I am open minded and could be persuaded).</p>
+          <div class="priority-block">
+            <p class="priority-intro">Fan behaviors shift substantially depending on what they're trying to accomplish and the context of that moment, culminating in five priority insights to address:</p>
+            <ul class="priority-list">
+              <li>The cognitive load + information access impacting purchasing decisions (including not purchasing at all).</li>
+              <li>The engagement + the fan experience while in a concessions line (whether short or long).</li>
+              <li>Whether optimizing for speed has reduced a desired human interaction (and leaves fans guessing).</li>
+              <li>Getting food usually means missing the moment (which leads to second guessing).</li>
+              <li>Being a parent or leading a group changes everything (amplifying every pain point).</li>
+            </ul>
+          </div>
+        <p>These insights show that the concourse environment, and the operational decisions the clubs and Concessionaires have made are actively working against those mindsets and modes. A fan who doesn't know what's available, or doesn't know how long a line will take, doesn't just feel frustrated. They feel FOMO and go back to their seat or compromise their choices. They are constantly in fear of missing a special moment.</p>
+      </div>
+        <div class="cs-aside">
+          <figure class="cs-figure">
+            <img src="images/MLB-Quote-6.png" alt="The hardest part of a food run is deciding to get up">
+            <figcaption>Caption TBD</figcaption>
+          </figure>
+            <figure class="cs-figure">
+            <img src="images/MLB-Quote-5.png" alt="Fans think 'what' before 'where' — our tools should too">
+            <figcaption>Caption TBD</figcaption>
+          </figure>
+            <figure class="cs-figure">
+            <img src="images/MLB-Quote-1.png" alt="For parents, 'convenience' is really about 'risk management'">
+            <figcaption>Caption TBD</figcaption>
+          </figure>
+        </div>
+    </div>
+  </div>
+
+  <!-- FULL-WIDTH CHART BREAK: Mindsets + Modes -->
+  <div class="container">
+    <div class="cs-full-width">
+      <img src="images/MLB-Mindsets+Modes.png" class="cs-full-img" alt="Chart showing how Focused and Exploring fans move through the F&B journey differently">
+      <p class="cs-caption">Fans can move between modes depending on their goal — and the concourse experience rarely accounts for this.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- THE INSIGHTS — pt. 2: Speed vs Confidence -->
+    <!-- Aside: Lines 2–3 stacked, top-aligned -->
+    <div class="cs-section cs-section--cont">
+      <div class="cs-main">
+        <p>Going into the work, most people at MLB and at the Ball Clubs (and also at the Concessionaires operating the food stands) assumed speed was the problem and faster flow rates through each stand would fix it. In other words, "fans want to get food faster, so we should automate and switch to self checkout as much as possible."</p>
+        <p>That turned out to be incomplete and overlooked key behavioral determinants. The bigger opportunities were giving fans confidence, autonomy, access, and hospitality. That's a fundamentally different design brief and changes what you invest in, what you solve through technology, how you lay out space, your operational decisions, and what information you surface when.</p>
+        <div class="cs-full-width">
+          <img src="images/MLB-Lines-1.png" class="cs-full-img" alt="Lines are not a monolithic mass of frustration — they are a series of different waiting phases">
         </div>
       </div>
+
+        <div class="cs-aside">
+        <figure class="cs-figure">
+          <img src="images/MLB-Lines-2.png" alt="Emotional phases from joining the line through ordering">
+          <figcaption>Caption TBD</figcaption>
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/MLB-Lines-3.png" alt="Emotional phases from decision to transaction">
+          <figcaption>Caption TBD</figcaption>
+        </figure>
+      </div>
     </div>
 
-    <div class="cs-methods">
-      <div class="cs-methods-label">Methods &amp; Approaches</div>
-      <span class="method-tag">Design Thinking</span>
-      <span class="method-tag">Ethnographic Field Research</span>
-      <span class="method-tag">Direct &amp; Indirect Observation</span>
-      <span class="method-tag">Fan Surveys</span>
-      <span class="method-tag">In-depth Interviews</span>
-      <span class="method-tag">Jobs to Be Done</span>
-      <span class="method-tag">Journey Mapping</span>
-      <span class="method-tag">Behavioral Segmentation</span>
-      <span class="method-tag">Co-Creation Workshops</span>
-      <span class="method-tag">Multi-year Roadmapping</span>
-      <span class="method-tag">Experiment Design</span>
+  <!-- FULL-WIDTH CHART BREAK: Change where decisions happen -->
+  <div class="container">
+    <div class="cs-full-width">
+      <img src="images/MLB-Lines-4.png" class="cs-full-img" alt="How shifting decision points earlier dramatically changes the emotional arc">
+      <p class="cs-caption">Caption TBD.</p>
+    </div>
+  </div>
+
+    <!-- THE INSIGHTS — pt. 3: opportunities -->
+    <!-- Aside: Lines 1–4 stacked, top-aligned -->
+    <div class="cs-section cs-section--cont">
+      <div class="cs-main">
+        <p style="margin-top: 28px;">The findings shifted what the league decided to prioritize going into the next planning cycle and was enthusiastically received by all 30 teams. Notably, the NY Yankees, a notably self-sufficient and independent club, were first to volunteer to partner on solution development.</p>
+        <p>This created three big opportunities for the League:</p>
+        <ul class="opp-list">
+          <li>Reimagine phygital touchpoints to minimize F&amp;B's intrusion on the fans&apos; engagement with the game and their party (e.g., Simplified and Refactored Stands &amp; POS, Focused vs Exploring Service Experiences, Traffic Management, Smart Nudging)</li>
+          <li>Personalize food discovery by making it easy to find F&amp;B options that will make the day feel special (e.g., Context- &amp; Intent-Aware Products, Humanized &amp; Timely Information, Intelligent Guidance)</li>
+          <li>Simplify group dining by making managing F&amp;B so simple that group organizers can enjoy the game instead of playing 'butler' (e.g., Synced Fan Accounts, Group Purchase Features, Services Specifically for Kids, Meaningful Preferences Beyond Loyalty)</li>
+        </ul>
+
+        <p style="margin-top: 28px;">The findings shifted what the league decided to prioritize going into the next planning cycle and was enthusiastically received by all 30 teams. Notably, the NY Yankees, an especially self-sufficient and independent club, were first to volunteer to partner on solution development.</p>
+      </div>
+
+        <div class="cs-aside">
+        <figure class="cs-figure">
+          <img src="images/MLB-Design-Principle-Find.png" alt="Plan: Let's just do the planning for them">
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/MLB-Design-Principle-Help.png" alt="Help: Let's step in and give Mom and Dad a break.">
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/MLB-Design-Principle-Plan.png" alt="Plan: Let's just do the planning for them.">
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/MLB-Design-Principle-Respond.png" alt="Respond: Instead of making them respond to us, why don't we respond to them?">
+        </figure>
+      </div>
+    </div>
+
+    <!-- OUTCOMES — pillar columns -->
+    <div class="cs-section cs-section--no-aside">
+      <div class="cs-main">
+        <span class="cs-section-label">Outcomes</span>
+        <div class="cs-outcomes-cols">
+          <div class="cs-outcome-col">
+            <p>22 actionable insights incorporated into the long-range vision for fan experience now driving 2026+ planning across the league</p>
+          </div>
+          <div class="cs-outcome-col">
+            <p>Of 13 strategic recommendations developed, three were adopted as foundational initiatives to launch on opening day</p>
+          </div>
+          <div class="cs-outcome-col">
+            <p>Ethnographic Research standardized as governance-level input to the league's planning process as a result of these findings being presented to league executives and at industry conferences</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="cs-nav">
@@ -372,7 +474,7 @@
   </div>
 </div>
 
-<hr class="rule" />
+<hr style="border: none; border-top: 1px solid rgba(196,250,250,0.15);" />
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
@@ -382,7 +484,7 @@
       <h2>If you're working on something hard, it's worth a conversation.</h2>
       <p>If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
       <div class="contact-links">
-        <a href="mailto:matthewabate@me.com" class="btn-primary">Get in touch</a>
+        <a href="mailto:matthewabate@me.com" class="btn-primary"><span class="material-symbols-outlined">mail</span>Email me</a>
         <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">Calendly</a>
         <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn</a>
       </div>
