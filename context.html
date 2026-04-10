@@ -23,28 +23,28 @@
       --color-cyan-15: rgba(196, 250, 250, 0.15);
       --color-white-10: rgba(255, 255, 255, 0.1);
 
-      /* Font Sizes */
-      --fs-12: 12px;
-      --fs-16: 16px;
-      --fs-18: 18px;
-      --fs-20: 20px;
-      --fs-24: 24px;
-      --fs-30: 30px;
-      --fs-32: 32px;
-      --fs-80: 80px;
+      /* Font Sizes — rem relative to html font-size (24px = 1rem at desktop) */
+      --fs-12: clamp(11px, 0.5rem, 12px);
+      --fs-16: 0.667rem;
+      --fs-18: 0.75rem;
+      --fs-20: 0.833rem;
+      --fs-24: 1rem;
+      --fs-30: 1.25rem;
+      --fs-32: 1.333rem;
+      --fs-80: 3.333rem;
 
-      /* Line Heights */
-      --lh-16: 16px;
-      --lh-20: 20px;
-      --lh-21: 21px;
-      --lh-21-45: 21.45px;
-      --lh-29-7: 29.7px;
-      --lh-32: 32px;
-      --lh-32-4: 32.4px;
-      --lh-36: 36px;
-      --lh-42: 42px;
-      --lh-72: 72px;
-      --lh-19-8: 19.8px;
+      /* Line Heights — rem, proportional to font sizes */
+      --lh-16: 0.667rem;
+      --lh-20: 0.833rem;
+      --lh-21: 0.875rem;
+      --lh-21-45: 0.894rem;
+      --lh-29-7: 1.238rem;
+      --lh-32: 1.333rem;
+      --lh-32-4: 1.35rem;
+      --lh-36: 1.5rem;
+      --lh-42: 1.75rem;
+      --lh-72: 3rem;
+      --lh-19-8: 0.825rem;
 
       /* Spacing */
       --sp-8: 8px;
@@ -71,7 +71,7 @@
       padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 24px; }
 
     body {
       background: var(--color-white);
@@ -95,13 +95,17 @@
        NAV
     ============================================= */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       background: var(--color-black);
       border-top: 1px solid var(--color-pine-12);
       padding: 1px var(--page-padding) 0;
     }
+
+    main { padding-top: 60px; }
 
     .nav__inner {
       display: flex;
@@ -120,6 +124,7 @@
       line-height: var(--lh-29-7);
       color: var(--color-white);
       white-space: nowrap;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -143,6 +148,7 @@
       letter-spacing: 0.24px;
       text-transform: uppercase;
       color: var(--color-cyan);
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -161,7 +167,6 @@
     .nav__cta-icon {
       width: 20px;
       height: 24px;
-      transform: scaleY(-1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -819,13 +824,19 @@
     }
 
     /* =============================================
+       RESPONSIVE — LAPTOP (max-width: 1440px)
+    ============================================= */
+    @media (max-width: 1440px) {
+      html { font-size: 20px; }
+    }
+
+    /* =============================================
        RESPONSIVE — TABLET (max-width: 1024px)
     ============================================= */
     @media (max-width: 1024px) {
+      html { font-size: 18px; }
       :root {
         --page-padding: 40px;
-        --fs-80: 56px;
-        --lh-72: 56px;
       }
 
       .nav__links { display: none; }
@@ -864,25 +875,15 @@
         flex-direction: column;
       }
 
-      .contact__h2 {
-        font-size: 48px;
-        line-height: 52px;
-      }
     }
 
     /* =============================================
        RESPONSIVE — MOBILE (max-width: 768px)
     ============================================= */
     @media (max-width: 768px) {
+      html { font-size: 16px; }
       :root {
         --page-padding: 20px;
-        --fs-80: 38px;
-        --lh-72: 42px;
-        --fs-30: 22px;
-        --lh-42: 30px;
-        --fs-24: 18px;
-        --lh-36: 28px;
-        --fs-32: 24px;
         --sp-64: 40px;
         --sp-88: 48px;
         --sp-104: 56px;
@@ -894,6 +895,10 @@
 
       .nav__logo {
         font-size: 14px;
+      }
+
+      .nav-name-suffix {
+        display: none;
       }
 
       .cs-header__h1 {
@@ -918,10 +923,6 @@
         flex-direction: column;
       }
 
-      .contact__h2 {
-        font-size: 34px;
-        line-height: 38px;
-      }
 
       .contact__links {
         flex-direction: column;
@@ -933,6 +934,9 @@
         gap: 8px;
       }
     }
+    @media (max-width: 375px) {
+      html { font-size: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -941,16 +945,16 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav__inner">
-        <a href="index.html" class="nav-name">Matthew Abate<span class="nav-name-suffix"> • Experience Design</span></a>
+        <a href="index.html" class="nav__logo">Matthew Abate<span class="nav-name-suffix"> • Experience Design</span></a>
 
         <div class="nav__right">
           <!-- Desktop nav links -->
           <div class="nav__links" aria-label="Site links">
-            <span class="nav__link">Expertise</span>
-            <span class="nav__link">Approach</span>
-            <span class="nav__link">Work</span>
-            <span class="nav__link">About</span>
-            <span class="nav__link">Contact</span>
+            <a href="index.html#what" class="nav__link">Expertise</a>
+            <a href="index.html#how" class="nav__link">Approach</a>
+            <a href="index.html#work" class="nav__link">Work</a>
+            <a href="index.html#about" class="nav__link">About</a>
+            <a href="index.html#contact" class="nav__link">Contact</a>
           </div>
 
           <!-- Desktop email CTA -->
@@ -980,1295 +984,11 @@
 
       <!-- Mobile slide-down menu -->
       <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true">
-        <span class="nav__link">Expertise</span>
-        <span class="nav__link">Approach</span>
-        <span class="nav__link">Work</span>
-        <span class="nav__link">About</span>
-        <span class="nav__link">Contact</span>
-        <a href="mailto:matthewabate@me.com" class="nav__mobile-cta">Email</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ============ CASE STUDY HEADER ============ -->
-    <section class="cs-header">
-      <div class="cs-header__container">
-        <h1 class="cs-header__h1">Understanding Contexts &amp; Behaviors in Physical Spaces</h1>
-      </div>
-    </section>
-
-    <!-- ============ CASE STUDY BODY ============ -->
-    <div class="cs-body">
-
-      <!-- TOP SECTIONS -->
-      <div class="cs-top">
-
-        <!-- Why Context Matters -->
-        <div class="cs-section">
-          <h3 class="cs-section__h3">Why Context Matters</h3>
-          <p class="cs-section__p">Many organizations think they understand how people behave in real environments—but assumptions often miss the mark.</p>
-          <p class="cs-section__p">Experiences are designed in isolation, decisions are made without seeing real behavior, and opportunities are overlooked.</p>
-          <p class="cs-section__p">That gap can lead to investments that don't improve experiences or outcomes.</p>
-        </div>
-
-        <!-- What I Do -->
-        <div class="cs-section">
-          <h3 class="cs-section__h3">What I Do</h3>
-          <p class="cs-section__p">I help teams uncover how people actually behave in context so they can make better decisions about services, experiences, and environments.</p>
-          <p class="cs-section__p">The work is hands-on: observing, prototyping, and co-creating with people in real settings to reveal patterns, friction, and opportunities that aren't visible from data alone.</p>
-        </div>
-
-        <!-- Outcomes -->
-        <div class="cs-section">
-          <h3 class="cs-section__h3">Outcomes</h3>
-          <div style="display:flex;flex-direction:column;gap:var(--sp-24);">
-            <p class="cs-section__p">Across environments, the work produces:</p>
-            <ul class="cs-section__ul">
-              <li>Clear understanding of what people actually do</li>
-              <li>Insights that shape priorities and experiments</li>
-              <li>Organizational alignment and focus on high-impact actions</li>
-              <li>Operational improvements and better access to offerings</li>
-            </ul>
-          </div>
-          <p class="cs-section__p">These shifts signal real value: fewer wasted efforts, more effective services, and decisions that actually work in context.</p>
-        </div>
-
-      </div><!-- /cs-top -->
-
-      <!-- DIVIDER -->
-      <div class="cs-hr" role="separator"></div>
-
-      <!-- PROOF / EXAMPLES -->
-      <div class="cs-proof">
-
-        <p class="cs-proof__label">Examples</p>
-
-        <!-- ---- EXAMPLE BIG: MLB ---- -->
-        <div class="cs-example-big">
-
-          <!-- Project title with logo -->
-          <div class="cs-project-title">
-            <div class="cs-project-title__logo">
-              <img
-                src="https://www.figma.com/api/mcp/asset/4c7f5815-8376-4e91-89b6-01c797cdbda3"
-                alt="Major League Baseball logo"
-                width="140"
-                height="84"
-                style="object-fit:contain;"
-              />
-            </div>
-            <h3 class="cs-project-title__h3">MLB Stadium Fan Experience</h3>
-          </div>
-
-          <!-- Overview: left + right columns -->
-          <div class="cs-overview">
-
-            <!-- Left column -->
-            <div class="cs-overview__left">
-
-              <div class="cs-sub-section">
-                <h4 class="cs-sub-section__h4">The Problem</h4>
-                <p class="cs-sub-section__p">Major League Baseball's in‑venue product team needed to understand why people spend money the way they do at ballparks. The prevailing assumption was that food &amp; beverage (F&amp;B) issues — especially line speed — were the main constraint on spending and satisfaction. But the team didn't know if that assumption was true, or what to do if it wasn't.</p>
-              </div>
-
-              <div class="cs-sub-section">
-                <h4 class="cs-sub-section__h4">My Approach</h4>
-                <p class="cs-sub-section__p">After surveying fans across North America, I spent three months in ballparks and other venues.</p>
-                <p class="cs-sub-section__p">I observed fans on the concourse during games, stood in lines with them, used the guides, talked to people mid‑decision, and watched patterns of movement, attention, and choice unfold in real time.</p>
-                <p class="cs-sub-section__p">I asked people what they had planned, compared their responses to what they actually did, and discussed what influenced their decisions.</p>
-              </div>
-
-            </div><!-- /left -->
-
-            <!-- Right column -->
-            <div class="cs-overview__right">
-
-              <div class="cs-meta">
-                <div class="cs-meta__item">
-                  <span class="cs-meta__label">Sector</span>
-                  <span class="cs-meta__value">Sports &amp; Entertainment</span>
-                </div>
-                <div class="cs-meta__item">
-                  <span class="cs-meta__label">Focus</span>
-                  <span class="cs-meta__value">Venue Experience</span>
-                  <span class="cs-meta__value">Commerce</span>
-                </div>
-                <div class="cs-meta__item">
-                  <span class="cs-meta__label">Timing</span>
-                  <span class="cs-meta__value">9 Months • 2025</span>
-                </div>
-              </div>
-
-              <div class="cs-methods">
-                <p class="cs-methods__label">Methodologies</p>
-                <ul class="cs-methods__list">
-                  <li class="cs-methods__item">Design Thinking</li>
-                  <li class="cs-methods__item">Ethnographic Field Research</li>
-                  <li class="cs-methods__item">Direct &amp; Indirect Observation</li>
-                  <li class="cs-methods__item">Opportunity Gap Surveys</li>
-                  <li class="cs-methods__item">Anchored Max-Dif Surveys</li>
-                  <li class="cs-methods__item">Intercept Interviews</li>
-                  <li class="cs-methods__item">In-Depth Interviews</li>
-                  <li class="cs-methods__item">Jobs to Be Done</li>
-                  <li class="cs-methods__item">Journey Mapping</li>
-                  <li class="cs-methods__item">Behavioral Segmentation</li>
-                  <li class="cs-methods__item">Co-Creation Workshops</li>
-                  <li class="cs-methods__item">Insights Development</li>
-                  <li class="cs-methods__item">Research Synthesis</li>
-                </ul>
-              </div>
-
-            </div><!-- /right -->
-
-          </div><!-- /overview -->
-
-          <!-- Key Insights -->
-          <div class="cs-insights">
-            <h4 class="cs-insights__h4">Key Insights</h4>
-            <div class="cs-insights__list">
-              <p class="cs-insights__item">Fans weren't buying more because they feared missing key moments in the game.</p>
-              <p class="cs-insights__item">Spending was suppressed not by line speed, but by cognitive load, social flow, and attention limits.</p>
-            </div>
-          </div>
-
-          <!-- What we uncovered -->
-          <div class="cs-sub-section">
-            <h4 class="cs-sub-section__h4">What we uncovered</h4>
-            <p class="cs-sub-section__p">Far from being about speed alone, fan behavior in the concourse was driven by cognitive load, attention dynamics, and the emotional cost of missing moments. Fans moved between modes: <span class="lora-semibold-italic">Focused</span> <span class="lora-italic">(has a clear plan or decision in mind)</span>, and <span class="lora-semibold-italic">Exploring</span> <span class="lora-italic">(open to options but uncertain of value or timing)</span>.</p>
-            <p class="cs-sub-section__p">These modes shifted depending on context (e.g., who they were with, where they were in the game, and what they feared losing by leaving action. The big insight was that the fear of missing a moment in the game (or interrupting social flow) suppressed purchasing behavior far more than the mere length of a line.</p>
-          </div>
-
-          <!-- 3-column grid -->
-          <div class="cs-grid">
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Why this matters for decisions</p>
-              <p class="cs-grid__col-p">This reframes the design challenge. Instead of optimizing lines for speed, teams need to give fans confidence, autonomy, and clarity in how they find and choose food and services. That means adjusting signage, information, service formats, and group dynamics — and it creates a very different investment and technology strategy.</p>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Strategic outcomes</p>
-              <ul class="cs-grid__col-ul">
-                <li>22 actionable insights were incorporated into long‑range planning that now drives 2026+ experience strategy for the league.</li>
-                <li>Three strategic recommendations were adopted as foundational initiatives for opening day planning.</li>
-                <li>Ethnographic research was formalized as governance‑level input across all 30 MLB teams' planning processes.</li>
-              </ul>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">What changed in thinking</p>
-              <p class="cs-grid__col-p">Before the work, leaders believed that faster flow = more sales. After seeing behavior in context, they understood that information gaps, timing concerns, group dynamics, and social fear of missing out influence choices far more than line speed alone. That insight directly shaped what gets prioritized — and how teams think about designing service experiences in physical environments.</p>
-            </div>
-          </div>
-
-        </div><!-- /example-big MLB -->
-
-        <!-- ---- EXAMPLE: Hospital ---- -->
-        <div class="cs-example">
-          <div class="cs-example__title-row">
-            <h3 class="cs-example__h3">Hospital Surgical Instrument Reprocessing</h3>
-          </div>
-
-          <div class="cs-grid">
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-p"><strong>Before:</strong> High turnover and errors in the surgical instrument sterilization department traced back to the environment and workflows: hot, humid rooms; slow, hazardous inventory checks; unclear accountability; and inefficient shelving.</p>
-              <p class="cs-grid__col-p"><strong>After:</strong> Lorem</p>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Interventions:</p>
-              <ul class="cs-grid__col-ul">
-                <li>Replaced shelves with racks that used precise scales to flag discrepancies</li>
-                <li>Introduced instrument trays that indicate if they've been opened</li>
-                <li>Deployed computer vision to preliminarily inventory trays as they left the operating room</li>
-                <li>Adjusted nurse-staff interactions and protocols to reduce stress and errors</li>
-              </ul>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Impact:</p>
-              <ul class="cs-grid__col-ul">
-                <li>Staff could track and manage instruments safely and efficiently</li>
-                <li>Operational waste decreased, and inventory accuracy improved</li>
-                <li>Teams were aligned around practical, behavior-informed changes</li>
-              </ul>
-            </div>
-          </div>
-        </div><!-- /example hospital -->
-
-        <!-- ---- EXAMPLE: Family Planning ---- -->
-        <div class="cs-example">
-          <div class="cs-example__title-row">
-            <h3 class="cs-example__h3">Family Planning Service in India</h3>
-          </div>
-
-          <div class="cs-grid">
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-p"><strong>Before:</strong> Women lacked agency to access prenatal care because household power dynamics restricted their autonomy.</p>
-              <p class="cs-grid__col-p" style="margin-top:12px;"><strong>Approach</strong></p>
-              <ul class="cs-grid__col-ul" style="margin-top:8px;">
-                <li>Conducted field research with local facilitators while the research team dialed in from NYC.</li>
-                <li>Interviewed 20 women (first-time and experienced mothers) about family dynamics, frustrations, knowledge gaps, and care practices.</li>
-                <li>Observed how household sharing of childcare supplies influenced opportunities for intervention.</li>
-              </ul>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Key Insights</p>
-              <ul class="cs-grid__col-ul">
-                <li>Household power dynamics shape access to healthcare more than individual awareness.</li>
-                <li>Decision control matters: The mother-in-law held primary influence over household health decisions, limiting the woman's autonomy.</li>
-                <li>Interventions must account for decision-makers beyond the direct user.</li>
-                <li>Women lacked direct access to timely health information and services.</li>
-                <li>Common supply-sharing practices reveal potential points to introduce supportive products or services.</li>
-                <li>Interventions succeed when they respect household hierarchies while empowering the end-user.</li>
-              </ul>
-            </div>
-            <div class="cs-grid__col">
-              <p class="cs-grid__col-heading">Experiments</p>
-              <p class="cs-grid__col-p">Insights informed experimental service concepts, framing, and potential product touch points (exploratory work, not final results).</p>
-              <ul class="cs-grid__col-ul" style="margin-top:12px;">
-                <li>Tested low-tech interventions via SMS to women's phones to deliver health guidance while respecting household norms.</li>
-                <li>Ran in-person counseling sessions involving the woman, her husband, and mother-in-law to explore how framing information differently influences household decisions.</li>
-              </ul>
-            </div>
-          </div>
-        </div><!-- /example family planning -->
-
-      </div><!-- /cs-proof -->
-
-      <!-- DIVIDER -->
-      <div class="cs-hr" role="separator"></div>
-
-      <!-- BOTTOM: Related work links -->
-      <div class="cs-bottom">
-        <div class="cs-bottom__section">
-          <h3 class="cs-h3"><a href="strategy.html">Strategies &amp; Experiences for Human Problems</a></h3>
-          <p class="cs-bottom__p">Designing services and environments that respond to real human needs</p>
-        </div>
-        <div class="cs-bottom__section">
-          <h3 class="cs-h3"><a href="prototyping.html">Rapid Prototyping to Learn &amp; Prove Value</a></h3>
-          <p class="cs-bottom__p">Designing services and environments that respond to real human needs</p>
-        </div>
-      </div>
-
-    </div><!-- /cs-body -->
-
-    <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact">
-      <div class="contact__container">
-        <p class="contact__label">Contact</p>
-        <div class="contact__grid">
-          <h2 class="contact__h2">If you're working on something dificult, let's talk!</h2>
-          <div class="contact__content">
-            <p class="contact__p">If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
-            <div class="contact__links">
-              <a href="mailto:matthewabate@me.com" class="contact__btn-filled">Email</a>
-              <a href="https://calendly.com/matthewabate/intro-meeting" class="contact__btn-outline" target="_blank" rel="noopener noreferrer">Calendly</a>
-              <a href="https://www.linkedin.com/in/matthewabate/" class="contact__btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-            <p class="contact__location">Open to consulting or <span style="color:var(--color-white);">full-time</span> roles · New York Metro Area &amp; Remote</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <span class="footer__text">© 2026 Matthew Abate</span>
-      <span class="footer__text">Experience Strategy &amp; Service Design</span>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const btn = document.getElementById('hamburger-btn');
-      const menu = document.getElementById('mobile-menu');
-
-      if (!btn || !menu) return;
-
-      btn.addEventListener('click', function () {
-        const isOpen = menu.classList.contains('is-open');
-
-        if (isOpen) {
-          menu.classList.remove('is-open');
-          btn.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-          menu.setAttribute('aria-hidden', 'true');
-        } else {
-          menu.classList.add('is-open');
-          btn.classList.add('is-open');
-          btn.setAttribute('aria-expanded', 'true');
-          menu.setAttribute('aria-hidden', 'false');
-        }
-      });
-
-      // Close menu on outside click
-      document.addEventListener('click', function (e) {
-        if (!btn.contains(e.target) && !menu.contains(e.target)) {
-          menu.classList.remove('is-open');
-          btn.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-          menu.setAttribute('aria-hidden', 'true');
-        }
-      });
-    })();
-  </script>
-
-</body>
-</html>
-      --lh-16: 16px;
-      --lh-20: 20px;
-      --lh-21: 21px;
-      --lh-21-45: 21.45px;
-      --lh-29-7: 29.7px;
-      --lh-32: 32px;
-      --lh-32-4: 32.4px;
-      --lh-36: 36px;
-      --lh-42: 42px;
-      --lh-72: 72px;
-      --lh-19-8: 19.8px;
-
-      /* Spacing */
-      --sp-8: 8px;
-      --sp-12: 12px;
-      --sp-16: 16px;
-      --sp-24: 24px;
-      --sp-32: 32px;
-      --sp-56: 56px;
-      --sp-64: 64px;
-      --sp-88: 88px;
-      --sp-104: 104px;
-
-      /* Container */
-      --container-max: 1040px;
-      --page-padding: 0px;
-    }
-
-    /* =============================================
-       RESET & BASE
-    ============================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--color-white);
-      color: var(--color-grey-7);
-      font-family: 'Outfit', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      min-width: 320px;
-    }
-
-    a {
-      color: var(--color-black);
-      text-decoration: underline;
-      text-decoration-color: var(--color-cyan);
-      text-decoration-style: solid;
-    }
-    
-    ul { list-style: none; }
-    img { display: block; max-width: 100%; }
-
-    /* =============================================
-       NAV
-    ============================================= */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--color-black);
-      border-top: 1px solid var(--color-pine-12);
-      padding: 1px var(--page-padding) 0;
-    }
-
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .nav__logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: var(--fs-18);
-      line-height: var(--lh-29-7);
-      color: var(--color-white);
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .nav__right {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-32);
-    }
-
-    .nav__links {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-32);
-    }
-
-    .nav__link {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900;
-      font-size: var(--fs-12);
-      line-height: var(--lh-21-45);
-      letter-spacing: 0.24px;
-      text-transform: uppercase;
-      color: var(--color-cyan);
-      cursor: pointer;
-    }
-
-    .nav__cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-cyan);
-      border-radius: 999px;
-      padding: 7px 9px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    /* Mail icon via SVG inline */
-    .nav__cta-icon {
-      width: 20px;
-      height: 24px;
-      transform: scaleY(-1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav__cta-icon svg {
-      width: 20px;
-      height: 24px;
-      fill: var(--color-black);
-    }
-
-    /* Hamburger */
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px;
-      height: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      flex-shrink: 0;
-    }
-
-    .nav__hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--color-white);
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .nav__hamburger.is-open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .nav__hamburger.is-open span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav__hamburger.is-open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Mobile nav menu */
-    .nav__mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 0;
-      background: var(--color-black);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.35s ease;
-    }
-
-    .nav__mobile-menu.is-open {
-      max-height: 400px;
-    }
-
-    .nav__mobile-menu a,
-    .nav__mobile-menu span {
-      display: block;
-      padding: 14px 0;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900;
-      font-size: var(--fs-12);
-      letter-spacing: 0.24px;
-      text-transform: uppercase;
-      color: var(--color-cyan);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      cursor: pointer;
-    }
-
-    .nav__mobile-menu .nav__mobile-cta {
-      display: inline-block;
-      background: var(--color-cyan);
-      color: var(--color-black);
-      border-radius: 999px;
-      padding: 10px 24px;
-      margin-top: 16px;
-      margin-bottom: 20px;
-      font-size: var(--fs-18);
-      font-weight: 700;
-      letter-spacing: 0.54px;
-      text-transform: none;
-      border-bottom: none;
-      width: auto;
-    }
-
-    /* =============================================
-       CASE STUDY HEADER
-    ============================================= */
-    .cs-header {
-      background: var(--color-white);
-      padding: 56px var(--page-padding) 64px;
-    }
-
-    .cs-header__container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-    }
-
-    .cs-header__h1 {
-      font-family: 'Sansita Swashed', cursive;
-      font-weight: 800;
-      font-size: var(--fs-80);
-      line-height: var(--lh-72);
-      color: var(--color-black);
-      padding-bottom: var(--sp-32);
-    }
-
-    .cs-h3 {
-      font-family: 'Sansita', sans-serif;
-      font-weight: 900;
-      font-style: normal;
-      font-size: var(--fs-30);
-      line-height: var(--lh-42);
-      letter-spacing: 0.9px;
-      color: var(--color-black);
-    }
-
-    /* =============================================
-       CASE STUDY BODY
-    ============================================= */
-    .cs-body {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      background: var(--color-white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--sp-64);
-      padding: 0 var(--page-padding);
-    }
-
-    /* =============================================
-       SECTIONS (Top)
-    ============================================= */
-    .cs-top {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-64);
-      width: 100%;
-    }
-
-    .cs-section {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-      width: 100%;
-    }
-
-    .cs-section__h3 {
-      font-family: 'Sansita', sans-serif;
-      font-weight: 900;
-      font-style: normal;
-      font-size: var(--fs-30);
-      line-height: var(--lh-42);
-      letter-spacing: 0.9px;
-      color: var(--color-black);
-    }
-
-    .cs-section__p {
-      font-family: 'Lora', serif;
-      font-weight: 300;
-      font-size: var(--fs-24);
-      line-height: var(--lh-36);
-      color: var(--color-grey-7);
-    }
-
-    .cs-section__ul {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-12);
-      padding-left: 27px;
-    }
-
-    .cs-section__ul li {
-      list-style: disc;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: var(--fs-18);
-      line-height: var(--lh-32-4);
-      color: var(--color-grey-7);
-    }
-
-    /* =============================================
-       DIVIDER (hr)
-    ============================================= */
-    .cs-hr {
-      background: var(--color-black);
-      height: 12px;
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    /* =============================================
-       PROOF / EXAMPLES
-    ============================================= */
-    .cs-proof {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-32);
-      width: 100%;
-    }
-
-    .cs-proof__label {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-style: italic;
-      font-size: var(--fs-18);
-      line-height: var(--lh-20);
-      text-transform: uppercase;
-      color: var(--color-black);
-      text-align: center;
-    }
-
-    /* Example Big */
-    .cs-example-big {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-64);
-      width: 100%;
-    }
-
-    /* Project Title Row */
-    .cs-project-title {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-32);
-      border-top: 1px solid var(--color-black);
-      padding-top: var(--sp-32);
-    }
-
-    .cs-project-title__logo {
-      flex-shrink: 0;
-    }
-
-    .cs-project-title__logo img {
-      width: 140px;
-      height: 84px;
-      object-fit: contain;
-    }
-
-    .cs-project-title__h3 {
-      font-family: 'Sansita', sans-serif;
-      font-weight: 900;
-      font-style: normal;
-      font-size: var(--fs-30);
-      line-height: var(--lh-42);
-      letter-spacing: 0.9px;
-      color: var(--color-black);
-    }
-
-    /* Overview: Left + Right */
-    .cs-overview {
-      display: flex;
-      gap: var(--sp-64);
-      align-items: flex-start;
-    }
-
-    .cs-overview__left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-64);
-    }
-
-    .cs-overview__right {
-      width: 325px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-64);
-    }
-
-    /* Sub-section */
-    .cs-sub-section {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-    }
-
-    .cs-sub-section__h4 {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-style: italic;
-      font-size: var(--fs-18);
-      line-height: var(--lh-20);
-      text-transform: uppercase;
-      color: var(--color-black);
-    }
-
-    .cs-sub-section__p {
-      font-family: 'Lora', serif;
-      font-weight: 300;
-      font-size: var(--fs-24);
-      line-height: var(--lh-36);
-      color: var(--color-grey-7);
-    }
-
-    /* Meta sidebar */
-    .cs-meta {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-    }
-
-    .cs-meta__item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .cs-meta__label {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-size: var(--fs-18);
-      line-height: var(--lh-16);
-      text-transform: uppercase;
-      color: var(--color-rose);
-      white-space: nowrap;
-    }
-
-    .cs-meta__value {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 400;
-      font-size: var(--fs-16);
-      line-height: 21px;
-      text-transform: uppercase;
-      color: var(--color-black);
-      white-space: nowrap;
-    }
-
-    /* Methods strip */
-    .cs-methods {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-    }
-
-    .cs-methods__label {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-size: var(--fs-18);
-      line-height: var(--lh-16);
-      text-transform: uppercase;
-      color: var(--color-rose);
-    }
-
-    .cs-methods__list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .cs-methods__item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 400;
-      font-size: var(--fs-16);
-      line-height: 21px;
-      color: var(--color-black);
-    }
-
-    .cs-methods__item::before {
-      content: '–';
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    /* Key Insights block */
-    .cs-insights {
-      border-top: 1px dashed var(--color-black);
-      border-bottom: 1px dashed var(--color-black);
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-      padding: var(--sp-32) 0 var(--sp-64);
-      width: 100%;
-    }
-
-    .cs-insights__h4 {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-style: italic;
-      font-size: var(--fs-18);
-      line-height: var(--lh-20);
-      text-transform: uppercase;
-      color: var(--color-black);
-      text-align: center;
-    }
-
-    .cs-insights__list {
-      display: flex;
-      gap: var(--sp-24);
-    }
-
-    .cs-insights__item {
-      flex: 1;
-      font-family: 'Sansita', sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      font-size: var(--fs-32);
-      line-height: var(--lh-36);
-      color: var(--color-rose);
-    }
-
-    /* Grid columns (3-up) */
-    .cs-grid {
-      display: flex;
-      gap: var(--sp-32);
-      width: 100%;
-    }
-
-    .cs-grid__col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-12);
-    }
-
-    .cs-grid__col-heading {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: var(--fs-18);
-      line-height: var(--lh-32-4);
-      color: var(--color-grey-7);
-    }
-
-    .cs-grid__col-p {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: var(--fs-18);
-      line-height: var(--lh-32-4);
-      color: var(--color-grey-7);
-    }
-
-    .cs-grid__col-ul {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-12);
-      padding-left: 27px;
-    }
-
-    .cs-grid__col-ul li {
-      list-style: disc;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: var(--fs-18);
-      line-height: var(--lh-32-4);
-      color: var(--color-grey-7);
-    }
-
-    /* Example simple (div.example) */
-    .cs-example {
-      border-top: 1px solid var(--color-black);
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-32);
-      width: 100%;
-    }
-
-    .cs-example__title-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: var(--sp-32);
-    }
-
-    .cs-example__h3 {
-      font-family: 'Sansita', sans-serif;
-      font-weight: 900;
-      font-style: normal;
-      font-size: var(--fs-30);
-      line-height: var(--lh-42);
-      letter-spacing: 0.9px;
-      color: var(--color-black);
-    }
-
-    /* Bottom section */
-    .cs-bottom {
-      display: flex;
-      gap: var(--sp-32);
-      padding-bottom: var(--sp-64);
-      width: 100%;
-    }
-
-    .cs-bottom__section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-    }
-
-    .cs-bottom__p {
-      font-family: 'Lora', serif;
-      font-weight: 300;
-      font-size: var(--fs-24);
-      line-height: var(--lh-36);
-      color: var(--color-grey-7);
-    }
-
-    /* =============================================
-       CONTACT SECTION
-    ============================================= */
-    .contact {
-      background: var(--color-black);
-      padding: var(--sp-88) var(--page-padding) var(--sp-104);
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .contact__container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact__label {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900;
-      font-size: var(--fs-12);
-      line-height: var(--lh-19-8);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--color-rose);
-      margin-bottom: 0;
-    }
-
-    .contact__grid {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-    }
-
-    .contact__h2 {
-      font-family: 'Sansita Swashed', cursive;
-      font-weight: 800;
-      font-size: var(--fs-80);
-      line-height: var(--lh-72);
-      color: var(--color-white);
-    }
-
-    .contact__content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-24);
-      max-width: 640px;
-    }
-
-    .contact__p {
-      font-family: 'Lora', serif;
-      font-weight: 200;
-      font-size: var(--fs-20);
-      line-height: var(--lh-32);
-      color: var(--color-white);
-    }
-
-    .contact__links {
-      display: flex;
-      gap: var(--sp-24);
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .contact__btn-filled {
-      display: flex;
-      align-items: center;
-      height: 52px;
-      padding: 8px 24px;
-      background: var(--color-cyan);
-      border-radius: 999px;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: var(--fs-18);
-      line-height: var(--lh-29-7);
-      letter-spacing: 0.54px;
-      color: var(--color-black);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .contact__btn-outline {
-      display: flex;
-      align-items: center;
-      height: 52px;
-      padding: 10px 26px;
-      border: 2px solid var(--color-cyan);
-      border-radius: 999px;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: var(--fs-18);
-      line-height: var(--lh-29-7);
-      letter-spacing: 0.54px;
-      color: var(--color-cyan);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .contact__location {
-      font-family: 'Lora', serif;
-      font-weight: 200;
-      font-size: var(--fs-20);
-      line-height: var(--lh-32);
-      color: var(--color-white);
-    }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    .footer {
-      background: var(--color-black);
-      border-top: 1px solid var(--color-cyan-15);
-      padding: 25px var(--page-padding) 24px;
-    }
-
-    .footer__inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer__text {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: var(--fs-12);
-      line-height: var(--lh-19-8);
-      letter-spacing: 0.36px;
-      text-transform: uppercase;
-      color: var(--color-white);
-      white-space: nowrap;
-    }
-
-    /* =============================================
-       LORA ITALIC SPANS
-    ============================================= */
-    .lora-semibold-italic {
-      font-family: 'Lora', serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .lora-italic {
-      font-family: 'Lora', serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    /* =============================================
-       RESPONSIVE — TABLET (max-width: 1024px)
-    ============================================= */
-    @media (max-width: 1024px) {
-      :root {
-        --page-padding: 40px;
-        --fs-80: 56px;
-        --lh-72: 56px;
-      }
-
-      .nav__links { display: none; }
-      .nav__cta { display: none; }
-      .nav__hamburger { display: flex; }
-      .nav__mobile-menu { display: flex; }
-
-      .cs-overview {
-        flex-direction: column;
-        gap: var(--sp-32);
-      }
-
-      .cs-overview__right {
-        width: 100%;
-      }
-
-      .cs-meta {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--sp-24) var(--sp-32);
-      }
-
-      .cs-insights__list {
-        flex-direction: column;
-      }
-
-      .cs-grid {
-        flex-wrap: wrap;
-      }
-
-      .cs-grid__col {
-        min-width: calc(50% - var(--sp-32));
-      }
-
-      .cs-bottom {
-        flex-direction: column;
-      }
-
-      .contact__h2 {
-        font-size: 48px;
-        line-height: 52px;
-      }
-    }
-
-    /* =============================================
-       RESPONSIVE — MOBILE (max-width: 768px)
-    ============================================= */
-    @media (max-width: 768px) {
-      :root {
-        --page-padding: 20px;
-        --fs-80: 38px;
-        --lh-72: 42px;
-        --fs-30: 22px;
-        --lh-42: 30px;
-        --fs-24: 18px;
-        --lh-36: 28px;
-        --fs-32: 24px;
-        --sp-64: 40px;
-        --sp-88: 48px;
-        --sp-104: 56px;
-      }
-
-      .nav__inner {
-        max-width: 100%;
-      }
-
-      .nav__logo {
-        font-size: 14px;
-      }
-
-      .cs-header__h1 {
-        font-size: var(--fs-80);
-        line-height: var(--lh-72);
-      }
-
-      .cs-project-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .cs-grid {
-        flex-direction: column;
-      }
-
-      .cs-grid__col {
-        min-width: 100%;
-      }
-
-      .cs-insights__list {
-        flex-direction: column;
-      }
-
-      .contact__h2 {
-        font-size: 34px;
-        line-height: 38px;
-      }
-
-      .contact__links {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer__inner {
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ============ NAV ============ -->
-  <header>
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-      <div class="nav__inner">
-        <a href="#" class="nav__logo" aria-label="Matthew Abate — Experience Design home">
-          Matthew Abate • Experience Design
-        </a>
-
-        <div class="nav__right">
-          <!-- Desktop nav links -->
-          <div class="nav__links" aria-label="Site links">
-            <span class="nav__link">Expertise</span>
-            <span class="nav__link">Approach</span>
-            <span class="nav__link">Work</span>
-            <span class="nav__link">About</span>
-            <span class="nav__link">Contact</span>
-          </div>
-
-          <!-- Desktop email CTA -->
-          <a href="mailto:matthewabate@me.com" class="nav__cta" aria-label="Email Matthew Abate">
-            <span class="nav__cta-icon">
-              <!-- Reply/email icon -->
-              <svg viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M2 6C2 4.9 2.9 4 4 4h12c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6zm2 0l6 4.5L16 6H4zm0 2v7h12V8l-6 4.5L4 8z"/>
-              </svg>
-            </span>
-          </a>
-
-          <!-- Hamburger button (tablet/mobile) -->
-          <button
-            class="nav__hamburger"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-            aria-label="Toggle navigation menu"
-            id="hamburger-btn"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile slide-down menu -->
-      <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true">
-        <span class="nav__link">Expertise</span>
-        <span class="nav__link">Approach</span>
-        <span class="nav__link">Work</span>
-        <span class="nav__link">About</span>
-        <span class="nav__link">Contact</span>
+        <a href="index.html#what" class="nav__link">Expertise</a>
+        <a href="index.html#how" class="nav__link">Approach</a>
+        <a href="index.html#work" class="nav__link">Work</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
         <a href="mailto:matthewabate@me.com" class="nav__mobile-cta">Email</a>
       </div>
     </nav>
