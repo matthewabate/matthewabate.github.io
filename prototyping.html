@@ -23,28 +23,28 @@
       --color-cyan-15: rgba(196, 250, 250, 0.15);
       --color-white-10: rgba(255, 255, 255, 0.1);
 
-      /* Font Sizes */
-      --fs-12: 12px;
-      --fs-16: 16px;
-      --fs-18: 18px;
-      --fs-20: 20px;
-      --fs-24: 24px;
-      --fs-30: 30px;
-      --fs-32: 32px;
-      --fs-80: 80px;
+      /* Font Sizes — rem relative to html font-size (24px = 1rem at desktop) */
+      --fs-12: clamp(11px, 0.5rem, 12px);
+      --fs-16: 0.667rem;
+      --fs-18: 0.75rem;
+      --fs-20: 0.833rem;
+      --fs-24: 1rem;
+      --fs-30: 1.25rem;
+      --fs-32: 1.333rem;
+      --fs-80: 3.333rem;
 
-      /* Line Heights */
-      --lh-16: 16px;
-      --lh-20: 20px;
-      --lh-21: 21px;
-      --lh-21-45: 21.45px;
-      --lh-29-7: 29.7px;
-      --lh-32: 32px;
-      --lh-32-4: 32.4px;
-      --lh-36: 36px;
-      --lh-42: 42px;
-      --lh-72: 72px;
-      --lh-19-8: 19.8px;
+      /* Line Heights — rem, proportional to font sizes */
+      --lh-16: 0.667rem;
+      --lh-20: 0.833rem;
+      --lh-21: 0.875rem;
+      --lh-21-45: 0.894rem;
+      --lh-29-7: 1.238rem;
+      --lh-32: 1.333rem;
+      --lh-32-4: 1.35rem;
+      --lh-36: 1.5rem;
+      --lh-42: 1.75rem;
+      --lh-72: 3rem;
+      --lh-19-8: 0.825rem;
 
       /* Spacing */
       --sp-8: 8px;
@@ -71,7 +71,7 @@
       padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 24px; }
 
     body {
       background: var(--color-white);
@@ -95,13 +95,17 @@
        NAV
     ============================================= */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       background: var(--color-black);
       border-top: 1px solid var(--color-pine-12);
       padding: 1px var(--page-padding) 0;
     }
+
+    main { padding-top: 60px; }
 
     .nav__inner {
       display: flex;
@@ -120,6 +124,7 @@
       line-height: var(--lh-29-7);
       color: var(--color-white);
       white-space: nowrap;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -143,6 +148,7 @@
       letter-spacing: 0.24px;
       text-transform: uppercase;
       color: var(--color-cyan);
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -161,7 +167,6 @@
     .nav__cta-icon {
       width: 20px;
       height: 24px;
-      transform: scaleY(-1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -819,13 +824,19 @@
     }
 
     /* =============================================
+       RESPONSIVE — LAPTOP (max-width: 1440px)
+    ============================================= */
+    @media (max-width: 1440px) {
+      html { font-size: 20px; }
+    }
+
+    /* =============================================
        RESPONSIVE — TABLET (max-width: 1024px)
     ============================================= */
     @media (max-width: 1024px) {
+      html { font-size: 18px; }
       :root {
         --page-padding: 40px;
-        --fs-80: 56px;
-        --lh-72: 56px;
       }
 
       .nav__links { display: none; }
@@ -864,25 +875,15 @@
         flex-direction: column;
       }
 
-      .contact__h2 {
-        font-size: 48px;
-        line-height: 52px;
-      }
     }
 
     /* =============================================
        RESPONSIVE — MOBILE (max-width: 768px)
     ============================================= */
     @media (max-width: 768px) {
+      html { font-size: 16px; }
       :root {
         --page-padding: 20px;
-        --fs-80: 38px;
-        --lh-72: 42px;
-        --fs-30: 22px;
-        --lh-42: 30px;
-        --fs-24: 18px;
-        --lh-36: 28px;
-        --fs-32: 24px;
         --sp-64: 40px;
         --sp-88: 48px;
         --sp-104: 56px;
@@ -894,6 +895,10 @@
 
       .nav__logo {
         font-size: 14px;
+      }
+
+      .nav-name-suffix {
+        display: none;
       }
 
       .cs-header__h1 {
@@ -918,10 +923,6 @@
         flex-direction: column;
       }
 
-      .contact__h2 {
-        font-size: 34px;
-        line-height: 38px;
-      }
 
       .contact__links {
         flex-direction: column;
@@ -933,6 +934,9 @@
         gap: 8px;
       }
     }
+    @media (max-width: 375px) {
+      html { font-size: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -941,16 +945,16 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav__inner">
-        <a href="index.html" class="nav-name">Matthew Abate<span class="nav-name-suffix"> • Experience Design</span></a>
+        <a href="index.html" class="nav__logo">Matthew Abate<span class="nav-name-suffix"> • Experience Design</span></a>
 
         <div class="nav__right">
           <!-- Desktop nav links -->
           <div class="nav__links" aria-label="Site links">
-            <span class="nav__link">Expertise</span>
-            <span class="nav__link">Approach</span>
-            <span class="nav__link">Work</span>
-            <span class="nav__link">About</span>
-            <span class="nav__link">Contact</span>
+            <a href="index.html#what" class="nav__link">Expertise</a>
+            <a href="index.html#how" class="nav__link">Approach</a>
+            <a href="index.html#work" class="nav__link">Work</a>
+            <a href="index.html#about" class="nav__link">About</a>
+            <a href="index.html#contact" class="nav__link">Contact</a>
           </div>
 
           <!-- Desktop email CTA -->
@@ -980,11 +984,11 @@
 
       <!-- Mobile slide-down menu -->
       <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true">
-        <span class="nav__link">Expertise</span>
-        <span class="nav__link">Approach</span>
-        <span class="nav__link">Work</span>
-        <span class="nav__link">About</span>
-        <span class="nav__link">Contact</span>
+        <a href="index.html#what" class="nav__link">Expertise</a>
+        <a href="index.html#how" class="nav__link">Approach</a>
+        <a href="index.html#work" class="nav__link">Work</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
         <a href="mailto:matthewabate@me.com" class="nav__mobile-cta">Email</a>
       </div>
     </nav>
