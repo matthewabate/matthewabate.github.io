@@ -6,8 +6,8 @@
   <title>Matthew Abate — Experience Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_downward_alt,automation,close,mail,menu&display=block" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Sansita+Swashed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_downward_alt,close,mail,menu&display=block" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
@@ -15,41 +15,88 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #000000;
-      --white:   #FFFFFF;
-      --muted:   rgba(255,255,255,0.6);
-      --accent:  #f52093;
-      --accent-2:#00e1e6;
-      --lime:    #c4fa17;
-      --rule:    rgba(196, 250, 250, 0.15);
-      --serif:   'Outfit', system-ui, sans-serif;
+      --black:    #000000;
+      --white:    #FFFFFF;
+      --accent:   #f52093;
+      --accent-2: #00e1e6;
+      --lime:     #c4fa17;
+
+      /* Section divider */
+      --rule:     rgba(255, 255, 255, 1);
+
+      /* Typefaces */
+      --display: 'Sansita Swashed', serif;
+      --serif:   'Sansita', serif;
+      --body:    'Lora', serif;
+      --ui:      'Outfit', sans-serif;
     }
 
-    html { scroll-behavior: auto; }
+    html {
+      scroll-behavior: auto;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
     body {
-      font-family: var(--serif);
+      font-family: var(--ui);
       font-size: 18px;
-      font-weight: 200;
-      line-height: 1.65;
+      font-weight: 400;
+      line-height: 1.6;
       color: var(--white);
       background: var(--black);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
 
-    /* ── UTILITY ── */
-    .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
-    .label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: block;
+    /* ── MATERIAL SYMBOLS ── */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20;
     }
-    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ── LAYOUT UTILITY ── */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── LABEL ── */
+    .label {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .label--black  { color: var(--black); }
+    .label--accent { color: var(--accent); }
+    .label--white  { color: var(--white); }
+    .label--lime   { color: var(--lime); }
+
+    /* ── SECTION RULE ── */
+    .section-rule {
+      display: block;
+      height: 0;
+      border: none;
+      border-top: 3px solid var(--rule);
+      margin: 0;
+    }
 
     /* ── NAV ── */
     nav {
@@ -58,7 +105,7 @@
       right: 0;
       z-index: 101;
       background: var(--black);
-      border-top: 1px solid rgba(4, 37, 4, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
     .nav-inner {
       max-width: 1040px;
@@ -69,9 +116,25 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-name { font-size: 18px; font-weight: 600; color: var(--white); text-decoration: none; }
+    .nav-name {
+      font-family: var(--ui);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-name-suffix { /* hidden on small screens */ }
     .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: var(--accent-2); text-decoration: none; transition: color 0.2s; }
+    .nav-links a {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--white); }
 
     /* ── HAMBURGER ── */
@@ -106,20 +169,20 @@
     }
     .nav-mobile-menu.is-open { display: flex; }
     .nav-mobile-menu .nav-mobile-link {
-      font-size: clamp(60px, 8.25vw, 108px);
+      font-family: var(--ui);
+      font-size: clamp(52px, 8vw, 100px);
       font-weight: 800;
       color: var(--black);
-      text-decoration: underline;
-      text-decoration-color: var(--accent-2);
-      text-decoration-thickness: 4px;
-      text-underline-offset: 8px;
+      text-decoration: none;
       line-height: 1.0;
       transition: opacity 0.2s;
     }
     .nav-mobile-menu .nav-mobile-link:hover { opacity: 0.6; }
 
     /* ── BUTTONS ── */
-    .btn-primary, .btn-secondary {
+    .btn-primary,
+    .btn-secondary {
+      font-family: var(--ui);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -129,230 +192,600 @@
       text-decoration: none;
       border-radius: 999px;
       white-space: nowrap;
+      height: 52px;
     }
-    .btn-primary { background: var(--accent-2); color: var(--black); transition: background 0.2s; }
+    .btn-primary {
+      background: var(--accent-2);
+      color: var(--black);
+      border: none;
+      transition: background 0.2s;
+    }
     .btn-primary:hover { background: var(--white); }
-    .nav-links .btn-primary { color: var(--black); }
-    .nav-links .btn-primary:hover { color: var(--black); }
-    .btn-secondary { background: transparent; color: var(--accent-2); border: 2px solid var(--accent-2); transition: color 0.2s, border-color 0.2s; }
-    .btn-secondary:hover { color: var(--white); border-color: var(--white); }
-    .btn-icon { padding: 9px 12px; }
-    .hero-ctas .btn-icon .material-symbols-outlined { font-size: 28px; }
-    .material-symbols-outlined {
-      font-family: 'Material Symbols Outlined';
-      font-weight: normal;
-      font-style: normal;
-      font-size: 20px;
-      line-height: 1;
-      display: inline-block;
-      text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
-      white-space: nowrap;
-      direction: ltr;
-      -webkit-font-smoothing: antialiased;
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20;
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-2);
+      border: 2px solid var(--accent-2);
+      transition: color 0.2s, border-color 0.2s;
     }
+    .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+    .btn-icon { width: 52px; padding: 0; justify-content: center; }
+    .btn-icon .material-symbols-outlined { font-size: 28px; }
+    .nav-links .btn-primary {
+      width: 38px; height: 38px;
+      padding: 0;
+      justify-content: center;
+      color: var(--black);
+    }
+    .nav-links .btn-primary .material-symbols-outlined { font-size: 22px; color: var(--black); }
 
-    /* ── ANIMATED HERO ── */
-    .hero { height: 100vh; width: 100%; position: relative; overflow: hidden; padding: 0; }
-    .hero-bg { position: absolute; inset: -15% 0; background: var(--black); will-change: transform; z-index: 0; }
-    .hero-inner { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; }
-    .hero-container { max-width: 1040px; margin: 0 auto; padding: 0 32px; width: 100%; }
-    .content-block { max-width: 860px; will-change: transform; }
-    .headline-static { font-size: clamp(60px, 8.25vw, 108px); font-weight: 800; line-height: 1.0; color: var(--white); display: block; }
-    .headline-mask { overflow: hidden; position: relative; margin-top: 6px; }
-    .headline-line {
+    /* ──────────────────────────────────────
+       ANIMATED HERO
+    ────────────────────────────────────── */
+    .hero-v2 {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-v2-bg {
+      position: absolute;
+      inset: -15% 0;
+      background: var(--black);
+      will-change: transform;
+      z-index: 0;
+    }
+    .hero-v2-inner {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-v2-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+    }
+    .content-block-v2 { max-width: 900px; will-change: transform; }
+
+    /* Headlines */
+    .headline-static-v2 {
+      font-family: var(--display);
+      font-size: clamp(52px, 8.5vw, 120px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--white);
+      display: block;
+    }
+    .headline-mask-v2 {
+      overflow: hidden;
+      position: relative;
+      margin-top: 14px;
+    }
+    /* Line-a: absolute inside mask, slides up and out */
+    .headline-line-v2 {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
-      margin: 0; padding: 0;
-      font-size: clamp(60px, 8.25vw, 108px);
-      font-weight: 800;
+      font-family: var(--display);
+      font-size: clamp(52px, 8.5vw, 120px);
+      font-weight: 900;
       line-height: 1.0;
       will-change: transform;
     }
-    .line-a { color: var(--accent); }
-    .line-b { color: var(--lime); }
-    .body-block { margin-top: 40px; max-width: 800px; will-change: transform, opacity; }
-    .body-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .body-copy { font-size: clamp(16px, 1.4vw, 19px); font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.65); }
-    .body-copy + .body-copy { margin-top: 16px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .line-a-v2 { color: var(--accent); }
 
-    /* ── SECTION BASE ── */
-    section { padding: 88px 0; }
-    section.alt { background: var(--white); color: var(--black); }
-    section.alt h1, section.alt h2, section.alt h3,
-    section.alt h4, section.alt h5, section.alt h6 { color: var(--black); }
-    .ai-band .ai-box-header-title h3 { color: var(--white); }
-    .ai-band .ai-box-header p { color: var(--white); }
-    .ai-band .ai-col h4 { color: var(--white); }
-    .ai-band .ai-col p, .ai-band .ai-col li { color: var(--white); }
-    section.alt .project-tag { color: rgba(0,0,0,0.45); }
-
-    /* ── SECTION INTROS (shared across all content sections) ── */
-    .section-intro { margin-bottom: 56px; }
-    .section-intro h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: inherit;
-      margin-bottom: 20px;
+    /* Lower block: line-b + body copy, absolute inside mask, slides up as one unit */
+    .hero-lower-block {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      opacity: 0; /* hidden until JS initializes */
     }
-    .approach-intro,
-    .work-intro { max-width: 640px; }
-    .approach-intro p,
-    .work-intro p { font-size: 18px; color: inherit; }
 
-    /* ── EXPERTISE ── */
-    .expertise-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start; }
-    .expertise-left p { color: inherit; margin-bottom: 16px; font-size: 18px; }
-    .expertise-right .label { display: block; margin-bottom: 20px; color: rgba(0,0,0,0.45); }
+    /* Line-b: flows naturally within hero-lower-block (not absolutely positioned) */
+    .line-b-v2 {
+      font-family: var(--display);
+      font-size: clamp(52px, 8.5vw, 120px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--lime);
+    }
+    .line-b-v2 div { line-height: 1.0; }
 
-    /* ── APPROACH ── */
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .pillar { border-top: 3px solid var(--accent); padding-top: 24px; }
-    .pillar h3 { font-size: 22px; font-weight: 700; color: inherit; margin-bottom: 12px; }
-    .pillar p { font-size: 18px; color: inherit; line-height: 1.65; margin-bottom: 14px; }
-    .pillar p:last-child { margin-bottom: 0; }
+    /* Hero body */
+    .hero-body-block {
+      margin-top: 40px;
+      max-width: 760px;
+    }
+    .hero-body-copy {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .hero-body-copy + .hero-body-copy { margin-top: 14px; }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
 
-    /* ── AI BAND ── */
-    .ai-band { background: var(--black); padding: 64px 0; }
-    .ai-box-header {
+    /* ──────────────────────────────────────
+       EXPERTISE
+    ────────────────────────────────────── */
+    .expertise-v2 {
+      background: var(--black);
+      padding: 88px 0;
+    }
+    .expertise-grid-v2 {
+      display: flex;
+      gap: 64px;
+      align-items: flex-start;
+    }
+    .expertise-left-v2 {
+      width: 325px;
+      flex-shrink: 0;
+    }
+    .expertise-right-v2 { flex: 1; min-width: 0; }
+
+    /* Display headline (h2) */
+    .display-h2 {
+      font-family: var(--display);
+      font-size: clamp(40px, 5.5vw, 80px);
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .expertise-body-v2 {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .expertise-body-v2 p {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .expertise-logos-block { padding-top: 24px; }
+    .logo-row {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 32px;
-      align-items: start;
-      margin-bottom: 32px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #333333;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 8px;
+      align-items: center;
     }
-    .ai-box-header-title { display: flex; align-items: center; gap: 12px; }
-    .ai-icon { width: 36px; height: 36px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ai-icon .material-symbols-outlined { font-size: 20px; color: var(--lime); font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'OPSZ' 20; }
-    .ai-box-header-title h3 { font-size: 22px; font-weight: 700; color: var(--white); line-height: 1.3; }
-    .ai-box-header p { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.6); }
-    .ai-cols { display: grid; color: rgba(255,255,255,0.65); grid-template-columns: repeat(3, 1fr); gap: 36px; }
-    .ai-col h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .ai-col p { font-size: 15px; color: inherit; line-height: 1.7; }
+    .logo-row-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+    }
+    .logo-row-item img {
+      max-height: 28px;
+      max-width: 100%;
+      width: auto;
+      opacity: 1;
+      transition: opacity 0.2s;
+      filter: invert(1);
+    }
+    .logo-row-item img:hover { opacity: 0.5; }
 
-    /* ── CONTENT LISTS ── */
-    .expertise-left ul, .pillar ul, .ai-col ul { list-style: none; padding: 0; margin: 10px 0 16px; }
-    .expertise-left li, .pillar li, .ai-col li {
+    /* ──────────────────────────────────────
+       APPROACH
+    ────────────────────────────────────── */
+    .approach-v2 {
+      background: var(--black);
+      padding: 88px 0;
+    }
+    .approach-intro {
+      margin-bottom: 64px;
+    }
+    .pillars-v2 {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .pillar-v2 {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+    }
+    .pillar-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .pillar-image {
+      width: 325px;
+      flex-shrink: 0;
+      padding: 0 24px;
+    }
+    .pillar-image img {
+      width: 100%;
+      display: block;
+    }
+    .pillar-v2 h3 {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 900;
+      font-style: normal;
+      line-height: 1.4;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      margin-bottom: 24px;
+    }
+    .pillar-v2 p {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--white);
+    }
+
+    /* ──────────────────────────────────────
+       AI SECTION
+    ────────────────────────────────────── */
+    .ai-v2 {
+      background: var(--black);
+      padding: 88px 0;
+    }
+    .ai-header-v2 { margin-bottom: 32px; }
+    .ai-header-v2 h3 {
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1.4;
+      color: var(--white);
+    }
+    .ai-cols-v2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .ai-col-v2 {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ai-col-v2 h4 {
+      font-family: var(--body);
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .ai-col-v2 ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ai-col-v2 li {
       position: relative;
       padding-left: 14px;
-      margin-bottom: 6px;
-      line-height: 1.7;
-      color: inherit;
+      font-family: var(--ui);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--white);
     }
-    .expertise-left li, .pillar li { font-size: 18px; }
-    .ai-col li { font-size: 15px; }
-    .expertise-left li::before, .pillar li::before { content: '–'; position: absolute; left: 0; color: var(--accent); font-weight: 500; }
-    .ai-col li::before { content: '–'; position: absolute; left: 0; color: var(--lime); font-weight: 500; }
-
-    /* ── WORK ── */
-    .project-tag { font-size: 10px; font-weight: 700; color: rgba(0,0,0,0.45); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-
-    /* ── ABOUT ── */
-    .about-section { position: relative; overflow: hidden; }
-    .about-grid,
-    .about-section .section-intro { max-width: 66.667%; padding-right: 64px; }
-    .about-left p { font-size: 18px; color: inherit; margin-bottom: 16px; line-height: 1.75; }
-    .about-left a { color: var(--black); text-decoration: underline; text-decoration-color: var(--accent-2); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-    .about-left a:hover { opacity: 0.6; }
-    .about-photo-bg {
+    .ai-col-v2 li::before {
+      content: '–';
       position: absolute;
-      top: 0; right: 0; bottom: 0;
-      /* left edge = container center + 2/3 col + gap: 50% + (-520 + 32 + 608 + 64)px = 50% + 184px */
-      left: calc(50% + 184px);
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      left: 0;
+      font-family: var(--ui);
+      font-weight: 500;
     }
-    .logo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: center; }
-    .logo-item { display: flex; align-items: center; justify-content: center; height: 48px; }
-    .logo-item img { max-height: 28px; max-width: 100%; opacity: 1; transition: opacity 0.2s; }
-    .logo-item img:hover { opacity: 0.6; }
 
-    /* ── CONTACT ── */
-    .contact-section { background: var(--black); }
-    .contact-inner { max-width: 66.667%; }
-    .contact-inner h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; color: var(--white); margin-bottom: 20px; }
-    .contact-inner p { font-size: 18px; color: var(--muted); margin-bottom: 36px; }
-    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-    .contact-location { font-size: 13px; color: rgba(255,255,255,0.35); }
+    /* ──────────────────────────────────────
+       WORK
+    ────────────────────────────────────── */
+    .work-v2 {
+      background: var(--black);
+      padding: 88px 0;
+    }
+    .work-grid-v2 {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .work-left-v2 {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .work-left-v2 .display-h2 { max-width: 504px; }
+    .work-intro-v2 {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .work-right-v2 {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-    /* ── FOOTER ── */
-    footer { padding: 24px 0; border-top: 1px solid var(--rule); }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
-    footer p { font-size: 12px; color: var(--muted); }
+    .work-rule {
+      border: none;
+      border-top: 2px solid var(--accent);
+      margin: 0;
+    }
+    .project-item-v2 {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px 0;
+      min-height: 116px;
+      justify-content: center;
+    }
+    .project-tag-v2 {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .project-item-v2 h3 {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 900;
+      font-style: normal;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+      max-width: 504px;
+    }
+    .project-item-v2 h3 a {
+      color: var(--accent-2);
+      text-decoration: underline;
+      text-decoration-color: var(--white);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 5px;
+    }
+    .project-item-v2 h3 a:hover { opacity: 0.75; }
 
-    /* ── PROJECT CARDS ── */
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .project-card { border-top: 3px solid var(--accent); padding-top: 28px; }
-    .project-card h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.2; color: var(--black); max-width: 680px; margin-bottom: 12px; }
-    .project-card h3 a { color: var(--black); text-decoration: underline; text-decoration-color: var(--accent-2); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-    .project-card h3 a:hover { opacity: 0.7; }
-    .project-teaser { font-size: 18px; font-weight: 300; color: inherit; line-height: 1.8; margin-bottom: 14px; }
-    .project-teaser:last-child { margin-bottom: 0; }
+    /* ──────────────────────────────────────
+       ABOUT
+    ────────────────────────────────────── */
+    .about-v2 {
+      background: var(--black);
+      padding: 88px 0 104px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-v2-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(1);
+    }
+    .about-v2 .container { position: relative; z-index: 1; }
+    .about-card-v2 {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .about-card-v2 > .label { margin-bottom: 0; }
+    .about-card-row {
+      display: flex;
+      gap: 56px;
+      align-items: flex-start;
+      margin-top: 0;
+    }
+    .about-card-left-v2 {
+      flex: 1;
+      min-width: 0;
+    }
+    .about-card-left-v2 .display-h2 {
+      line-height: 0.9;
+    }
+    .about-card-right-v2 {
+      width: 608px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .about-card-right-v2 p {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .about-card-right-v2 a {
+      color: var(--accent-2);
+      text-decoration: underline;
+      text-decoration-color: var(--white);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+    .about-card-right-v2 a:hover { opacity: 0.6; }
 
+    /* ──────────────────────────────────────
+       CONTACT
+    ────────────────────────────────────── */
+    .contact-v2 {
+      background: var(--black);
+      padding: 88px 0 104px;
+    }
+    .contact-v2 h2 {
+      font-family: var(--display);
+      font-size: clamp(40px, 5.5vw, 80px);
+      font-weight: 800;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .contact-v2-body {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+    .contact-links-v2 {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .contact-location-v2 {
+      font-family: var(--body);
+      font-size: 18px;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ──────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 24px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ──────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .expertise-left-v2 { width: auto; flex: 0 0 280px; }
+      .about-card-right-v2 { width: auto; flex: 1; }
+      .pillar-image { width: 260px; }
+    }
     @media (max-width: 900px) {
-      .expertise-grid { grid-template-columns: 1fr; }
-      .contact-inner { max-width: 100%; }
-      .pillars { grid-template-columns: 1fr; }
-      .ai-cols { grid-template-columns: 1fr; gap: 28px; }
-      .project-grid { grid-template-columns: 1fr; }
-      /* about: switch to percentage-based left edge when container is full-width */
-      .about-photo-bg { left: 66.667%; }
-      .about-grid,
-      .about-section .section-intro { max-width: 100%; }
-      .logo-grid { grid-template-columns: repeat(4, 1fr); }
+      .expertise-grid-v2 { flex-direction: column; gap: 48px; }
+      .expertise-left-v2 { width: 100%; flex: none; }
+      .pillar-v2 { flex-direction: column; gap: 32px; }
+      .pillar-image { width: 100%; padding: 0; }
+      .pillar-image img { max-width: 277px; }
+      .ai-cols-v2 { grid-template-columns: 1fr; gap: 28px; }
+      .work-grid-v2 { flex-direction: column; gap: 48px; }
+      .about-card-row { flex-direction: column; gap: 32px; }
+      .about-card-right-v2 { width: 100%; }
     }
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
-      section { padding: 64px 0; }
+      /* Hero and nav use independent layout containers — keep gutters consistent */
+      .hero-v2-container { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .expertise-v2,
+      .approach-v2,
+      .ai-v2,
+      .work-v2,
+      .about-v2 { padding-top: 64px; padding-bottom: 64px; }
+      .about-v2 { padding-bottom: 72px; }
+      .about-card-v2 { padding: 20px; }
       .nav-links { display: none; }
       .nav-name-suffix { display: none; }
       .nav-hamburger { display: flex; }
-      .ai-box { padding: 28px 24px; }
-      .about-photo-bg { display: none; }
-      .about-grid,
-      .about-section .section-intro { padding-right: 0; }
-      .ai-box-header { grid-template-columns: 1fr; gap: 16px; }
+      .about-v2-bg { display: none; }
+      .logo-row { grid-template-columns: repeat(6, 1fr); gap: 16px; }
+      .approach-intro { margin-bottom: 40px; }
+      .work-left-v2 .display-h2 { max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .logo-row { grid-template-columns: repeat(4, 1fr); }
+      .display-h2 { font-size: clamp(34px, 8vw, 56px); }
+      .headline-static-v2,
+      .headline-line-v2,
+      .line-b-v2 { font-size: clamp(36px, 10vw, 72px); }
+      .hero-body-block { margin-top: 24px; }
+      .hero-body-copy { font-size: 17px; }
+      .expertise-body-v2 p,
+      .work-intro-v2 { font-size: 18px; }
+      .pillar-v2 p,
+      .about-card-right-v2 p,
+      .ai-col-v2 li { font-size: 16px; }
+      .hero-ctas { gap: 10px; margin-top: 20px; }
+      .contact-v2 h2 { font-size: clamp(30px, 7vw, 56px); }
+    }
+
+    @media (max-width: 390px) {
+      .headline-static-v2,
+      .headline-line-v2,
+      .line-b-v2 { font-size: 36px; }
+      .display-h2 { font-size: 32px; }
+      .pillar-v2 h3,
+      .project-item-v2 h3 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ANIMATED HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <div class="hero-container">
-      <div class="content-block">
+<!-- ══════════════════════════════════════
+     ANIMATED HERO
+══════════════════════════════════════ -->
+<section class="hero-v2" id="hero">
+  <div class="hero-v2-bg"></div>
+  <div class="hero-v2-inner">
+    <div class="hero-v2-container">
+      <div class="content-block-v2">
         <div>
-          <h1 class="headline-static">The hard part</h1>
-          <div class="headline-mask">
-            <p class="headline-line line-a">isn't making something.</p>
-            <p class="headline-line line-b">is making the right something.</p>
-          </div>
-        </div>
-        <div class="body-block">
-          <p class="body-copy">I cut through ambiguity using research and design.</p>
-          <p class="body-copy">Less guessing, dart throwing, and iterating. More listening, learning, and nailing it.</p>
-          <div class="hero-ctas">
-            <a href="#what" class="btn-secondary btn-icon" aria-label="Scroll to Expertise"><span class="material-symbols-outlined">arrow_downward_alt</span></a>
-            <a href="#contact" class="btn-primary">Get in touch</a>
+          <h1 class="headline-static-v2">The hard part</h1>
+          <div class="headline-mask-v2">
+            <p class="headline-line-v2 line-a-v2">isn't making something.</p>
+            <!-- Lower block: line-b + body copy move as one single unit -->
+            <div class="hero-lower-block">
+              <div class="line-b-v2">
+                <div>is making the</div>
+                <div>right something.</div>
+              </div>
+              <div class="hero-body-block">
+                <p class="hero-body-copy">I cut through ambiguity using research and design.</p>
+                <p class="hero-body-copy">Less guessing, dart throwing, and iterating. More listening, learning, and nailing it.</p>
+                <div class="hero-ctas">
+                  <a href="#what" class="btn-secondary btn-icon" aria-label="Scroll to Expertise">
+                    <span class="material-symbols-outlined">arrow_downward_alt</span>
+                  </a>
+                  <a href="#contact" class="btn-primary">Get in touch</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- NAV — sits below hero, sticks to top of viewport on scroll -->
+<!-- NAV — sits below hero, sticks to top on scroll -->
 <nav id="top">
   <div class="nav-inner">
     <a href="#hero" class="nav-name">Matthew Abate<span class="nav-name-suffix"> • Experience Design</span></a>
@@ -362,7 +795,9 @@
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a href="mailto:matthewabate@me.com" class="btn-primary btn-icon" aria-label="Send email"><span class="material-symbols-outlined">mail</span></a>
+      <a href="mailto:matthewabate@me.com" class="btn-primary btn-icon" aria-label="Send email">
+        <span class="material-symbols-outlined">mail</span>
+      </a>
     </div>
     <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false">
       <span class="material-symbols-outlined" id="navHamburgerIcon">menu</span>
@@ -379,210 +814,233 @@
   <a href="#contact" class="nav-mobile-link">Contact</a>
 </div>
 
-<!-- Expertise -->
-<section id="what" class="alt">
+<!-- ══════════════════════════════════════
+     EXPERTISE
+══════════════════════════════════════ -->
+<section class="expertise-v2" id="what">
   <div class="container">
-    <div class="section-intro">
-      <span class="label">Expertise</span>
-      <h2>Know where to spend your energy.</h2>
-    </div>
-    <div class="expertise-grid">
-      <div class="expertise-left">
-        <p>I help senior leadership teams understand what will make an impact, and I lead teams who make experiences that really help people.</p>
-        <p>My specialty is applying Human-Centered Design, Ethnographic Research, and Rapid Prototyping techniques in order to:</p>
-        <ul>
-          <li>Clear away ambiguity and understand human decisions and behaviors</li>
-          <li>Turn messy data into evidence-backed strategies</li>
-          <li>Ensure what gets made holds up in the real world</li>
-        </ul>
-        <p>This solves the problems people experience in any environment or context. The results can be physical, digital, or experiential, but they must adapt to the contexts and environments of the people who use them.</p>
+    <span class="label label--accent">Expertise</span>
+    <div class="expertise-grid-v2">
+
+      <div class="expertise-left-v2">
+        <h2 class="display-h2">Ease burden and create value.</h2>
       </div>
-      <div class="expertise-right">
-        <span class="label">Experience highlights</span>
-        <div class="logo-grid">
-          <div class="logo-item"><img src="logos/MLB_logo.svg" alt="MLB"></div>
-          <div class="logo-item"><img src="logos/jj-logo.svg" alt="Johnson &amp; Johnson"></div>
-          <div class="logo-item"><img src="logos/Ford_logo.svg" alt="Ford"></div>
-          <div class="logo-item"><img src="logos/toyota-logo.svg" alt="Toyota"></div>
-          <div class="logo-item"><img src="logos/emirates-logo.svg" alt="Emirates"></div>
-          <div class="logo-item"><img src="logos/target-logo.svg" alt="Target"></div>
-          <div class="logo-item"><img src="logos/general-electric.svg" alt="General Electric"></div>
-          <div class="logo-item"><img src="logos/hbo-logo.svg" alt="HBO"></div>
-          <div class="logo-item"><img src="logos/nbcu-logo.svg" alt="NBCU"></div>
-          <div class="logo-item"><img src="logos/usma-logo.svg" alt="USMA West Point"></div>
-          <div class="logo-item"><img src="logos/citi-logo.svg" alt="Citi"></div>
-          <div class="logo-item"><img src="logos/new-york-state-logo.svg" alt="New York State"></div>
+
+      <div class="expertise-right-v2">
+        <div class="expertise-body-v2">
+          <p>I help leaders understand their customers' problems. And I guide teams who make things that really help people.</p>
+          <p>My specialty is defining hi-efficacy products and services through Human-Centered Design techniques.</p>
+          <p>I work in any environment or context, whether physical, digital, or hybrid.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule" />
-
-<!-- Approach -->
-<section id="how" class="alt">
-  <div class="container">
-    <div class="section-intro approach-intro">
-      <span class="label">Approach</span>
-      <h2>Don&apos;t solve assumptions.</h2>
-      <p>Before figuring out how to make something, I figure out what to make. I use these frameworks to understand what will create value for the people who use them, building brand affinity, loyalty, and trust.</p>
-    </div>
-
-    <div class="pillars">
-      <div class="pillar">
-        <h3>Desirability / Feasibility / Viability</h3>
-        <p>We balance these aspects of an experience to avoid expensive changes downstream.</p>
-        <ul>
-          <li>Desirability asks if people will benefit, and why.</li>
-          <li>Feasibility asks if it can be made with what&apos;s available.</li>
-          <li>Viability asks if it will make economic sense.</li>
-        </ul>
-        <p>Start with desirability to make sure people actually care about what we are solving.</p>
-      </div>
-      <div class="pillar">
-        <h3>Jobs to Be Done &amp; Journey Mapping</h3>
-        <p>Innovation comes from figuring out what someone needs done, not asking what they want.</p>
-        <p>JTBD helps uncover why people do or don't do something. Understanding what is driving behavior and layering this over the emotional experience people go through when trying to solve their problem shows us where things break down and where there's real opportunity.</p>
-      </div>
-      <div class="pillar">
-        <h3>Design Thinking &amp; Service Design</h3>
-        <p>Design Thinking is a method of moving from an unclear problem to something testable. Service Design expands that approach beyond individual products and services to the full experience: channels, people, environments, procedures, and systems.</p>
-        <p>Together, they help make sense of what's happening and what a better experience could look like.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- AI DIVIDER -->
-<div class="ai-band">
-  <div class="container">
-    <div class="ai-box">
-      <div class="ai-box-header">
-        <div class="ai-box-header-title">
-          <div class="ai-icon">
-            <span class="material-symbols-outlined">automation</span>
+        <div class="expertise-logos-block">
+          <span class="label label--lime">Select Brands from my portfolio</span>
+          <div class="logo-row">
+            <div class="logo-row-item"><img src="logos/citi-logo.svg" alt="Citi"></div>
+            <div class="logo-row-item"><img src="logos/emirates-logo.svg" alt="Emirates"></div>
+            <div class="logo-row-item"><img src="logos/Ford_logo.svg" alt="Ford"></div>
+            <div class="logo-row-item"><img src="logos/general-electric.svg" alt="General Electric"></div>
+            <div class="logo-row-item"><img src="logos/hbo-logo.svg" alt="HBO"></div>
+            <div class="logo-row-item"><img src="logos/jj-logo.svg" alt="Johnson &amp; Johnson"></div>
+            <div class="logo-row-item"><img src="logos/MLB_logo.svg" alt="MLB"></div>
+            <div class="logo-row-item"><img src="logos/nbcu-logo.svg" alt="NBCU"></div>
+            <div class="logo-row-item"><img src="logos/new-york-state-logo.svg" alt="New York State"></div>
+            <div class="logo-row-item"><img src="logos/target-logo.svg" alt="Target"></div>
+            <div class="logo-row-item"><img src="logos/toyota-logo.svg" alt="Toyota"></div>
+            <div class="logo-row-item"><img src="logos/usma-logo.svg" alt="USMA West Point"></div>
           </div>
-          <h3>How AI shows up in my practice</h3>
-        </div>
-        <p>I have designed UX for AI, used it for Human-in-the-Loop research and process management, and crafted best practices and ethical guidelines for using AI in services and products.</p>
-      </div>
-      <div class="ai-cols">
-        <div class="ai-col">
-          <h4>AI as the engine</h4>
-          <ul>
-            <li>Machine Learning to drive behavioral interventions in digital therapeutics</li>
-            <li>Computer Vision for rapid analysis of inventory in surgical settings</li>
-            <li>LLMs and Natural Language Processing for customer service in venues</li>
-          </ul>
-        </div>
-        <div class="ai-col">
-          <h4>AI as an engineering partner</h4>
-          <ul>
-            <li>Functional prototypes for testing surface real needs faster</li>
-            <li>Animations and digital maquettes to communicate design intent to engineers</li>
-            <li>POCs to increase confidence before investments are made</li>
-          </ul>
-        </div>
-        <div class="ai-col">
-          <h4>In research &amp; synthesis</h4>
-          <ul>
-            <li>Filtering through dense information like survey data</li>
-            <li>Pattern recognition in large or disparate datasets</li>
-            <li>Translation of foreign-language research or interviews</li>
-          </ul>
         </div>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<!-- ══════════════════════════════════════
+     APPROACH
+══════════════════════════════════════ -->
+<section class="approach-v2" id="how">
+  <div class="container">
+    <span class="label label--accent">Approach</span>
+    <div class="approach-intro">
+      <h2 class="display-h2">Solve real problems, not assumptions.</h2>
+    </div>
+    <div class="pillars-v2">
+
+      <div class="pillar-v2">
+        <div class="pillar-content">
+          <h3>Desirability, Viability, Feasibility</h3>
+          <p>Ensure priorities and decisions maintain balance by asking if people will benefit, and why, if the solution can be made with the resources available, and if it makes economic sense.</p>
+        </div>
+        <div class="pillar-image">
+          <img src="images/dvf-diagram.svg" alt="DVF diagram" />
+        </div>
+      </div>
+
+      <div class="pillar-v2">
+        <div class="pillar-content">
+          <h3>Design Thinking &amp; Service Design</h3>
+          <p>Move from an unclear problem to something testable to make sense of what's happening now and what a better future experience could be, thinking beyond individual products and services to channels, people, environments, procedures, and systems.</p>
+        </div>
+        <div class="pillar-image">
+          <img src="images/dt-diagram.svg" alt="Design Thinking diagram" />
+        </div>
+      </div>
+
+      <div class="pillar-v2">
+        <div class="pillar-content">
+          <h3>Jobs to Be Done &amp; Journey Mapping</h3>
+          <p>To uncover why people do or don't do something, understand what is driving behavior. Layer this over the emotional experience of when trying to solve the problem to see where things break down and where there is real opportunity.</p>
+        </div>
+        <div class="pillar-image">
+          <img src="images/jtbd-diagram.svg" alt="Jobs to Be Done diagram" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<!-- ══════════════════════════════════════
+     AI SECTION
+══════════════════════════════════════ -->
+<div class="ai-v2">
+  <div class="container">
+    <div class="ai-header-v2">
+      <h3>I've used AI where it makes sense.</h3>
+    </div>
+    <div class="ai-cols-v2">
+
+      <div class="ai-col-v2">
+        <h4>as the engine</h4>
+        <ul>
+          <li>Machine Learning to drive behavioral interventions in digital therapeutics</li>
+          <li>Computer Vision for rapid analysis of inventory in surgical settings</li>
+          <li>LLMs and Natural Language Processing for customer service in venues</li>
+        </ul>
+      </div>
+
+      <div class="ai-col-v2">
+        <h4>as an engineering partner</h4>
+        <ul>
+          <li>Functional prototypes for testing surface real needs faster</li>
+          <li>Animations and digital maquettes to communicate design intent to engineers</li>
+          <li>POCs to increase confidence before investments are made</li>
+        </ul>
+      </div>
+
+      <div class="ai-col-v2">
+        <h4>In research &amp; synthesis</h4>
+        <ul>
+          <li>Filtering through dense information like survey data</li>
+          <li>Pattern recognition in large or disparate datasets</li>
+          <li>Translation of foreign-language research or interviews</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- WORK -->
-<section id="work" class="alt">
+<hr class="section-rule" />
+
+<!-- ══════════════════════════════════════
+     WORK
+══════════════════════════════════════ -->
+<section class="work-v2" id="work">
   <div class="container">
-    <div class="section-intro work-intro">
-      <span class="label">Work</span>
-      <h2>Bring clarity to complex problems. Create experiences with value.</h2>
-      <p>Here are three contrasting examples showing how my approach can be applied to different contexts.</p>
-    </div>
+    <span class="label label--accent">Work</span>
+    <div class="work-grid-v2">
 
-    <div class="project-grid">
-
-      <!-- PROJECT 1: MLB -->
-      <div class="project-card">
-        <p class="project-tag">Major League Baseball &middot; Venue Commerce &middot; 2025</p>
-        <h3><a href="mlb.html">Changing how a sport thinks about the fan experience.</a></h3>
-        <p class="project-teaser">MLB's In-Venue Product team wanted to understand why fans spend money the way they do at the ballpark. The working assumption was that the food and beverage experience was the place to invest — but they weren't certain, and didn't know what to do about it.</p>
-        <p class="project-teaser">Across four ballparks and hundreds of fan conversations, we reframed the question in a way that shifted how all 30 teams think about the concourse experience.</p>
+      <div class="work-left-v2">
+        <h2 class="display-h2">Clear the fog, test to learn, make things that hold up.</h2>
+        <p class="work-intro-v2">Here are three overviews of some of my work to illustrate how an experience design approach can address different types of problems.</p>
       </div>
 
-      <!-- PROJECT 2: J&J -->
-      <div class="project-card">
-        <p class="project-tag">Johnson &amp; Johnson &middot; App-Based Behavior Change &middot; 2016</p>
-        <h3><a href="jj.html">From patient living rooms to clinical trials.</a></h3>
-        <p class="project-teaser">Three teams were working toward different goals — marketing wanted an avatar-based app, the clinical team was skeptical, and IT had a mandate to ship AI within a year.</p>
-        <p class="project-teaser">Two products advanced to clinical trial. The key: reframing the work around what patients can actually sustain, not what clinicians expect them to do.</p>
+      <div class="work-right-v2">
+        <hr class="work-rule" />
+
+        <div class="project-item-v2">
+          <h3><a href="context.html">Understanding Contexts &amp; Behaviors in Physical Spaces</a></h3>
+          <p class="project-tag-v2">Venue Commerce &middot; Workflow Optimization</p>
+        </div>
+
+        <hr class="work-rule" />
+
+        <div class="project-item-v2">
+          <h3><a href="strategy.html">Strategies &amp; Experiences for Human Problems</a></h3>
+          <p class="project-tag-v2">Digital Therapeutics &middot; Behavioral Intervention</p>
+        </div>
+
+        <hr class="work-rule" />
+
+        <div class="project-item-v2">
+          <h3><a href="prototyping.html">Rapid Prototyping to Learn, &amp; Prove Value</a></h3>
+          <p class="project-tag-v2">Gaming &middot; UX for AI</p>
+        </div>
+
+        <hr class="work-rule" />
       </div>
 
-      <!-- PROJECT 3: IRMINSUL -->
-      <div class="project-card">
-        <p class="project-tag">Irminsul &middot; AI-Driven Gaming Guide &middot; 2026</p>
-        <h3><a href="irminsul.html">Making a complex game easier through vibe coding.</a></h3>
-        <p class="project-teaser">Genshin Impact has five million active players a day and some of the richest lore and gameplay available. It&apos;s also genuinely too complicated for most people to keep up with.</p>
-        <p class="project-teaser">Using my kids as research subjects and AI as an engineering partner, I took the project from problem identification to a live Beta — without losing the thread of what the experience should actually do for a person.</p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<hr class="rule" />
-
-<!-- ABOUT -->
-<section id="about" class="alt about-section">
-  <div class="container">
-    <div class="section-intro">
-      <span class="label">About</span>
-      <h2>Take things apart to make them better.</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-left">
-        <p>I have worked in digital design since 1998 and in experience strategy since 2012, but I have been taking things apart to understand how they work (and how they could be better) my whole life.</p>
-        <p>I&apos;m drawn to the mechanics of things. Although I went to school for fine arts, I consider myself more of a mechanic than an artist. I get intrinsic value out of fixing things, whether it&apos;s a house, a car, a customer experience, or my dog&apos;s bad habits.</p>
-        <p>I have too many hobbies: my daughters and I train at a local archery academy, I&apos;m deep into my third car restoration (<a href="https://www.instagram.com/matthew.abate/" target="_blank">a 1973 Datsun 240z</a>, and in more detail <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank">here</a>) and run <a href="https://linktr.ee/geargrinders" target="_blank">a club for car enthusiasts</a>a>. I <a href="https://www.discogs.com/user/matthewabate/collection?header=1" target="_blank">collect vinyl records</a>, guitars, and vintage hi-fi gear.
-        <p>I live in lived in Maplewood, NJ, with my family, three cats, and my <a href="https://www.scotchcollie.org/breed/history/" target="_blank">Scotch Collie</a>, Phoebe.</p>
-      </div>
-    </div>
-  </div>
-  <div class="about-photo-bg" aria-hidden="true"></div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <span class="label">Contact</span>
-      <h2>If you&apos;re working on something hard, let&apos;s talk!</h2>
-      <p>If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
-      <div class="contact-links">
-        <a href="mailto:matthewabate@me.com" class="btn-primary">
-          <span class="material-symbols-outlined">mail</span>Email
-        </a>
-        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">
-          Calendly
-        </a>
-        <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">
-          LinkedIn
-        </a>
-      </div>
-      <p class="contact-location">Based in Maplewood, NJ &middot; Currently available for full-time or consulting roles at the Senior Director to VP level &middot; New York metro or remote</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<hr class="section-rule" />
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section class="about-v2" id="about">
+  <div class="about-v2-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="about-card-v2">
+
+      <span class="label label--accent">About</span>
+
+      <div class="about-card-row">
+        <div class="about-card-left-v2">
+          <h2 class="display-h2">Take things apart to make them better.</h2>
+        </div>
+
+        <div class="about-card-right-v2">
+        <p>I've been an editorial designer, a web designer, a product designer, and an experience strategist, but it all started with taking things apart to understand how they work (and how they could work better).</p>
+        <p>I'm drawn to the mechanics of things. Although I have a fine arts degree, I am more of a mechanic than an artist. Fixing things, whether it's a house, a car, a customer experience, or my dog's bad habits, is where I find my flow state.</p>
+        <p>Outside of work, my daughters and I train in archery, I'm on my third <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank">car restoration</a> and run <a href="https://linktr.ee/geargrinders" target="_blank">a classic car club</a>, and I <a href="https://www.discogs.com/user/matthewabate/collection?header=1" target="_blank">collect vinyl</a>, guitars, and vintage hi-fi gear.</p>
+        <p>I live in Northern New Jersey with my family, three cats, and my <a href="https://www.scotchcollie.org/breed/history/" target="_blank">Scotch Collie</a>.</p>
+        </div>
+
+      </div><!-- /.about-card-row -->
+
+    </div><!-- /.about-card-v2 -->
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section class="contact-v2" id="contact">
+  <div class="container">
+    <span class="label label--accent">Contact</span>
+    <h2>If you're working on something difficult, let's talk!</h2>
+    <p class="contact-v2-body">If understanding people is treated as a real input to strategy, not an afterthought, and decisions are shaped by that understanding, we should talk.</p>
+    <div class="contact-links-v2">
+      <a href="mailto:matthewabate@me.com" class="btn-primary">Email</a>
+      <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="btn-secondary">Calendly</a>
+      <a href="https://www.linkedin.com/in/matthewabate/" target="_blank" class="btn-secondary">LinkedIn</a>
+    </div>
+    <p class="contact-location-v2">Open to consulting or full-time roles &middot; New York Metro Area &amp; Remote</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -595,23 +1053,21 @@
 <script>
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  // Randomize about photo
+  // ── About photo randomizer ──
   (function() {
     const photos = [
       'images/MA-Design.jpg',
       'images/MA-Synthesis-Workshop.jpg',
       'images/MA-and-Phoebe.jpg'
     ];
-    const el = document.querySelector('.about-photo-bg');
-    if (el) {
-      el.style.backgroundImage = "url('" + photos[Math.floor(Math.random() * photos.length)] + "')";
-    }
+    const bg = document.querySelector('.about-v2-bg');
+    if (bg) bg.style.backgroundImage = "url('" + photos[Math.floor(Math.random() * photos.length)] + "')";
   })();
 
-  // Hamburger / mobile nav
-  const hamburger   = document.getElementById('navHamburger');
-  const mobileMenu  = document.getElementById('navMobileMenu');
-  const hamIcon     = document.getElementById('navHamburgerIcon');
+  // ── Hamburger / mobile nav ──
+  const hamburger  = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('navMobileMenu');
+  const hamIcon    = document.getElementById('navHamburgerIcon');
 
   function swapHamIcon(toClose) {
     hamIcon.style.opacity   = '0';
@@ -643,7 +1099,7 @@
 
   document.querySelector('.nav-name').addEventListener('click', closeMenu);
 
-  // Smooth scroll for hero CTA anchor links
+  // ── Smooth scroll for hero CTAs ──
   document.querySelectorAll('.hero-ctas a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -655,31 +1111,26 @@
     });
   });
 
+  // ── Hero animation ──
   const navEl = document.querySelector('nav');
 
   document.fonts.ready.then(() => {
-    const mask      = document.querySelector('.headline-mask');
-    const lineA     = document.querySelector('.line-a');
-    const lineB     = document.querySelector('.line-b');
-    const bodyBlock = document.querySelector('.body-block');
+    const mask       = document.querySelector('.headline-mask-v2');
+    const lineA      = document.querySelector('.line-a-v2');
+    const lowerBlock = document.querySelector('.hero-lower-block');
 
     const lineAH  = lineA.offsetHeight;
-    const lineBH  = lineB.offsetHeight;
-    const DESCENT = 18;
-    const maskH   = Math.max(lineAH, lineBH) + DESCENT;
+    const lowerH  = lowerBlock.offsetHeight; // line-b + gap + body + buttons
+    const DESCENT = 10;  // extra breathing room below line-a
+    const maskH   = lowerH + DESCENT;
+    const navH    = navEl.offsetHeight;
+    const vh      = window.innerHeight;
 
-    mask.style.height       = maskH + 'px';
-    mask.style.marginBottom = `-${DESCENT}px`;
+    mask.style.height = maskH + 'px';
 
-    const bodyH = bodyBlock.offsetHeight;
-    const navH  = navEl.offsetHeight;
-    const vh    = window.innerHeight;
-
-    gsap.set('.line-a',        { y: 0 });
-    gsap.set('.line-b',        { y: maskH, opacity: 0 });
-    gsap.set('.body-block',    { autoAlpha: 0, y: bodyH + 40 });
-    gsap.set('.content-block', { y: 0 });
-    gsap.set(navEl,            { top: vh - navH }); // start at viewport bottom
+    gsap.set(lineA,      { y: 0 });
+    gsap.set(lowerBlock, { y: maskH, opacity: 0 });
+    gsap.set(navEl,      { top: vh - navH });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -692,12 +1143,11 @@
       }
     });
 
-    tl.to('.hero-bg',    { y: '-8%', ease: 'none', duration: 4 }, 0);
-    tl.to('.line-a',     { y: -maskH, opacity: 0, ease: 'none', duration: 1 }, 0);
-    tl.to('.line-b',     { y: 0, opacity: 1, ease: 'none', duration: 1 }, 1);
-    tl.to('.body-block', { autoAlpha: 1, y: 0, ease: 'none', duration: 1 }, 2);
+    tl.to('.hero-v2-bg', { y: '-8%', ease: 'none', duration: 4 }, 0);
+    tl.to(lineA,         { y: -maskH, opacity: 0, ease: 'none', duration: 1 }, 0);
+    tl.to(lowerBlock,    { y: 0, opacity: 1, ease: 'none', duration: 1 }, 1);
 
-    // Nav rises in perfect sync with Expertise section scrolling in from below.
+    // Nav rises in sync with Expertise section
     gsap.to(navEl, {
       top: 0,
       ease: 'none',
