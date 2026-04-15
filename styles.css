@@ -1132,6 +1132,8 @@ h3 {
   cursor: pointer;
 }
 
+.cs-view-demo:hover { color: #E82F2A; }
+
 .cs-results-copy {
   flex: 1 1 0;
   display: flex;
