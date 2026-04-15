@@ -17,7 +17,7 @@
   }
   @media (max-width: 1200px) { body { padding-bottom: 40px; } }
   @media (max-width: 768px) { body { padding-bottom: 24px; } }
-  @media (max-width: 480px) { body { padding-bottom: 12px; } }
+  @media (max-width: 480px) { body { padding-bottom: 20px; } }
 
   /* Masks content scrolling above the sticky nav */
   body::before {
@@ -34,9 +34,12 @@
     z-index: 150;
   }
 
-  /* Hero height: CSS sets a close approximation immediately; JS refines with exact nav height */
+  /* Hero height: CSS sets a close approximation immediately; JS refines with exact nav height.
+     100svh = viewport with browser chrome visible (correct on iOS Safari at load).
+     Fallback to 100vh for browsers without svh support. */
   .hero-v2 {
     height: calc(100vh - 60px);
+    height: calc(100svh - 60px);
     min-height: 0;
     padding-bottom: 0;
   }
