@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approach — Matthew Abate</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 150;
+}
+.frame {
+  position: relative;
+  inset: auto;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: none;
+}
+.nav::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 1200px) { .nav::before { height: 40px; } }
+@media (max-width: 480px)  { .nav::before { height: 20px; } }
+.site-wrapper {
+  position: relative;
+  top: auto;
+  left: auto;
+  height: auto;
+  overflow: visible;
+}
+.nav { top: 60px; }
+@media (max-width: 1200px) {
+  .nav { top: 40px; }
+  body::before { height: 40px; }
+}
+@media (max-width: 480px) {
+  .nav { top: 20px; }
+  body::before { height: 20px; }
+}
+.scroll-container {
+  height: auto;
+  overflow: visible;
+}
+</style>
+</head>
+<body>
+
+<div class="frame frame--approach">
+<div class="site-wrapper">
+
+  <!-- SCROLL CONTAINER -->
+  <div class="scroll-container" id="main-scroller">
+
+    <!-- NAV — sticky inside scroll-container -->
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Matthew Abate</a>
+      <div class="nav__right">
+        <div class="nav__links">
+          <a href="work.html" class="nav__link">Work</a>
+          <a href="approach.html" class="nav__link active">Approach</a>
+          <a href="bio.html" class="nav__link">Bio</a>
+          <a href="#contact" class="nav__link">Contact</a>
+        </div>
+        <a href="mailto:matthewabate@me.com" class="nav__email-btn">
+          <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
+            <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- Mobile menu: same links as desktop nav -->
+      <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+        <a href="work.html">Work</a>
+        <a href="approach.html">Approach</a>
+        <a href="bio.html">Bio</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:matthewabate@me.com">Get in touch</a>
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header" style="padding-bottom: 60px;">
+      <h1>Approach</h1>
+      <div class="approach-intro" style="margin-top: 28px;">
+        <p>Good work starts with the right problem. That sounds obvious, but most teams are already three steps into solutions before they've questioned their assumptions.</p>
+        <p>I help teams slow down before taking the wrong path. Together we establish how people actually behave in context, pressure-test what they think they know, reframe the problem before design begins, and get clear on what the experience needs to do.</p>
+      </div>
+    </div>
+
+    <!-- MY PHILOSOPHY -->
+    <section class="section">
+      <div class="section-label">My Philosophy</div>
+      <div class="philosophy-layout">
+
+        <div class="philosophy-row">
+          <p>My work always starts by asking what people actually need. I use design, research, and strategy techniques to get away from assumptions and anecdotal evidence, and understand the contexts and conditions driving real human behavior.</p>
+          <img src="images/dvf-diagram.svg" alt="Desirability, Viability, Feasibility">
+        </div>
+
+        <div class="philosophy-row">
+          <p>This helps organizations understand what people will find desirable, before viability or feasibility enter the conversation. That sometimes means looking into areas that feel outside the usual scope of design through a systems-thinking lens. The environments, constraints, and decisions that shape how people behave are usually where the most compelling challenges are hiding.</p>
+          <img src="images/dt-diagram.svg" alt="Design Thinking diagram">
+        </div>
+
+        <div class="philosophy-row">
+          <p>My goal is to find the overlap between what customers genuinely need and what the business is positioned to provide. When we find it, what's good for the customer and what's good for the business become complementary.</p>
+          <img src="images/jtbd-diagram.svg" alt="Jobs to Be Done diagram">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="section">
+      <div class="how-i-work-layout">
+
+        <div class="how-i-work-text">
+          <div class="section-label">How I Work</div>
+          <p>In practice, this means looking up from our screens and getting out of the office. Real behavior happens in physical spaces, whether it involves digital interfaces or not. A person navigating a service isn't just tapping a screen. They are moving through environments, talking to people, working around obstacles, multitasking, and making decisions under conditions that a survey or analytics dashboard will never capture.</p>
+          <p style="margin-top:14px;">Whatever the project, that means observing people directly. Shadowing, immersive time in the field, or sitting down with people in their homes. What I'm paying attention to is what most research doesn't prioritize, and whatever else shows up that nobody expected:</p>
+          <ul class="dash-list" style="margin-top:16px;">
+            <li>hesitation, abandonment, or workarounds</li>
+            <li>differences between stated and observed intent</li>
+            <li>breakdowns caused by environment or constraint</li>
+            <li>misalignment between metrics and lived experience</li>
+            <li>system-level effects of local decisions</li>
+          </ul>
+        </div>
+
+        <div class="how-i-work-side">
+          <div class="ai-callout">
+            <div class="ai-callout__label">AI in my practice</div>
+            <p>I consider this table stakes, but apparently many people don't. I use it as a working tool, not a replacement for research or judgment. That includes designing experiences where AI plays a role, and helping teams decide where it should and shouldn't.</p>
+            <div class="ai-sub-label">How I use it</div>
+            <ul class="dash-list">
+              <li>as the engine behind experiences that used to be out of reach</li>
+              <li>to sift through large volumes of research</li>
+              <li>to check for errors in thinking</li>
+              <li>to prototype quickly</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRIMARY CAPABILITIES -->
+    <section class="section">
+      <div class="section-label">Primary Capabilities</div>
+      <div class="caps-grid">
+
+        <div>
+          <div class="caps-grid__title">Experience Strategy</div>
+          <div class="caps-grid__text">Concerned with what happens and why, and what to do about it. Not how the thing gets made, but whether you're making the right thing at all.</div>
+        </div>
+
+        <div>
+          <div class="caps-grid__title">Vision and Opportunity</div>
+          <div class="caps-grid__text">The output of experience strategy work. Translating research and insight into a clear picture of where the real opportunities are and what direction to move in.</div>
+        </div>
+
+        <div>
+          <div class="caps-grid__title">Cross-Disciplinary Leadership</div>
+          <div class="caps-grid__text">Leading and managing teams built from people with completely different backgrounds and expertise. Taking a group from ambiguity and nothing to a concrete set of facts, clear direction, and a plan to achieve what people and the business actually need.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMMONLY USED METHODS -->
+    <section class="section">
+      <div class="section-label">Commonly Used Methods</div>
+      <div class="methods-grid">
+
+        <div class="methods-grid__item">
+          <h4>Service Design</h4>
+          <p>End-to-end work: understanding what the business needs, what reality looks like for the people being served, what systems are involved, and working with a mixed team to define and roadmap a service that actually delivers.</p>
+        </div>
+
+        <div class="methods-grid__item">
+          <h4>Design Thinking</h4>
+          <p>Prototyping and co-creation with real users to identify what drives their behavior, what outcomes they need, and what a solution looks like in their actual context.</p>
+        </div>
+
+        <div class="methods-grid__item">
+          <h4>Behavioral Research</h4>
+          <p>Ethnographic and observational work focused on contexts and behaviors rather than solutions. Broader than design thinking and less concerned with what gets built.</p>
+        </div>
+
+        <div class="methods-grid__item">
+          <h4>Rapid Value Realization</h4>
+          <p>A way of working that starts with a hypothesis and builds quickly toward a proof of concept. Useful for testing strategic direction before committing to full execution.</p>
+        </div>
+
+        <div class="methods-grid__item">
+          <h4>UX for AI</h4>
+          <p>How an AI-powered experience should present itself to people. How it should feel, how it should communicate, and equally, how it should not.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="contact" id="contact">
+      <h2>If you're working on something difficult, let's talk!</h2>
+      <p>I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
+      <div class="button-row">
+        <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
+        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
+        <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
+      </div>
+      <p class="availability">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
+      <div class="footer">© 2026 · Matthew Abate</div>
+    </div>
+
+  </div><!-- /scroll-container -->
+
+</div><!-- /site-wrapper -->
+</div><!-- /frame -->
+
+<script src="site.js"></script>
+
+<script>
+(function() {
+  var btn = document.querySelector('.nav__hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.classList.add('is-open');
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close navigation');
+  }
+
+  function closeMenu() {
+    btn.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open navigation');
+  }
+
+  btn.addEventListener('click', function() {
+    if (menu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close when a menu link is clicked
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+}());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Matthew Abate</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 150;
+}
+.frame {
+  position: relative;
+  inset: auto;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: none;
+}
+.nav::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 1200px) { .nav::before { height: 40px; } }
+@media (max-width: 480px)  { .nav::before { height: 20px; } }
+.site-wrapper {
+  position: relative;
+  top: auto;
+  left: auto;
+  height: auto;
+  overflow: visible;
+}
+.nav { top: 60px; }
+@media (max-width: 1200px) {
+  .nav { top: 40px; }
+  body::before { height: 40px; }
+}
+@media (max-width: 480px) {
+  .nav { top: 20px; }
+  body::before { height: 20px; }
+}
+.scroll-container {
+  height: auto;
+  overflow: visible;
+}
+</style>
+</head>
+<body>
+
+<div class="frame frame--work">
+<div class="site-wrapper">
+
+  <!-- SCROLL CONTAINER -->
+  <div class="scroll-container" id="main-scroller">
+
+    <!-- NAV — sticky inside scroll-container -->
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Matthew Abate</a>
+      <div class="nav__right">
+        <div class="nav__links">
+          <a href="work.html" class="nav__link active">Work</a>
+          <a href="approach.html" class="nav__link">Approach</a>
+          <a href="bio.html" class="nav__link">Bio</a>
+          <a href="#contact" class="nav__link">Contact</a>
+        </div>
+        <a href="mailto:matthewabate@me.com" class="nav__email-btn">
+          <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
+            <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- Mobile menu: same links as desktop nav -->
+      <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+        <a href="work.html">Work</a>
+        <a href="approach.html">Approach</a>
+        <a href="bio.html">Bio</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:matthewabate@me.com">Get in touch</a>
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header" style="padding-bottom: 60px;">
+      <h1>Work</h1>
+      <p class="page-header__sub">A selection of work focused on understanding behavior, reframing problems, and changing how teams make decisions.</p>
+    </div>
+
+    <!-- FEATURED WORK -->
+    <div class="featured-label">Featured Work</div>
+    <div class="case-studies">
+
+      <!-- MLB — open by default -->
+      <div class="case-study is-open" id="cs-mlb">
+        <div class="case-study__header" onclick="toggleCase('cs-mlb')">
+          <h4 class="case-study__title">In-Venue Commerce Research (MLB)</h4>
+          <img class="case-study__logo" src="logos/MLB_logo.svg" alt="MLB">
+          <button class="case-study__toggle"></button>
+        </div>
+        <div class="case-study__body">
+          <div class="cs-layout">
+
+            <div class="cs-sidebar">
+              <div class="cs-meta-label">Sector</div>
+              <div class="cs-meta-value">Sports &amp; Entertainment</div>
+
+              <div class="cs-meta-label">Focus</div>
+              <div class="cs-meta-value">Venue Experience<br>Commerce</div>
+
+              <div class="cs-meta-label">Timing</div>
+              <div class="cs-meta-value">9 Months &bull; 2025</div>
+
+              <div class="cs-meta-label">Methods</div>
+              <ul class="cs-methods-list">
+                <li>Design Thinking</li>
+                <li>Ethnographic Field Research</li>
+                <li>Direct &amp; Indirect Observation</li>
+                <li>Opportunity Gap Surveys</li>
+                <li>Anchored Max-Dif Surveys</li>
+                <li>Intercept Interviews</li>
+                <li>In-Depth Interviews</li>
+                <li>Jobs to Be Done</li>
+                <li>Journey Mapping</li>
+                <li>Behavioral Segmentation</li>
+                <li>Co-Creation Workshops</li>
+                <li>Insights Development</li>
+                <li>Research Synthesis</li>
+                <li>Executive-Ready Reporting</li>
+              </ul>
+
+              <div style="margin-top: 20px;">
+                <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+              </div>
+            </div>
+
+            <div class="cs-content">
+              <div class="cs-section">
+                <div class="cs-section-label">What was happening</div>
+                <p class="cs-text">Fans expressed dissatisfaction with food and beverage options, citing price, quality, and availability, while actual purchasing behavior remained inconsistent and difficult to improve.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">What was wrong</div>
+                <p class="cs-text">Teams believed that improving concession stand speed and throughput would directly increase sales.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">Key Findings</div>
+                <ol class="cs-numbered">
+                  <li><span class="cs-num">1.</span>Fans weren't buying more because they feared missing key moments in the game.</li>
+                  <li><span class="cs-num">2.</span>Spending was suppressed not by line speed, but by cognitive load, social flow, and attention limits.</li>
+                </ol>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">Insights</div>
+                <ul class="cs-insights">
+                  <li>Fans maintain two mindsets simultaneously: <em>Researching</em> (logistical) and <em>Ritualizing</em> (emotional)</li>
+                  <li>Fans alternate between two modes: <em>Focused</em> (goal-oriented) and <em>Exploring</em> (open to influence)</li>
+                  <li>Purchasing often conflicts with fear of missing key moments</li>
+                  <li>Cognitive load and fragmented information reduce decision confidence</li>
+                  <li>Group dynamics, especially for parents, amplify friction and hesitation</li>
+                  <li>"Faster service" does not resolve FOMO or uncertainty</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="cs-results-layout">
+            <div class="cs-results-image">
+              <img src="images/MLB-Exploring-Mindset.png" alt="MLB Research" data-modal-src="https://drive.google.com/file/d/1gz_wo6ljsmse2d6IU1XzG-yxnKBQUhH2/preview" data-modal-type="iframe">
+              <div class="cs-results-caption">
+                <a href="#" class="cs-view-demo" data-modal-src="https://drive.google.com/file/d/1gz_wo6ljsmse2d6IU1XzG-yxnKBQUhH2/preview" data-modal-type="iframe">View Case Study</a>
+              </div>
+            </div>
+            <div class="cs-results-copy">
+              <div class="cs-section-label">Results</div>
+              <p class="cs-text">Teams recognized they lacked visibility into the behavioral drivers of concession decisions and began shifting toward structured experimentation and cross-league learning rather than relying on assumptions or vendor solutions.</p>
+              <p class="cs-text">Teams became more receptive to behavior-led analysis instead of operational assumptions about throughput and efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newrez — closed -->
+      <div class="case-study" id="cs-newrez">
+        <div class="case-study__header" onclick="toggleCase('cs-newrez')">
+          <h4 class="case-study__title">Home-Buying Experience Vision (Newrez)</h4>
+          <img class="case-study__logo" src="logos/newrez-logo.svg" alt="Newrez">
+          <button class="case-study__toggle"></button>
+        </div>
+        <div class="case-study__body">
+          <div class="cs-layout">
+
+            <div class="cs-sidebar">
+              <div class="cs-meta-label">Sector</div>
+              <div class="cs-meta-value">Financial Services</div>
+
+              <div class="cs-meta-label">Focus</div>
+              <div class="cs-meta-value">Experience Visioning<br>Workflow Optimization</div>
+
+              <div class="cs-meta-label">Timing</div>
+              <div class="cs-meta-value">8 Months &bull; 2021&ndash;22</div>
+
+              <div class="cs-meta-label">Methods</div>
+              <ul class="cs-methods-list">
+                <li>Ethnographic Field Research</li>
+                <li>In-Depth Interviews</li>
+                <li>Direct &amp; Indirect Observation</li>
+                <li>Behavioral Segmentation</li>
+                <li>Design Thinking</li>
+                <li>Jobs to Be Done</li>
+                <li>Journey Mapping</li>
+                <li>Co-Creation Workshops</li>
+                <li>Research Synthesis</li>
+                <li>Insights Development</li>
+                <li>Service Blueprinting</li>
+                <li>Executive-Ready Reporting</li>
+                <li>Digital Service Design</li>
+              </ul>
+
+              <div style="margin-top: 20px;">
+                <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+              </div>
+            </div>
+
+            <div class="cs-content">
+              <div class="cs-section">
+                <div class="cs-section-label">What was happening</div>
+                <p class="cs-text">Customers moving through the mortgage process experienced long, opaque, and inconsistent application flows, resulting in drop-off and refinancing loss to competitors.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">What was wrong</div>
+                <p class="cs-text">The organization attributed delays primarily to broker inefficiency and missed rate lock windows.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">Insights</div>
+                <ul class="cs-insights">
+                  <li>Loan completion behavior was consistent across specific behavioral patterns, not demographics.</li>
+                  <li>Internal personas did not reflect real behavioral segmentation.</li>
+                  <li>Tools intended to improve efficiency often introduced additional work.</li>
+                  <li>Each role in the process optimized locally, creating downstream rework.</li>
+                  <li>The system was fragmented across incompatible working styles.</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="cs-results-layout">
+            <div class="cs-results-image">
+              <img src="images/vision.png" alt="Newrez Experience Vision" data-modal-src="images/vision.png">
+              <div class="cs-results-caption">
+                <!-- <a href="#" class="cs-view-demo" data-modal-src="images/vision.png">View Demo</a> -->
+                <span class="cs-view-demo" style="text-decoration: none; cursor: default;">Demo coming soon</span>
+              </div>
+            </div>
+            <div class="cs-results-copy">
+              <div class="cs-section-label">Results</div>
+              <p class="cs-text">A unified experience vision was developed for both customers and internal teams, reframing the mortgage process as a connected service rather than a sequence of disconnected tasks.</p>
+              <p class="cs-text">The organization shifted toward testing smaller, prototype-driven improvements rather than attempting fully defined end-to-end solutions upfront.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lifescan — closed -->
+      <div class="case-study" id="cs-lifescan">
+        <div class="case-study__header" onclick="toggleCase('cs-lifescan')">
+          <h4 class="case-study__title">Diabetes Smart Assistant (Lifescan)</h4>
+          <img class="case-study__logo" src="logos/lifescan-logo.svg" alt="Lifescan">
+          <button class="case-study__toggle"></button>
+        </div>
+        <div class="case-study__body">
+          <div class="cs-layout">
+
+            <div class="cs-sidebar">
+              <div class="cs-meta-label">Sector</div>
+              <div class="cs-meta-value">Healthcare</div>
+
+              <div class="cs-meta-label">Focus</div>
+              <div class="cs-meta-value">Digital Therapeutics<br>Medical Devices</div>
+
+              <div class="cs-meta-label">Timing</div>
+              <div class="cs-meta-value">7 Months &bull; 2016</div>
+
+              <div class="cs-meta-label">Methods</div>
+              <ul class="cs-methods-list">
+                <li>Behavioral Research</li>
+                <li>In-Depth Interviews</li>
+                <li>Co-Creation Workshops</li>
+                <li>Jobs to Be Done</li>
+                <li>Journey Mapping</li>
+                <li>Research Synthesis</li>
+                <li>Insights Development</li>
+                <li>Service Blueprinting</li>
+                <li>Executive-Ready Reporting</li>
+                <li>Digital Service Design</li>
+                <li>Product Design</li>
+              </ul>
+
+              <div style="margin-top: 20px;">
+                <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+              </div>
+            </div>
+
+            <div class="cs-content">
+              <div class="cs-section">
+                <div class="cs-section-label">What was happening</div>
+                <p class="cs-text">People with poorly controlled diabetes were not consistently following their treatment plans, despite having access to monitoring tools and clinical guidance.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">What was wrong</div>
+                <p class="cs-text">The team assumed the core issue was numeracy: that patients did not understand their blood glucose data.</p>
+              </div>
+
+              <div class="cs-section">
+                <div class="cs-section-label">Insights</div>
+                <ul class="cs-insights">
+                  <li>Treatment adherence is driven more by daily context and constraints than understanding of numbers.</li>
+                  <li>Patients struggle most in moments between clinical visits, not during them.</li>
+                  <li>Behavioral and environmental factors outweigh informational clarity.</li>
+                  <li>Focus group feedback reflected interpretation, not lived behavior.</li>
+                  <li>Real-world routines contradicted stated understanding of the problem.</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="cs-results-layout">
+            <div class="cs-results-image">
+              <img src="images/diabetes.gif" alt="Lifescan Smart Assistant" data-modal-src="images/diabetes.gif">
+              <div class="cs-results-caption">
+                <!-- <a href="#" class="cs-view-demo" data-modal-src="images/diabetes.gif">View Demo</a> -->
+                <span class="cs-view-demo" style="text-decoration: none; cursor: default;">Demo coming soon</span>
+              </div>
+            </div>
+            <div class="cs-results-copy">
+              <div class="cs-section-label">Results</div>
+              <p class="cs-text">The team moved away from an education-first concept (a conversational avatar explaining data) toward a behavioral intervention model supported by AI and clinical oversight.</p>
+              <p class="cs-text">Patients gained clearer understanding of their treatment in the context of their daily behavior, not just their clinical data, and the experience became meaningfully more usable in real-world conditions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /featured case-studies -->
+
+    <!-- ADDITIONAL WORK -->
+    <div class="featured-label">Additional Work</div>
+    <div class="case-studies case-studies--additional">
+
+      <!-- J&J — open by default -->
+      <div class="case-study is-open" id="cs-jj">
+        <div class="case-study__header" onclick="toggleCase('cs-jj')">
+          <h4 class="case-study__title">Medical Device Testing &amp; Optimization (Johnson &amp; Johnson)</h4>
+          <img class="case-study__logo" src="logos/jj-logo.svg" alt="Johnson &amp; Johnson">
+          <button class="case-study__toggle"></button>
+        </div>
+        <div class="case-study__body">
+
+          <div class="cs-two-col">
+            <div class="cs-section">
+              <div class="cs-section-label">What was happening</div>
+              <p class="cs-text">Children prescribed injectable biologics frequently failed to correctly administer doses, resulting in incomplete delivery ("wet leg" incidents).</p>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-label">What was wrong</div>
+              <p class="cs-text">The problem was initially attributed to injection speed, force, or patient anxiety during administration.</p>
+            </div>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Insights</div>
+            <ul class="cs-insights">
+              <li>Device ergonomics did not support small-hand grip stability</li>
+              <li>Button mechanics were difficult to coordinate during injection</li>
+              <li>Instructions were too complex to follow during active use</li>
+              <li>Failure resulted from multiple interacting usability breakdowns, not a single mechanism issue</li>
+            </ul>
+          </div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Result</div>
+            <p class="cs-text">The device and instructions were redesigned to better support real-time use, including improved ergonomics and simplified step-by-step digital guidance. Failure rates decreased significantly and the program advanced through accelerated regulatory pathways.</p>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Zyrtec — closed -->
+      <div class="case-study" id="cs-zyrtec">
+        <div class="case-study__header" onclick="toggleCase('cs-zyrtec')">
+          <h4 class="case-study__title">Environmental Allergy Manager (Zyrtec)</h4>
+          <img class="case-study__logo" src="logos/zyrtec-logo-vector.svg" alt="Zyrtec">
+          <button class="case-study__toggle"></button>
+        </div>
+        <div class="case-study__body">
+
+          <div class="cs-two-col">
+            <div class="cs-section">
+              <div class="cs-section-label">What was happening</div>
+              <p class="cs-text">Patients struggled to anticipate allergy symptom severity and were often unprepared for daily environmental conditions.</p>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-label">What was wrong</div>
+              <p class="cs-text">The team believed environmental and pollen data alone could improve prediction accuracy and patient preparedness.</p>
+            </div>
+          </div>
+
+          <div class="cs-two-col">
+            <div class="cs-section">
+              <div class="cs-section-label">Insights</div>
+              <ul class="cs-insights">
+                <li>Patients relate more to others with similar experiences than abstract environmental data</li>
+                <li>Understanding comes from lived comparison, not numerical forecasting</li>
+                <li>Trust increases when information is grounded in human experience</li>
+                <li>Preparedness is driven by expectation-setting, not raw environmental signals</li>
+              </ul>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-label">Result</div>
+              <p class="cs-text">The experience shifted toward combining environmental data with crowd-sourced symptom reporting to improve interpretability and trust.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /additional case-studies -->
+
+    <!-- CONTACT -->
+    <div class="contact" id="contact" style="margin-top: 40px;">
+      <h2>If you're working on something difficult, let's talk!</h2>
+      <p>I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
+      <div class="button-row">
+        <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
+        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
+        <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
+      </div>
+      <p class="availability">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
+      <div class="footer">© 2026 · Matthew Abate</div>
+    </div>
+
+  </div><!-- /scroll-container -->
+
+</div><!-- /site-wrapper -->
+</div><!-- /frame -->
+
+<!-- Demo modal -->
+<div class="cs-modal" id="cs-modal" role="dialog" aria-modal="true" aria-label="Case study preview">
+  <div class="cs-modal__inner">
+    <button class="cs-modal__close" aria-label="Close">&times;</button>
+    <img id="cs-modal-img" src="" alt="Case study preview">
+    <iframe id="cs-modal-iframe" src="" frameborder="0" allowfullscreen style="display:none; width:80vw; height:80vh; border:none;"></iframe>
+  </div>
+</div>
+
+<script src="site.js"></script>
+
+<script>
+function toggleCase(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('is-open');
+}
+
+// Open and scroll to a case study if the URL has a hash (e.g. work.html#cs-newrez)
+(function() {
+  var hash = window.location.hash.slice(1);
+  if (!hash) return;
+  var el = document.getElementById(hash);
+  if (!el || !el.classList.contains('case-study')) return;
+  el.classList.add('is-open');
+  setTimeout(function() {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}());
+</script>
+
+<script>
+(function() {
+  var modal       = document.getElementById('cs-modal');
+  var modalImg    = document.getElementById('cs-modal-img');
+  var modalIframe = document.getElementById('cs-modal-iframe');
+
+  function openModal(src, type) {
+    if (type === 'iframe') {
+      modalImg.style.display    = 'none';
+      modalIframe.style.display = 'block';
+      modalIframe.src           = src;
+    } else {
+      modalIframe.style.display = 'none';
+      modalImg.style.display    = 'block';
+      modalImg.src              = src;
+    }
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    modalImg.src    = '';
+    modalIframe.src = '';
+  }
+
+  // Thumbnail images with data-modal-src
+  document.querySelectorAll('img[data-modal-src]').forEach(function(img) {
+    img.addEventListener('click', function() {
+      openModal(img.dataset.modalSrc, img.dataset.modalType);
+    });
+  });
+
+  // View Case Study / View Demo links with data-modal-src
+  document.querySelectorAll('a.cs-view-demo[data-modal-src]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(link.dataset.modalSrc, link.dataset.modalType);
+    });
+  });
+
+  // Close on overlay background click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on close button
+  modal.querySelector('.cs-modal__close').addEventListener('click', closeModal);
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+}());
+</script>
+
+<script>
+(function() {
+  var btn = document.querySelector('.nav__hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.classList.add('is-open');
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close navigation');
+  }
+
+  function closeMenu() {
+    btn.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open navigation');
+  }
+
+  btn.addEventListener('click', function() {
+    if (menu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close when a menu link is clicked
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+}());
+</script>
+
+</body>
+</html>
