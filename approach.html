@@ -8,65 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
 <style>
 body {
-  overflow-y: auto;
-  overflow-x: hidden;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-}
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  z-index: 150;
-}
-.frame {
-  position: relative;
-  inset: auto;
-  align-items: flex-start;
-  min-height: 100vh;
-  background: none;
-}
-.nav::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-@media (max-width: 1200px) { .nav::before { height: 40px; } }
-@media (max-width: 480px)  { .nav::before { height: 20px; } }
-.site-wrapper {
-  position: relative;
-  top: auto;
-  left: auto;
-  height: auto;
-  overflow: visible;
-}
-.nav { top: 60px; }
-@media (max-width: 1200px) {
-  .nav { top: 40px; }
-  body::before { height: 40px; }
-}
-@media (max-width: 480px) {
-  .nav { top: 20px; }
-  body::before { height: 20px; }
-}
-.scroll-container {
-  height: auto;
-  overflow: visible;
 }
 </style>
 </head>
