@@ -6,13 +6,6 @@
 <title>Work — Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
-<style>
-body {
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-</style>
 </head>
 <body>
 
@@ -212,14 +205,6 @@ body {
               </div>
 
               <div class="cs-section">
-                <div class="cs-section-label">Key Findings</div>
-                <ol class="cs-numbered">
-                  <li><span class="cs-num">1.</span>Most borrowers want the same things from a mortgage broker: speed and certainty.</li>
-                  <li><span class="cs-num">2.</span>Most brokers want a system that is intuitive but adapts to both their way of working and the specific details of each application.</li>
-                </ol>
-              </div>
-
-              <div class="cs-section">
                 <div class="cs-section-label">Insights</div>
                 <ul class="cs-insights">
                   <li>Loan completion behavior was consistent across specific behavioral patterns, not demographics.</li>
@@ -300,14 +285,6 @@ body {
               <div class="cs-section">
                 <div class="cs-section-label">What was wrong</div>
                 <p class="cs-text">The team assumed the core issue was numeracy: that patients did not understand their blood glucose data.</p>
-              </div>
-
-              <div class="cs-section">
-                <div class="cs-section-label">Key Findings</div>
-                <ol class="cs-numbered">
-                  <li><span class="cs-num">1.</span>Plan adherence is dependent on a patient’s ability to problem solve, which requires on-call support.</li>
-                  <li><span class="cs-num">2.</span>Most treatment plans are both too complex and too vague to be clear to a patient over time.</li>
-                </ol>
               </div>
 
               <div class="cs-section">
@@ -540,52 +517,6 @@ function toggleCase(id) {
 }());
 </script>
 
-<script>
-(function() {
-  var btn = document.querySelector('.nav__hamburger');
-  var menu = document.getElementById('mobile-menu');
-  if (!btn || !menu) return;
-
-  function openMenu() {
-    btn.classList.add('is-open');
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Close navigation');
-  }
-
-  function closeMenu() {
-    btn.classList.remove('is-open');
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open navigation');
-  }
-
-  btn.addEventListener('click', function() {
-    if (menu.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  // Close when a menu link is clicked
-  menu.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Close on outside click
-  document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMenu();
-  });
-}());
-</script>
 
 </body>
 </html>
