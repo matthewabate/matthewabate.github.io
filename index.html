@@ -9,10 +9,7 @@
 <style>
   body {
     overflow-y: auto;
-    overflow-x: hidden;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    overflow-x: clip;
     padding-bottom: 60px;
   }
   @media (max-width: 1200px) { body { padding-bottom: 40px; } }
@@ -31,7 +28,22 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    z-index: 150;
+    z-index: 400;
+  }
+
+  /* Shadow strip that travels with page-wrapper, visible only above (clip-path cuts downward bleed) */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; /* overridden by JS to match page-wrapper top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--frame-width);
+    height: 1px;
+    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.25);
+    clip-path: inset(-80px 0px 0px 0px); /* allow shadow to bleed upward only */
+    z-index: 401;
+    pointer-events: none;
   }
 
   /* Hero height: CSS sets a close approximation immediately; JS refines with exact nav height.
@@ -56,17 +68,31 @@
     flex-direction: column;
   }
 
-  /* Nav pins 60px from top as it scrolls up */
+  /* Nav sits at top of page-wrapper, which already starts 60px from viewport top */
   .nav {
-    top: 60px;
+    top: 0;
+  }
+
+  /* Page-wrapper: fixed during hero phase, top set by JS */
+  .page-wrapper {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    /* top is set by JS */
+  }
+
+  /* After hero exits: page-wrapper fixed at top, full natural height, translates up */
+  .page-wrapper.is-content {
+    top: 60px !important;
+    height: auto;
+    overflow: visible;
   }
 
   /* Centered wrapper — matches frame width, centers nav + content */
   .page-wrapper {
     width: var(--frame-width);
     margin: 0 auto;
-    background: #ffffff;
-    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.25);
+    z-index: 300;
   }
 
   /* Frame — natural flow, content defines height */
@@ -78,14 +104,14 @@
     min-height: 0;
     overflow: visible;
     width: 100%;
-    background: transparent;
-    box-shadow: none;
+    background: #ffffff;
   }
 
   .scroll-container {
     height: auto;
     overflow: visible;
   }
+
 </style>
 </head>
 <body>
@@ -280,14 +306,40 @@ document.fonts.ready.then(function() {
   var lineA  = document.querySelector('.line-a-v2');
   var lower  = document.querySelector('.hero-lower-block');
 
+  var pageWrapper  = document.querySelector('.page-wrapper');
+  var mainScroller = document.getElementById('main-scroller');
+
   var vh   = window.innerHeight;
   var navH = nav.offsetHeight;
 
   // Hero fills viewport minus nav height — nav sits at the bottom of the screen
   hero.style.height = (vh - navH) + 'px';
 
-  // Hero sits above nav in z-index while pinned, so it covers sticky nav
-  hero.style.zIndex = '300';
+  // Hero sits above page-wrapper in z-index while pinned
+  hero.style.zIndex = '200';
+
+  // Page-wrapper starts fixed just below the viewport (only nav visible at bottom)
+  gsap.set(pageWrapper, { top: vh - navH });
+
+  // Sync shadow strip with page-wrapper top
+  var shadowStrip = document.querySelector('body::after') || null;
+  function syncShadow() {
+    var pwTop = parseFloat(pageWrapper.style.top) || (vh - navH);
+    document.documentElement.style.setProperty('--shadow-top', pwTop + 'px');
+  }
+  // Use a live CSS variable instead — update body::after via a real element
+  var shadowEl = document.getElementById('nav-shadow-strip');
+  if (!shadowEl) {
+    shadowEl = document.createElement('div');
+    shadowEl.id = 'nav-shadow-strip';
+    shadowEl.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);width:var(--frame-width);height:1px;box-shadow:0px 4px 48px rgba(0,0,0,0.25);clip-path:inset(-80px 0px 0px 0px);z-index:401;pointer-events:none;';
+    document.body.appendChild(shadowEl);
+  }
+  function syncShadowEl() {
+    var pwTop = parseFloat(getComputedStyle(pageWrapper).top);
+    shadowEl.style.top = pwTop + 'px';
+  }
+  syncShadowEl();
 
   // Mask height
   var lowerH = lower.offsetHeight;
@@ -298,29 +350,68 @@ document.fonts.ready.then(function() {
   gsap.set(lineA, { y: 0 });
   gsap.set(lower, { y: maskH, opacity: 0 });
 
-  // Pin duration
-  var pinEnd = 4.2 * vh;
-
   // 4-unit hero timeline
   var tl = gsap.timeline({
     scrollTrigger: {
       trigger:       '#hero',
       start:         'top top',
-      end:           '+=420%',
+      end:           '+=80%',
       pin:           true,
       scrub:         1.2,
       anticipatePin: 1,
       onLeave: function() {
-        // Animation complete — restore normal stacking order
         hero.style.zIndex = '';
+        gsap.set(pageWrapper, { top: 60 });
+        pageWrapper.classList.add('is-content');
+
+        // Extend body so native scrollbar reflects full content height
+        var frameH       = vh - 180;
+        var siteWrapper  = document.getElementById('site-wrapper');
+        var contentDist  = Math.max(0, siteWrapper.offsetHeight - frameH);
+        var spacer       = document.getElementById('content-scroll-spacer');
+        if (!spacer) {
+          spacer    = document.createElement('div');
+          spacer.id = 'content-scroll-spacer';
+          document.body.appendChild(spacer);
+        }
+        spacer.style.height = contentDist + 'px';
+
+        // Drive content position from body scroll
+        var heroEndScroll = window.scrollY;
+        function onContentScroll() {
+          if (!pageWrapper.classList.contains('is-content')) return;
+          var past = Math.max(0, window.scrollY - heroEndScroll);
+          gsap.set(siteWrapper, { y: -past });
+        }
+        window.addEventListener('scroll', onContentScroll);
+        pageWrapper._removeContentScroll = function() {
+          window.removeEventListener('scroll', onContentScroll);
+        };
+      },
+      onEnterBack: function() {
+        hero.style.zIndex = '200';
+        pageWrapper.classList.remove('is-content');
+        if (pageWrapper._removeContentScroll) {
+          pageWrapper._removeContentScroll();
+        }
+        var siteWrapper = document.getElementById('site-wrapper');
+        gsap.set(siteWrapper, { clearProps: 'y' });
+        gsap.set(pageWrapper, { top: 60 });
+        var spacer = document.getElementById('content-scroll-spacer');
+        if (spacer) spacer.style.height = '0';
       }
     }
   });
 
-  tl.to(lineA, { y: -maskH, opacity: 0, ease: 'none',        duration: 1 }, 0);
-  tl.to(lower, { y: 0,      opacity: 1, ease: 'none',        duration: 1 }, 1);
-  // Unit 2–3: DETENT — nothing moves
-  tl.to(hero,  { y: -vh, ease: 'power2.inOut', duration: 1 }, 3);
+  tl.to(lineA,       { y: -maskH, opacity: 0, ease: 'none',        duration: 0.5 }, 0);
+  tl.to(lower,       { y: 0,      opacity: 1, ease: 'none',        duration: 0.5 }, 0.5);
+  // Unit 1–3: DETENT — nothing moves (extended to absorb freed time)
+  // Unit 3–4: hero + page-wrapper rise in unison
+  tl.to(hero,        { y: -vh, ease: 'power2.inOut', duration: 1 }, 3);
+  tl.to(pageWrapper, { top: 60, ease: 'power2.inOut', duration: 1 }, 3);
+
+  // Keep shadow strip synced during GSAP animation
+  gsap.ticker.add(syncShadowEl);
 
   // Scroll button — lands with nav at its sticky position (top: 60px)
   var scrollBtn = document.querySelector('.hero-scroll-btn');
@@ -346,49 +437,6 @@ document.fonts.ready.then(function() {
 });
 </script>
 
-<script>
-(function() {
-  var btn = document.querySelector('.nav__hamburger');
-  var menu = document.getElementById('mobile-menu');
-  if (!btn || !menu) return;
-
-  function openMenu() {
-    btn.classList.add('is-open');
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Close navigation');
-  }
-
-  function closeMenu() {
-    btn.classList.remove('is-open');
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open navigation');
-  }
-
-  btn.addEventListener('click', function() {
-    if (menu.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  menu.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMenu();
-  });
-}());
-</script>
 
 </body>
 </html>
