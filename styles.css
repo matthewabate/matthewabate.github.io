@@ -116,6 +116,9 @@ body {
   color: #2E2724;
   overflow: hidden;
   background: #111;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* ============================================================
