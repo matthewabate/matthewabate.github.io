@@ -115,7 +115,7 @@ body {
   font-family: 'Outfit', sans-serif;
   color: #2E2724;
   overflow: hidden;
-  background: #111;
+  background: #FAF5F2;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1342,4 +1342,43 @@ h3 {
 
   /* Two-col grids collapse on small mobile */
   .cs-two-col { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   INNER PAGES — natural document flow, native browser scroll
+   Frame top gap = padding-top on .frame; bottom gap = padding-bottom on body.
+   This prevents content from being cut off at viewport bottom.
+   ============================================================ */
+body.page--inner {
+  overflow-y: auto;
+  overflow-x: clip;
+  padding-bottom: 60px;
+}
+body.page--inner .frame {
+  position: relative;
+  inset: auto;
+  padding-top: 60px;
+  padding-bottom: 0;
+  min-height: auto;
+}
+body.page--inner .site-wrapper {
+  height: auto;
+  min-height: auto;
+}
+body.page--inner .scroll-container {
+  height: auto;
+  overflow-y: visible;
+  overflow-x: hidden;
+}
+@media (max-width: 1200px) {
+  body.page--inner { padding-bottom: 40px; }
+  body.page--inner .frame { padding-top: 40px; }
+}
+@media (max-width: 768px) {
+  body.page--inner { padding-bottom: 24px; }
+  body.page--inner .frame { padding-top: 24px; }
+}
+@media (max-width: 480px) {
+  body.page--inner { padding-bottom: 20px; }
+  body.page--inner .frame { padding-top: 20px; }
 }

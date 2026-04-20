@@ -28,10 +28,7 @@
   ];
 
   var indexBgImages = [
-    'BG07.jpg','BG08.jpg','BG09.jpg',
-    'BG12.jpg','BG13.jpg','BG14.jpg','BG15.jpg',
-    'BG17.jpg','BG18.jpg','BG19.jpg','BG20.jpg',
-    'BG25.jpg','BG26.jpg','BG27.jpg'
+    'BG10.jpg','BG12.jpg','BG17.jpg','BG27.jpg'
   ];
 
   var path = window.location.pathname;
