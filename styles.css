@@ -743,7 +743,7 @@ h3 {
 
 .ai-callout__label {
   font-size: var(--label-size);
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.66px;
   line-height: 15px;
@@ -758,7 +758,7 @@ h3 {
 
 .ai-sub-label {
   font-size: var(--label-size);
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.66px;
   line-height: 15px;
