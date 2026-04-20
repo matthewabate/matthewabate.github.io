@@ -23,8 +23,8 @@
   --h1-lh: 72px;
   --tagline-size: 54px;   /* serif tagline (index selected work) */
   --tagline-lh: 60px;
-  --contact-h2-size: 48px;
-  --contact-h2-lh: 60px;
+  --contact-h2-size: 42px;
+  --contact-h2-lh: 48px;
   --body-size: 18px;      /* body copy */
   --body-lh: 28px;
   --small-size: 15px;     /* work list titles, buttons */
@@ -143,7 +143,6 @@ body {
 .site-wrapper {
   width: var(--frame-width);
   background: #ffffff;
-  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================================================
@@ -287,7 +286,7 @@ body {
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
-  color: #8B5A5A;
+  color: #E82F2A;
 }
 
 .hero-lower-block {
@@ -304,7 +303,7 @@ body {
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
-  color: #8B5A5A;
+  color: #F8FBCE;
 }
 
 .hero-body-copy {
@@ -369,7 +368,7 @@ body {
 
 .section-label {
   font-size: var(--label-size);
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.66px;
   line-height: 15px;
@@ -560,19 +559,14 @@ h3 {
   font-weight: 700;
   color: #2E2724;
   margin-bottom: 24px;
+  max-width: 725px;
 }
 
 .contact p {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  color: #2E2724;
-  max-width: 750px;
+  max-width: 725px;
 }
 
-.contact .availability {
-  font-size: var(--small-size);
-  line-height: 18px;
-  color: #2E2724;
+.contact .cs-text {
   margin-top: 24px;
 }
 
@@ -833,7 +827,7 @@ h3 {
 .featured-label {
   position: relative;
   font-size: var(--label-size);
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.66px;
   line-height: 15px;

@@ -31,21 +31,6 @@
     z-index: 400;
   }
 
-  /* Shadow strip that travels with page-wrapper, visible only above (clip-path cuts downward bleed) */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0; /* overridden by JS to match page-wrapper top */
-    left: 50%;
-    transform: translateX(-50%);
-    width: var(--frame-width);
-    height: 1px;
-    box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.25);
-    clip-path: inset(-80px 0px 0px 0px); /* allow shadow to bleed upward only */
-    z-index: 401;
-    pointer-events: none;
-  }
-
   /* Hero height: CSS sets a close approximation immediately; JS refines with exact nav height.
      100svh = viewport with browser chrome visible (correct on iOS Safari at load).
      Fallback to 100vh for browsers without svh support. */
@@ -140,8 +125,8 @@
             <div class="line-b-v2">is making the<br />right thing.</div>
 
             <div class="hero-body-block">
-              <p class="hero-body-copy">My work helps teams understand how people behave in context, replace their assumptions with real insights, and clarify what an experience should accomplish before anything is designed.</p>
-              <p class="hero-body-copy">I work with organizations tackling complex challenges to solve the right problems and make the right things.</p>
+              <p class="hero-body-copy page-header__sub">My work helps teams understand how people behave in context, replace their assumptions with real insights, and clarify what an experience should accomplish before anything is designed.</p>
+              <p class="hero-body-copy page-header__sub">I work with organizations tackling complex challenges to solve the right problems and make the right things.</p>
               <div class="button-row" style="margin-top: 28px;">
                 <div class="button button--circle hero-scroll-btn">↓</div>
                 <a href="mailto:matthewabate@me.com" class="button button--primary">Get in touch</a>
@@ -269,14 +254,15 @@
 
     <!-- CONTACT -->
     <div class="contact" id="contact">
-      <h2>If you're working on something difficult, let's talk!</h2>
-      <p>I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
+      <div class="section-label">Contact</div>
+      <h2>If you're working on something challenging, let's talk!</h2>
+      <p class="page-header__sub">I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
       <div class="button-row">
         <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
         <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
         <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
       </div>
-      <p class="availability">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
+      <p class="cs-text">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
       <div class="footer">© 2026 · Matthew Abate</div>
     </div>
 
@@ -320,26 +306,6 @@ document.fonts.ready.then(function() {
 
   // Page-wrapper starts fixed just below the viewport (only nav visible at bottom)
   gsap.set(pageWrapper, { top: vh - navH });
-
-  // Sync shadow strip with page-wrapper top
-  var shadowStrip = document.querySelector('body::after') || null;
-  function syncShadow() {
-    var pwTop = parseFloat(pageWrapper.style.top) || (vh - navH);
-    document.documentElement.style.setProperty('--shadow-top', pwTop + 'px');
-  }
-  // Use a live CSS variable instead — update body::after via a real element
-  var shadowEl = document.getElementById('nav-shadow-strip');
-  if (!shadowEl) {
-    shadowEl = document.createElement('div');
-    shadowEl.id = 'nav-shadow-strip';
-    shadowEl.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);width:var(--frame-width);height:1px;box-shadow:0px 4px 48px rgba(0,0,0,0.25);clip-path:inset(-80px 0px 0px 0px);z-index:401;pointer-events:none;';
-    document.body.appendChild(shadowEl);
-  }
-  function syncShadowEl() {
-    var pwTop = parseFloat(getComputedStyle(pageWrapper).top);
-    shadowEl.style.top = pwTop + 'px';
-  }
-  syncShadowEl();
 
   // Mask height
   var lowerH = lower.offsetHeight;
@@ -409,9 +375,6 @@ document.fonts.ready.then(function() {
   // Unit 3–4: hero + page-wrapper rise in unison
   tl.to(hero,        { y: -vh, ease: 'power2.inOut', duration: 1 }, 3);
   tl.to(pageWrapper, { top: 60, ease: 'power2.inOut', duration: 1 }, 3);
-
-  // Keep shadow strip synced during GSAP animation
-  gsap.ticker.add(syncShadowEl);
 
   // Scroll button — lands with nav at its sticky position (top: 60px)
   var scrollBtn = document.querySelector('.hero-scroll-btn');
