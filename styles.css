@@ -1032,14 +1032,14 @@ h3 {
   margin-top: 6px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .cs-numbered li {
-  font-family: 'Lora', serif;
-  font-size: 21px;
-  line-height: 33px;
-  padding-left: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  padding-left: 21px;
   padding-right: 24px;
   position: relative;
   color: #8B5A5A;
@@ -1049,10 +1049,9 @@ h3 {
 .cs-numbered li .cs-num {
   position: absolute;
   left: 0.5px;
-  top: -2px;
   font-family: 'Outfit', sans-serif;
-  font-size: 21px;
-  line-height: 33px;
+  font-size: 18px;
+  line-height: 28px;
   font-weight: 400;
   color: #8B5A5A;
 }
@@ -1083,7 +1082,7 @@ h3 {
 
 .cs-insights em {
   font-style: italic;
-  color: #8B5A5A;
+  font-weight: 400;
 }
 
 /* Results with image + view link */
@@ -1112,14 +1111,12 @@ h3 {
 
 .cs-results-caption {
   padding-top: 12px;
-  margin-top: 12px;
-  border-top: 1px solid #D9D3CF;
   text-align: center;
 }
 
 .cs-view-demo {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
   color: #2E2724;
   text-decoration: underline;
