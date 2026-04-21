@@ -270,7 +270,9 @@ body {
 
 .headline-mask-v2 {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  clip-path: polygon(-200px 0%, -200px 100%, 100% 100%, 100% 0%);
+  margin-left: -20px;
   margin-top: 10px;
   /* Ensure line-a is visible before GSAP sets the computed height */
   min-height: var(--hero-size);
@@ -279,8 +281,8 @@ body {
 .headline-line-v2 {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 20px;
+  width: calc(100% - 20px);
   font-family: 'Playfair Display', serif;
   font-size: var(--hero-size);
   line-height: var(--hero-lh);
@@ -292,8 +294,8 @@ body {
 .hero-lower-block {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 20px;
+  width: calc(100% - 20px);
   opacity: 0;
 }
 
@@ -1347,13 +1349,31 @@ h3 {
 /* ============================================================
    INNER PAGES — natural document flow, native browser scroll
    Frame top gap = padding-top on .frame; bottom gap = padding-bottom on body.
-   This prevents content from being cut off at viewport bottom.
+   ::before mask covers the top gap so scrolled content can't peek above the nav.
+   Nav sticks at top: 60px to stay aligned with the frame edge.
    ============================================================ */
 body.page--inner {
   overflow-y: auto;
   overflow-x: clip;
   padding-bottom: 60px;
 }
+
+/* Fixed mask — matches body background image, covers the top gap */
+body.page--inner::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #FAF5F2;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 150;
+}
+
 body.page--inner .frame {
   position: relative;
   inset: auto;
@@ -1367,18 +1387,29 @@ body.page--inner .site-wrapper {
 }
 body.page--inner .scroll-container {
   height: auto;
-  overflow-y: visible;
-  overflow-x: hidden;
+  overflow: visible;
 }
+
+/* Nav sticks at the frame edge, not the viewport top */
+body.page--inner .nav {
+  top: 60px;
+}
+
 @media (max-width: 1200px) {
   body.page--inner { padding-bottom: 40px; }
+  body.page--inner::before { height: 40px; }
   body.page--inner .frame { padding-top: 40px; }
+  body.page--inner .nav { top: 40px; }
 }
 @media (max-width: 768px) {
   body.page--inner { padding-bottom: 24px; }
+  body.page--inner::before { height: 24px; }
   body.page--inner .frame { padding-top: 24px; }
+  body.page--inner .nav { top: 24px; }
 }
 @media (max-width: 480px) {
   body.page--inner { padding-bottom: 20px; }
+  body.page--inner::before { height: 20px; }
   body.page--inner .frame { padding-top: 20px; }
+  body.page--inner .nav { top: 20px; }
 }
