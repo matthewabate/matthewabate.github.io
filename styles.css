@@ -1,7 +1,7 @@
 /* ============================================================
    MATTHEW ABATE — PRODUCTION CSS
    Architecture: frame > site-wrapper > scroll-container > nav (sticky)
-   Responsive design: custom properties + breakpoints for mobile/tablet/desktop
+   Responsive design: custom properties + breakpoints
    ============================================================ */
 
 /* RESET */
@@ -9,35 +9,31 @@
 
 /* ── CSS Custom Properties ────────────────────────────────── */
 :root {
-  /* Layout */
   --frame-width: 1040px;
-  --pad-h: 90px;          /* section horizontal padding */
-  --pad-v: 60px;          /* section vertical padding */
-  --gap: 46px;            /* column gap */
-  --sidebar-w: 270px;     /* work page sidebar */
-
-  /* Typography */
-  --hero-size: 84px;      /* hero headline */
+  --pad-h: 90px;
+  --pad-v: 60px;
+  --gap: 46px;
+  --sidebar-w: 270px;
+  --hero-size: 84px;
   --hero-lh: 0.95;
-  --h1-size: 60px;        /* page h1 */
+  --h1-size: 60px;
   --h1-lh: 72px;
-  --tagline-size: 54px;   /* serif tagline (index selected work) */
+  --tagline-size: 54px;
   --tagline-lh: 60px;
   --contact-h2-size: 42px;
   --contact-h2-lh: 48px;
-  --body-size: 18px;      /* body copy */
+  --body-size: 18px;
   --body-lh: 28px;
-  --small-size: 15px;     /* work list titles, buttons */
-  --label-size: 12px;     /* section labels */
-  --nav-size: 11px;       /* nav links */
-  --ui-size: 21px;        /* work list item titles, serif */
-  --subheader-size: 21px; /* page-header__sub, approach-intro, work-intro */
+  --small-size: 15px;
+  --label-size: 12px;
+  --nav-size: 11px;
+  --ui-size: 21px;
+  --subheader-size: 21px;
   --subheader-lh: 33px;
-  --case-study-title-size: 30px; /* case study titles */
+  --case-study-title-size: 30px;
   --case-study-title-lh: 36px;
 }
 
-/* ── Medium desktop / laptop (1200px and below) ─── */
 @media (max-width: 1200px) {
   .frame { padding: 40px 0; }
   :root {
@@ -60,7 +56,6 @@
   }
 }
 
-/* ── Tablet / large mobile (768px and below) ─── */
 @media (max-width: 768px) {
   :root {
     --frame-width: calc(100vw - 48px);
@@ -87,7 +82,6 @@
   }
 }
 
-/* ── Mobile / iPhone SE (480px and below) ─── */
 @media (max-width: 480px) {
   .frame { padding: 20px 0; }
   :root {
@@ -122,7 +116,7 @@ body {
 }
 
 /* ============================================================
-   FRAME — locked viewport container, 60px top/bottom margin
+   FRAME — locked viewport container
    ============================================================ */
 .frame {
   position: fixed;
@@ -135,8 +129,6 @@ body {
   background-position: center;
 }
 
-/* Frame variant backgrounds removed — background image is set on body via JS */
-
 /* ============================================================
    SITE WRAPPER — white card
    ============================================================ */
@@ -146,7 +138,7 @@ body {
 }
 
 /* ============================================================
-   SCROLL CONTAINER — internal scroller, GSAP target
+   SCROLL CONTAINER — internal scroller
    ============================================================ */
 .scroll-container {
   height: 100%;
@@ -161,10 +153,8 @@ body {
 
 /* ============================================================
    NAV — sticky inside scroll-container
-   Border: spans only the content area width (respects padding)
    ============================================================ */
 .nav {
-  position: relative;
   position: sticky;
   top: 0;
   z-index: 200;
@@ -184,8 +174,6 @@ body {
   right: var(--pad-h);
   height: 1px;
   background-color: #D9D3CF;
-  max-width: var(--frame-width);
-  width: calc(100% - 2 * var(--pad-h));
 }
 
 .nav__logo {
@@ -210,8 +198,6 @@ body {
 .nav__link {
   font-size: var(--nav-size);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
   color: #E82F2A;
   text-decoration: none;
   cursor: pointer;
@@ -265,19 +251,18 @@ body {
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
-  color: #2E2724;
 }
 
 .headline-mask-v2 {
   position: relative;
-  overflow: visible;
-  clip-path: polygon(-200px 0%, -200px 100%, 100% 100%, 100% 0%);
+  overflow-x: visible;
+  overflow-y: clip;
   margin-left: -20px;
   margin-top: 10px;
-  /* Ensure line-a is visible before GSAP sets the computed height */
   min-height: var(--hero-size);
 }
 
+/* Line-a: animated, red */
 .headline-line-v2 {
   position: absolute;
   top: 0;
@@ -299,6 +284,7 @@ body {
   opacity: 0;
 }
 
+/* Line-b: animated, cream */
 .line-b-v2 {
   font-family: 'Playfair Display', serif;
   font-size: var(--hero-size);
@@ -314,7 +300,6 @@ body {
   line-height: var(--body-lh);
   margin-bottom: 12px;
   margin-top: 24px;
-  color: #2E2724;
 }
 
 .hero-body-copy + .hero-body-copy { margin-top: 0; }
@@ -331,7 +316,6 @@ body {
   font-size: var(--h1-size);
   font-weight: 700;
   line-height: var(--h1-lh);
-  color: #2E2724;
   padding-bottom: 42px;
 }
 
@@ -340,13 +324,11 @@ body {
   font-size: var(--subheader-size);
   font-weight: 400;
   line-height: var(--subheader-lh);
-  color: #2E2724;
   max-width: 725px;
 }
 
 /* ============================================================
    SECTIONS
-   Border-top: spans only content area width (respects padding)
    ============================================================ */
 .section {
   position: relative;
@@ -362,18 +344,25 @@ body {
   right: var(--pad-h);
   height: 1px;
   background-color: #D9D3CF;
-  width: calc(100% - 2 * var(--pad-h));
-  max-width: var(--frame-width);
 }
 
 .section--no-top-border::before { display: none; }
 
-.section-label {
+/* ── Shared label typography ── */
+.section-label,
+.col-label,
+.ai-callout__label,
+.ai-sub-label,
+.featured-label,
+.cs-meta-label {
   font-size: var(--label-size);
-  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.66px;
   line-height: 15px;
+}
+
+.section-label {
+  font-weight: 500;
   color: #8B5A5A;
   margin-bottom: 24px;
 }
@@ -396,13 +385,9 @@ p {
 
 p + p { margin-top: 14px; }
 
-/* Index approach section intro paragraph — should use Lora, larger */
+/* Index approach section: Lora */
 .section:nth-of-type(2) .col--40 p {
   font-family: 'Lora', serif;
-  font-size: 21px;
-  line-height: 33px;
-  font-weight: 400;
-  color: #2E2724;
 }
 
 .serif-tagline {
@@ -411,18 +396,10 @@ p + p { margin-top: 14px; }
   font-size: var(--tagline-size);
   line-height: var(--tagline-lh);
   font-weight: 700;
-  color: #2E2724;
 }
 
 .serif-tagline span { display: block; }
-
-h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #2E2724;
-  margin-bottom: 10px;
-}
+.serif-tagline span + span { margin-top: 12px; }
 
 /* ============================================================
    SELECTED WORK (index)
@@ -434,16 +411,16 @@ h3 {
 
 .work-list-item {
   border-bottom: 1px solid #D9D3CF;
-  padding: 13px 0;
+  padding: 24px 0;
 }
 
-.work-list-item:last-child { border-bottom: none; }
+.work-list-item:first-child { padding-top: 0; }
+.work-list-item:last-child { border-bottom: none; padding-bottom: 0; }
 
 .work-list-item__label {
   font-size: var(--small-size);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 18px;
-  color: #2E2724;
   margin-bottom: 3px;
 }
 
@@ -452,32 +429,39 @@ h3 {
   font-weight: 500;
   line-height: 33px;
   color: #2E2724;
-  text-decoration: none;
-  border-bottom: 1px solid #E82F2A;
-  display: inline;
+  text-decoration: underline;
+  text-decoration-color: #E82F2A;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }
 
 /* ============================================================
-   DASH LIST (bullets with em-dash)
+   DASH LISTS
    ============================================================ */
-.dash-list {
+.dash-list,
+.bio-dash-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
-.dash-list li {
+.dash-list { gap: 14px; }
+.bio-dash-list { gap: 12px; }
+
+.dash-list li,
+.bio-dash-list li {
   font-size: var(--body-size);
   line-height: var(--body-lh);
-  color: #2E2724;
-  padding-left: 20px;
   position: relative;
   font-weight: 300;
   letter-spacing: 0.12px;
 }
 
-.dash-list li::before {
+.dash-list li { padding-left: 20px; }
+.bio-dash-list li { padding-left: 18px; }
+
+.dash-list li::before,
+.bio-dash-list li::before {
   content: '–';
   position: absolute;
   left: 0;
@@ -509,12 +493,6 @@ h3 {
 .button--primary {
   background: #2E2724;
   color: #fff;
-  outline-color: #2E2724;
-}
-
-.hero-body-block .button--primary {
-  font-size: 15px;
-  font-weight: 500;
 }
 
 .button--circle {
@@ -528,9 +506,6 @@ h3 {
   font-size: 16px;
   text-transform: none;
   letter-spacing: 0;
-  outline: 2px #2E2724 solid;
-  outline-offset: -2px;
-  border: none;
 }
 
 .button--sm {
@@ -551,7 +526,6 @@ h3 {
 .contact {
   background: #E8E4E0;
   padding: var(--pad-v) var(--pad-h) 0;
-  margin-top: auto;
 }
 
 .contact h2 {
@@ -559,7 +533,6 @@ h3 {
   font-size: var(--contact-h2-size);
   line-height: var(--contact-h2-lh);
   font-weight: 700;
-  color: #2E2724;
   margin-bottom: 24px;
   max-width: 725px;
 }
@@ -568,7 +541,13 @@ h3 {
   max-width: 725px;
 }
 
-.contact .cs-text {
+.contact .page-header__sub {
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  font-family: 'Lora', serif;
+}
+
+.contact .button-row + .page-header__sub {
   margin-top: 24px;
 }
 
@@ -596,9 +575,6 @@ h3 {
 
 .bio-intro__text p {
   font-family: 'Lora', serif;
-  font-size: var(--subheader-size);
-  line-height: var(--subheader-lh);
-  font-weight: 400;
   max-width: 725px;
 }
 
@@ -617,59 +593,26 @@ h3 {
 }
 
 .col-label {
-  font-size: var(--label-size);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
-  line-height: 15px;
   color: #8B5A5A;
   margin-bottom: 20px;
 }
 
-.bio-dash-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.bio-dash-list li {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  color: #2E2724;
-  padding-left: 18px;
-  position: relative;
-  font-weight: 300;
-  letter-spacing: 0.12px;
-}
-
-.bio-dash-list li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: #8B5A5A;
-}
-
-.personal-grid {
+.personal-grid,
+.caps-grid,
+.methods-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--gap);
-  margin-top: 4px;
 }
+
+.personal-grid { margin-top: 4px; }
 
 .personal-item h4 {
   font-size: var(--body-size);
   font-weight: 500;
   line-height: var(--body-lh);
   margin-bottom: 10px;
-  color: #2E2724;
-}
-
-.personal-item p {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  color: #2E2724;
-  font-weight: 300;
 }
 
 .bio-link {
@@ -685,10 +628,6 @@ h3 {
    ============================================================ */
 .approach-intro p {
   font-family: 'Lora', serif;
-  font-size: var(--subheader-size);
-  line-height: var(--subheader-lh);
-  font-weight: 400;
-  color: #2E2724;
   max-width: 725px;
 }
 
@@ -709,14 +648,11 @@ h3 {
 .philosophy-row p {
   flex: 1;
   font-family: 'Lora', serif;
-  font-size: var(--subheader-size);
-  line-height: var(--subheader-lh);
-  font-weight: 400;
 }
 
 .philosophy-row img {
-  flex: 0 0 160px;
-  width: 160px;
+  flex: 0 0 var(--sidebar-w);
+  width: var(--sidebar-w);
   display: block;
 }
 
@@ -726,17 +662,17 @@ h3 {
   align-items: flex-start;
 }
 
-.how-i-work-text { flex: 1.4; }
+.how-i-work-text { flex: 1; }
 
 .how-i-work-text p {
   font-family: 'Lora', serif;
-  font-size: var(--subheader-size);
-  line-height: var(--subheader-lh);
-  font-weight: 400;
 }
 
 .how-i-work-text p + p { margin-top: 16px; }
-.how-i-work-side { flex: 1; }
+
+.how-i-work-side {
+  flex: 0 0 var(--sidebar-w);
+}
 
 .ai-callout {
   background: #FAF5F2;
@@ -744,26 +680,19 @@ h3 {
 }
 
 .ai-callout__label {
-  font-size: var(--label-size);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
-  line-height: 15px;
   color: #8B7B7A;
   margin-bottom: 10px;
 }
 
 .ai-callout p {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
+  font-size: var(--small-size);
+  line-height: 18px;
+  font-weight: 300;
 }
 
 .ai-sub-label {
-  font-size: var(--label-size);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
-  line-height: 15px;
   color: #8B7B7A;
   margin-top: 16px;
   margin-bottom: 8px;
@@ -772,69 +701,37 @@ h3 {
 .ai-callout .dash-list { gap: 12px; }
 .ai-callout .dash-list li { font-size: var(--small-size); line-height: 18px; }
 
-.caps-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--gap);
-}
-
-.caps-grid__title {
-  font-size: var(--body-size);
-  font-weight: 500;
-  line-height: var(--body-lh);
-  margin-bottom: 8px;
-  color: #2E2724;
-}
-
-.caps-grid__text {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  color: #2E2724;
-  font-weight: 300;
-}
-
-.methods-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--gap);
-}
-
+/* Shared: body-size, 500-weight section headings */
+.caps-grid__title,
 .methods-grid__item h4 {
   font-size: var(--body-size);
   font-weight: 500;
   line-height: var(--body-lh);
   margin-bottom: 8px;
-  color: #2E2724;
 }
 
-.methods-grid__item p {
+/* caps-grid__text is a div so needs explicit font sizing */
+.caps-grid__text {
   font-size: var(--body-size);
   line-height: var(--body-lh);
-  color: #2E2724;
+  font-weight: 300;
+}
+
+/* Shared: light-weight body text (p elements, inherits size from base p rule) */
+.cs-text,
+.methods-grid__item p,
+.personal-item p {
   font-weight: 300;
 }
 
 /* ============================================================
    WORK PAGE
    ============================================================ */
-.work-intro p {
-  font-family: 'Lora', serif;
-  font-size: var(--subheader-size);
-  line-height: var(--subheader-lh);
-  font-weight: 400;
-  color: #2E2724;
-  max-width: 725px;
-}
-
 .featured-label {
   position: relative;
-  font-size: var(--label-size);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
-  line-height: 15px;
   color: #8B5A5A;
-  padding: 60px var(--pad-h) 30px;
+  padding: 60px var(--pad-h) 12px;
 }
 
 .featured-label::before {
@@ -867,12 +764,6 @@ h3 {
   user-select: none;
 }
 
-.case-study__logo-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
 .case-study__logo {
   width: 72px;
   height: auto;
@@ -880,18 +771,11 @@ h3 {
   flex-shrink: 0;
 }
 
-.case-study__logo-text {
-  font-size: var(--small-size);
-  font-weight: 500;
-  color: #2E2724;
-}
-
 .case-study__title {
   font-family: 'Playfair Display', serif;
   font-size: var(--case-study-title-size);
   font-weight: 700;
   line-height: var(--case-study-title-lh);
-  color: #2E2724;
   flex: 1 1 0;
   margin: 0;
 }
@@ -903,7 +787,6 @@ h3 {
 
 .case-study__toggle {
   font-size: 0;
-  color: #2E2724;
   cursor: pointer;
   background: none;
   border: none;
@@ -922,7 +805,6 @@ h3 {
   font-size: 22px;
   font-weight: 300;
   font-family: 'Outfit', sans-serif;
-  color: #2E2724;
   line-height: 1;
 }
 
@@ -963,11 +845,7 @@ h3 {
 .cs-content { flex: 1; }
 
 .cs-meta-label {
-  font-size: var(--label-size);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.66px;
-  line-height: 15px;
   color: #8B7B7A;
   margin-bottom: 4px;
   margin-top: 18px;
@@ -984,7 +862,6 @@ h3 {
   font-size: var(--small-size);
   font-weight: 300;
   line-height: 18px;
-  color: #2E2724;
 }
 
 .cs-methods-list {
@@ -999,7 +876,6 @@ h3 {
   font-size: 15px;
   font-weight: 300;
   line-height: 18px;
-  color: #2E2724;
   padding-left: 12px;
   position: relative;
 }
@@ -1008,7 +884,7 @@ h3 {
   content: '–';
   position: absolute;
   left: 0;
-  color: #8B7B7A;
+  color: #8B5A5A;
 }
 
 .cs-section { margin-bottom: 24px; }
@@ -1018,15 +894,7 @@ h3 {
   font-size: var(--body-size);
   font-weight: 500;
   line-height: var(--body-lh);
-  color: #2E2724;
   margin-bottom: 6px;
-}
-
-.cs-text {
-  font-size: var(--body-size);
-  font-weight: 300;
-  line-height: var(--body-lh);
-  color: #2E2724;
 }
 
 .cs-numbered {
@@ -1038,24 +906,16 @@ h3 {
 }
 
 .cs-numbered li {
-  font-family: 'Outfit', sans-serif;
   font-size: 18px;
   line-height: 28px;
   padding-left: 21px;
   padding-right: 24px;
   position: relative;
-  color: #8B5A5A;
-  font-weight: 400;
 }
 
 .cs-numbered li .cs-num {
   position: absolute;
   left: 0.5px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #8B5A5A;
 }
 
 .cs-insights {
@@ -1071,7 +931,6 @@ h3 {
   line-height: var(--body-lh);
   padding-left: 18px;
   position: relative;
-  color: #2E2724;
   font-weight: 300;
 }
 
@@ -1096,10 +955,8 @@ h3 {
 
 .cs-results-image {
   flex: 0 0 var(--sidebar-w);
-  width: var(--sidebar-w);
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .cs-results-image img {
@@ -1193,11 +1050,9 @@ h3 {
   opacity: 0.8;
 }
 
-.cs-modal__close:hover {
-  opacity: 1;
-}
+.cs-modal__close:hover { opacity: 1; }
 
-/* Additional work: two-col top */
+/* Additional work: two-col layout */
 .cs-two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1206,7 +1061,7 @@ h3 {
 }
 
 /* ============================================================
-   HAMBURGER BUTTON (hidden on desktop, shown on mobile)
+   HAMBURGER / MOBILE NAV
    ============================================================ */
 .nav__hamburger {
   display: none;
@@ -1231,12 +1086,10 @@ h3 {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Animated X state */
 .nav__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
 .nav__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile nav overlay */
 .nav__mobile-menu {
   display: none;
   position: absolute;
@@ -1268,15 +1121,13 @@ h3 {
 /* ============================================================
    RESPONSIVE LAYOUTS
    ============================================================ */
-
-/* ── Tablet / large mobile (768px and below) ─── */
 @media (max-width: 768px) {
-  /* Stack all two-column rows */
+  /* Stack two-column rows */
   .row { flex-direction: column; }
   .col--40 { flex: none; width: 100%; }
   .col { flex: none; width: 100%; }
 
-  /* Work page: sidebar stacks above main */
+  /* Work page sidebar stacks above content */
   .case-study { flex-direction: column; }
   .cs-layout { flex-direction: column; }
   .cs-sidebar {
@@ -1287,15 +1138,14 @@ h3 {
     margin-bottom: 24px;
   }
 
-  /* Work page additional grid */
   .work-grid { grid-template-columns: 1fr; }
 
-  /* Bio, approach grids become single column */
-  .personal-grid { grid-template-columns: 1fr; }
-  .caps-grid { grid-template-columns: 1fr; }
+  /* Three-column grids collapse to single column */
+  .personal-grid,
+  .caps-grid,
   .methods-grid { grid-template-columns: 1fr; }
 
-  /* Frame on inner pages: switch from fixed to block on mobile for iOS compatibility */
+  /* Frame: switch from fixed to block for iOS compatibility */
   .frame {
     position: relative;
     inset: auto;
@@ -1306,11 +1156,9 @@ h3 {
     position: relative;
     left: auto;
     top: auto;
-    transform: none;
     margin: 0 auto;
     height: auto;
     min-height: 100vh;
-    border-radius: 0;
   }
   .scroll-container {
     height: auto;
@@ -1320,11 +1168,10 @@ h3 {
 
   /* Nav on mobile */
   .nav__links { display: none; }
-  .nav__links.is-open { display: flex; flex-direction: column; gap: 16px; }
   .nav__hamburger { display: flex; }
   .nav__email-btn { display: none; }
 
-  /* Bio: stack photo below text on tablet */
+  /* Bio: stack photo below text */
   .bio-intro { flex-direction: column; }
   .bio-intro__photo { min-height: 300px; }
   .bio-intro__photo img { height: 300px; }
@@ -1336,21 +1183,22 @@ h3 {
     width: 80%;
     align-self: flex-start;
   }
+
+  /* Approach: stack philosophy rows and how-i-work */
+  .philosophy-row { flex-direction: column; }
+  .philosophy-row img { flex: none; width: 100%; }
+
+  .how-i-work-layout { flex-direction: column; }
+  .how-i-work-side { flex: none; width: 100%; }
 }
 
-/* ── Mobile / iPhone SE (480px and below) ─── */
 @media (max-width: 480px) {
   .frame { padding: 12px 0; }
-
-  /* Two-col grids collapse on small mobile */
   .cs-two-col { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
    INNER PAGES — natural document flow, native browser scroll
-   Frame top gap = padding-top on .frame; bottom gap = padding-bottom on body.
-   ::before mask covers the top gap so scrolled content can't peek above the nav.
-   Nav sticks at top: 60px to stay aligned with the frame edge.
    ============================================================ */
 body.page--inner {
   overflow-y: auto;
@@ -1358,7 +1206,6 @@ body.page--inner {
   padding-bottom: 60px;
 }
 
-/* Fixed mask — matches body background image, covers the top gap */
 body.page--inner::before {
   content: '';
   position: fixed;
@@ -1390,7 +1237,6 @@ body.page--inner .scroll-container {
   overflow: visible;
 }
 
-/* Nav sticks at the frame edge, not the viewport top */
 body.page--inner .nav {
   top: 60px;
 }

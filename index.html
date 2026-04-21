@@ -43,9 +43,13 @@
 
   .hero-v2-inner {
     align-items: center;
+    padding-top: 60px;
   }
+  @media (max-width: 1200px) { .hero-v2-inner { padding-top: 40px; } }
+  @media (max-width: 768px)  { .hero-v2-inner { padding-top: 24px; } }
+  @media (max-width: 480px)  { .hero-v2-inner { padding-top: 20px; } }
 
-  .hero-v2-content { max-width: 750px; }
+  .hero-v2-content { max-width: 725px; }
 
   .hero-body-block {
     padding-top: 30px;
@@ -125,8 +129,8 @@
             <div class="line-b-v2">is making the<br />right thing.</div>
 
             <div class="hero-body-block">
-              <p class="hero-body-copy page-header__sub">My work helps teams understand how people behave in context, replace their assumptions with real insights, and clarify what an experience should accomplish before anything is designed.</p>
-              <p class="hero-body-copy page-header__sub">I work with organizations tackling complex challenges to solve the right problems and make the right things.</p>
+              <p class="hero-body-copy">My work helps teams understand how people behave in context, replace their assumptions with real insights, and clarify what an experience should accomplish before anything is designed.</p>
+              <p class="hero-body-copy">I work with organizations tackling complex challenges to solve the right problems and make the right things.</p>
               <div class="button-row" style="margin-top: 28px;">
                 <div class="button button--circle hero-scroll-btn">↓</div>
                 <a href="mailto:matthewabate@me.com" class="button button--primary">Get in touch</a>
@@ -207,23 +211,23 @@
           <div class="work-list">
             <div class="work-list-item">
               <div class="work-list-item__label">MLB &bull; Venue Commerce</div>
-              <a href="work.html" class="work-list-item__title">In-Venue Commerce Research</a>
+              <a href="work.html#cs-mlb" class="work-list-item__title">In-Venue Commerce Research</a>
             </div>
             <div class="work-list-item">
               <div class="work-list-item__label">Newrez &bull; Workflow optimization</div>
-              <a href="work.html" class="work-list-item__title">Home-Buying Experience Vision</a>
+              <a href="work.html#cs-newrez" class="work-list-item__title">Home-Buying Experience Vision</a>
             </div>
             <div class="work-list-item">
               <div class="work-list-item__label">Lifescan &bull; Digital Therapeutics</div>
-              <a href="work.html" class="work-list-item__title">Diabetes Smart Assistant</a>
+              <a href="work.html#cs-lifescan" class="work-list-item__title">Diabetes Smart Assistant</a>
             </div>
             <div class="work-list-item">
               <div class="work-list-item__label">Johnson &amp; Johnson &bull; Medical Devices</div>
-              <a href="work.html" class="work-list-item__title">Medical Device Testing &amp; Optimization</a>
+              <a href="work.html#cs-jj" class="work-list-item__title">Medical Device Testing &amp; Optimization</a>
             </div>
             <div class="work-list-item">
               <div class="work-list-item__label">Zyrtec &bull; Digital Therapeutics</div>
-              <a href="work.html" class="work-list-item__title">Environmental Allergy Manager</a>
+              <a href="work.html#cs-zyrtec" class="work-list-item__title">Environmental Allergy Manager</a>
             </div>
           </div>
         </div>
@@ -262,7 +266,7 @@
         <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
         <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
       </div>
-      <p class="cs-text">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
+      <p class="page-header__sub">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
       <div class="footer">© 2026 · Matthew Abate</div>
     </div>
 
@@ -342,16 +346,31 @@ document.fonts.ready.then(function() {
         }
         spacer.style.height = contentDist + 'px';
 
-        // Drive content position from body scroll
+        // Drive content position from body scroll with smooth lerp
         var heroEndScroll = window.scrollY;
+        var scrollTarget = 0;
+        var scrollCurrent = 0;
         function onContentScroll() {
           if (!pageWrapper.classList.contains('is-content')) return;
           var past = Math.max(0, window.scrollY - heroEndScroll);
-          gsap.set(siteWrapper, { y: -past });
+          scrollTarget = -past;
         }
         window.addEventListener('scroll', onContentScroll);
+        gsap.ticker.add(function() {
+          if (!pageWrapper.classList.contains('is-content')) return;
+          var diff = scrollTarget - scrollCurrent;
+          scrollCurrent += diff * 0.12;
+          if (Math.abs(diff) > 0.5) {
+            gsap.set(siteWrapper, { y: scrollCurrent });
+          } else {
+            scrollCurrent = scrollTarget;
+            gsap.set(siteWrapper, { y: scrollTarget });
+          }
+        });
         pageWrapper._removeContentScroll = function() {
           window.removeEventListener('scroll', onContentScroll);
+          scrollTarget = 0;
+          scrollCurrent = 0;
         };
       },
       onEnterBack: function() {
