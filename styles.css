@@ -197,7 +197,7 @@ body {
 
 .nav__link {
   font-size: var(--nav-size);
-  font-weight: 500;
+  font-weight: 400;
   color: #E82F2A;
   text-decoration: none;
   cursor: pointer;
@@ -218,9 +218,10 @@ body {
 }
 
 .nav__email-btn svg {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 10px;
   display: block;
+  margin: auto;
 }
 
 /* ============================================================
@@ -317,6 +318,13 @@ body {
   font-weight: 700;
   line-height: var(--h1-lh);
   padding-bottom: 42px;
+}
+
+body.page--cs .page-header h1 {
+  font-style: italic;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
 }
 
 .page-header__sub {
@@ -845,7 +853,7 @@ p + p { margin-top: 14px; }
 .cs-content { flex: 1; }
 
 .cs-meta-label {
-  font-weight: 700;
+  font-weight: 500;
   color: #8B7B7A;
   margin-bottom: 4px;
   margin-top: 18px;
@@ -1145,6 +1153,9 @@ p + p { margin-top: 14px; }
   .caps-grid,
   .methods-grid { grid-template-columns: 1fr; }
 
+  /* Work grid: two columns on tablet */
+  .cs-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+
   /* Frame: switch from fixed to block for iOS compatibility */
   .frame {
     position: relative;
@@ -1195,14 +1206,105 @@ p + p { margin-top: 14px; }
 @media (max-width: 480px) {
   .frame { padding: 12px 0; }
   .cs-two-col { grid-template-columns: 1fr; }
+  .cs-grid { grid-template-columns: 1fr; gap: 42px; }
 }
+
+/* ============================================================
+   CASE STUDY GRID + CARDS (work.html index)
+   ============================================================ */
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 54px;
+  padding: 0 var(--pad-h) var(--pad-v);
+}
+
+.cs-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #2E2724;
+}
+
+.cs-card__logo {
+  margin-bottom: 12px;
+}
+
+.cs-card__logo img {
+  width: 60px;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.cs-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #2E2724;
+  margin-bottom: 12px;
+  transition: color 0.15s ease;
+}
+
+.cs-card__impact {
+  /* typography comes from cs-meta-value class in HTML */
+  flex: 1;
+  border-bottom: 0.5px solid #D9D3CF;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  letter-spacing: 0.66px;
+}
+
+.cs-card__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-card__cta-label {
+  font-size: var(--label-size);
+  font-weight: 400;
+  color: #E82F2A;
+  letter-spacing: 0.66px;
+}
+
+.cs-card__cta-icon {
+  font-size: 18px;
+  font-family: 'Outfit', sans-serif;
+  color: #E82F2A;
+  transform: rotate(-90deg);
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.cs-card:hover .cs-card__title { color: #E82F2A; }
+.cs-card:hover .cs-card__cta-icon { transform: rotate(-90deg) translateY(3px); }
+
+/* Back link on case study pages */
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--label-size);
+  font-weight: 400;
+  letter-spacing: 0.66px;
+  color: #8B5A5A;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.cs-back:hover { color: #E82F2A; }
 
 /* ============================================================
    INNER PAGES — natural document flow, native browser scroll
    ============================================================ */
 body.page--inner {
+  /* Note: no overflow-x set here — doing so would make body a containing
+     block for position:fixed children (body::before), breaking the mask. */
   overflow-y: auto;
-  overflow-x: clip;
   padding-bottom: 60px;
 }
 
@@ -1212,7 +1314,7 @@ body.page--inner::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: calc(60px + env(safe-area-inset-top, 0px));
   background-color: #FAF5F2;
   background-image: var(--bg-image);
   background-size: cover;
@@ -1224,7 +1326,7 @@ body.page--inner::before {
 body.page--inner .frame {
   position: relative;
   inset: auto;
-  padding-top: 60px;
+  padding-top: calc(60px + env(safe-area-inset-top, 0px));
   padding-bottom: 0;
   min-height: auto;
 }
@@ -1238,24 +1340,35 @@ body.page--inner .scroll-container {
 }
 
 body.page--inner .nav {
-  top: 60px;
+  top: calc(60px + env(safe-area-inset-top, 0px));
 }
 
 @media (max-width: 1200px) {
   body.page--inner { padding-bottom: 40px; }
-  body.page--inner::before { height: 40px; }
-  body.page--inner .frame { padding-top: 40px; }
-  body.page--inner .nav { top: 40px; }
+  body.page--inner::before { height: calc(40px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .frame { padding-top: calc(40px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .nav { top: calc(40px + env(safe-area-inset-top, 0px)); }
 }
 @media (max-width: 768px) {
   body.page--inner { padding-bottom: 24px; }
-  body.page--inner::before { height: 24px; }
-  body.page--inner .frame { padding-top: 24px; }
-  body.page--inner .nav { top: 24px; }
+  body.page--inner::before { height: calc(24px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .frame { padding-top: calc(24px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .nav { top: calc(24px + env(safe-area-inset-top, 0px)); }
 }
 @media (max-width: 480px) {
   body.page--inner { padding-bottom: 20px; }
-  body.page--inner::before { height: 20px; }
-  body.page--inner .frame { padding-top: 20px; }
-  body.page--inner .nav { top: 20px; }
+  body.page--inner::before { height: calc(20px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .frame { padding-top: calc(20px + env(safe-area-inset-top, 0px)); }
+  body.page--inner .nav { top: calc(20px + env(safe-area-inset-top, 0px)); }
+}
+
+/* ── Case study h1 size — scoped overrides at each breakpoint ── */
+@media (max-width: 1200px) {
+  body.page--cs .page-header h1 { font-size: 40px; line-height: 48px; }
+}
+@media (max-width: 768px) {
+  body.page--cs .page-header h1 { font-size: 32px; line-height: 40px; }
+}
+@media (max-width: 480px) {
+  body.page--cs .page-header h1 { font-size: 24px; line-height: 32px; }
 }
