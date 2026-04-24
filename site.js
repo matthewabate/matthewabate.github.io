@@ -18,22 +18,13 @@
 // ─────────────────────────────────────────────────────────────
 (function () {
 
-  var allBgImages = [
-    'BG01.jpg','BG02.jpg','BG03.jpg','BG04.jpg','BG05.jpg',
-    'BG06.jpg','BG07.jpg','BG08.jpg','BG09.jpg','BG10.jpg',
-    'BG11.jpg','BG12.jpg','BG13.jpg','BG14.jpg','BG15.jpg',
-    'BG16.jpg','BG17.jpg','BG18.jpg','BG19.jpg','BG20.jpg',
-    'BG21.jpg','BG22.jpg','BG23.jpg','BG24.jpg','BG25.jpg',
-    'BG26.jpg','BG27.jpg'
+  var bgImages = [
+    'BG01.jpg','BG07.jpg','BG08.jpg','BG09.jpg','BG11.jpg',
+    'BG12.jpg','BG13.jpg','BG14.jpg','BG15.jpg','BG17.jpg',
+    'BG18.jpg','BG19.jpg','BG20.jpg','BG22.jpg','BG23.jpg',
+    'BG24.jpg','BG26.jpg','BG27.jpg','BG28.jpg','BG33.jpg',
+    'BG34.jpg','BG38.jpg','BG39.jpg','BG41.jpg'
   ];
-
-  var indexBgImages = [
-    'BG10.jpg','BG12.jpg','BG17.jpg','BG27.jpg'
-  ];
-
-  var path = window.location.pathname;
-  var isIndex = path.endsWith('index.html') || path.endsWith('/');
-  var bgImages = isIndex ? indexBgImages : allBgImages;
 
   var portraits = [
     'MA-Design.jpg',
