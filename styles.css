@@ -1118,7 +1118,10 @@ p + p { margin-top: 14px; }
 .nav__mobile-menu {
   display: flex;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: #E82F2A;
   flex-direction: column;
   justify-content: center;
@@ -1126,11 +1129,18 @@ p + p { margin-top: 14px; }
   padding: 0 var(--pad-h);
   gap: 6px;
   z-index: 250;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(100vw);
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0.35s;
 }
 
-.nav__mobile-menu.is-open { transform: translateX(0); }
+.nav__mobile-menu.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0s;
+}
 
 .nav__mobile-menu a {
   font-family: 'Playfair Display', serif;
