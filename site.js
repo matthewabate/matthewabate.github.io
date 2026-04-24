@@ -74,6 +74,7 @@
     menu.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Close navigation');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
@@ -81,6 +82,7 @@
     menu.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'Open navigation');
+    document.body.style.overflow = '';
   }
 
   btn.addEventListener('click', function () {

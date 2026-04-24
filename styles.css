@@ -1098,33 +1098,60 @@ p + p { margin-top: 14px; }
 .nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
 .nav__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.nav__mobile-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  border-top: 1px solid #D9D3CF;
-  padding: var(--pad-h);
-  flex-direction: column;
-  gap: 24px;
+/* Hamburger turns white over the persimmon overlay when open */
+.nav__hamburger span {
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.15s ease;
+}
+.nav__hamburger.is-open span { background: #ffffff; }
+
+/* Elevate the nav above the overlay so the X is always tappable */
+.nav:has(.nav__hamburger.is-open) {
   z-index: 300;
+  background: transparent;
+}
+.nav:has(.nav__hamburger.is-open)::after { display: none; }
+.nav__logo { transition: opacity 0.15s ease; }
+.nav:has(.nav__hamburger.is-open) .nav__logo { opacity: 0; pointer-events: none; }
+
+/* Full-screen persimmon overlay — slides in from right */
+.nav__mobile-menu {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background: #E82F2A;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--pad-h);
+  gap: 6px;
+  z-index: 250;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav__mobile-menu.is-open { display: flex; }
+.nav__mobile-menu.is-open { transform: translateX(0); }
 
 .nav__mobile-menu a {
-  font-family: 'Outfit', sans-serif;
-  font-size: var(--small-size);
-  font-weight: 500;
-  color: #2E2724;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: min(9vw, 60px);
+  line-height: 1.2;
+  color: #ffffff;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.nav__mobile-menu a:hover { color: #E82F2A; }
+.nav__mobile-menu.is-open a { opacity: 1; transform: translateX(0); }
+.nav__mobile-menu.is-open a:nth-child(1) { transition-delay: 0.18s; }
+.nav__mobile-menu.is-open a:nth-child(2) { transition-delay: 0.23s; }
+.nav__mobile-menu.is-open a:nth-child(3) { transition-delay: 0.28s; }
+.nav__mobile-menu.is-open a:nth-child(4) { transition-delay: 0.33s; }
+.nav__mobile-menu.is-open a:nth-child(5) { transition-delay: 0.38s; }
+
+.nav__mobile-menu a:hover { opacity: 0.7; }
 
 /* ============================================================
    RESPONSIVE LAYOUTS
@@ -1153,8 +1180,7 @@ p + p { margin-top: 14px; }
   .caps-grid,
   .methods-grid { grid-template-columns: 1fr; }
 
-  /* Work grid: two columns on tablet */
-  .cs-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+  /* cs-grid responsive overrides are after the base definition at end of file */
 
   /* Frame: switch from fixed to block for iOS compatibility */
   .frame {
@@ -1206,7 +1232,7 @@ p + p { margin-top: 14px; }
 @media (max-width: 480px) {
   .frame { padding: 12px 0; }
   .cs-two-col { grid-template-columns: 1fr; }
-  .cs-grid { grid-template-columns: 1fr; gap: 42px; }
+  /* cs-grid responsive override at end of file */
 }
 
 /* ============================================================
@@ -1314,7 +1340,7 @@ body.page--inner::before {
   top: 0;
   left: 0;
   right: 0;
-  height: calc(60px + env(safe-area-inset-top, 0px));
+  height: 60px;
   background-color: #FAF5F2;
   background-image: var(--bg-image);
   background-size: cover;
@@ -1326,7 +1352,7 @@ body.page--inner::before {
 body.page--inner .frame {
   position: relative;
   inset: auto;
-  padding-top: calc(60px + env(safe-area-inset-top, 0px));
+  padding-top: 60px;
   padding-bottom: 0;
   min-height: auto;
 }
@@ -1340,26 +1366,26 @@ body.page--inner .scroll-container {
 }
 
 body.page--inner .nav {
-  top: calc(60px + env(safe-area-inset-top, 0px));
+  top: 60px;
 }
 
 @media (max-width: 1200px) {
   body.page--inner { padding-bottom: 40px; }
-  body.page--inner::before { height: calc(40px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .frame { padding-top: calc(40px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .nav { top: calc(40px + env(safe-area-inset-top, 0px)); }
+  body.page--inner::before { height: 40px; }
+  body.page--inner .frame { padding-top: 40px; }
+  body.page--inner .nav { top: 40px; }
 }
 @media (max-width: 768px) {
   body.page--inner { padding-bottom: 24px; }
-  body.page--inner::before { height: calc(24px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .frame { padding-top: calc(24px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .nav { top: calc(24px + env(safe-area-inset-top, 0px)); }
+  body.page--inner::before { height: 24px; }
+  body.page--inner .frame { padding-top: 24px; }
+  body.page--inner .nav { top: 24px; }
 }
 @media (max-width: 480px) {
   body.page--inner { padding-bottom: 20px; }
-  body.page--inner::before { height: calc(20px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .frame { padding-top: calc(20px + env(safe-area-inset-top, 0px)); }
-  body.page--inner .nav { top: calc(20px + env(safe-area-inset-top, 0px)); }
+  body.page--inner::before { height: 20px; }
+  body.page--inner .frame { padding-top: 20px; }
+  body.page--inner .nav { top: 20px; }
 }
 
 /* ── Case study h1 size — scoped overrides at each breakpoint ── */
@@ -1371,4 +1397,12 @@ body.page--inner .nav {
 }
 @media (max-width: 480px) {
   body.page--cs .page-header h1 { font-size: 24px; line-height: 32px; }
+}
+
+/* ── cs-grid responsive breakpoints (must follow base .cs-grid definition) ── */
+@media (max-width: 768px) {
+  .cs-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+}
+@media (max-width: 480px) {
+  .cs-grid { grid-template-columns: 1fr; gap: 42px; }
 }
