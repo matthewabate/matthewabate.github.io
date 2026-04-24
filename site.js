@@ -60,15 +60,16 @@
   var menu = document.getElementById('mobile-menu');
   if (!btn || !menu) return;
 
-  // Move menu to <body> so position:fixed is always relative to the viewport,
-  // not the scroll-container (which causes iOS Safari to pin it to the nav position).
-  document.body.appendChild(menu);
+  // Move menu to <html> element so position:fixed is always relative to the true
+  // viewport — body's overflow:clip on index.html can otherwise shift fixed children.
+  document.documentElement.appendChild(menu);
 
   function openMenu() {
     btn.classList.add('is-open');
     menu.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Close navigation');
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
   }
 
@@ -77,6 +78,7 @@
     menu.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'Open navigation');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }
 

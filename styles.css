@@ -1107,7 +1107,7 @@ p + p { margin-top: 14px; }
 
 /* Elevate the nav above the overlay so the X is always tappable */
 .nav:has(.nav__hamburger.is-open) {
-  z-index: 300;
+  z-index: 600;
   background: transparent;
 }
 .nav:has(.nav__hamburger.is-open)::after { display: none; }
@@ -1128,7 +1128,7 @@ p + p { margin-top: 14px; }
   align-items: flex-start;
   padding: 0 var(--pad-h);
   gap: 6px;
-  z-index: 250;
+  z-index: 500;
   transform: translateX(100vw);
   visibility: hidden;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
