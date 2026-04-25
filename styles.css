@@ -9,6 +9,17 @@
 
 /* ── CSS Custom Properties ────────────────────────────────── */
 :root {
+  /* Hero text + button colors — overridden per background image via site.js palettes */
+  --hero-accent: #E82F2A;          /* "isn't making something."    */
+  --hero-line-b: #F8FBCE;          /* "is making the right thing." */
+  --hero-static: #2E2724;          /* "The hard part"              */
+  --hero-body:   #2E2724;          /* body copy paragraphs         */
+  --hero-btn-bg:           transparent; /* scroll ↓ button fill    */
+  --hero-btn-border:       #2E2724;     /* scroll ↓ button outline  */
+  --hero-btn-arrow:        #2E2724;     /* scroll ↓ button icon     */
+  --hero-primary-bg:       #2E2724;     /* "Get in touch" fill      */
+  --hero-primary-color:    #ffffff;     /* "Get in touch" text      */
+
   --frame-width: 1040px;
   --pad-h: 90px;
   --pad-v: 60px;
@@ -248,6 +259,7 @@ body {
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
+  color: var(--hero-static);
 }
 
 .headline-mask-v2 {
@@ -259,7 +271,7 @@ body {
   min-height: var(--hero-size);
 }
 
-/* Line-a: animated, red */
+/* Line-a: animated, accent color */
 .headline-line-v2 {
   position: absolute;
   top: 0;
@@ -270,7 +282,7 @@ body {
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
-  color: #E82F2A;
+  color: var(--hero-accent);
 }
 
 .hero-lower-block {
@@ -281,14 +293,14 @@ body {
   opacity: 0;
 }
 
-/* Line-b: animated, cream */
+/* Line-b: animated, light color */
 .line-b-v2 {
   font-family: 'Playfair Display', serif;
   font-size: var(--hero-size);
   line-height: var(--hero-lh);
   font-style: italic;
   font-weight: 900;
-  color: #F8FBCE;
+  color: var(--hero-line-b);
 }
 
 .hero-body-copy {
@@ -297,9 +309,23 @@ body {
   line-height: var(--body-lh);
   margin-bottom: 12px;
   margin-top: 24px;
+  color: var(--hero-body);
 }
 
 .hero-body-copy + .hero-body-copy { margin-top: 0; }
+
+/* Hero button color overrides — driven by per-image palette variables */
+.hero-v2 .button--circle {
+  background: var(--hero-btn-bg);
+  outline-color: var(--hero-btn-border);
+  color: var(--hero-btn-arrow);
+}
+
+.hero-v2 .button--primary {
+  background: var(--hero-primary-bg);
+  color: var(--hero-primary-color);
+  outline-color: var(--hero-primary-bg);
+}
 
 /* ============================================================
    PAGE HEADER (bio, approach, work)
