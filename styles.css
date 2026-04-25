@@ -1341,17 +1341,7 @@ body.page--inner {
   padding-bottom: 60px;
 }
 
-body.page--inner::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  /* transparent — #bg-layer (z-index:-1) shows naturally through the gap above the card */
-  z-index: 150;
-  pointer-events: none;
-}
+/* body.page--inner::before removed — gap masking is handled by #top-mask div (see site.js) */
 
 body.page--inner .frame {
   position: relative;
@@ -1375,19 +1365,16 @@ body.page--inner .nav {
 
 @media (max-width: 1200px) {
   body.page--inner { padding-bottom: 40px; }
-  body.page--inner::before { height: 40px; }
   body.page--inner .frame { padding-top: 40px; }
   body.page--inner .nav { top: 40px; }
 }
 @media (max-width: 768px) {
   body.page--inner { padding-bottom: 24px; }
-  body.page--inner::before { height: 24px; }
   body.page--inner .frame { padding-top: 24px; }
   body.page--inner .nav { top: 24px; }
 }
 @media (max-width: 480px) {
   body.page--inner { padding-bottom: 20px; }
-  body.page--inner::before { height: 20px; }
   body.page--inner .frame { padding-top: 20px; }
   body.page--inner .nav { top: 20px; }
 }
@@ -1410,3 +1397,18 @@ body.page--inner .nav {
 @media (max-width: 480px) {
   .cs-grid { grid-template-columns: 1fr; gap: 42px; }
 }
+
+/* ============================================================
+   TOP MASK — real div created in site.js, no pseudo-elements.
+   Same full-viewport size and background as #bg-layer, clipped
+   to reveal only the frame-gap strip above the white card.
+   Sits at z-index 150: above content (0) but below nav (200),
+   so it hides content scrolling into the gap while the nav
+   remains fully visible above it.
+   ============================================================ */
+#top-mask {
+  clip-path: inset(0 0 calc(100% - 60px) 0);
+}
+@media (max-width: 1200px) { #top-mask { clip-path: inset(0 0 calc(100% - 40px) 0); } }
+@media (max-width: 768px)  { #top-mask { clip-path: inset(0 0 calc(100% - 24px) 0); } }
+@media (max-width: 480px)  { #top-mask { clip-path: inset(0 0 calc(100% - 20px) 0); } }

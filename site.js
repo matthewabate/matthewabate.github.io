@@ -48,6 +48,16 @@
   document.body.insertBefore(bgLayer, document.body.firstChild);
   document.documentElement.style.setProperty('--bg-image', bgUrl);
 
+  // Top mask: identical element to bg-layer but at z-index 150 — sits above page
+  // content (z-index 0) but below the nav (z-index 200). clip-path (set in styles.css)
+  // reveals only the thin gap strip above the white card, hiding any content that
+  // scrolls into that area. Because it's the same full-viewport element with the same
+  // background settings, it matches bg-layer perfectly — no iOS background-attachment issues.
+  var topMask = document.createElement('div');
+  topMask.id = 'top-mask';
+  topMask.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;pointer-events:none;background-size:cover;background-position:center;background-image:' + bgUrl;
+  document.body.appendChild(topMask);
+
   // Set random portrait on bio page (no-op on other pages)
   var photoEl = document.getElementById('bio-photo');
   if (photoEl) {

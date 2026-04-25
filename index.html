@@ -52,6 +52,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    overflow: hidden; /* clips site-wrapper content from bleeding into the gap above */
     /* top is set by JS */
   }
 
@@ -60,7 +61,6 @@
   .page-wrapper.is-content {
     top: 60px !important;
     height: auto;
-    overflow: visible;
   }
   @media (max-width: 1200px) { .page-wrapper.is-content { top: 40px !important; } }
   @media (max-width: 768px)  { .page-wrapper.is-content { top: 24px !important; } }
