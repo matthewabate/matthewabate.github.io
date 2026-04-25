@@ -39,9 +39,13 @@
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  // Set random background image on body and --bg-image variable
+  // Create a fixed background layer div — avoids background-attachment:fixed,
+  // which iOS Safari does not support on scrollable elements or pseudo-elements.
   var bgUrl = "url('backgrounds/" + pick(bgImages) + "')";
-  document.body.style.backgroundImage = bgUrl;
+  var bgLayer = document.createElement('div');
+  bgLayer.id = 'bg-layer';
+  bgLayer.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;background-size:cover;background-position:center;background-image:' + bgUrl;
+  document.body.insertBefore(bgLayer, document.body.firstChild);
   document.documentElement.style.setProperty('--bg-image', bgUrl);
 
   // Set random portrait on bio page (no-op on other pages)

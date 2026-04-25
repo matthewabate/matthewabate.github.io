@@ -109,10 +109,7 @@ body {
   font-family: 'Outfit', sans-serif;
   color: #2E2724;
   overflow: hidden;
-  background: #FAF5F2;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: #FAF5F2; /* fallback shown before bg-layer JS runs */
 }
 
 /* ============================================================
@@ -125,8 +122,7 @@ body {
   justify-content: center;
   align-items: stretch;
   padding: 60px 0;
-  background-size: cover;
-  background-position: center;
+  /* background image is handled by #bg-layer (see site.js) */
 }
 
 /* ============================================================
@@ -1352,12 +1348,9 @@ body.page--inner::before {
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #FAF5F2;
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  /* transparent — #bg-layer (z-index:-1) shows naturally through the gap above the card */
   z-index: 150;
+  pointer-events: none;
 }
 
 body.page--inner .frame {

@@ -16,21 +16,6 @@
   @media (max-width: 768px) { body { padding-bottom: 24px; } }
   @media (max-width: 480px) { body { padding-bottom: 20px; } }
 
-  /* Masks content scrolling above the sticky nav */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    z-index: 400;
-  }
-
   /* Hero height: CSS sets a close approximation immediately; JS refines with exact nav height.
      100svh = viewport with browser chrome visible (correct on iOS Safari at load).
      Fallback to 100vh for browsers without svh support. */
@@ -71,11 +56,15 @@
   }
 
   /* After hero exits: page-wrapper fixed at top, full natural height, translates up */
+  /* top matches the frame gap at each breakpoint — same as other pages */
   .page-wrapper.is-content {
     top: 60px !important;
     height: auto;
     overflow: visible;
   }
+  @media (max-width: 1200px) { .page-wrapper.is-content { top: 40px !important; } }
+  @media (max-width: 768px)  { .page-wrapper.is-content { top: 24px !important; } }
+  @media (max-width: 480px)  { .page-wrapper.is-content { top: 12px !important; } }
 
   /* Centered wrapper — matches frame width, centers nav + content */
   .page-wrapper {
@@ -287,6 +276,16 @@ window.scrollTo(0, 0);
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Returns the frame gap (top padding) at the current breakpoint —
+// matches the responsive values in styles.css and body.page--inner media queries.
+function getFrameGap() {
+  var w = window.innerWidth;
+  if (w <= 480) return 12;
+  if (w <= 768) return 24;
+  if (w <= 1200) return 40;
+  return 60;
+}
+
 // Hero animation
 document.fonts.ready.then(function() {
   requestAnimationFrame(function() {
@@ -301,6 +300,7 @@ document.fonts.ready.then(function() {
 
   var vh   = window.innerHeight;
   var navH = nav.offsetHeight;
+  var gap  = getFrameGap();
 
   // Hero fills viewport minus nav height — nav sits at the bottom of the screen
   hero.style.height = (vh - navH) + 'px';
@@ -331,7 +331,7 @@ document.fonts.ready.then(function() {
       anticipatePin: 1,
       onLeave: function() {
         hero.style.zIndex = '';
-        gsap.set(pageWrapper, { top: 60 });
+        gsap.set(pageWrapper, { top: gap });
         pageWrapper.classList.add('is-content');
 
         // Extend body so native scrollbar reflects full content height
@@ -381,7 +381,7 @@ document.fonts.ready.then(function() {
         }
         var siteWrapper = document.getElementById('site-wrapper');
         gsap.set(siteWrapper, { clearProps: 'y' });
-        gsap.set(pageWrapper, { top: 60 });
+        gsap.set(pageWrapper, { top: gap });
         var spacer = document.getElementById('content-scroll-spacer');
         if (spacer) spacer.style.height = '0';
       }
@@ -393,7 +393,7 @@ document.fonts.ready.then(function() {
   // Unit 1–3: DETENT — nothing moves (extended to absorb freed time)
   // Unit 3–4: hero + page-wrapper rise in unison
   tl.to(hero,        { y: -vh, ease: 'power2.inOut', duration: 1 }, 3);
-  tl.to(pageWrapper, { top: 60, ease: 'power2.inOut', duration: 1 }, 3);
+  tl.to(pageWrapper, { top: gap, ease: 'power2.inOut', duration: 1 }, 3);
 
   // Scroll button — lands with nav at its sticky position (top: 60px)
   var scrollBtn = document.querySelector('.hero-scroll-btn');
@@ -411,6 +411,7 @@ document.fonts.ready.then(function() {
     resizeTimer = setTimeout(function() {
       vh   = window.innerHeight;
       navH = nav.offsetHeight;
+      gap  = getFrameGap();
       hero.style.height = (vh - navH) + 'px';
       ScrollTrigger.refresh();
     }, 250);
