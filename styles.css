@@ -1050,8 +1050,8 @@ a { color: inherit; }
 
 /* Tag list: methods, light 12/16, all caps */
 .cs-tag-list {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 11px;
+  line-height: 18px;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.06em;
