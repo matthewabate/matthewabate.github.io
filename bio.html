@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bio — Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 <div class="site-wrapper">
 
   <nav class="nav">
-    <a href="index.html" class="nav__logo">Matthew Abate &bull; Experience Strategy</a>
+    <a href="index.html" class="nav__logo"><span class="nav__logo-name">Matthew Abate &bull; </span><span class="nav__logo-role">Experience Strategy</span></a>
     <div class="nav__right">
       <div class="nav__links">
         <a href="projects.html" class="nav__link">Projects</a>
@@ -38,11 +38,11 @@
     </div>
   </nav>
 
-  <!-- BIO HEADER -->
-  <div class="page-header">
+  <!-- Intro -->
+  <div class="section">
     <div class="bio-intro">
       <div class="bio-intro__text">
-        <div class="page-heading" style="margin-bottom: 24px;">Bio:</div>
+        <div class="page-heading">Bio:</div>
         <p>I'm a service and experience designer focused on how people make decisions in real-world contexts and how those decisions are shaped by systems, constraints, and environment.</p>
         <p>Much of my work involves situations where teams are confident they understand the problem, but where observed behavior tells a different story. Most teams I've worked with lack clarity on whether they're solving the right problem, not executional skill.</p>
       </div>
@@ -52,9 +52,9 @@
     </div>
   </div>
 
-  <!-- INDUSTRY EXPERIENCE / METHODS & CAPABILITIES -->
+  <!-- Industry experience + Methods & Capabilities + Logos -->
   <div class="section">
-    <div class="bio-two-col">
+    <div class="bio-skills-grid">
 
       <div>
         <div class="col-label">Industry Experience</div>
@@ -69,50 +69,70 @@
         </ul>
       </div>
 
-      <div>
+      <div class="bio-skills-methods">
         <div class="col-label">Methods &amp; Capabilities</div>
-        <ul class="bio-dash-list">
-          <li>Experience Strategy</li>
-          <li>Opportunity Spaces</li>
-          <li>Strategic Visions</li>
-          <li>Design Thinking</li>
-          <li>Service Design</li>
-          <li>Behavioral Research</li>
-          <li>Rapid Value Realization</li>
-          <li>UX for AI</li>
-          <li>DVF Framework</li>
-          <li>Systems Thinking</li>
-          <li>Jobs to Be Done</li>
-          <li>Cross-Disciplinary Leadership</li>
-        </ul>
+        <div class="bio-skills-methods-cols">
+          <ul class="bio-dash-list">
+            <li>Experience Strategy</li>
+            <li>Strategic Visions</li>
+            <li>Design Thinking</li>
+            <li>Rapid Value Realization</li>
+            <li>DVF Framework</li>
+            <li>Systems Thinking</li>
+          </ul>
+          <ul class="bio-dash-list">
+            <li>Opportunity Spaces</li>
+            <li>Service Design</li>
+            <li>Behavioral Research</li>
+            <li>UX for AI</li>
+            <li>Jobs to Be Done</li>
+            <li>Cross-Disciplinary Leadership</li>
+          </ul>
+        </div>
       </div>
 
     </div>
+
+    <div class="bio-logos">
+      <img src="logos/citi-logo.svg" alt="Citi">
+      <img src="logos/emirates-logo.svg" alt="Emirates">
+      <img src="logos/Ford_logo.svg" alt="Ford">
+      <img src="logos/general-electric.svg" alt="GE">
+      <img src="logos/hbo-logo.svg" alt="HBO">
+      <img src="logos/jj-logo.svg" alt="Johnson &amp; Johnson">
+      <img src="logos/MLB_logo.svg" alt="MLB">
+      <img src="logos/nbcu-logo.svg" alt="NBCUniversal">
+      <img src="logos/new-york-state-logo.svg" alt="New York State">
+      <img src="logos/newrez-logo.svg" alt="Newrez">
+      <img src="logos/target-logo.svg" alt="Target">
+      <img src="logos/toyota-logo.svg" alt="Toyota">
+      <img src="logos/usma-logo.svg" alt="West Point">
+    </div>
   </div>
 
-  <!-- PERSONAL -->
+  <!-- Personal context -->
   <div class="section">
     <div class="personal-grid">
 
       <div class="personal-item">
-        <h4>Past lives</h4>
-        <p>I have worked as a creative director and designer, handy man, an art handler, a gallery carpenter, a bar tender in a goth club, a delivery driver, a waiter, a dishwasher, and a landscaper.</p>
+        <div class="col-label">Past lives</div>
+        <p>I have worked as a creative director and designer, handy man, an art handler, a gallery carpenter, a bar tender in a goth club, a delivery driver, a waiter, a dishwasher, a framing carpenter, and a landscaper.</p>
       </div>
 
       <div class="personal-item">
-        <h4>Distractions</h4>
+        <div class="col-label">Distractions</div>
         <p>I have a <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank" class="bio-link">1973 240z</a> (my third car restoration), I run a <a href="https://www.southmountaindrivers.com" target="_blank" class="bio-link">classic car club</a>, collect vinyl, guitars, and vintage hi-fi gear, and I train in <a href="https://www.schoolofarchery.com/" target="_blank" class="bio-link">olympic recurve archery</a> with my two daughters.</p>
       </div>
 
       <div class="personal-item">
-        <h4>Home base</h4>
+        <div class="col-label">Home base</div>
         <p>I live in Northern New Jersey with my family, my <a href="https://www.scotchcollie.org/breed/" target="_blank" class="bio-link">Scotch Collie</a> (Phoebe), and three cats (Marvin, Ziggy, and Webster).</p>
       </div>
 
     </div>
   </div>
 
-  <div class="footer">© 2026 · Matthew Abate</div>
+  <div class="footer">&copy; 2026 &middot; Matthew Abate</div>
 
 </div><!-- /site-wrapper -->
 </div><!-- /frame -->
