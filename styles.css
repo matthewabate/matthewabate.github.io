@@ -802,53 +802,49 @@ a { color: inherit; }
   .cs-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
-/* ── New case study layout ─────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   CASE STUDY LAYOUT
+   ══════════════════════════════════════════════════════════════ */
 
-/* Header — full-width title and description, no horizontal padding (wrapper handles it) */
-.cs-header-section {
+/* ── Hero header ────────────────────────────────────────────── */
+.cs-hero {
   padding: 60px 0 0;
 }
 
-.cs-title {
+.cs-headline {
   font-size: 48px;
   font-weight: 800;
   line-height: 60px;
   margin-bottom: 60px;
 }
 
-.cs-description {
+.cs-subline {
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
 }
 
-.cs-header-rule {
+.cs-rule {
   border: none;
   border-top: 1px solid var(--border);
   margin: 30px 0;
 }
 
-/* ── Key findings (plain columns, no background) ───────────── */
-.cs-findings-section {
+/* ── Summary (findings / assumption columns) ────────────────── */
+.cs-summary {
   padding: 0 0 30px;
 }
 
-.cs-findings-labels {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 8px;
-}
-
-.cs-findings-grid {
+.cs-3-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 }
 
-.cs-finding-col { }
+.cs-3-col--labeled { margin-bottom: 8px; }
 
-.cs-stat-label {
+/* Column header label — plain background, text color */
+.cs-grid-label {
   font-size: var(--label-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -856,113 +852,118 @@ a { color: inherit; }
   color: var(--text);
 }
 
-.cs-stat-num {
+/* Accent number (pink, inherits surrounding font-size) */
+.cs-accent-num {
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.06em;
 }
 
-.cs-stat-text {
+/* Lead text: bold 20/30 */
+.cs-lead-text {
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
 }
 
-.cs-stat-text--light {
-  font-weight: 300;
-}
+.cs-lead-text--light { font-weight: 300; }
 
-/* ── Meta bar (gray rounded bar) ───────────────────────────── */
-.cs-meta-bar-section {
+/* ── Info bar ───────────────────────────────────────────────── */
+.cs-bar-section {
   padding: 0 0 60px;
 }
 
-.cs-meta-bar {
+.cs-info-bar {
   display: grid;
-  grid-template-columns: minmax(0, 272px) 1fr minmax(0, 272px);
+  grid-template-columns: 272px 284px 272px;
+  gap: 31px;
   background: var(--sidebar-bg);
   border-radius: 4px;
-  min-height: 95px;
+  padding: 15px;
 }
 
-.cs-meta-bar-col {
-  padding: 15px;
+.cs-bar-col {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.cs-meta-bar-col + .cs-meta-bar-col::before {
+.cs-bar-col + .cs-bar-col::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 15px;
-  height: calc(100% - 30px);
+  left: -16px;
+  top: 0;
+  height: 100%;
   width: 1px;
   background: var(--border);
 }
 
-
-/* ── Body sections — no horizontal padding, no borders ─────── */
-.cs-body-section {
+/* ── Content blocks ─────────────────────────────────────────── */
+.cs-block {
   padding: 30px 0;
 }
 
-.cs-body-section--flush { }
-
-/* Two-column grid: text left, 287px right */
-.cs-col-grid {
+/* Two-column: fluid text | fixed 287px aside */
+.cs-split-grid {
   display: grid;
   grid-template-columns: 1fr 287px;
   gap: 30px;
   align-items: stretch;
 }
 
-.cs-col-right {
+.cs-aside {
   overflow: hidden;
 }
 
-.cs-col-right img {
+.cs-aside img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.cs-col-right--svg { padding: 0 20px; }
-.cs-col-right--svg img  { object-fit: contain; }
-.cs-col-right--photo img { object-fit: cover; }
+.cs-aside--fit         { padding: 0 20px; }
+.cs-aside--fit img     { object-fit: contain; }
+.cs-aside--fill img    { object-fit: cover; }
 
-/* Body text: semibold 20/30 */
-.cs-body-text {
+/* Prose body copy: semibold 20/30 */
+.cs-prose {
   font-size: 20px;
   line-height: 30px;
   font-weight: 600;
 }
 
-.cs-body-text + .cs-body-text { margin-top: 30px; }
+.cs-prose + .cs-prose { margin-top: 30px; }
 
-/* ── Workshop section ──────────────────────────────────────── */
-.cs-workshop-grid {
+/* ── Ruled box (top + bottom border, inner padding) ─────────── */
+.cs-ruled-box {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 30px 0;
+  margin: 30px 0;
+}
+
+/* ── Text + media layout (prose left | media cluster right) ─── */
+.cs-media-grid {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 30px;
   align-items: start;
 }
 
-.cs-workshop-images {
+.cs-media-cluster {
   display: flex;
   gap: 30px;
   align-items: stretch;
 }
 
-.cs-iphone-pair {
+.cs-screen-pair {
   display: flex;
   gap: 10px;
   align-items: stretch;
 }
 
-.cs-iphone-img {
+.cs-screen-img {
   width: auto;
   height: 248px;
   display: block;
@@ -970,41 +971,34 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 
-.cs-stim-container {
+.cs-media-frame {
   width: 287px;
   flex-shrink: 0;
   overflow: hidden;
 }
 
-.cs-stim-img {
+.cs-media-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* ── Fan interview section ─────────────────────────────────── */
-.cs-fan-section-grid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 30px;
-  align-items: start;
-}
-
-.cs-fan-grid {
+/* ── Portrait grid ──────────────────────────────────────────── */
+.cs-portrait-grid {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.cs-fan-row {
+.cs-portrait-row {
   display: flex;
   gap: 20px;
 }
 
-.cs-fan-row--offset { margin-left: 46px; }
+.cs-portrait-row--offset { margin-left: 46px; }
 
-.cs-fan-row img {
+.cs-portrait-row img {
   width: 72px;
   height: 72px;
   object-fit: cover;
@@ -1012,14 +1006,14 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 
-/* ── Synthesis section (contains insights, diagram, opportunities, rule, methods) */
-.cs-synthesis {
+/* ── Callout box (gray bg, insights / opportunities / methods) ─ */
+.cs-callout {
   background: var(--sidebar-bg);
   padding: 30px 30px 60px;
   margin-top: 30px;
 }
 
-.cs-synthesis-label {
+.cs-callout-label {
   font-size: var(--label-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -1029,62 +1023,33 @@ a { color: inherit; }
   margin-bottom: 8px;
 }
 
-.cs-synthesis-heading {
+.cs-callout-heading {
   font-size: 24px;
   font-weight: 800;
   line-height: 30px;
   margin-bottom: 30px;
 }
 
-.cs-3-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-}
+.cs-content-block { margin-bottom: 30px; }
 
-.cs-insights-block { margin-bottom: 30px; }
-
-.cs-insight-num {
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-}
-
-.cs-insight-text {
+/* Item text: light 16/24 — shared by insights and opportunities */
+.cs-item-text {
   font-size: 16px;
   line-height: 24px;
   font-weight: 300;
 }
 
-/* Shared treatment for mindsets and decision-heat SVG boxes */
-.cs-svg-box {
-  border-top: 1px solid #CFD3D9;
-  border-bottom: 1px solid #CFD3D9;
-  padding: 30px 0;
-}
-
-.cs-diagram-card {
+/* Figure card: white inset with ruled borders */
+.cs-figure-card {
   background: white;
-  border-top: 1px solid #CFD3D9;
-  border-bottom: 1px solid #CFD3D9;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding: 30px 24px;
   margin: 30px 0;
-  border-radius: 4px;
 }
 
-.cs-opportunity-text {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 300;
-}
-
-.cs-synthesis-rule {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 30px 0;
-}
-
-.cs-methods-text {
+/* Tag list: methods, light 12/16, all caps */
+.cs-tag-list {
   font-size: 12px;
   line-height: 16px;
   font-weight: 300;
@@ -1093,21 +1058,28 @@ a { color: inherit; }
   color: var(--text);
 }
 
+/* Inline utilities */
 .cs-sep { color: var(--muted); }
+.cs-em  { font-weight: 500; }
 
-.cs-em { font-weight: 500; }
-
-/* ── New case study responsive ─────────────────────────────── */
+/* ── Case study responsive ──────────────────────────────────── */
 @media (max-width: 768px) {
-  .cs-col-grid { grid-template-columns: 1fr; }
-  .cs-col-right img { height: 260px; }
-  .cs-workshop-grid { grid-template-columns: 1fr; }
-  .cs-workshop-images { flex-wrap: wrap; }
-  .cs-fan-section-grid { grid-template-columns: 1fr; }
-  .cs-findings-grid { grid-template-columns: 1fr; }
-  .cs-findings-labels { grid-template-columns: 1fr; }
-  .cs-meta-bar { grid-template-columns: 1fr 1fr; }
-  .cs-meta-bar-col + .cs-meta-bar-col::before { display: none; }
-  .cs-3-col { grid-template-columns: 1fr; }
-  .cs-fan-row--offset { margin-left: 0; }
+  .cs-split-grid              { grid-template-columns: 1fr; }
+  .cs-aside img               { height: 260px; }
+  .cs-aside--fit              { padding: 0; }
+  .cs-media-grid              { grid-template-columns: 1fr; }
+  .cs-media-cluster           { flex-wrap: wrap; }
+  .cs-3-col                   { grid-template-columns: 1fr; }
+  .cs-portrait-row--offset    { margin-left: 0; }
+  .cs-info-bar                { grid-template-columns: 1fr 1fr; }
+  .cs-bar-col + .cs-bar-col::before { display: none; }
+  .cs-callout                 { padding: 24px 20px 40px; }
+  .cs-headline                { font-size: 36px; line-height: 46px; }
+}
+
+@media (max-width: 480px) {
+  .cs-info-bar   { grid-template-columns: 1fr; }
+  .cs-prose      { font-size: 18px; line-height: 28px; }
+  .cs-lead-text  { font-size: 18px; line-height: 28px; }
+  .cs-headline   { font-size: 28px; line-height: 36px; }
 }
