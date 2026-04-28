@@ -411,8 +411,10 @@ a { color: inherit; }
 }
 
 .bio-logos img {
-  height: 22px;
+  max-height: 45px;
+  max-width: 60px;
   width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
 }
@@ -425,8 +427,8 @@ a { color: inherit; }
 }
 
 .personal-item p {
-  font-size: var(--small-size);
-  line-height: var(--small-lh);
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 300;
 }
 
@@ -953,20 +955,6 @@ a { color: inherit; }
   align-items: stretch;
 }
 
-.cs-screen-pair {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-}
-
-.cs-screen-img {
-  width: auto;
-  height: 248px;
-  display: block;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
 .cs-media-frame {
   width: 287px;
   flex-shrink: 0;
@@ -983,24 +971,57 @@ a { color: inherit; }
 /* ── Portrait grid ──────────────────────────────────────────── */
 .cs-portrait-grid {
   display: flex;
+  width: 287px;
   flex-direction: column;
-  gap: 20px;
+  align-content: center;
+  gap: 30px;
 }
 
 .cs-portrait-row {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 .cs-portrait-row--offset { margin-left: 46px; }
 
 .cs-portrait-row img {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   display: block;
   flex-shrink: 0;
 }
+
+/* ── image stack ──────────────────────────────────────────── */
+.cs-screen-set {
+  display: flex;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.cs-screen-set img {
+  width: 0;
+  height: 100%;
+  flex: 1;
+  aspect-ratio: 317 / 563;
+  object-fit: contain;
+  display: block;
+}
+
+.cs-img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cs-img-stack > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 
 /* ── Callout box (gray bg, insights / opportunities / methods) ─ */
 .cs-callout {
@@ -1026,6 +1047,16 @@ a { color: inherit; }
   margin-bottom: 30px;
 }
 
+.cs-caption {
+  display: block;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 0.06em;
+  color: #667780;
+  margin-top: 30px;
+}
+
 .cs-content-block { margin-bottom: 30px; }
 
 /* Item text: light 16/24 — shared by insights and opportunities */
@@ -1033,6 +1064,7 @@ a { color: inherit; }
   font-size: 16px;
   line-height: 24px;
   font-weight: 300;
+  margin-top: 0;
 }
 
 /* Figure card: white inset with ruled borders */
@@ -1048,7 +1080,7 @@ a { color: inherit; }
 .cs-tag-list {
   font-size: 11px;
   line-height: 18px;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text);
