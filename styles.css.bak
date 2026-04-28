@@ -802,49 +802,53 @@ a { color: inherit; }
   .cs-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   CASE STUDY LAYOUT
-   ══════════════════════════════════════════════════════════════ */
+/* ── New case study layout ─────────────────────────────────── */
 
-/* ── Hero header ────────────────────────────────────────────── */
-.cs-hero {
+/* Header — full-width title and description, no horizontal padding (wrapper handles it) */
+.cs-header-section {
   padding: 60px 0 0;
 }
 
-.cs-headline {
+.cs-title {
   font-size: 48px;
   font-weight: 800;
   line-height: 60px;
   margin-bottom: 60px;
 }
 
-.cs-subline {
+.cs-description {
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
 }
 
-.cs-rule {
+.cs-header-rule {
   border: none;
   border-top: 1px solid var(--border);
   margin: 30px 0;
 }
 
-/* ── Summary (findings / assumption columns) ────────────────── */
-.cs-summary {
+/* ── Key findings (plain columns, no background) ───────────── */
+.cs-findings-section {
   padding: 0 0 30px;
 }
 
-.cs-3-col {
+.cs-findings-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 8px;
+}
+
+.cs-findings-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 }
 
-.cs-3-col--labeled { margin-bottom: 8px; }
+.cs-finding-col { }
 
-/* Column header label — plain background, text color */
-.cs-grid-label {
+.cs-stat-label {
   font-size: var(--label-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -852,118 +856,113 @@ a { color: inherit; }
   color: var(--text);
 }
 
-/* Accent number (pink, inherits surrounding font-size) */
-.cs-accent-num {
+.cs-stat-num {
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.06em;
 }
 
-/* Lead text: bold 20/30 */
-.cs-lead-text {
+.cs-stat-text {
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
 }
 
-.cs-lead-text--light { font-weight: 300; }
+.cs-stat-text--light {
+  font-weight: 300;
+}
 
-/* ── Info bar ───────────────────────────────────────────────── */
-.cs-bar-section {
+/* ── Meta bar (gray rounded bar) ───────────────────────────── */
+.cs-meta-bar-section {
   padding: 0 0 60px;
 }
 
-.cs-info-bar {
+.cs-meta-bar {
   display: grid;
-  grid-template-columns: 272px 284px 272px;
-  gap: 31px;
+  grid-template-columns: minmax(0, 272px) 1fr minmax(0, 272px);
   background: var(--sidebar-bg);
   border-radius: 4px;
-  padding: 15px;
+  min-height: 95px;
 }
 
-.cs-bar-col {
+.cs-meta-bar-col {
+  padding: 15px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.cs-bar-col + .cs-bar-col::before {
+.cs-meta-bar-col + .cs-meta-bar-col::before {
   content: '';
   position: absolute;
-  left: -16px;
-  top: 0;
-  height: 100%;
+  left: 0;
+  top: 15px;
+  height: calc(100% - 30px);
   width: 1px;
   background: var(--border);
 }
 
-/* ── Content blocks ─────────────────────────────────────────── */
-.cs-block {
+
+/* ── Body sections — no horizontal padding, no borders ─────── */
+.cs-body-section {
   padding: 30px 0;
 }
 
-/* Two-column: fluid text | fixed 287px aside */
-.cs-split-grid {
+.cs-body-section--flush { }
+
+/* Two-column grid: text left, 287px right */
+.cs-col-grid {
   display: grid;
   grid-template-columns: 1fr 287px;
   gap: 30px;
   align-items: stretch;
 }
 
-.cs-aside {
+.cs-col-right {
   overflow: hidden;
 }
 
-.cs-aside img {
+.cs-col-right img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.cs-aside--fit         { padding: 0 20px; }
-.cs-aside--fit img     { object-fit: contain; }
-.cs-aside--fill img    { object-fit: cover; }
+.cs-col-right--svg { padding: 0 20px; }
+.cs-col-right--svg img  { object-fit: contain; }
+.cs-col-right--photo img { object-fit: cover; }
 
-/* Prose body copy: semibold 20/30 */
-.cs-prose {
+/* Body text: semibold 20/30 */
+.cs-body-text {
   font-size: 20px;
   line-height: 30px;
   font-weight: 600;
 }
 
-.cs-prose + .cs-prose { margin-top: 30px; }
+.cs-body-text + .cs-body-text { margin-top: 30px; }
 
-/* ── Ruled box (top + bottom border, inner padding) ─────────── */
-.cs-ruled-box {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 30px 0;
-  margin: 30px 0;
-}
-
-/* ── Text + media layout (prose left | media cluster right) ─── */
-.cs-media-grid {
+/* ── Workshop section ──────────────────────────────────────── */
+.cs-workshop-grid {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 30px;
   align-items: start;
 }
 
-.cs-media-cluster {
+.cs-workshop-images {
   display: flex;
   gap: 30px;
   align-items: stretch;
 }
 
-.cs-screen-pair {
+.cs-iphone-pair {
   display: flex;
   gap: 10px;
   align-items: stretch;
 }
 
-.cs-screen-img {
+.cs-iphone-img {
   width: auto;
   height: 248px;
   display: block;
@@ -971,34 +970,41 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 
-.cs-media-frame {
+.cs-stim-container {
   width: 287px;
   flex-shrink: 0;
   overflow: hidden;
 }
 
-.cs-media-frame img {
+.cs-stim-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* ── Portrait grid ──────────────────────────────────────────── */
-.cs-portrait-grid {
+/* ── Fan interview section ─────────────────────────────────── */
+.cs-fan-section-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: start;
+}
+
+.cs-fan-grid {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.cs-portrait-row {
+.cs-fan-row {
   display: flex;
   gap: 20px;
 }
 
-.cs-portrait-row--offset { margin-left: 46px; }
+.cs-fan-row--offset { margin-left: 46px; }
 
-.cs-portrait-row img {
+.cs-fan-row img {
   width: 72px;
   height: 72px;
   object-fit: cover;
@@ -1006,14 +1012,14 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 
-/* ── Callout box (gray bg, insights / opportunities / methods) ─ */
-.cs-callout {
+/* ── Synthesis section (contains insights, diagram, opportunities, rule, methods) */
+.cs-synthesis {
   background: var(--sidebar-bg);
   padding: 30px 30px 60px;
   margin-top: 30px;
 }
 
-.cs-callout-label {
+.cs-synthesis-label {
   font-size: var(--label-size);
   font-weight: 500;
   text-transform: uppercase;
@@ -1023,33 +1029,62 @@ a { color: inherit; }
   margin-bottom: 8px;
 }
 
-.cs-callout-heading {
+.cs-synthesis-heading {
   font-size: 24px;
   font-weight: 800;
   line-height: 30px;
   margin-bottom: 30px;
 }
 
-.cs-content-block { margin-bottom: 30px; }
+.cs-3-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
 
-/* Item text: light 16/24 — shared by insights and opportunities */
-.cs-item-text {
+.cs-insights-block { margin-bottom: 30px; }
+
+.cs-insight-num {
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.cs-insight-text {
   font-size: 16px;
   line-height: 24px;
   font-weight: 300;
 }
 
-/* Figure card: white inset with ruled borders */
-.cs-figure-card {
+/* Shared treatment for mindsets and decision-heat SVG boxes */
+.cs-svg-box {
+  border-top: 1px solid #CFD3D9;
+  border-bottom: 1px solid #CFD3D9;
+  padding: 30px 0;
+}
+
+.cs-diagram-card {
   background: white;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid #CFD3D9;
+  border-bottom: 1px solid #CFD3D9;
   padding: 30px 24px;
+  margin: 30px 0;
+  border-radius: 4px;
+}
+
+.cs-opportunity-text {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.cs-synthesis-rule {
+  border: none;
+  border-top: 1px solid var(--border);
   margin: 30px 0;
 }
 
-/* Tag list: methods, light 12/16, all caps */
-.cs-tag-list {
+.cs-methods-text {
   font-size: 12px;
   line-height: 16px;
   font-weight: 300;
@@ -1058,28 +1093,21 @@ a { color: inherit; }
   color: var(--text);
 }
 
-/* Inline utilities */
 .cs-sep { color: var(--muted); }
-.cs-em  { font-weight: 500; }
 
-/* ── Case study responsive ──────────────────────────────────── */
+.cs-em { font-weight: 500; }
+
+/* ── New case study responsive ─────────────────────────────── */
 @media (max-width: 768px) {
-  .cs-split-grid              { grid-template-columns: 1fr; }
-  .cs-aside img               { height: 260px; }
-  .cs-aside--fit              { padding: 0; }
-  .cs-media-grid              { grid-template-columns: 1fr; }
-  .cs-media-cluster           { flex-wrap: wrap; }
-  .cs-3-col                   { grid-template-columns: 1fr; }
-  .cs-portrait-row--offset    { margin-left: 0; }
-  .cs-info-bar                { grid-template-columns: 1fr 1fr; }
-  .cs-bar-col + .cs-bar-col::before { display: none; }
-  .cs-callout                 { padding: 24px 20px 40px; }
-  .cs-headline                { font-size: 36px; line-height: 46px; }
-}
-
-@media (max-width: 480px) {
-  .cs-info-bar   { grid-template-columns: 1fr; }
-  .cs-prose      { font-size: 18px; line-height: 28px; }
-  .cs-lead-text  { font-size: 18px; line-height: 28px; }
-  .cs-headline   { font-size: 28px; line-height: 36px; }
+  .cs-col-grid { grid-template-columns: 1fr; }
+  .cs-col-right img { height: 260px; }
+  .cs-workshop-grid { grid-template-columns: 1fr; }
+  .cs-workshop-images { flex-wrap: wrap; }
+  .cs-fan-section-grid { grid-template-columns: 1fr; }
+  .cs-findings-grid { grid-template-columns: 1fr; }
+  .cs-findings-labels { grid-template-columns: 1fr; }
+  .cs-meta-bar { grid-template-columns: 1fr 1fr; }
+  .cs-meta-bar-col + .cs-meta-bar-col::before { display: none; }
+  .cs-3-col { grid-template-columns: 1fr; }
+  .cs-fan-row--offset { margin-left: 0; }
 }

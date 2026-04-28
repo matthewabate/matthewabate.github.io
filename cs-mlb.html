@@ -3,222 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>In-Venue Commerce Research (MLB) — Matthew Abate</title>
+<title>Ethnographic Research into the Commerce Experience at Baseball Games — Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="page--inner page--cs">
+<body>
 
 <div class="frame">
 <div class="site-wrapper">
 
-  <div class="scroll-container" id="main-scroller">
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Matthew Abate &bull; Experience Strategy</a>
+    <div class="nav__right">
+      <div class="nav__links">
+        <a href="projects.html" class="nav__link active">Projects</a>
+        <a href="bio.html" class="nav__link">Bio</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </div>
+      <a href="mailto:matthewabate@me.com" class="nav__email-btn">
+        <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
+          <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="bio.html">Bio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-    <!-- NAV -->
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">Matthew Abate</a>
-      <div class="nav__right">
-        <div class="nav__links">
-          <a href="work.html" class="nav__link active">Work</a>
-          <a href="approach.html" class="nav__link">Approach</a>
-          <a href="bio.html" class="nav__link">Bio</a>
-          <a href="#contact" class="nav__link">Contact</a>
+  <!-- Hero: full-width title + description -->
+  <div class="cs-hero">
+    <a href="projects.html" class="cs-back"><span class="cs-back__icon">↓</span> Projects</a>
+    <h1 class="cs-headline">Ethnographic research into the commerce experience at baseball games</h1>
+    <p class="cs-subline">MLB wanted to figure out how to improve the commerce experience at baseball games so fans would choose more of the premium options.</p>
+    <hr class="cs-rule">
+  </div>
+
+  <!-- Summary: key findings + starting assumption -->
+  <div class="cs-summary">
+    <div class="cs-3-col cs-3-col--labeled">
+      <span class="cs-grid-label">Key findings</span>
+      <span></span>
+      <span class="cs-grid-label">Starting assumption</span>
+    </div>
+    <div class="cs-3-col">
+      <div>
+        <p class="cs-lead-text"><span class="cs-accent-num">1.</span> The key moments fans feared missing are in their social group, not the game.</p>
+      </div>
+      <div>
+        <p class="cs-lead-text"><span class="cs-accent-num">2.</span> Spending is suppressed by cognitive load, attention limits, and social dynamics.</p>
+      </div>
+      <div>
+        <p class="cs-lead-text cs-lead-text--light">People would buy more of the premium options at ballparks if lines at the stands were faster.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info bar: Sector / Focus / Timing -->
+  <div class="cs-bar-section">
+    <div class="cs-info-bar">
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Sector</div>
+        <div class="cs-meta-value">Sports &amp; Entertainment</div>
+      </div>
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Focus</div>
+        <div class="cs-meta-value">Venue Experience &bull; Commerce</div>
+      </div>
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Timing</div>
+        <div class="cs-meta-value">9 Months &bull; 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Surveys / DVF diagram -->
+  <div class="cs-block">
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">To start I ran a series of surveys to find out what the most important aspects of the venue experience are. When we confirmed that food and beverages were the elements most critically linked to the experience, we then dug into fans' frustrations about buying F&amp;B at games.</p>
+        <p class="cs-prose">Our surveys told us what mindsets fans are in when they go to ballparks, as well as where to dig deeper during field research.</p>
+      </div>
+      <div class="cs-aside cs-aside--fit">
+        <img src="Case%20Study%20Images/MLB/mlb-dvf.svg" alt="Desirability, viability, and feasibility diagram">
+      </div>
+    </div>
+  </div>
+
+  <!-- Field research -->
+  <div class="cs-block">
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">Through various methods including behavioral observation, intercept interviews, and contextual inquiry, I was able to identify how people operate when they are trying to get food.</p>
+        <p class="cs-prose">The research showed where the design of the concourse was determining how fans behave, but also what contexts have bearing on the decisions they make.</p>
+        <p class="cs-prose">Once I had a solid understanding of why fans do what they do, it was time for in-depth conversations with them to figure out how they feel about the concourse experience and what we might try if we want to make it better.</p>
+      </div>
+      <div class="cs-aside cs-aside--fill">
+        <img src="Case%20Study%20Images/MLB/research-phillies-01.jpg" alt="Field research at the ballpark">
+      </div>
+    </div>
+  </div>
+
+  <!-- Mindsets & modes diagram -->
+  <div class="cs-ruled-box">
+    <img src="Case%20Study%20Images/MLB/mindsets-%26-modes.svg" alt="Mindsets and modes diagram" style="width:100%; display:block;">
+  </div>
+
+  <!-- Workshops -->
+  <div class="cs-block">
+    <div class="cs-media-grid">
+      <div>
+        <p class="cs-prose">I ran a series of workshops with MLB's product team to develop sacrificial concepts that explored the problems uncovered during the research phase.</p>
+      </div>
+      <div class="cs-media-cluster">
+        <div class="cs-screen-pair">
+          <img src="Case%20Study%20Images/MLB/research-screen-01.jpg" alt="Workshop concept screen" class="cs-screen-img">
+          <img src="Case%20Study%20Images/MLB/research-screen-02.jpg" alt="Workshop concept screen" class="cs-screen-img">
         </div>
-        <a href="mailto:matthewabate@me.com" class="nav__email-btn">
-          <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
-            <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-        </a>
-        <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="cs-media-frame">
+          <img src="Case%20Study%20Images/MLB/research-stim-02.jpg" alt="Workshop stimulus material">
+        </div>
       </div>
-      <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-        <a href="index.html">Home</a>
-        <a href="work.html">Work</a>
-        <a href="approach.html">Approach</a>
-        <a href="bio.html">Bio</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+    </div>
+  </div>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header" style="padding-bottom: 60px;">
-      <a href="work.html" class="cs-back"><span class="cs-card__cta-icon" style="transform: rotate(90deg); transition: none;">↓</span>Work</a>
-      <h1>In-Venue Commerce Research (MLB)</h1>
-      <p class="page-header__sub" style="margin-top: 16px;">Reframed a throughput problem as a behavioral challenge for 30 MLB clubs</p>
+  <!-- Fan interviews -->
+  <div class="cs-block">
+    <div class="cs-media-grid">
+      <div>
+        <p class="cs-prose">Then I interviewed fans about their own experiences with those problems, digging into the factors that cause them and how fans responded. We also talked about the concepts the team developed to find out what was and wasn't compelling about them.</p>
+      </div>
+      <div class="cs-portrait-grid">
+        <div class="cs-portrait-row">
+          <img src="Case%20Study%20Images/MLB/research-fan-01.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-02.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-03.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-04.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-05.png" alt="Fan interview participant">
+        </div>
+        <div class="cs-portrait-row cs-portrait-row--offset">
+          <img src="Case%20Study%20Images/MLB/research-fan-06.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-07.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-08.png" alt="Fan interview participant">
+          <img src="Case%20Study%20Images/MLB/research-fan-09.png" alt="Fan interview participant">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Callout: heading → insights → diagram → opportunities → rule → methods -->
+  <div class="cs-callout">
+
+    <h2 class="cs-callout-heading">What would make for a better commerce experience?</h2>
+
+    <span class="cs-callout-label">Insights</span>
+    <div class="cs-3-col cs-content-block">
+      <p class="cs-item-text"><span class="cs-accent-num">1.</span> All fans bring the same two mindsets to the game (<span class="cs-em">Researching</span> and <span class="cs-em">Ritualizing</span>) but alternate between being goal-oriented and open to influence.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">2.</span> We think of slowness as a function of service, but it's really related to <span class="cs-em">processing either too many or too few inputs</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">3.</span> We think of lines as a simple monolithic mass of frustration, but they're more like <span class="cs-em">a series of different waiting phases</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">4.</span> We think faster lines mean a better experience, but <span class="cs-em">speed doesn't fulfill the need for hospitality</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">5.</span> We think of F&amp;B as adding to the experience, but <span class="cs-em">choosing when and where to get it is a gamble</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">6.</span> We remember family trips to the ballpark with nostalgia, but <span class="cs-em">it can be a burden for group leaders</span>.</p>
     </div>
 
-    <!-- CASE STUDY BODY -->
-    <section class="section">
-      <div class="cs-layout">
-
-        <div class="cs-content">
-          <div class="cs-section">
-            <div class="cs-section-label">What was happening</div>
-            <p class="cs-text">Fans expressed dissatisfaction with food and beverage options, citing price, quality, and availability, while actual purchasing behavior remained inconsistent and difficult to improve.</p>
-          </div>
-
-          <div class="cs-section">
-            <div class="cs-section-label">What was wrong</div>
-            <p class="cs-text">Teams believed that improving concession stand speed and throughput would directly increase sales.</p>
-          </div>
-
-          <div class="cs-section">
-            <div class="cs-section-label">Key Findings</div>
-            <ol class="cs-numbered">
-              <li><span class="cs-num">1.</span>Fans weren't buying more because they feared missing key moments in the game.</li>
-              <li><span class="cs-num">2.</span>Spending was suppressed not by line speed, but by cognitive load, social flow, and attention limits.</li>
-            </ol>
-          </div>
-
-          <div class="cs-section">
-            <div class="cs-section-label">Insights</div>
-            <ul class="cs-insights">
-              <li>Fans maintain two mindsets simultaneously: <em>Researching</em> (logistical) and <em>Ritualizing</em> (emotional)</li>
-              <li>Fans alternate between two modes: <em>Focused</em> (goal-oriented) and <em>Exploring</em> (open to influence)</li>
-              <li>Purchasing often conflicts with fear of missing key moments</li>
-              <li>Cognitive load and fragmented information reduce decision confidence</li>
-              <li>Group dynamics, especially for parents, amplify friction and hesitation</li>
-              <li>"Faster service" does not resolve FOMO or uncertainty</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cs-sidebar">
-          <div class="cs-meta-label">Sector</div>
-          <div class="cs-meta-value">Sports &amp; Entertainment</div>
-
-          <div class="cs-meta-label">Focus</div>
-          <div class="cs-meta-value">Venue Experience<br>Commerce</div>
-
-          <div class="cs-meta-label">Timing</div>
-          <div class="cs-meta-value">9 Months &bull; 2025</div>
-
-          <div class="cs-meta-label">Methods</div>
-          <ul class="cs-methods-list">
-            <li>Design Thinking</li>
-            <li>Ethnographic Field Research</li>
-            <li>Direct &amp; Indirect Observation</li>
-            <li>Opportunity Gap Surveys</li>
-            <li>Anchored Max-Dif Surveys</li>
-            <li>Intercept Interviews</li>
-            <li>In-Depth Interviews</li>
-            <li>Jobs to Be Done</li>
-            <li>Journey Mapping</li>
-            <li>Behavioral Segmentation</li>
-            <li>Co-Creation Workshops</li>
-            <li>Insights Development</li>
-            <li>Research Synthesis</li>
-            <li>Executive-Ready Reporting</li>
-          </ul>
-
-          <div style="margin-top: 20px;">
-            <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="cs-results-layout" style="margin-top: 46px;">
-        <div class="cs-results-image">
-          <img src="images/Baseball_Discovery.jpg" alt="MLB Research" data-modal-src="https://drive.google.com/file/d/1gz_wo6ljsmse2d6IU1XzG-yxnKBQUhH2/preview" data-modal-type="iframe">
-          <div class="cs-results-caption">
-            <a href="#" class="cs-view-demo" data-modal-src="https://drive.google.com/file/d/1gz_wo6ljsmse2d6IU1XzG-yxnKBQUhH2/preview" data-modal-type="iframe">View Case Study</a>
-          </div>
-        </div>
-        <div class="cs-results-copy">
-          <div class="cs-section-label">Results</div>
-          <p class="cs-text">Teams recognized they lacked visibility into the behavioral drivers of concession decisions and began shifting toward structured experimentation and cross-league learning rather than relying on assumptions or vendor solutions.</p>
-          <p class="cs-text">Teams became more receptive to behavior-led analysis instead of operational assumptions about throughput and efficiency.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <div class="contact" id="contact">
-      <div class="section-label">Contact</div>
-      <h2>If you're working on something challenging, let's talk!</h2>
-      <p class="page-header__sub">I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
-      <div class="button-row">
-        <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
-        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
-        <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
-      </div>
-      <p class="page-header__sub">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
-      <div class="footer">© 2026 · Matthew Abate</div>
+    <div class="cs-figure-card">
+      <img src="Case%20Study%20Images/MLB/decision-heat.svg" alt="Decision heat map" style="width:100%; display:block;">
     </div>
 
-  </div><!-- /scroll-container -->
+    <span class="cs-callout-label">Opportunities</span>
+    <div class="cs-3-col">
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">A.</span> <span class="cs-em">Reimagine physical+digital touch points</span> to minimize their intrusion on the fans' engagement with the game and their party.</p>
+      </div>
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">B.</span> <span class="cs-em">Personalize food discovery</span> by making it easy to find F&amp;B options that will make the trip feel special.</p>
+      </div>
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">C.</span> <span class="cs-em">Simplify group dining</span> by making managing F&amp;B so simple that group organizers can enjoy the game instead of playing 'butler'.</p>
+      </div>
+    </div>
+
+    <hr class="cs-rule">
+
+    <span class="cs-callout-label">Research methods</span>
+    <p class="cs-tag-list">Ethnographic Field Research <span class="cs-sep">&bull;</span> In-Depth Interviews <span class="cs-sep">&bull;</span> Direct &amp; Indirect Observation <span class="cs-sep">&bull;</span> Behavioral Segmentation <span class="cs-sep">&bull;</span> Design Thinking <span class="cs-sep">&bull;</span> Jobs to Be Done <span class="cs-sep">&bull;</span> Journey Mapping <span class="cs-sep">&bull;</span> Co-Creation Workshops <span class="cs-sep">&bull;</span> Research Synthesis <span class="cs-sep">&bull;</span> Insights Development <span class="cs-sep">&bull;</span> Service Blueprinting <span class="cs-sep">&bull;</span> Executive-Ready Reporting <span class="cs-sep">&bull;</span> Digital Service Design</p>
+
+  </div>
+
+  <div class="footer">&copy; 2026 &middot; Matthew Abate</div>
 
 </div><!-- /site-wrapper -->
 </div><!-- /frame -->
 
-<!-- Demo modal -->
-<div class="cs-modal" id="cs-modal" role="dialog" aria-modal="true" aria-label="Case study preview">
-  <div class="cs-modal__inner">
-    <button class="cs-modal__close" aria-label="Close">&times;</button>
-    <img id="cs-modal-img" src="" alt="Case study preview">
-    <iframe id="cs-modal-iframe" src="" frameborder="0" allowfullscreen style="display:none; width:80vw; height:80vh; border:none;"></iframe>
-  </div>
-</div>
-
 <script src="site.js"></script>
-
-<script>
-(function() {
-  var modal       = document.getElementById('cs-modal');
-  var modalImg    = document.getElementById('cs-modal-img');
-  var modalIframe = document.getElementById('cs-modal-iframe');
-
-  function openModal(src, type) {
-    if (type === 'iframe') {
-      modalImg.style.display    = 'none';
-      modalIframe.style.display = 'block';
-      modalIframe.src           = src;
-    } else {
-      modalIframe.style.display = 'none';
-      modalImg.style.display    = 'block';
-      modalImg.src              = src;
-    }
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    modalImg.src    = '';
-    modalIframe.src = '';
-  }
-
-  document.querySelectorAll('img[data-modal-src]').forEach(function(img) {
-    img.addEventListener('click', function() {
-      openModal(img.dataset.modalSrc, img.dataset.modalType);
-    });
-  });
-
-  document.querySelectorAll('a.cs-view-demo[data-modal-src]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      openModal(link.dataset.modalSrc, link.dataset.modalType);
-    });
-  });
-
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal) closeModal();
-  });
-
-  modal.querySelector('.cs-modal__close').addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
-}());
-</script>
 
 </body>
 </html>

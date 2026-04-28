@@ -5,138 +5,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bio — Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="page--inner">
+<body>
 
-<div class="frame frame--bio">
+<div class="frame">
 <div class="site-wrapper">
 
-  <!-- SCROLL CONTAINER -->
-  <div class="scroll-container" id="main-scroller">
-
-    <!-- NAV — sticky inside scroll-container -->
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">Matthew Abate</a>
-      <div class="nav__right">
-        <div class="nav__links">
-          <a href="work.html" class="nav__link">Work</a>
-          <a href="approach.html" class="nav__link">Approach</a>
-          <a href="bio.html" class="nav__link active">Bio</a>
-          <a href="#contact" class="nav__link">Contact</a>
-        </div>
-        <a href="mailto:matthewabate@me.com" class="nav__email-btn">
-          <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
-            <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-        </a>
-        <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Matthew Abate &bull; Experience Strategy</a>
+    <div class="nav__right">
+      <div class="nav__links">
+        <a href="projects.html" class="nav__link">Projects</a>
+        <a href="bio.html" class="nav__link active">Bio</a>
+        <a href="contact.html" class="nav__link">Contact</a>
       </div>
-      <!-- Mobile menu: same links as desktop nav -->
-      <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-        <a href="index.html">Home</a>
-        <a href="work.html">Work</a>
-        <a href="approach.html">Approach</a>
-        <a href="bio.html">Bio</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+      <a href="mailto:matthewabate@me.com" class="nav__email-btn">
+        <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
+          <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="bio.html">Bio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header" style="padding-bottom: 60px;">
-      <div class="bio-intro">
-        <div class="bio-intro__text">
-          <h1>Bio</h1>
-          <p>I'm a service and experience designer focused on how people make decisions in real-world contexts and how those decisions are shaped by systems, constraints, and environment.</p>
-          <p>Much of my work involves situations where teams are confident they understand the problem, but where observed behavior tells a different story. Most teams I've worked with lack clarity on whether they're solving the right problem, not executional skill.</p>
-        </div>
-        <div class="bio-intro__photo">
-          <img id="bio-photo" src="images/MA-Design.jpg" alt="Matthew Abate">
-        </div>
+  <!-- BIO HEADER -->
+  <div class="page-header">
+    <div class="bio-intro">
+      <div class="bio-intro__text">
+        <div class="page-heading" style="margin-bottom: 24px;">Bio:</div>
+        <p>I'm a service and experience designer focused on how people make decisions in real-world contexts and how those decisions are shaped by systems, constraints, and environment.</p>
+        <p>Much of my work involves situations where teams are confident they understand the problem, but where observed behavior tells a different story. Most teams I've worked with lack clarity on whether they're solving the right problem, not executional skill.</p>
+      </div>
+      <div class="bio-intro__photo">
+        <img id="bio-photo" src="images/MA-Design.jpg" alt="Matthew Abate">
       </div>
     </div>
+  </div>
 
-    <!-- EXPERIENCE + FOCUS -->
-    <section class="section">
-      <div class="row">
+  <!-- INDUSTRY EXPERIENCE / METHODS & CAPABILITIES -->
+  <div class="section">
+    <div class="bio-two-col">
 
-        <div class="col">
-          <div class="col-label">Experience</div>
-          <ul class="bio-dash-list">
-            <li>Financial services and business technology (Citi, GE, <a href="work.html#cs-newrez" class="bio-link">Rithm Capital</a>, Salesforce)</li>
-            <li>Healthcare and life sciences (<a href="work.html#cs-lifescan" class="bio-link">Johnson &amp; Johnson</a>, Otsuka)</li>
-            <li>Media and entertainment (HBO, NBCUniversal, Comcast)</li>
-            <li>Public sector and non-profits (New York State, USMA @ West Point, American University)</li>
-            <li>Retail and e-commerce (Target)</li>
-            <li>Transportation and automotive (Ford, Toyota, Emirates Airlines, JetBlue)</li>
-            <li>Travel, tourism, and hospitality (<a href="work.html#cs-mlb" class="bio-link">MLB</a>, Intrawest, San Diego Tourism Authority,)</li>
-          </ul>
-        </div>
-
-        <div class="col">
-          <div class="col-label">Focus</div>
-          <ul class="bio-dash-list">
-            <li>Designing for how people behave naturally, not how we want them to.</li>
-            <li>Clearing away ambiguity and shaping fog</li>
-            <li>Overcoming institutional inertia</li>
-            <li>Peeling back layers of assumptions and opaque data to find facts</li>
-            <li>Directing fast-moving teams when there isn't a clear diagnosis</li>
-            <li>Finding common ground between teams with completely different priorities and concerns</li>
-          </ul>
-        </div>
-
+      <div>
+        <div class="col-label">Industry Experience</div>
+        <ul class="bio-dash-list">
+          <li>Financial services and business technology</li>
+          <li>Healthcare and life sciences</li>
+          <li>Media and entertainment</li>
+          <li>Public sector and non-profits</li>
+          <li>Retail and e-commerce</li>
+          <li>Transportation and automotive</li>
+          <li>Travel, tourism, and hospitality</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- PERSONAL CONTEXT -->
-    <section class="section">
-      <div class="section-label">Personal Context</div>
-      <div class="personal-grid">
-
-        <div class="personal-item">
-          <h4>Past lives</h4>
-          <p>I have worked as a creative director and designer, handy man, an art handler, a gallery carpenter, a bar tender in a goth club, a delivery driver, a waiter, a dishwasher, and a landscaper.</p>
-        </div>
-
-        <div class="personal-item">
-          <h4>Distractions</h4>
-          <p>I have a <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank" class="bio-link">1973 240z</a> (my third car restoration), I run a <a href="https://www.southmountaindrivers.com" target="_blank" class="bio-link">classic car club</a>, collect vinyl, guitars, and vintage hi-fi gear, and I train in <a href="https://www.schoolofarchery.com/" target="_blank" class="bio-link">olympic recurve archery</a> with my two daughters.</p>
-        </div>
-
-        <div class="personal-item">
-          <h4>Home base</h4>
-          <p>I live in Northern New Jersey with my family, my <a href="https://www.scotchcollie.org/breed/" target="_blank" class="bio-link">Scotch Collie</a> (Phoebe), and three cats (Marvin, Ziggy, and Webster).</p>
-        </div>
-
+      <div>
+        <div class="col-label">Methods &amp; Capabilities</div>
+        <ul class="bio-dash-list">
+          <li>Experience Strategy</li>
+          <li>Opportunity Spaces</li>
+          <li>Strategic Visions</li>
+          <li>Design Thinking</li>
+          <li>Service Design</li>
+          <li>Behavioral Research</li>
+          <li>Rapid Value Realization</li>
+          <li>UX for AI</li>
+          <li>DVF Framework</li>
+          <li>Systems Thinking</li>
+          <li>Jobs to Be Done</li>
+          <li>Cross-Disciplinary Leadership</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <div class="contact" id="contact">
-      <div class="section-label">Contact</div>
-      <h2>If you're working on something challenging, let's talk!</h2>
-      <p class="page-header__sub">I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
-      <div class="button-row">
-        <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
-        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
-        <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
-      </div>
-      <p class="page-header__sub">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
-      <div class="footer">© 2026 · Matthew Abate</div>
     </div>
+  </div>
 
-  </div><!-- /scroll-container -->
+  <!-- PERSONAL -->
+  <div class="section">
+    <div class="personal-grid">
+
+      <div class="personal-item">
+        <h4>Past lives</h4>
+        <p>I have worked as a creative director and designer, handy man, an art handler, a gallery carpenter, a bar tender in a goth club, a delivery driver, a waiter, a dishwasher, and a landscaper.</p>
+      </div>
+
+      <div class="personal-item">
+        <h4>Distractions</h4>
+        <p>I have a <a href="https://newgraceforanoldsoul.wordpress.com/" target="_blank" class="bio-link">1973 240z</a> (my third car restoration), I run a <a href="https://www.southmountaindrivers.com" target="_blank" class="bio-link">classic car club</a>, collect vinyl, guitars, and vintage hi-fi gear, and I train in <a href="https://www.schoolofarchery.com/" target="_blank" class="bio-link">olympic recurve archery</a> with my two daughters.</p>
+      </div>
+
+      <div class="personal-item">
+        <h4>Home base</h4>
+        <p>I live in Northern New Jersey with my family, my <a href="https://www.scotchcollie.org/breed/" target="_blank" class="bio-link">Scotch Collie</a> (Phoebe), and three cats (Marvin, Ziggy, and Webster).</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">© 2026 · Matthew Abate</div>
 
 </div><!-- /site-wrapper -->
 </div><!-- /frame -->
 
 <script src="site.js"></script>
-
 
 </body>
 </html>

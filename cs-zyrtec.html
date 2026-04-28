@@ -5,103 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Environmental Allergy Manager (Zyrtec) — Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500&family=Lora&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="page--inner page--cs">
+<body>
 
 <div class="frame">
 <div class="site-wrapper">
 
-  <div class="scroll-container" id="main-scroller">
-
-    <!-- NAV -->
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">Matthew Abate</a>
-      <div class="nav__right">
-        <div class="nav__links">
-          <a href="work.html" class="nav__link active">Work</a>
-          <a href="approach.html" class="nav__link">Approach</a>
-          <a href="bio.html" class="nav__link">Bio</a>
-          <a href="#contact" class="nav__link">Contact</a>
-        </div>
-        <a href="mailto:matthewabate@me.com" class="nav__email-btn">
-          <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
-            <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-        </a>
-        <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Matthew Abate &bull; Experience Strategy</a>
+    <div class="nav__right">
+      <div class="nav__links">
+        <a href="projects.html" class="nav__link active">Projects</a>
+        <a href="bio.html" class="nav__link">Bio</a>
+        <a href="contact.html" class="nav__link">Contact</a>
       </div>
-      <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-        <a href="index.html">Home</a>
-        <a href="work.html">Work</a>
-        <a href="approach.html">Approach</a>
-        <a href="bio.html">Bio</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+      <a href="mailto:matthewabate@me.com" class="nav__email-btn">
+        <svg viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="19" height="13" rx="1.5" stroke="white" stroke-width="1.2"/>
+          <path d="M1 1L10 8L19 1" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <button class="nav__hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="bio.html">Bio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header" style="padding-bottom: 60px;">
-      <a href="work.html" class="cs-back"><span class="cs-card__cta-icon" style="transform: rotate(90deg); transition: none;">↓</span>Work</a>
-      <h1>Environmental Allergy Manager (Zyrtec)</h1>
-      <p class="page-header__sub" style="margin-top: 16px;">Moved allergy prediction from raw environmental data to crowd-sourced human experience</p>
+  <div class="page-header">
+    <a href="projects.html" class="cs-back"><span class="cs-back__icon">↓</span> Projects</a>
+    <div class="page-heading">Environmental Allergy Manager (Zyrtec)</div>
+    <div class="cs-subtitle">Moved allergy prediction from raw environmental data to crowd-sourced human experience</div>
+  </div>
+
+  <section class="section">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-bottom: 28px;">
+      <div class="cs-section">
+        <div class="cs-section-label">What was happening</div>
+        <p class="cs-text">Patients struggled to anticipate allergy symptom severity and were often unprepared for daily environmental conditions.</p>
+      </div>
+      <div class="cs-section">
+        <div class="cs-section-label">What was wrong</div>
+        <p class="cs-text">The team believed environmental and pollen data alone could improve prediction accuracy and patient preparedness.</p>
+      </div>
     </div>
 
-    <!-- CASE STUDY BODY -->
-    <section class="section">
-
-      <div class="cs-two-col">
-        <div class="cs-section">
-          <div class="cs-section-label">What was happening</div>
-          <p class="cs-text">Patients struggled to anticipate allergy symptom severity and were often unprepared for daily environmental conditions.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section-label">What was wrong</div>
-          <p class="cs-text">The team believed environmental and pollen data alone could improve prediction accuracy and patient preparedness.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap);">
+      <div class="cs-section">
+        <div class="cs-section-label">Insights</div>
+        <ul class="cs-insights">
+          <li>Patients relate more to others with similar experiences than abstract environmental data</li>
+          <li>Understanding comes from lived comparison, not numerical forecasting</li>
+          <li>Trust increases when information is grounded in human experience</li>
+          <li>Preparedness is driven by expectation-setting, not raw environmental signals</li>
+        </ul>
+      </div>
+      <div class="cs-section">
+        <div class="cs-section-label">Result</div>
+        <p class="cs-text">The experience shifted toward combining environmental data with crowd-sourced symptom reporting to improve interpretability and trust.</p>
+        <div style="margin-top: 16px;">
+          <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
         </div>
       </div>
-
-      <div class="cs-two-col">
-        <div class="cs-section">
-          <div class="cs-section-label">Insights</div>
-          <ul class="cs-insights">
-            <li>Patients relate more to others with similar experiences than abstract environmental data</li>
-            <li>Understanding comes from lived comparison, not numerical forecasting</li>
-            <li>Trust increases when information is grounded in human experience</li>
-            <li>Preparedness is driven by expectation-setting, not raw environmental signals</li>
-          </ul>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section-label">Result</div>
-          <p class="cs-text">The experience shifted toward combining environmental data with crowd-sourced symptom reporting to improve interpretability and trust.</p>
-          <div style="margin-top: 16px;">
-            <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- CONTACT -->
-    <div class="contact" id="contact">
-      <div class="section-label">Contact</div>
-      <h2>If you're working on something challenging, let's talk!</h2>
-      <p class="page-header__sub">I work with teams tackling complex problems where behavior, context, and systems shape outcomes.</p>
-      <div class="button-row">
-        <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
-        <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
-        <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
-      </div>
-      <p class="page-header__sub">Currently available for consulting or full-time roles in the New York Metro Area or remotely.</p>
-      <div class="footer">© 2026 · Matthew Abate</div>
     </div>
 
-  </div><!-- /scroll-container -->
+  </section>
+
+  <div class="footer">© 2026 · Matthew Abate</div>
 
 </div><!-- /site-wrapper -->
 </div><!-- /frame -->
