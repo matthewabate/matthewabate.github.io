@@ -97,6 +97,8 @@ body {
   background: var(--card-bg);
   min-height: 100vh;
   padding: 0 var(--pad-h);
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Nav ───────────────────────────────────────────────────── */
@@ -121,6 +123,7 @@ body {
 
 .nav__logo-name { font-weight: 600; }
 .nav__logo-role { font-weight: 300; }
+.nav__logo-short { display: none; }
 
 .nav__right {
   display: flex;
@@ -219,6 +222,7 @@ a { color: inherit; }
   padding: 15px 0;
   border-top: 1px solid var(--border);
   letter-spacing: 0.02em;
+  margin-top: auto;
 }
 
 /* ── Buttons ───────────────────────────────────────────────── */
@@ -747,10 +751,10 @@ a { color: inherit; }
   inset: 0;
   background: var(--accent);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  padding: 0 var(--pad-h);
-  gap: 6px;
+  padding: 72px var(--pad-h) 48px;
+  gap: min(calc((100vh - 360px) / 3), 48px);
   z-index: 500;
   transform: translateX(100vw);
   visibility: hidden;
@@ -764,15 +768,16 @@ a { color: inherit; }
 }
 
 .nav__mobile-menu a {
-  font-size: min(9vw, 60px);
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 60px;
   color: #ffffff;
   text-decoration: none;
   opacity: 0;
   transform: translateX(20px);
   transition: opacity 0.2s ease, transform 0.2s ease;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.0066em;
 }
 
 .nav__mobile-menu.is-open a               { opacity: 1; transform: translateX(0); }
@@ -780,6 +785,25 @@ a { color: inherit; }
 .nav__mobile-menu.is-open a:nth-child(2)  { transition-delay: 0.23s; }
 .nav__mobile-menu.is-open a:nth-child(3)  { transition-delay: 0.28s; }
 .nav__mobile-menu.is-open a:nth-child(4)  { transition-delay: 0.33s; }
+
+/* Close button — injected by JS, fixed over the hamburger */
+.nav__mobile-close {
+  display: none;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 600;
+}
+
+.nav__mobile-close svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -921,8 +945,9 @@ a { color: inherit; }
 }
 
 .cs-aside--fit         { padding: 0 20px; }
-.cs-aside--fit img     { object-fit: contain; }
-.cs-aside--fill img    { object-fit: cover; }
+.cs-aside--fit img     { width: auto; max-width: 100%; height: auto; max-height: 100%; }
+.cs-aside--fill        { position: relative; }
+.cs-aside--fill > img  { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* Prose body copy: semibold 20/30 */
 .cs-prose {
@@ -995,16 +1020,15 @@ a { color: inherit; }
 /* ── image stack ──────────────────────────────────────────── */
 .cs-screen-set {
   display: flex;
-  justify-content: space-between;
-  align-self: stretch;
-  flex-shrink: 0;
+  gap: 8px;
+  width: 100%;
+  aspect-ratio: 1000 / 563;
 }
 
 .cs-screen-set img {
-  width: 0;
-  height: 100%;
   flex: 1;
-  aspect-ratio: 317 / 563;
+  min-width: 0;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
@@ -1091,14 +1115,27 @@ a { color: inherit; }
 .cs-em  { font-weight: 500; }
 
 /* ── Case study responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
+
+/* Columns start stacking at 900px — this is where layouts get cramped */
+@media (max-width: 900px) {
+  .cs-3-col                   { grid-template-columns: 1fr; }
   .cs-split-grid              { grid-template-columns: 1fr; }
-  .cs-aside img               { height: 260px; }
-  .cs-aside--fit              { padding: 0; }
   .cs-media-grid              { grid-template-columns: 1fr; }
   .cs-media-cluster           { flex-wrap: wrap; }
-  .cs-3-col                   { grid-template-columns: 1fr; }
   .cs-portrait-row--offset    { margin-left: 0; }
+
+  /* fill aside: image is absolutely positioned so the container
+     has no intrinsic height — give it an explicit height when stacked */
+  .cs-aside--fill             { height: 280px; }
+
+  /* fit aside: drop max-height constraint (no parent height to resolve
+     against when stacked) and let the image size naturally */
+  .cs-aside--fit              { padding: 0; }
+  .cs-aside--fit img          { width: 100%; height: auto; max-height: none; }
+}
+
+/* Smaller UI elements and info bar at 768px */
+@media (max-width: 768px) {
   .cs-info-bar                { flex-wrap: wrap; }
   .cs-bar-vr                  { display: none; }
   .cs-bar-col                 { width: 45% !important; }
@@ -1116,8 +1153,10 @@ a { color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .cs-bar-col    { width: 100% !important; }
-  .cs-prose      { font-size: 18px; line-height: 28px; }
-  .cs-lead-text  { font-size: 18px; line-height: 28px; }
-  .cs-headline   { font-size: 28px; line-height: 36px; }
+  .cs-bar-col        { width: 100% !important; }
+  .cs-prose          { font-size: 18px; line-height: 28px; }
+  .cs-lead-text      { font-size: 18px; line-height: 28px; }
+  .cs-headline       { font-size: 28px; line-height: 36px; }
+  .nav__logo-full    { display: none; }
+  .nav__logo-short   { display: inline; }
 }
