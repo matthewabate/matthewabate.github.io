@@ -704,7 +704,7 @@ a { color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .cs-card { grid-template-columns: 1fr; padding-left: var(--pad-h); padding-right: var(--pad-h); }
+  .cs-card { grid-template-columns: 1fr; }
   .cs-card__logo { border-top: 1px solid var(--border); }
   .cs-card__body { border-top: none; }
   .cs-card__cta { display: none; }
