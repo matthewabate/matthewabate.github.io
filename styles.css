@@ -87,6 +87,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   letter-spacing: 0.0066em;
+  padding-top: env(safe-area-inset-top);
 }
 
 /* ── Frame ─────────────────────────────────────────────────── */
@@ -110,7 +111,7 @@ body {
 /* ── Nav ───────────────────────────────────────────────────── */
 .nav {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top);
   z-index: 200;
   display: flex;
   justify-content: space-between;
@@ -643,7 +644,7 @@ a { color: inherit; }
   justify-content: flex-start;
   align-items: flex-start;
   height: 100%;
-  padding: 72px calc((100vw - var(--frame-width)) / 2 + var(--pad-h)) 48px;
+  padding: calc(72px + env(safe-area-inset-top)) calc((100vw - var(--frame-width)) / 2 + var(--pad-h)) 48px;
   gap: min(calc((100vh - 360px) / 3), 48px);
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
