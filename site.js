@@ -13,12 +13,12 @@
 (function () {
 
   var portraits = [
-    'MA-Design.jpg',
-    'MA-Headphones.jpg',
-    'MA-NYC.jpg',
-    'MA-Pink.jpg',
-    'MA-Synthesis-Workshop.jpg',
-    'MA-and-Phoebe.jpg'
+    'ma-design.jpg',
+    'ma-headphones.jpg',
+    'ma-nyc.jpg',
+    'ma-pink.jpg',
+    'ma-synthesis-workshop.jpg',
+    'ma-and-phoebe.jpg'
   ];
 
   function pick(arr) {
