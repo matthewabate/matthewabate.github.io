@@ -339,7 +339,8 @@ a { color: inherit; }
 .bio-intro__text { flex: 1; }
 .bio-intro__text .page-heading { margin-bottom: 40px; }
 
-.bio-intro__text p {
+.bio-intro__text p,
+.bio-intro__text-p {
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
@@ -453,79 +454,85 @@ a { color: inherit; }
 }
 
 /* ── Work page cards ───────────────────────────────────────── */
-.cs-grid {
+/* ── Projects page layout ──────────────────────────────────── */
+.projects-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px var(--gap);
-  padding: var(--pad-v) 0;
-  border-top: 1px solid var(--border);
+  grid-template-columns: 600px 1fr;
+  gap: 0 var(--gap);
+  align-items: start;
+  margin-top: 30px;
+}
+
+.projects-layout__main {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-grid {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 var(--pad-v);
 }
 
 .cs-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+  column-gap: 30px;
+  padding-bottom: 0;
   text-decoration: none;
   color: var(--text);
+  border-top: 1px solid var(--border);
+  max-width: 600px;
+}
+
+.cs-card__logo,
+.cs-card__body {
+  padding-top: 30px;
+  padding-bottom: 40px;
 }
 
 .cs-card__logo {
-  margin-bottom: 12px;
-  height: 32px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  align-self: stretch;
 }
 
 .cs-card__logo img {
-  max-height: 28px;
-  max-width: 80px;
+  height: auto;
+  max-height: 45px;
   width: auto;
+  max-width: 90px;
   object-fit: contain;
-  object-position: left center;
   display: block;
 }
 
 .cs-card__title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 24px;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
+  line-height: 32px;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   transition: color 0.15s ease;
 }
 
 .cs-card__impact {
-  font-size: var(--small-size);
-  font-weight: 300;
-  line-height: var(--small-lh);
-  flex: 1;
-  padding-bottom: 14px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.cs-card__cta { display: flex; align-items: center; gap: 6px; }
-
-.cs-card__cta-label,
-.cs-card__cta-icon { color: var(--accent); }
-
-.cs-card__cta-label {
-  font-size: var(--label-size);
-  font-weight: 600;
-  line-height: 16px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.cs-card__cta-icon {
   font-size: 16px;
-  transform: rotate(-90deg);
-  display: inline-block;
-  flex-shrink: 0;
-  transition: transform 0.15s ease;
+  font-weight: 300;
+  line-height: 24px;
 }
 
 .cs-card:hover .cs-card__title { color: var(--accent); }
-.cs-card:hover .cs-card__cta-icon { transform: rotate(-90deg) translateY(3px); }
 
 /* ── Case study pages ──────────────────────────────────────── */
 .cs-back {
@@ -811,7 +818,8 @@ a { color: inherit; }
   .nav__hamburger { display: flex; }
   .nav__email-btn { display: none; }
 
-  .cs-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .cs-card { grid-template-columns: 140px 1fr; }
+  .cs-card__cta { display: none; }
 
   .cs-layout { flex-direction: column; }
   .cs-sidebar { width: 100%; margin-bottom: 24px; }
@@ -821,7 +829,10 @@ a { color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .cs-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-card { grid-template-columns: 1fr; }
+  .cs-card__logo { border-top: 1px solid var(--border); }
+  .cs-card__body { border-top: none; }
+  .cs-card__cta { display: none; }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -874,6 +885,23 @@ a { color: inherit; }
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   align-items: start;
+}
+
+/* Full-width findings — no assumption column alongside */
+.cs-summary-findings--full {
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.cs-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.cs-2-col .cs-item-text + .cs-item-text {
+  margin-top: 0;
 }
 
 .cs-3-col {
@@ -977,7 +1005,8 @@ a { color: inherit; }
   font-weight: 500;
 }
 
-.cs-prose + .cs-prose { margin-top: 30px; }
+.cs-prose + .cs-prose,
+.cs-2-col + .cs-prose { margin-top: 30px; }
 
 /* ── Ruled box (top + bottom border, inner padding) ─────────── */
 .cs-ruled-box {
@@ -1054,6 +1083,18 @@ a { color: inherit; }
   display: block;
 }
 
+.cs-img-row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-end;
+}
+
+.cs-img-row > img {
+  height: 200px;
+  width: auto;
+  display: block;
+}
+
 .cs-img-stack {
   display: flex;
   flex-direction: column;
@@ -1110,6 +1151,12 @@ a { color: inherit; }
   line-height: 24px;
   font-weight: 300;
   margin-top: 0;
+}
+
+.cs-prose + .cs-item-text,
+.cs-item-text + .cs-item-text,
+.cs-prose + .cs-2-col {
+  margin-top: 12px;
 }
 
 /* Figure card: white inset with ruled borders */

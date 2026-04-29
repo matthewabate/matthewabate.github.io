@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Medical Device Testing &amp; Optimization (Johnson &amp; Johnson) — Matthew Abate</title>
+<title>Johnson &amp; Johnson Case Study • Matthew Abate</title>
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -38,47 +41,198 @@
     </div>
   </nav>
 
-  <div class="page-header">
+  <!-- Hero: full-width title + description -->
+  <div class="cs-hero">
     <a href="projects.html" class="cs-back"><span class="cs-back__icon">↓</span> Projects</a>
-    <div class="page-heading">Medical Device Testing &amp; Optimization (Johnson &amp; Johnson)</div>
-    <div class="cs-subtitle">Reduced pediatric injection failures through ergonomic and instructional redesign</div>
+    <h1 class="cs-headline">Behavioral research and digital therapeutic design for managing diabetes.</h1>
+    <p class="cs-subline">Johnson & Johnson wanted to improve treatment adherence among patients whose diabetes was severely out of control.</p>
+    <hr class="cs-rule">
   </div>
 
-  <section class="section">
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-bottom: 28px;">
-      <div class="cs-section">
-        <div class="cs-section-label">What was happening</div>
-        <p class="cs-text">Children prescribed injectable biologics frequently failed to correctly administer doses, resulting in incomplete delivery ("wet leg" incidents).</p>
+  <!-- Summary: key findings + starting assumption -->
+  <div class="cs-summary">
+    <div class="cs-summary-findings cs-summary-findings--full">
+      <div>
+        <div class="cs-grid-label">Key findings</div>
+        <p class="cs-lead-text"><span class="cs-accent-num">1.</span> Patients understand their blood glucose readings. The challenge was their clinical guidance offered no support at specific moments and contexts of daily life.</p>
       </div>
-      <div class="cs-section">
-        <div class="cs-section-label">What was wrong</div>
-        <p class="cs-text">The problem was initially attributed to injection speed, force, or patient anxiety during administration.</p>
+      <div>
+        <div class="cs-grid-label cs-label-ghost" aria-hidden="true">&nbsp;</div>
+        <p class="cs-lead-text"><span class="cs-accent-num">2.</span> Treatment plans were not tailored to the contexts in patients' individual lives, so there was a gap between what was prescribed and what patients could do.</p>
       </div>
     </div>
+  </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap);">
-      <div class="cs-section">
-        <div class="cs-section-label">Insights</div>
-        <ul class="cs-insights">
-          <li>Device ergonomics did not support small-hand grip stability</li>
-          <li>Button mechanics were difficult to coordinate during injection</li>
-          <li>Instructions were too complex to follow during active use</li>
-          <li>Failure resulted from multiple interacting usability breakdowns, not a single mechanism issue</li>
-        </ul>
+  <!-- Info bar: Sector / Focus / Timing -->
+  <div class="cs-bar-section">
+    <div class="cs-info-bar">
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Sector</div>
+        <div class="cs-meta-value">Healthcare</div>
       </div>
-      <div class="cs-section">
-        <div class="cs-section-label">Result</div>
-        <p class="cs-text">The device and instructions were redesigned to better support real-time use, including improved ergonomics and simplified step-by-step digital guidance. Failure rates decreased significantly and the program advanced through accelerated regulatory pathways.</p>
-        <div style="margin-top: 16px;">
-          <a href="mailto:matthewabate@me.com" class="button button--primary button--sm">Book a Case Study Review</a>
+      <div class="cs-bar-vr" aria-hidden="true"></div>
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Focus</div>
+        <div class="cs-meta-value">Digital Therapeutics &bull; Behavioral Intervention</div>
+      </div>
+      <div class="cs-bar-vr" aria-hidden="true"></div>
+      <div class="cs-bar-col">
+        <div class="cs-meta-label">Timing</div>
+        <div class="cs-meta-value">7 Months</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Research &amp; Landscape Analysis -->
+  <div class="cs-block">
+    <div class="cs-callout-label">Step 1: Secondary Research &amp; Landscape Analysis</div>
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">I led a multidisciplinary team of experts (designers, UX research, behavioral science, diabetes nursing, AI engineering) to capture what life with type 2 diabetes actually looks like for the most vulnerable patients. We began with a behavioral analysis through secondary clinical research and an analysis of available data sources and J&J's AI capabilities.</p>
+      </div>
+      <div class="cs-aside cs-aside--fill">
+        <img src="J&J/jj-war-room.jpg" alt="secondary research / landscape analysis artifact">
+      </div>
+    </div>
+  </div>
+
+    <div class="cs-block">
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">We learned two key things by diving into the clinical literature and interviewing endocrinology and behavior-change SMEs:</p>
+          <div class="cs-2-col">
+            <p class="cs-item-text"><span class="cs-accent-num">1.</span> Results would be most visible for people with uncontrolled diabetes (HbA1c over 8%)</p>
+            <p class="cs-item-text"><span class="cs-accent-num">2.</span> Self-management tools didn't account for behaviors determined by daily context and personal circumstances.</p>
+          </div>
+      </div>
+        <div class="cs-img-stack">
+        <img src="J&J/jj-high-level-service-diagram.png" alt="Diabetes Experiece Diagram">
+      </div>
+    </div>
+  </div>
+
+  <!-- Patient journey map — life with type 2 diabetes, from diagnosis through daily self-management, showing where the experience breaks down -->
+  <div class="cs-ruled-box">
+    <img src="J&J/jj-type-2-journey.pdf" alt="Patient Journey Map: Living with Type 2 Diabetes" style="width:100%; display:block;">
+    <span class="cs-caption">Patient Journey Map: Living with Type 2 Diabetes - Saying, Thinking, Doing, & Feel from Diagnosis through Daily Self-Management</span>
+  </div>
+
+  <!-- Field research -->
+  <div class="cs-block">
+    <div class="cs-callout-label">Step 2: Field Research</div>
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">Over three months, the team observed and interviewed people with uncontrolled diabetes across New York, Atlanta, and Los Angeles. Our subject matter experts helped us understand how to see the gap between clinical guidance and real behavior, which informed our testing criteria.</p>
+        <p class="cs-prose">What we found confirmed the team's starting hypothesis that patients actually do understand their glucometer readings, but were struggling to respond to them due to life circumstances.</p>
+        <p class="cs-prose">Their treatment plans were not fine-tuned to account for non-clinical variables like unpredictable schedules, social pressures, moments of stress, or lacking basic services or infrastructure. The most challenging moments are between quarterly visits when clinical guidance isn’t fresh in their minds and they may have become overwhelmed by the burdens of life.</p>
+      </div>
+        <div class="cs-img-stack">
+        <img src="J&J/jj-patient-1a.jpg" alt="Field Research Photo">
+        <img src="J&J/jj-research-round_iii-04.jpg" alt="Field Research Photo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshops -->
+  <div class="cs-block">
+    <div class="cs-callout-label">Step 3: Workshops + Co-Creation</div>
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">We then held co-creation workshops with patients, doctors, and nurses to pressure-test our hypotheses and craft the characteristics of a meaningful intervention: the ideal experience would be a personal chef, a resident nurse, a personal trainer, and a life coach following each patient through their day.</p>
+        <p class="cs-prose">That framing became the design brief. Now we had to identify the specific moments where a well-timed, contextually appropriate nudge could substitute for human intervention and work out a delivery mechanism.</p>
+        <p class="cs-prose">The workshops gave us a clear model of where patients were struggling and why, which determined which of J&J's patented behavioral science interventions best translated into a digital channel without losing their therapeutic effectiveness.</p>
+      </div>
+      <div class="cs-aside cs-aside--fill">
+        <div class="cs-img-stack">
+          <img src="J&J/jj-research-round_ii-01.jpg" alt="Workshop Stimuli">
+          <img src="J&J/jj-research-round_ii-02.jpg" alt="Workshop Photo">
         </div>
       </div>
     </div>
+  </div>
 
-  </section>
+  <!-- System design + data logic -->
+  <div class="cs-block">
+    <div class="cs-callout-label">Step 4: System Design + Data Logic</div>
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">I then directed the work of translating a clinical intervention plan primarily built on problem-solving and action-planning frameworks into a digital experience.</p>
+        <p class="cs-prose">We established which data sources would produce the most meaningful picture of a patient's current situation, how to turn the interventions into a UX that would have the greatest impact on incremental behavior change, and how an AI layer would provide clinically-supervised responses approved by the patient’s care team.</p>
+        </div>
+      <div class="cs-img-stack">
+        <img src="J&J/jj-data.jpg" alt="Cataloguing Available Data">
+          <img src="J&J/jj-challenge-sketches-01.jpg" alt="UI Sketch">
+      </div>
+    </div>
+  </div>
 
-  <div class="footer">© 2026 · Matthew Abate</div>
+  <!-- Logic diagrams / digitizing clinical practices -->
+  <div class="cs-ruled-box">
+    <div class="cs-img-row">
+      <img src="J&J/jj-experience-flow-01-meta.svg" alt="Problem-Solving Logic Diagram">
+      <img src="J&J/jj-experience-flow-02-problem-solving.svg" alt="Problem-Solving Logic Diagram">
+      <img src="J&J/jj-experience-flow-03-rapid-feedback.svg" alt="Rapid-Feedback Logic Diagram">
+    </div>
+    <span class="cs-caption">2 logic diagrams, a step in digitizing clinical practices</span>
+  </div>
+
+    <!-- Product Design + Prototyping -->
+  <div class="cs-block">
+    <div class="cs-callout-label">Step 5: Product Design + Prototyping</div>
+    <div class="cs-split-grid">
+      <div>
+        <p class="cs-prose">At the end of the process, I worked with the clinicians to translate J&J's behavioral science methodology into a service logic where the intervention was driven by what a patient was actually experiencing that day.</p>
+        <p class="cs-prose">J&J Technology then developed a machine learning model and developed an alpha-stage app based on our work.</p>
+        <p class="cs-prose">We validated the pilot prototype with a new group of patients, then developed a comprehensive content strategy using J&J's existing content inventory.</p>
+      </div>
+      <div class="cs-aside cs-aside--fit">
+          <img src="J&J/jj-animated-screen.gif" alt="Prototype Screens">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Callout: heading → insights → diagram → opportunities → rule → methods -->
+  <div class="cs-callout">
+
+    <h2 class="cs-callout-heading">Synthesis: How can we help people manage uncontrolled diabetes?</h2>
+
+    <span class="cs-callout-label">Insights</span>
+    <div class="cs-3-col cs-content-block">
+      <p class="cs-item-text"><span class="cs-accent-num">1.</span> We think of treatment failure as a knowledge problem, but for patients with severely uncontrolled diabetes, it is <span class="cs-em">almost always a behavioral and contextual one</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">2.</span> We assume tools improve adherence if they are simple, but <span class="cs-em">ease of use doesn't address the specific moments</span> that put pressure on patients.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">3.</span> We expect quarterly doctor visits to provide sufficient guidance, but <span class="cs-em">challenges between visits need immediate attention</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">4.</span> We think focus groups reveal patient behavior, but <span class="cs-em">they only reflect patients' interpretations of their own behavior</span>, not the reasons those behaviors come about.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">5.</span> We think struggling patients lack discipline, but <span class="cs-em">variables in a patient's life have the biggest impact on adherence</span>.</p>
+      <p class="cs-item-text"><span class="cs-accent-num">6.</span> We think having a patient’s data guarantees effective analysis, but <span class="cs-em">the highest-value application of health data is tailored, moment-specific behavioral support</span>.</p>
+    </div>
+
+    <div class="cs-figure-card">
+      <img src="J&J/jj-service-loop.jpg" alt="Service Loop Diagram" style="width:100%; display:block;">
+      <span class="cs-caption">Service Loop Diagram</span>
+    </div>
+
+    <span class="cs-callout-label">Opportunities</span>
+    <div class="cs-3-col">
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">A.</span> <span class="cs-em">Provide interventions around the specific moments of daily life</span> where patients are most likely to fail.</p>
+      </div>
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">B.</span> <span class="cs-em">Translate J&J's behavioral science frameworks into a digital conversation</span> that feels empathetic and situationally aware rather than clinical and prescriptive.</p>
+      </div>
+      <div>
+        <p class="cs-item-text"><span class="cs-accent-num">C.</span> <span class="cs-em">Reformat clinical guidance into a coaching program</span> that eases burden, teaches life skills, and builds resilience.</p>
+      </div>
+    </div>
+
+    <hr class="cs-rule">
+
+    <span class="cs-callout-label">Research methods</span>
+    <p class="cs-tag-list">Behavioral Observation <span class="cs-sep">&bull;</span> Ethnographic Field Research <span class="cs-sep">&bull;</span> In-Depth Interviews <span class="cs-sep">&bull;</span> Contextual Inquiry <span class="cs-sep">&bull;</span> Secondary Clinical Research <span class="cs-sep">&bull;</span> Regulatory Intelligence <span class="cs-sep">&bull;</span> Co-Creation Workshops <span class="cs-sep">&bull;</span> Jobs to Be Done <span class="cs-sep">&bull;</span> Journey Mapping <span class="cs-sep">&bull;</span> Behavioral Segmentation <span class="cs-sep">&bull;</span> System Architecture <span class="cs-sep">&bull;</span> Research Synthesis <span class="cs-sep">&bull;</span> Insights Development <span class="cs-sep">&bull;</span> Service Blueprinting <span class="cs-sep">&bull;</span> Executive-Ready Reporting <span class="cs-sep">&bull;</span> Service Design <span class="cs-sep">&bull;</span> Product Design</p>
+
+  </div>
+
+  <div class="footer">&copy; 2026 &middot; Matthew Abate</div>
 
 </div><!-- /site-wrapper -->
 </div><!-- /frame -->
