@@ -75,6 +75,10 @@
 }
 
 /* ── Base ──────────────────────────────────────────────────── */
+html {
+  background: var(--card-bg);
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   color: var(--text);
@@ -110,7 +114,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0 14px;
+  padding: calc(15px + env(safe-area-inset-top)) 0 14px;
   background: var(--card-bg);
   border-bottom: 1px solid var(--border);
 }
@@ -624,7 +628,7 @@ a { color: inherit; }
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 72px var(--pad-h) 48px;
+  padding: 72px calc((100vw - var(--frame-width)) / 2 + var(--pad-h)) 48px;
   gap: min(calc((100vh - 360px) / 3), 48px);
   z-index: 500;
   transform: translateX(100vw);
@@ -875,7 +879,7 @@ a { color: inherit; }
   display: flex;
   width: 287px;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   gap: 30px;
   margin: 0 auto;
 }
@@ -885,7 +889,6 @@ a { color: inherit; }
   gap: 30px;
 }
 
-.cs-portrait-row--offset { margin-left: 46px; }
 
 .cs-portrait-row img {
   width: 60px;
@@ -1017,7 +1020,6 @@ a { color: inherit; }
   .cs-3-col                   { grid-template-columns: 1fr; }
   .cs-split-grid              { grid-template-columns: 1fr; }
   .cs-media-grid              { grid-template-columns: 1fr; }
-  .cs-portrait-row--offset    { margin-left: 0; }
 
   /* fill aside: image is absolutely positioned so the container
      has no intrinsic height — give it an explicit height when stacked */
