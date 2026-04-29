@@ -79,6 +79,21 @@ html {
   background: var(--card-bg);
 }
 
+/* Opaque white cover for the Dynamic Island / notch safe area.
+   iOS applies its own translucent material to this region,
+   so a fixed element is needed to block content from showing through. */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: var(--card-bg);
+  z-index: 9999;
+  pointer-events: none;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   color: var(--text);
@@ -705,8 +720,8 @@ a { color: inherit; }
 
 @media (max-width: 480px) {
   .cs-card { grid-template-columns: 1fr; }
-  .cs-card__logo { border-top: 1px solid var(--border); }
-  .cs-card__body { border-top: none; }
+  .cs-card__logo { border-top: 1px solid var(--border); padding-top: 40px; padding-bottom: 0; }
+  .cs-card__body { border-top: none; padding-top: 40px; }
   .cs-card__cta { display: none; }
 }
 
