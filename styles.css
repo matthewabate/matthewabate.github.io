@@ -347,11 +347,14 @@ a { color: inherit; }
 
 .bio-intro__text p + p { margin-top: 30px; }
 
-.bio-intro__photo { flex: 0 0 320px; }
+.bio-intro__photo {
+  flex: 0 0 320px;
+  align-self: stretch;  /* add this */
+}
 
 .bio-intro__photo img {
   width: 100%;
-  height: 380px;
+  height: 100%;         /* fill the container */
   object-fit: cover;
   display: block;
 }
