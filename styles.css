@@ -406,7 +406,7 @@ a { color: inherit; }
 }
 
 .logo-spacer {
-  width: 60px;
+  max-width: 60px;
   flex-shrink: 0;
   flex-grow: 0;
 }
@@ -1179,7 +1179,7 @@ a { color: inherit; }
   .personal-grid              { grid-template-columns: 1fr; }
   .bio-logos                  { gap: 16px 24px; }
   .bio-logos img              { max-width: 45px;}
-  .logo-spacer                { max-width: 45px;}
+  .logo-spacer                { width: 45px;}
 }
 
 @media (max-width: 480px) {
