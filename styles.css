@@ -208,7 +208,7 @@ a { color: inherit; }
 }
 
 /* ── Page header ───────────────────────────────────────────── */
-.page-header { padding: var(--pad-v) 0; }
+.page-header { padding: 60px 0 var(--pad-v); }
 
 /* ── Sections ──────────────────────────────────────────────── */
 .section { padding: var(--pad-v) 0; }
@@ -280,8 +280,8 @@ a { color: inherit; }
   padding-bottom: 30px;
 }
 
-.page-home .section:first-child {
-  padding-top: 60px;
+.page-home .home-hero {
+  padding-top: var(--pad-v);
 }
 
 .page-home .section:not(.home-hero) p {
@@ -892,7 +892,7 @@ a { color: inherit; }
 
 /* ── Info bar ───────────────────────────────────────────────── */
 .cs-bar-section {
-  padding: 0 0 60px;
+  padding: 0 0 30px;
 }
 
 .cs-info-bar {
@@ -953,7 +953,7 @@ a { color: inherit; }
 .cs-prose {
   font-size: 20px;
   line-height: 30px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cs-prose + .cs-prose { margin-top: 30px; }
