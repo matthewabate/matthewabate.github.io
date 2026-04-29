@@ -208,7 +208,7 @@ a { color: inherit; }
 }
 
 /* ── Page header ───────────────────────────────────────────── */
-.page-header { padding: 60px 0 var(--pad-v); }
+.page-header { padding: var(--pad-v) 0; }
 
 /* ── Sections ──────────────────────────────────────────────── */
 .section { padding: var(--pad-v) 0; }
@@ -293,13 +293,6 @@ a { color: inherit; }
 .page-home .section:not(.home-hero) p + p {
   margin-top: 30px;
 }
-.home-content {
-  padding: var(--pad-v) 0;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
 .home-two-col {
   display: grid;
   grid-template-columns: 600px 1fr;
@@ -328,11 +321,9 @@ a { color: inherit; }
 
 @media (max-width: 1200px) {
   .home-hero-text { font-size: 40px; line-height: 50px; }
-  .home-content { gap: 48px; }
 }
 @media (max-width: 768px) {
   .home-hero-text { font-size: 32px; line-height: 40px; }
-  .home-content { gap: 36px; }
 }
 @media (max-width: 480px) {
   .home-hero-text { font-size: 26px; line-height: 34px; }
@@ -572,7 +563,7 @@ a { color: inherit; }
 
 .cs-sidebar .button { display: block; text-align: center; }
 
-.cs-meta-label { margin-bottom: 4px; }
+.cs-meta-label { margin-bottom: 8px; }
 
 .cs-meta-label:not(:first-child) {
   border-top: 1px solid var(--border);
@@ -830,15 +821,19 @@ a { color: inherit; }
 
 /* ── Hero header ────────────────────────────────────────────── */
 .cs-hero {
-  padding: 60px 0 0;
+  padding: var(--pad-v) 0 0;
 }
 
 .cs-headline {
   font-size: 48px;
   font-weight: 800;
   line-height: 60px;
-  margin-bottom: 60px;
+  margin-bottom: var(--pad-v);
 }
+
+@media (max-width: 1200px) { .cs-headline { font-size: 40px; line-height: 50px; } }
+@media (max-width: 768px)  { .cs-headline { font-size: 32px; line-height: 40px; } }
+@media (max-width: 480px)  { .cs-headline { font-size: 26px; line-height: 34px; } }
 
 .cs-subline {
   font-size: 24px;
@@ -857,6 +852,21 @@ a { color: inherit; }
   padding: 0 0 30px;
 }
 
+/* Summary section: 1/3 assumption | 2/3 findings */
+.cs-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.cs-summary-findings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
 .cs-3-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -865,6 +875,9 @@ a { color: inherit; }
 
 .cs-3-col--labeled { margin-bottom: 8px; }
 
+/* Invisible label spacer — aligns text in unlabeled columns on desktop, hidden on mobile */
+.cs-label-ghost { visibility: hidden; }
+
 /* Column header label — plain background, text color */
 .cs-grid-label {
   font-size: var(--label-size);
@@ -872,6 +885,7 @@ a { color: inherit; }
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text);
+  margin-bottom: 8px;
 }
 
 /* Accent number (pink, inherits surrounding font-size) */
@@ -939,8 +953,6 @@ a { color: inherit; }
 }
 
 .cs-aside img {
-  width: 100%;
-  height: 100%;
   display: block;
 }
 
@@ -1118,6 +1130,9 @@ a { color: inherit; }
 
 /* Columns start stacking at 900px — this is where layouts get cramped */
 @media (max-width: 900px) {
+  .cs-summary-grid            { grid-template-columns: 1fr; }
+  .cs-summary-findings        { grid-template-columns: 1fr; }
+  .cs-label-ghost             { display: none; }
   .cs-3-col                   { grid-template-columns: 1fr; }
   .cs-split-grid              { grid-template-columns: 1fr; }
   .cs-media-grid              { grid-template-columns: 1fr; }
@@ -1134,13 +1149,20 @@ a { color: inherit; }
   .cs-aside--fit img          { width: 100%; height: auto; max-height: none; }
 }
 
-/* Smaller UI elements and info bar at 768px */
+/* Smaller UI elements, info bar, and typography at 768px */
 @media (max-width: 768px) {
   .cs-info-bar                { flex-wrap: wrap; }
   .cs-bar-vr                  { display: none; }
   .cs-bar-col                 { width: 45% !important; }
+  .cs-bar-col:nth-child(5)    { width: 100% !important; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
   .cs-callout                 { padding: 24px 20px 40px; }
-  .cs-headline                { font-size: 36px; line-height: 46px; }
+
+  .cs-subline                 { font-size: 20px; line-height: 28px; }
+  .cs-callout-heading         { font-size: 20px; line-height: 27px; }
+  .cs-prose                   { font-size: 18px; line-height: 27px; }
+  .cs-lead-text               { font-size: 18px; line-height: 27px; }
+  .page-home .section:not(.home-hero) p { font-size: 20px; line-height: 28px; }
+  .bio-intro__text p          { font-size: 18px; line-height: 27px; }
 
   .bio-intro                  { flex-direction: column; }
   .bio-intro__photo           { flex: none; width: 100%; }
@@ -1153,10 +1175,11 @@ a { color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .cs-bar-col        { width: 100% !important; }
-  .cs-prose          { font-size: 18px; line-height: 28px; }
-  .cs-lead-text      { font-size: 18px; line-height: 28px; }
-  .cs-headline       { font-size: 28px; line-height: 36px; }
+  .cs-bar-col                 { width: 100% !important; }
+  .cs-bar-col:nth-child(3)    { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); }
+  .cs-subline        { font-size: 18px; line-height: 26px; }
+  .cs-callout-heading { font-size: 18px; line-height: 26px; }
+  .page-home .section:not(.home-hero) p { font-size: 18px; line-height: 26px; }
   .nav__logo-full    { display: none; }
   .nav__logo-short   { display: inline; }
 }
