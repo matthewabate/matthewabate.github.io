@@ -401,12 +401,18 @@ a { color: inherit; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px 32px;
+  justify-content: space-between;
   padding-top: 40px;
 }
 
+.logo-spacer {
+  width: 60px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
 .bio-logos img {
-  max-height: 45px;
+  max-height: 60px;
   max-width: 60px;
   width: auto;
   height: auto;
@@ -1172,6 +1178,8 @@ a { color: inherit; }
   .bio-skills-methods-cols    { grid-template-columns: 1fr; }
   .personal-grid              { grid-template-columns: 1fr; }
   .bio-logos                  { gap: 16px 24px; }
+  .bio-logos img              { max-width: 45px;}
+  .logo-spacer                { max-width: 45px;}
 }
 
 @media (max-width: 480px) {
