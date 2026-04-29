@@ -247,7 +247,6 @@ a { color: inherit; }
 }
 
 .button--primary { background: var(--text); color: var(--card-bg); }
-.button--sm { padding: 5px 14px; font-size: 11px; }
 
 /* ── Dash lists ────────────────────────────────────────────── */
 .dash-list {
@@ -340,8 +339,7 @@ a { color: inherit; }
 .bio-intro__text { flex: 1; }
 .bio-intro__text .page-heading { margin-bottom: 40px; }
 
-.bio-intro__text p,
-.bio-intro__text-p {
+.bio-intro__text p {
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
@@ -559,26 +557,12 @@ a { color: inherit; }
 
 .cs-back:hover .cs-back__icon { transform: rotate(90deg) translateY(3px); }
 
-.cs-layout {
-  display: flex;
-  gap: var(--gap);
-  align-items: flex-start;
-}
-
 .cs-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
-
-.cs-sidebar {
-  flex: 0 0 var(--sidebar-w);
-  background: var(--sidebar-bg);
-  padding: 18px;
-}
-
-.cs-sidebar .button { display: block; text-align: center; }
 
 .cs-meta-label { margin-bottom: 8px; }
 
@@ -593,126 +577,6 @@ a { color: inherit; }
   font-weight: 300;
   line-height: var(--small-lh);
 }
-
-.cs-methods-list {
-  list-style: none;
-  margin-top: 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.cs-methods-list li {
-  font-size: var(--small-size);
-  font-weight: 300;
-  line-height: var(--small-lh);
-  padding-left: 14px;
-  position: relative;
-}
-
-.cs-methods-list li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--muted);
-}
-
-.cs-section-label {
-  font-size: var(--body-size);
-  font-weight: 600;
-  line-height: var(--body-lh);
-  margin-bottom: 8px;
-}
-
-.cs-text { font-weight: 300; }
-
-.cs-numbered {
-  list-style: none;
-  margin-top: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.cs-numbered li {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  font-weight: 300;
-  padding-left: 22px;
-  position: relative;
-}
-
-.cs-numbered li .cs-num { position: absolute; left: 0; }
-
-.cs-insights {
-  list-style: none;
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.cs-insights li {
-  font-size: var(--body-size);
-  line-height: var(--body-lh);
-  font-weight: 300;
-  padding-left: 18px;
-  position: relative;
-}
-
-.cs-insights li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  color: var(--muted);
-}
-
-.cs-insights em { font-style: italic; font-weight: 400; }
-
-.cs-results-layout {
-  display: flex;
-  gap: var(--gap);
-  align-items: flex-start;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-}
-
-.cs-results-image {
-  flex: 0 0 var(--sidebar-w);
-  display: flex;
-  flex-direction: column;
-}
-
-.cs-results-image img {
-  width: 100%;
-  height: auto;
-  max-height: var(--sidebar-w);
-  object-fit: contain;
-  display: block;
-  cursor: pointer;
-}
-
-.cs-results-caption { padding-top: 10px; text-align: center; }
-
-.cs-view-demo {
-  font-size: var(--label-size);
-  font-weight: 400;
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-}
-
-.cs-results-copy {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 
 /* ── Mobile nav ────────────────────────────────────────────── */
 .nav__hamburger {
@@ -749,7 +613,6 @@ a { color: inherit; }
   background: transparent;
   border-bottom-color: transparent;
 }
-
 
 .nav:has(.nav__hamburger.is-open) .nav__logo { opacity: 0; pointer-events: none; }
 
@@ -822,11 +685,6 @@ a { color: inherit; }
   .cs-card { grid-template-columns: 140px 1fr; }
   .cs-card__cta { display: none; }
 
-  .cs-layout { flex-direction: column; }
-  .cs-sidebar { width: 100%; margin-bottom: 24px; }
-
-  .cs-results-layout { flex-direction: column; }
-  .cs-results-image { flex: none; width: 70%; }
 }
 
 @media (max-width: 480px) {
@@ -873,24 +731,11 @@ a { color: inherit; }
   padding: 0 0 30px;
 }
 
-/* Summary section: 1/3 assumption | 2/3 findings */
-.cs-summary-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 30px;
-  align-items: start;
-}
-
 .cs-summary-findings {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   align-items: start;
-}
-
-/* Full-width findings — no assumption column alongside */
-.cs-summary-findings--full {
-  grid-template-columns: 1fr 1fr;
   width: 100%;
 }
 
@@ -1025,25 +870,6 @@ a { color: inherit; }
   align-items: start;
 }
 
-.cs-media-cluster {
-  display: flex;
-  gap: 30px;
-  align-items: stretch;
-}
-
-.cs-media-frame {
-  width: 287px;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.cs-media-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 /* ── Portrait grid ──────────────────────────────────────────── */
 .cs-portrait-grid {
   display: flex;
@@ -1051,6 +877,7 @@ a { color: inherit; }
   flex-direction: column;
   align-content: center;
   gap: 30px;
+  margin: 0 auto;
 }
 
 .cs-portrait-row {
@@ -1107,8 +934,6 @@ a { color: inherit; }
   height: auto;
   display: block;
 }
-
-
 
 /* ── Callout box (gray bg, insights / opportunities / methods) ─ */
 .cs-callout {
@@ -1187,13 +1012,11 @@ a { color: inherit; }
 
 /* Columns start stacking at 900px — this is where layouts get cramped */
 @media (max-width: 900px) {
-  .cs-summary-grid            { grid-template-columns: 1fr; }
   .cs-summary-findings        { grid-template-columns: 1fr; }
   .cs-label-ghost             { display: none; }
   .cs-3-col                   { grid-template-columns: 1fr; }
   .cs-split-grid              { grid-template-columns: 1fr; }
   .cs-media-grid              { grid-template-columns: 1fr; }
-  .cs-media-cluster           { flex-wrap: wrap; }
   .cs-portrait-row--offset    { margin-left: 0; }
 
   /* fill aside: image is absolutely positioned so the container
