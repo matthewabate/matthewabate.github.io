@@ -5,12 +5,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent:     #E61385;
-  --text:       #24282E;
-  --muted:      #7A818B;
-  --border:     #CFD3D9;
-  --sidebar-bg: #FAFBFC;
-  --card-bg:    #ffffff;
+  --accent:      #E61385;
+  --text:        #24282E;
+  --muted:       #7A818B;
+  --muted-dark:  #667780;
+  --border:      #CFD3D9;
+  --sidebar-bg:  #FAFBFC;
+  --card-bg:     #ffffff;
 
   --frame-width: 1040px;
   --pad-h:       60px;
@@ -77,7 +78,7 @@
 body {
   font-family: 'Outfit', sans-serif;
   color: var(--text);
-  background: #ffffff;
+  background: var(--card-bg);
   overflow-y: auto;
   overflow-x: hidden;
   letter-spacing: 0.0066em;
@@ -204,7 +205,7 @@ a { color: inherit; }
   text-transform: uppercase;
   letter-spacing: 0.06em;
   line-height: 15px;
-  color: #667780;
+  color: var(--muted-dark);
 }
 
 /* ── Page header ───────────────────────────────────────────── */
@@ -245,7 +246,7 @@ a { color: inherit; }
   border: none;
 }
 
-.button--primary { background: var(--text); color: #fff; }
+.button--primary { background: var(--text); color: var(--card-bg); }
 .button--sm { padding: 5px 14px; font-size: 11px; }
 
 /* ── Dash lists ────────────────────────────────────────────── */
@@ -736,7 +737,7 @@ a { color: inherit; }
   transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.15s ease;
 }
 
-.nav__hamburger.is-open span               { background: #ffffff; }
+.nav__hamburger.is-open span               { background: var(--card-bg); }
 .nav__hamburger.is-open span:nth-child(1)  { transform: translateY(7px) rotate(45deg); }
 .nav__hamburger.is-open span:nth-child(2)  { opacity: 0; }
 .nav__hamburger.is-open span:nth-child(3)  { transform: translateY(-7px) rotate(-45deg); }
@@ -779,7 +780,7 @@ a { color: inherit; }
   font-size: 48px;
   font-weight: 800;
   line-height: 60px;
-  color: #ffffff;
+  color: var(--card-bg);
   text-decoration: none;
   opacity: 0;
   transform: translateX(20px);
@@ -1121,7 +1122,7 @@ a { color: inherit; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #667780;
+  color: var(--muted-dark);
   display: block;
   margin-bottom: 8px;
 }
@@ -1139,7 +1140,7 @@ a { color: inherit; }
   font-weight: 300;
   line-height: 15px;
   letter-spacing: 0.06em;
-  color: #667780;
+  color: var(--muted-dark);
   margin-top: 30px;
 }
 
