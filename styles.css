@@ -87,7 +87,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   letter-spacing: 0.0066em;
-  padding-top: env(safe-area-inset-top);
 }
 
 /* ── Frame ─────────────────────────────────────────────────── */
@@ -111,12 +110,12 @@ body {
 /* ── Nav ───────────────────────────────────────────────────── */
 .nav {
   position: sticky;
-  top: env(safe-area-inset-top);
+  top: calc(0px - env(safe-area-inset-top));
   z-index: 200;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0 14px;
+  padding: calc(15px + env(safe-area-inset-top)) 0 14px;
   background: var(--card-bg);
   border-bottom: 1px solid var(--border);
 }
