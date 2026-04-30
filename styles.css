@@ -79,7 +79,6 @@ html {
   background: var(--card-bg);
 }
 
-
 body {
   font-family: 'Outfit', sans-serif;
   color: var(--text);
@@ -87,6 +86,19 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   letter-spacing: 0.0066em;
+}
+
+/* Covers the Dynamic Island / notch zone so content never shows there */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: var(--card-bg);
+  z-index: 100;
+  pointer-events: none;
 }
 
 /* ── Frame ─────────────────────────────────────────────────── */
@@ -110,12 +122,12 @@ body {
 /* ── Nav ───────────────────────────────────────────────────── */
 .nav {
   position: sticky;
-  top: calc(0px - env(safe-area-inset-top));
+  top: 0;
   z-index: 200;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(15px + env(safe-area-inset-top)) 0 14px;
+  padding: 15px 0 14px;
   background: var(--card-bg);
   border-bottom: 1px solid var(--border);
 }
