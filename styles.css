@@ -1036,6 +1036,9 @@ a { color: inherit; }
      has no intrinsic height — give it an explicit height when stacked */
   .cs-aside--fill             { height: 280px; }
 
+  /* fill aside containing a stacked image set: let height be natural */
+  .cs-aside--fill:has(.cs-img-stack) { height: auto; }
+
   /* fit aside: drop max-height constraint (no parent height to resolve
      against when stacked) and let the image size naturally */
   .cs-aside--fit              { padding: 0; }
@@ -1067,6 +1070,14 @@ a { color: inherit; }
   .bio-logos                  { gap: 16px 24px; padding-top: var(--pad-v); }
   .bio-logos img              { max-width: 45px;}
   .logo-spacer                { width: 45px;}
+  .col-label                  { margin-bottom: 10px; }
+  .bio-dash-list              { margin-top: 0; }
+  .bio-skills-methods-cols    { margin-top: 0; }
+  .cs-img-row                 { flex-direction: column; align-items: center; }
+  .cs-img-row > img           { width: 265px; height: auto; }
+  div.cs-img-narrow           { width: 265px; margin-left: auto; margin-right: auto; }
+  div.cs-img-narrow img       { width: 100%; height: auto; }
+  img.cs-img-narrow           { width: 265px; height: auto; display: block; margin-left: auto; margin-right: auto; }
 }
 
 @media (max-width: 480px) {
