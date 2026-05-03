@@ -17,6 +17,101 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .page-home div.section {
+    padding-bottom: 0;
+  }
+
+  .cs-block {
+    padding-top: 40px;
+  }
+
+  .cs-sandbox-card {
+    display: grid;
+    grid-template-columns: 1fr 287px;
+    gap: 30px;
+    align-items: start;
+  }
+
+  .cs-sandbox-card .cs-card__body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .cs-sandbox-card .cs-card__logo {
+    padding-top: 0;
+    padding-bottom: 0;
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-sandbox-card .cs-card__logo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    max-width: none;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cs-sandbox-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    column-gap: 30px;
+    row-gap: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cs-sandbox-row { grid-template-columns: 1fr; grid-template-rows: none; }
+  }
+
+  .cs-sandbox-col-card {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .cs-sandbox-col-card__img {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  .cs-sandbox-col-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cs-sandbox-col-card__brand {
+    padding-top: 20px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cs-sandbox-col-card__text {
+    padding-bottom: 20px;
+  }
+
+  .cs-card__logo-img {
+    height: auto;
+    max-height: 30px;
+    width: auto;
+    max-width: 60px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 0;
+  }
+</style>
 </head>
 <body class="page-home">
 
@@ -59,26 +154,67 @@
     </div>
   </section>
 
-  <!-- Content -->
-  <section class="section">
-    <div class="home-two-col">
-      <div>
-        <p>I recently helped <a href="cs-mlb.html" class="home-link">MLB</a> understand the realities of in-venue concessions for fans.</p>
-        <p>Before that, my team developed a vision for a better mortgage experience for <a href="cs-newrez.html" class="home-link">Newrez</a>.</p>
-        <p>I led transforming <a href="cs-jj.html" class="home-link">J&J</a>'s clinical interventions into a digital service for diabetes patients.</p>
-        <p>My <a href="bio.html" class="home-link">background</a> is in research, design, and systems thinking.</p>
-      </div>
-      <div class="home-col-right"></div>
+  <!-- Content Row -->
+
+  <div class="section">
+    <div class="cs-sandbox-row">
+
+      <a href="cs-mlb.html" class="cs-sandbox-col-card">
+        <div class="cs-sandbox-col-card__img">
+          <img src="MLB/research-phillies-01.jpg" alt="">
+        </div>
+        <div class="cs-sandbox-col-card__brand">
+          <img src="logos/MLB_logo-white.svg" alt="MLB" class="cs-card__logo-img">
+        </div>
+        <div class="cs-sandbox-col-card__text">
+          <div class="cs-card__title">Ballpark Commerce Research</div>
+          <div class="cs-card__impact">Ethnographic research revealing how cognitive load and social dynamics suppress spending at the ballpark.</div>
+        </div>
+      </a>
+
+      <a href="cs-newrez.html" class="cs-sandbox-col-card">
+        <div class="cs-sandbox-col-card__img">
+          <img src="Newrez/newrez-workshop-stim.jpg" alt="">
+        </div>
+        <div class="cs-sandbox-col-card__brand">
+          <img src="logos/newrez-logo.svg" alt="Newrez" class="cs-card__logo-img">
+        </div>
+        <div class="cs-sandbox-col-card__text">
+          <div class="cs-card__title">Home-Buying Experience Vision</div>
+          <div class="cs-card__impact">Research into mortgage process failures, informing service design of an end-to-end experience vision.</div>
+        </div>
+      </a>
+
+      <a href="cs-jj.html" class="cs-sandbox-col-card">
+        <div class="cs-sandbox-col-card__img">
+          <img src="J&J/jj-pattern-recognition-stim.png" alt="Workshop Photo">
+        </div>
+        <div class="cs-sandbox-col-card__brand">
+          <img src="logos/jj-logo.svg" alt="Lifescan" class="cs-card__logo-img">
+        </div>
+        <div class="cs-sandbox-col-card__text">
+          <div class="cs-card__title">Diabetes Behavior-Change Coach</div>
+          <div class="cs-card__impact">Behavioral research and digital therapeutic design for patients with severely uncontrolled diabetes.</div>
+        </div>
+      </a>
+
     </div>
-  </section>
+  </div>
 
   <!-- Contact -->
-  <section class="section">
-    <div class="home-two-col">
-      <p class="cs-subline">If you&apos;re working on something challenging, <a href="contact.html" class="home-link">let&apos;s talk</a>!</p>
-      <div class="home-col-right"></div>
+  <div class="cs-block">
+    <div class="cs-split-grid">
+      <div>
+        <p class="page-subhead">If you're working on something challenging, let's talk!</p>
+        <p>Currently working in the New York City Metro Area or remotely.</p>
+        <div class="contact-actions">
+          <a href="mailto:matthewabate@me.com" class="button button--primary">Email</a>
+          <a href="https://calendly.com/matthewabate/intro-meeting" target="_blank" class="button">Calendly</a>
+          <a href="https://linkedin.com/in/matthewabate" target="_blank" class="button">LinkedIn</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
   <div class="footer">© 2026 · Matthew Abate</div>
 
